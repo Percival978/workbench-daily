@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-08-12",
+    "generatedAt": "2026-08-12T09:20:11+08:00",
+    "cycleDay": 3,
+    "difficulty": "高级 Advanced",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "故障排查 · 液冷 CDU 流量低报警致 GPU 降频与 latency 抖动，RCA 定位主泵气蚀+过滤器半堵",
+        "subtitle": "高级 Advanced",
+        "content": "- 情境：液冷 CDU 二次侧流量低报警导致 GPU 节点进液温度攀升、触发降频与 latency 抖动；牵头制冷与监控复盘 RCA，定位主泵气蚀 + Y 型过滤器半堵，确认备用 CDU 可 failover 并切换验证。\n- 小白：We just got a low-flow alarm on the primary CDU's secondary loop. The GPU nodes on rack R18 are seeing rising coolant inlet temps and the training jobs are throttling — latency on the inference pods is spiking.\n- 制冷同事：I see it. Pump speed is maxed but flow is down — classic cavitation on the primary pump plus a half-clogged Y-strainer. The standby CDU is healthy; do you want me to fail over now?\n- 小白：Yes, fail over to the standby CDU and prove the handoff. While that holds, pull the logs and run the RCA — I need to know if capacity margin on the liquid loop is actually sufficient for the next GPU batch.\n- 制冷同事：Standby CDU is carrying the load, inlet temps back in range, latency recovering. RCA shows the filter restriction dropped headroom; I'll schedule a strainer clean and re-baseline PUE on the liquid side.\n- 重点表达：\n- `low-flow alarm on the secondary loop` — 二次侧流量低报警\n- `cavitation on the primary pump` — 主泵气蚀\n- `fail over to the standby CDU and prove the handoff` — 切到备用 CDU 并验证切换",
+        "category": "故障排查",
+        "difficulty": "高级 Advanced",
+        "expressions": [
+          {
+            "en": "low-flow alarm on the secondary loop",
+            "zh": "二次侧流量低报警"
+          },
+          {
+            "en": "cavitation on the primary pump",
+            "zh": "主泵气蚀"
+          },
+          {
+            "en": "fail over to the standby CDU and prove the handoff",
+            "zh": "切到备用 CDU 并验证切换"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "容量规划 · 核算 AI 训练机柜 CDU 制冷容量与二次侧流量余量，预留 headroom 防 over-provision",
+        "subtitle": "基础 Basic",
+        "content": "- 情境：为新到货的一批 AI 训练机柜核算 CDU 制冷 capacity 与二次侧流量余量，确认单 rack 散热负荷、封闭 hot-cold aisle、PUE 余量，预留 headroom 防 over-provision。\n- 小白：We're adding three AI training racks next month. Before they go live, I need to confirm the CDU can handle the extra heat load without starving the existing liquid-cooled racks.\n- 容量同事：Each new rack draws about 35 kW; the CDU has roughly 20% cooling capacity headroom and the secondary flow margin covers it. We'll keep the hot-cold aisle contained so the CRAH side isn't stressed.\n- 小白：Good. So PUE stays in budget as long as we don't over-provision the loop. I'll reserve that 20% headroom and stage the racks one at a time.\n- 容量同事：Agreed. Staging keeps uptime safe and lets us re-check inlet temps after each rack lands.\n- 重点表达：\n- `cooling capacity headroom` — 制冷容量余量\n- `over-provision the loop` — 让环路过度配置（超配）\n- `stage the racks one at a time` — 机柜逐台上架",
+        "category": "容量规划",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "cooling capacity headroom",
+            "zh": "制冷容量余量"
+          },
+          {
+            "en": "over-provision the loop",
+            "zh": "让环路过度配置（超配）"
+          },
+          {
+            "en": "stage the racks one at a time",
+            "zh": "机柜逐台上架"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "日常工作 · 晨间巡检 CRAH 冷凝水盘积水排水堵塞，开单疏通并交班",
+        "subtitle": "高级 Advanced",
+        "content": "- 情境：晨间巡检发现 CRAH-A 冷凝水盘积水、排水管轻微堵塞有渗水风险，开 work order 疏通并 handover 提醒监控 rack 进风与备用 CRAH 冗余。\n- 小白：Morning patrol on Hall C — CRAH-A's condensate pan is holding water and the drain line looks partly blocked. If it overflows we risk water near the racks, so I'm raising a work order to clear it.\n- 运维同事：Noted. While CRAH-A is down for the drain flush, is the redundant CRAH enough to hold rack inlet temps?\n- 小白：Yes — I checked capacity; the standby CRAH covers the load and uptime is safe. I'll hand over the work order and flag it so night shift keeps an eye on rack inlet and the failover status.\n- 运维同事：Good call. I'll add the pan cleaning to the PM checklist and confirm the alarm thresholds before you log off.\n- 重点表达：\n- `morning patrol` — 晨间巡检\n- `raise a work order to clear it` — 开整改工单疏通\n- `hand over the work order and flag it` — 交班移交工单并标注提醒",
+        "category": "日常工作",
+        "difficulty": "高级 Advanced",
+        "expressions": [
+          {
+            "en": "morning patrol",
+            "zh": "晨间巡检"
+          },
+          {
+            "en": "raise a work order to clear it",
+            "zh": "开整改工单疏通"
+          },
+          {
+            "en": "hand over the work order and flag it",
+            "zh": "交班移交工单并标注提醒"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-08-11",
     "generatedAt": "2026-08-11T09:20:31+08:00",
     "cycleDay": 2,
@@ -956,80 +1030,6 @@
           {
             "en": "during the change window",
             "zh": "在变更窗口内（合规操作时段）"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-07-29",
-    "generatedAt": "2026-07-29T08:00:00+08:00",
-    "cycleDay": 1,
-    "difficulty": "基础 Basic",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "日常工作 · 晨间巡检发现机柜送风温度偏高",
-        "subtitle": "基础 Basic",
-        "content": "**情境**：早晨例行巡检，发现 B 区某机柜送风温度偏高，记录并交接给白班跟进。\n\n**对话**：\n- Ops: Morning patrol — rack B7's supply air is reading 27°C, a bit high.\n- Senior: Note it in the log and keep an eye on it. Flag it in the handover.\n- Ops: Done. I'll tell the day shift to watch that CRAH on row B.\n- Senior: Good. Uptime's been solid, so no need to alarm — just monitor.\n\n**重点表达**：\n- `morning patrol` — 晨间巡检\n- `flag it in the handover` — 在交班时标注提醒\n- `keep an eye on it` — 留意观察（持续关注）",
-        "category": "日常工作",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "morning patrol",
-            "zh": "晨间巡检"
-          },
-          {
-            "en": "flag it in the handover",
-            "zh": "在交班时标注提醒"
-          },
-          {
-            "en": "keep an eye on it",
-            "zh": "留意观察（持续关注）"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "故障排查 · 用户报延迟升高，核实故障切换是否完成",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：某集群用户报延迟升高，怀疑一次电力闪断后的故障切换未完成，联合网络与暖通确认并恢复。\n\n**对话**：\n- Ops: Users report high latency on the east cluster since the power blip.\n- Tech: Could be the failover didn't complete. Let me check the chiller and the network paths.\n- Ops: Latency was 40 ms, now back to 8 ms after we forced the switch.\n- Tech: Good — so the failover was stuck, now recovered. I'll log the RCA.\n\n**重点表达**：\n- `high latency` — 高延迟（网络/响应变慢）\n- `the failover didn't complete` — 故障切换未完成\n- `log the RCA` — 记录根因分析（Root Cause Analysis）",
-        "category": "故障排查",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "high latency",
-            "zh": "高延迟（网络/响应变慢）"
-          },
-          {
-            "en": "the failover didn't complete",
-            "zh": "故障切换未完成"
-          },
-          {
-            "en": "log the RCA",
-            "zh": "记录根因分析（Root Cause Analysis）"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "容量规划 · 评估新设备能否放入空闲机柜并核算制冷余量",
-        "subtitle": "基础 Basic",
-        "content": "**情境**：评估新一批服务器能否放入西侧空闲机柜，并核对制冷容量与 PUE 是否在安全范围。\n\n**对话**：\n- Ops: How much rack capacity do we have left on the west side?\n- Lead: About six empty racks, but cooling capacity is the limit, not space.\n- Ops: Our PUE is steady at 1.4. Can the CRAH handle ten more racks?\n- Lead: Yes — the hot-cold aisle is balanced, so we have headroom. Add them to row D.\n\n**重点表达**：\n- `rack capacity` — 机柜容量（可上架空间）\n- `cooling capacity is the limit` — 制冷容量才是瓶颈\n- `we have headroom` — 我们还有余量（空间/电力/制冷）",
-        "category": "容量规划",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "rack capacity",
-            "zh": "机柜容量（可上架空间）"
-          },
-          {
-            "en": "cooling capacity is the limit",
-            "zh": "制冷容量才是瓶颈"
-          },
-          {
-            "en": "we have headroom",
-            "zh": "我们还有余量（空间/电力/制冷）"
           }
         ]
       }
