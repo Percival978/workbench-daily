@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-08-13",
+    "generatedAt": "2026-08-13T09:20:35+08:00",
+    "cycleDay": 4,
+    "difficulty": "精通 Proficient",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "运维沟通 · 电价高峰协调制冷降载与工作负载迁移",
+        "subtitle": "精通 Proficient",
+        "content": "**情境：** 电价高峰时段，小白协调云/业务侧做制冷降载 + 工作负载迁移，平衡 PUE、rack 进风与 latency，保留 fail back。\n\n**对话：**\n- 小白: During the peak tariff window this afternoon, I want to shed some cooling load on the secondary plant and migrate the non-critical workloads off the warm aisle racks. Before we touch anything, confirm rack inlet stays within SLA and latency doesn't breach.\n- 云同事: The non-critical batch jobs can move to the secondary AZ in about 20 minutes. But the hot aisle on R10–R14 runs tight already; if we drop chiller staging, rack inlet could creep up. Do you have fail back ready?\n- 小白: Yes — I'll keep one chiller in hot standby and hold the CRAH fans at minimum before we shed. We still have cooling capacity headroom on the critical racks; PUE drops about 8% in the window. If inlet temp trends up I fail back instantly and the workloads stay put.\n- 云同事: Understood. I'll freeze the migration if rack inlet crosses threshold, and we keep uptime intact either way. Send me the go/no-go at 14:00.\n\n**重点表达：**\n- `shed some cooling load` — 削减部分制冷负荷\n- `drop chiller staging` — 降低冷水机组级联运行（减载）\n- `fail back instantly if inlet temp trends up` — 进风温度抬头立即切回原工况",
+        "category": "运维沟通",
+        "difficulty": "精通 Proficient",
+        "expressions": [
+          {
+            "en": "shed some cooling load",
+            "zh": "削减部分制冷负荷"
+          },
+          {
+            "en": "drop chiller staging",
+            "zh": "降低冷水机组级联运行（减载）"
+          },
+          {
+            "en": "fail back instantly if inlet temp trends up",
+            "zh": "进风温度抬头立即切回原工况"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "跨团队协作 · 与网络安全/等保团队协调 DCIM 遥测接口合规评审",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境：** 小白与网络安全/等保团队协调 DCIM 遥测接口合规评审，确认实时 rack 进风/latency 数据可读、制冷冗余在线、uptime 不受影响。\n\n**对话：**\n- 小白: Our DCIM team wants to open a telemetry API so the security/compliance guys can pull live rack inlet and latency data for the 等保 audit. I need to make sure it doesn't expose control paths or touch the failover logic.\n- 安全同事: As long as it's read-only and behind the DMZ, fine. But can we get CRAH status and chiller plant redundancy too, so we can prove uptime and cooling capacity are monitored in real time, and PUE stays auditable?\n- 小白: Yes — we'll expose read-only metrics only: rack inlet per row, CRAH runtime, chiller N+1 state, and the hot-cold aisle differential. The control plane stays isolated, so failover and capacity decisions are untouched.\n- 安全同事: Good. That covers the audit. We'll whitelist the source IPs and you keep uptime reporting as-is.\n\n**重点表达：**\n- `open a telemetry API` — 开放遥测接口\n- `behind the DMZ` — 置于隔离区（DMZ）之后\n- `control plane stays isolated` — 控制平面保持隔离（不被暴露）",
+        "category": "跨团队协作",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "open a telemetry API",
+            "zh": "开放遥测接口"
+          },
+          {
+            "en": "behind the DMZ",
+            "zh": "置于隔离区（DMZ）之后"
+          },
+          {
+            "en": "control plane stays isolated",
+            "zh": "控制平面保持隔离（不被暴露）"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "供应商对接 · 与液冷 CDU 供应商谈判批量交付、本地前置备件与延保 SLA",
+        "subtitle": "精通 Proficient",
+        "content": "**情境：** 小白与液冷 CDU 供应商谈判批量交付、关键泵阀备件本地前置、延保 SLA 与现场响应，预留二次侧扩容与 chiller 联动冗余。\n\n**对话：**\n- 小白: We're scaling the liquid-cooling footprint by Q4 — twelve CDUs. I need firm lead times, local pre-staged spares for the pumps and control valves, and an extended warranty with a four-hour on-site SLA.\n- 供应商: We can stage the pump and valve kits at your city hub within two weeks, four-hour response in contract. For warranty, five years parts-and-labor, but the secondary-loop expansion you mentioned needs a capacity study first.\n- 小白: Agreed on spares and SLA. On the secondary-loop expansion — I want the CDUs pre-wired for the extra racks and a documented interface to the chiller plant so failover between liquid and air sides is seamless. Capacity margin must cover the next GPU batch.\n- 供应商: We'll ship with the expansion ports open and hand over the chiller-interlock spec. With the standby CDU, redundant CRAH and a contained hot-cold aisle, your uptime and PUE target hold even during a maintenance swap.\n\n**重点表达：**\n- `local pre-staged spares` — 本地前置备件\n- `four-hour on-site SLA` — 4 小时现场响应 SLA\n- `pre-wired for the extra racks` — 为新增机柜预接线（预留扩容）",
+        "category": "供应商对接",
+        "difficulty": "精通 Proficient",
+        "expressions": [
+          {
+            "en": "local pre-staged spares",
+            "zh": "本地前置备件"
+          },
+          {
+            "en": "four-hour on-site SLA",
+            "zh": "4 小时现场响应 SLA"
+          },
+          {
+            "en": "pre-wired for the extra racks",
+            "zh": "为新增机柜预接线（预留扩容）"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-08-12",
     "generatedAt": "2026-08-12T09:20:11+08:00",
     "cycleDay": 3,
@@ -956,80 +1030,6 @@
           {
             "en": "uptime held at 99.99%",
             "zh": "在线率保持在 99.99%"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-07-30",
-    "generatedAt": "2026-07-30T07:50:32+08:00",
-    "cycleDay": 2,
-    "difficulty": "进阶 Intermediate",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "供应商对接 · 与冷水机组供应商核对参数、交期与质保",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：东区新建机房要上冷水机组，与供应商核对额定制冷量、PUE 影响、交期与压缩机质保条款。\n\n**对话**：\n- Ops: We're sizing a new chiller for the east data hall. What's the rated cooling capacity and the PUE impact?\n- Supplier: This unit delivers 1.2 MW at full load, and it'll keep your PUE under 1.35.\n- Ops: What's the lead time, and does the warranty cover the compressor for 5 years?\n- Supplier: Lead time is 10 weeks, and yes — 5-year warranty on the compressor and controls.\n\n**重点表达**：\n- `rated cooling capacity` — 额定制冷量\n- `lead time` — 交货周期（交期）\n- `5-year warranty on the compressor` — 压缩机 5 年质保",
-        "category": "供应商对接",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "rated cooling capacity",
-            "zh": "额定制冷量"
-          },
-          {
-            "en": "lead time",
-            "zh": "交货周期（交期）"
-          },
-          {
-            "en": "5-year warranty on the compressor",
-            "zh": "压缩机 5 年质保"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "跨团队协作 · 与网络团队规划新机柜上架的布线与上联",
-        "subtitle": "基础 Basic",
-        "content": "**情境**：下周 C 排要新增 12 个机柜，与网络团队协作确认布线方案，保证上联冗余与高可用。\n\n**对话**：\n- Ops: We're adding 12 racks in row C next week. Do you have the cabling plan?\n- Network: Almost. We need two uplinks per rack to keep uptime high.\n- Ops: Got it. The CRAH on that row is already running; hot-cold aisle is set.\n- Network: Perfect. We'll patch the top-of-rack switches on Friday.\n\n**重点表达**：\n- `two uplinks per rack` — 每机柜两根上联链路（冗余）\n- `top-of-rack switches` — 机柜顶部交换机（TOR）\n- `keep uptime high` — 保持高可用 / 高在线率",
-        "category": "跨团队协作",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "two uplinks per rack",
-            "zh": "每机柜两根上联链路（冗余）"
-          },
-          {
-            "en": "top-of-rack switches",
-            "zh": "机柜顶部交换机（TOR）"
-          },
-          {
-            "en": "keep uptime high",
-            "zh": "保持高可用 / 高在线率"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "运维沟通 · 能效告警后讨论在变更窗口内调整冷冻水设定",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：本周 PUE 爬升触发能效关注，与暖通工程师讨论在今晚变更窗口内上调冷冻水温度设定。\n\n**对话**：\n- Ops: PUE crept up to 1.5 this week. The chiller setpoint looks off.\n- Tech: I'll raise the chilled-water temp a notch during the change window tonight.\n- Ops: Will that affect rack inlet temperature or latency for the compute cluster?\n- Tech: No — CRAH capacity has headroom, so inlet stays below 27°C and latency is fine.\n\n**重点表达**：\n- `PUE crept up` — PUE 悄悄爬升（能效变差）\n- `chilled-water setpoint` — 冷冻水设定温度\n- `during the change window` — 在变更窗口内（合规操作时段）",
-        "category": "运维沟通",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "PUE crept up",
-            "zh": "PUE 悄悄爬升（能效变差）"
-          },
-          {
-            "en": "chilled-water setpoint",
-            "zh": "冷冻水设定温度"
-          },
-          {
-            "en": "during the change window",
-            "zh": "在变更窗口内（合规操作时段）"
           }
         ]
       }
