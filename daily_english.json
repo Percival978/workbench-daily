@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-08-14",
+    "generatedAt": "2026-08-14T09:24:19+08:00",
+    "cycleDay": 1,
+    "difficulty": "基础 Basic",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "日常工作 · 晨间巡检发现冷通道地板送风口被遮挡，开整改工单并交班",
+        "subtitle": "基础 Basic",
+        "content": "**情境：** 小白晨间巡检 C 区，热成像发现 R18 排 rack 进风温度偏高，排查定位为冷通道一块地板送风口被临时线缆桥架压住、出风受阻；开整改工单清理并交班提醒巡检，守住 uptime。\n\n**对话：**\n- 小白: Morning patrol in Zone C — I found R18's rack inlet temp running about 4°C above setpoint. The thermal image shows weak cold-air supply along that row.\n- 同事: Did you check the raised-floor perforated tiles? Last week someone routed a temporary cable tray right over the cold aisle.\n- 小白: Exactly — one supply tile is blocked by the tray. I'll raise a work order to clear it and reset the CRAH supply fan to normal. Handover note: keep an eye on R18 inlet until the fix lands.\n- 同事: Got it. I'll add it to the shift handover and verify the rack inlet drops after the tile is cleared. Uptime stays green.\n\n**重点表达：**\n- `morning patrol` — 晨间巡检\n- `raise a work order` — 开一张整改/维修工单\n- `shift handover` — 班次交接（交班）",
+        "category": "日常工作",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "morning patrol",
+            "zh": "晨间巡检"
+          },
+          {
+            "en": "raise a work order",
+            "zh": "开一张整改/维修工单"
+          },
+          {
+            "en": "shift handover",
+            "zh": "班次交接（交班）"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "故障排查 · 冷却塔填料结垢致逼近温度升高、chiller 制冷量下降，核实 failover 并牵头 RCA",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境：** 白班监控发现 A 区 rack 进风温度周期性抬升、业务 latency 出现毛刺；小白 RCA 定位为冷却塔填料结垢、approach 温度升高致 chiller 制冷量下降。他核实备用冷源 failover 是否生效、制冷 capacity 余量，并牵头写 RCA，保持故障切换待命。\n\n**对话：**\n- 小白: A-zone rack inlet is creeping up on a regular cycle and we're seeing latency spikes on the east cluster. Chiller supply temp is drifting — I suspect the cooling towers, not the chillers themselves.\n- 同事: Confirmed — tower approach is 6°C above design. The fill's fouled, so the towers can't reject heat and chiller capacity is effectively down.\n- 小白: Is the standby tower staged and failover active? I want redundancy solid before we take a tower offline for cleaning.\n- 同事: Standby's up, N+1 holds. CRAH fans are still holding the hot-cold aisle differential. Let's open the RCA: fouled fill → high approach → reduced chiller capacity → rack inlet rise → latency.\n- 小白: Agreed. I'll own the RCA and schedule an off-peak clean. Until then, watch capacity margin and keep failover armed.\n\n**重点表达：**\n- `tower approach is above design` — 冷却塔逼近温度高于设计值\n- `open the RCA` — 启动根因分析（RCA）\n- `keep failover armed` — 保持故障切换待命（在线冗余）",
+        "category": "故障排查",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "tower approach is above design",
+            "zh": "冷却塔逼近温度高于设计值"
+          },
+          {
+            "en": "open the RCA",
+            "zh": "启动根因分析（RCA）"
+          },
+          {
+            "en": "keep failover armed",
+            "zh": "保持故障切换待命（在线冗余）"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "容量规划 · 评估 R60–R63 新机柜上架，对比电力/制冷双上限并预留 headroom",
+        "subtitle": "基础 Basic",
+        "content": "**情境：** 小白规划下季度 R60–R63 新一批机柜上架：核算单 rack 电力预算与整列 CRAH 制冷 capacity，对比哪一侧先触瓶颈，确认封闭 hot-cold aisle、PUE 余量并预留 headroom 防 over-provision，守住 uptime。\n\n**对话：**\n- 小白: We're adding racks R60 through R63 next quarter. Before we commit the layout, I need to know whether power or cooling hits the ceiling first.\n- 同事: Per rack, the power budget is 12 kW; the row's CRAH can cover about 11 kW each after we keep headroom. So cooling is the tighter limit, not power.\n- 小白: Then let's cap each rack at 10 kW, keep the hot-cold aisle contained, and reserve headroom so we don't over-provision. What's the PUE impact?\n- 同事: With the margin, PUE stays in band and uptime's protected. We'll flag R63 as the expansion slot if capacity runs out later.\n\n**重点表达：**\n- `hit the ceiling first` — 先到上限（先触瓶颈）\n- `keep headroom` — 预留余量（容量裕度）\n- `don't over-provision` — 不要过度配置（过度上架）",
+        "category": "容量规划",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "hit the ceiling first",
+            "zh": "先到上限（先触瓶颈）"
+          },
+          {
+            "en": "keep headroom",
+            "zh": "预留余量（容量裕度）"
+          },
+          {
+            "en": "don't over-provision",
+            "zh": "不要过度配置（过度上架）"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-08-13",
     "generatedAt": "2026-08-13T09:20:35+08:00",
     "cycleDay": 4,
@@ -956,80 +1030,6 @@
           {
             "en": "expedite to 8 weeks",
             "zh": "加急到 8 周（expedite = 加急/加速）"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-07-31",
-    "generatedAt": "2026-07-31T07:50:09+08:00",
-    "cycleDay": 3,
-    "difficulty": "高级 Advanced",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "故障排查 · CRAH 跳闸离线引发热通道升温，强制 failover 并复盘 RCA",
-        "subtitle": "高级 Advanced",
-        "content": "**情境**：凌晨 A 排一台 CRAH（CRAH-05）跳闸离线，热通道温度骤升、计算集群延迟抖动，联合暖通与网络团队强制切换到冗余 CRAH 并复盘根因。\n\n**对话**：\n- Ops: CRAH-05 in row A just tripped offline. The hot aisle temp shot up to 35°C and we're seeing latency spikes on the compute cluster.\n- HVAC: The chiller plant is stable, so it's localized. I forced the failover to the redundant CRAH — the hot-cold aisle should rebalance in minutes.\n- Net: Latency peaked at 50 ms, now back under 10 ms after the failover. Looks stable.\n- Ops: Good. Let's run the RCA — stuck VFD or supply fan fault? Log it before shift change.\n\n**重点表达**：\n- `forced the failover` — 强制触发故障切换（切换到冗余设备）\n- `hot-cold aisle should rebalance` — 冷热通道应重新恢复平衡\n- `run the RCA` — 做根因分析（Root Cause Analysis）",
-        "category": "故障排查",
-        "difficulty": "高级 Advanced",
-        "expressions": [
-          {
-            "en": "forced the failover",
-            "zh": "强制触发故障切换（切换到冗余设备）"
-          },
-          {
-            "en": "hot-cold aisle should rebalance",
-            "zh": "冷热通道应重新恢复平衡"
-          },
-          {
-            "en": "run the RCA",
-            "zh": "做根因分析（Root Cause Analysis）"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "容量规划 · 评估高密度 GPU 机柜上架与 rack 电力/制冷容量，讨论液冷方案",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：评估西区是否能为新到的一批高密度 GPU 机柜上架，核算 rack 电力与制冷容量，并讨论是否要改用液冷。\n\n**对话**：\n- Ops: We want to add six high-density GPU racks on the west side. Can our rack power and cooling capacity handle it?\n- Lead: Each GPU rack draws about 30 kW. Our CRAH capacity is tight — PUE would climb past 1.45.\n- Ops: Should we go with liquid cooling for those racks instead of air cooling?\n- Lead: Yes. Liquid cooling frees up capacity and keeps PUE under 1.3. Let's plan the manifold layout.\n\n**重点表达**：\n- `high-density GPU racks` — 高密度 GPU 机柜\n- `rack power and cooling capacity` — 机柜电力与制冷容量\n- `go with liquid cooling` — 改用液冷（方案）",
-        "category": "容量规划",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "high-density GPU racks",
-            "zh": "高密度 GPU 机柜"
-          },
-          {
-            "en": "rack power and cooling capacity",
-            "zh": "机柜电力与制冷容量"
-          },
-          {
-            "en": "go with liquid cooling",
-            "zh": "改用液冷（方案）"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "日常工作 · 夜班巡检发现 CRAH 冷冻水阀渗水，开单处置并交班说明",
-        "subtitle": "高级 Advanced",
-        "content": "**情境**：夜班巡检发现 A 排一台 CRAH 的冷冻水隔离阀有轻微渗水，已临时处置并开维修工单，交班时向下一班说明监控要点与 uptime 影响。\n\n**对话**：\n- Night Ops: During the patrol I found a slow chilled-water leak at the CRAH-03 isolation valve. I've contained it and opened a work order.\n- Day Lead: Nice catch. Did it affect rack inlet temps or uptime on row A?\n- Night Ops: No — inlet stayed under 27°C and uptime held at 99.99%. Just monitor the CRAH and the valve overnight.\n- Day Lead: Understood. I'll track the work order and loop in maintenance after the change window.\n\n**重点表达**：\n- `during the patrol` — 巡检期间（日常巡查时）\n- `opened a work order` — 开了工单（发起维修工单）\n- `uptime held at 99.99%` — 在线率保持在 99.99%",
-        "category": "日常工作",
-        "difficulty": "高级 Advanced",
-        "expressions": [
-          {
-            "en": "during the patrol",
-            "zh": "巡检期间（日常巡查时）"
-          },
-          {
-            "en": "opened a work order",
-            "zh": "开了工单（发起维修工单）"
-          },
-          {
-            "en": "uptime held at 99.99%",
-            "zh": "在线率保持在 99.99%"
           }
         ]
       }
