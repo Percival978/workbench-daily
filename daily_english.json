@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-08-15",
+    "generatedAt": "2026-08-15T18:57:56+08:00",
+    "cycleDay": 2,
+    "difficulty": "进阶 Intermediate",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "供应商对接 · 与定压补水/真空脱气水处理设备供应商核对选型参数、交期与现场质保响应",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境：** 小白为冷却水/冷冻水系统的补给水处理改造，与供应商核对定压补水装置与真空脱气罐的额定流量、压力设定、到场交期与质保 SLA，确保 Q3 变更窗口前到货，并谈定备件本地前置，守住侧对 chiller/rack 进风/latency 的影响。\n**对话：**\n- 小白: We're retrofitting the make-up water side — constant-pressure make-up units and a vacuum degasser. Can you confirm the rated flow, the pressure setpoint, and the lead time before our Q3 change window?\n- 供应商: Rated flow 8 m³/h, setpoint adjustable 1.5–4 bar; lead time 10 weeks with on-site commissioning. For warranty, we offer 2-year parts and labor, 24/7 in-region response.\n- 小白: Ten weeks is tight. Can we pre-stage the key spares locally and tighten the response SLA? Our cooling capacity rides on a stable water side — any chiller trip pushes rack inlet up and spikes latency.\n- 供应商: We'll pre-stage the pump seal kit and the controller, and tighten the SLA to 8-hour on-site. That keeps your PUE and uptime protected through the retrofit.\n**重点表达：**\n- `lead time` — 交期（从下单到到货的时间）\n- `parts and labor warranty` — 含备件与人工的质保（全包质保）\n- `pre-stage the spares` — 本地前置备件（提前把备件布到现场）",
+        "category": "供应商对接",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "lead time",
+            "zh": "交期（从下单到到货的时间）"
+          },
+          {
+            "en": "parts and labor warranty",
+            "zh": "含备件与人工的质保（全包质保）"
+          },
+          {
+            "en": "pre-stage the spares",
+            "zh": "本地前置备件（提前把备件布到现场）"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "跨团队协作 · 与网络团队讨论新 GPU 集群上线后的东西向带宽扩容与上联规划，确认供电/制冷余量",
+        "subtitle": "基础 Basic",
+        "content": "**情境：** 小白配合网络团队为下月新 GPU 训练集群上线做规划，讨论东西向（east-west）流量扩容与上联链路，确认机柜供电预算与 CRAH 制冷 capacity 余量不受影响，全程守住 uptime。\n**对话：**\n- 小白: The GPU cluster goes live next month — east-west traffic will roughly triple. Do we have enough uplink bandwidth per rack, or do we need extra top-of-rack switches?\n- 网络同事: Each rack now has 2×25G to the leaf; the cluster needs 2×100G. We'll add ToR switches and re-plan the cabling, but the rack power and CRAH headroom must stay green.\n- 小白: Cooling's fine — the hot-cold aisle is contained and we keep headroom on CRAH capacity. The power budget per rack still has margin too.\n- 网络同事: Good. We'll stage the switches in the change window and verify latency after cutover. Uptime stays protected.\n**重点表达：**\n- `east-west traffic` — 东西向流量（服务器之间的横向流量）\n- `top-of-rack (ToR) switch` — 机柜顶部交换机（TOR）\n- `keep headroom` — 预留余量（容量/电力/制冷裕度）",
+        "category": "跨团队协作",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "east-west traffic",
+            "zh": "东西向流量（服务器之间的横向流量）"
+          },
+          {
+            "en": "top-of-rack (ToR) switch",
+            "zh": "机柜顶部交换机（TOR）"
+          },
+          {
+            "en": "keep headroom",
+            "zh": "预留余量（容量/电力/制冷裕度）"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "运维沟通 · 夏季高温红色预警 chiller 逼近满负荷，讨论错峰预冷与制冷调度变更窗口，平衡 PUE/rack 进风/latency",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境：** 气象台发布高温红色预警、室外湿球温度攀升，chiller 逼近满负荷、冷冻水供水温度抬升风险。小白在能效例会上讨论变更窗口内错峰预冷与制冷调度，平衡 PUE 与 rack 进风、latency，并预设 failover 冷源冗余。\n**对话：**\n- 小白: Red heat alert — wet-bulb's climbing and the chillers are heading toward full load. I want a change window to pre-cool overnight and shift the heavy compute load to off-peak.\n- 能效同事: Pre-cooling makes sense; it lifts rack inlet margin before the afternoon peak. But watch the chilled-water setpoint — push it too low and PUE climbs.\n- 小白: Agreed. We'll hold setpoint at design, keep the hot-cold aisle tight, and stage the standby chiller so failover's armed if one trips. Latency must stay within SLA.\n- 能效同事: Let's log it as a scheduled change, keep capacity headroom for the spike, and roll back to normal once the alert clears. PUE stays in band.\n**重点表达：**\n- `pre-cool overnight` — 夜间错峰预冷（提前降温/蓄冷）\n- `hold setpoint at design` — 把（冷冻水/供水）设定值保持在设计点\n- `keep failover armed` — 保持故障切换待命（冷源冗余在线）",
+        "category": "运维沟通",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "pre-cool overnight",
+            "zh": "夜间错峰预冷（提前降温/蓄冷）"
+          },
+          {
+            "en": "hold setpoint at design",
+            "zh": "把（冷冻水/供水）设定值保持在设计点"
+          },
+          {
+            "en": "keep failover armed",
+            "zh": "保持故障切换待命（冷源冗余在线）"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-08-14",
     "generatedAt": "2026-08-14T09:24:19+08:00",
     "cycleDay": 1,
@@ -956,80 +1030,6 @@
           {
             "en": "re-check the PUE",
             "zh": "上线后再核对能效比（PUE）"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-08-01",
-    "generatedAt": "2026-08-01T09:05:34+08:00",
-    "cycleDay": 4,
-    "difficulty": "精通 Proficient",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "运维沟通 · 能效告警 PUE 超标，低峰窗口微调冷冻水设定并评估对 latency 与 rack 进风的影响",
-        "subtitle": "精通 Proficient",
-        "content": "**情境**：能效管理平台持续告警 PUE 在高峰时段超标，与值班主管讨论在今晚低流量窗口小幅上调冷冻水设定，并制定带可逆回退的变更方案。\n\n**对话**：\n- Ops Lead: The BMS flagged our PUE drifting above 1.45 at peak load — if we nudge the chilled-water setpoint up two degrees in tonight's low-traffic window, we should pull efficiency back without jeopardizing rack inlet temps.\n- 小白: Agreed, but I want to confirm the CRAHs can hold the hot-cold aisle containment before we touch anything. Last time a setpoint change spiked inlet temp on the high-density row and our latency SLA took a hit.\n- Ops Lead: Fair. Let's stage it as a change with a reversible fallback — if inlet temp drifts past 27°C, we fail back to the current setpoint within minutes.\n- 小白: Sounds good. I'll log the change window and keep the uptime dashboards open so we can abort if the capacity margin drops.\n\n**重点表达**：\n- `nudge the setpoint up` — 把设定值小幅上调（nudge = 轻推/微调）\n- `without jeopardizing rack inlet temps` — 不危及机柜进风温度（jeopardize = 危及）\n- `stage it as a change with a reversible fallback` — 作为带可逆回退的变更来实施（fail back = 回退）",
-        "category": "运维沟通",
-        "difficulty": "精通 Proficient",
-        "expressions": [
-          {
-            "en": "nudge the setpoint up",
-            "zh": "把设定值小幅上调（nudge = 轻推/微调）"
-          },
-          {
-            "en": "without jeopardizing rack inlet temps",
-            "zh": "不危及机柜进风温度（jeopardize = 危及）"
-          },
-          {
-            "en": "stage it as a change with a reversible fallback",
-            "zh": "作为带可逆回退的变更来实施（fail back = 回退）"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "跨团队协作 · 与网络团队讨论新上架机柜的上联带宽扩容，确认供电与制冷余量",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：C 排 R12 机柜即将上架一批新 ToR 交换机，与网络团队确认布线方案与制冷余量，在保证 SLA 与 uptime 的前提下放行扩容。\n\n**对话**：\n- Network Eng: We're planning to populate rack R12 with new top-of-rack switches — do you have spare capacity on the cooling side so the hot-cold aisle doesn't break?\n- 小白: CRAH load is around 70% now, so there's headroom, but I need the rack's power draw before I sign off — what's the estimated wattage?\n- Network Eng: Roughly 8 kW per rack. We'll route the uplinks through the east aisle to keep cable heat away from the cold aisle.\n- 小白: Good. As long as your latency stays within SLA and uptime isn't at risk, we're clear to proceed.\n\n**重点表达**：\n- `spare capacity on the cooling side` — 制冷侧还有余量（spare = 备用/多余的）\n- `sign off` — 签字确认 / 批准放行\n- `headroom` — 余量 / 裕度（空间、电力或制冷的安全余地）",
-        "category": "跨团队协作",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "spare capacity on the cooling side",
-            "zh": "制冷侧还有余量（spare = 备用/多余的）"
-          },
-          {
-            "en": "sign off",
-            "zh": "签字确认 / 批准放行"
-          },
-          {
-            "en": "headroom",
-            "zh": "余量 / 裕度（空间、电力或制冷的安全余地）"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "供应商对接 · 与冷水机组供应商谈判备件交期与延长质保，围绕 legacy chiller 的 failover 冗余与液冷预留",
-        "subtitle": "精通 Proficient",
-        "content": "**情境**：一台在用冷水机组临近寿命末期，与供应商谈判替换机组的交期、压缩机质保年限，并争取热故障切换冗余与面向未来高密度机柜的液冷预留接口。\n\n**对话**：\n- Vendor: For the replacement chiller we can commit to a 12-week lead time, but given your uptime requirement we'd recommend keeping the redundant unit as a hot failover rather than cold standby.\n- 小白: Twelve weeks is too long — our RCA last quarter showed a single chiller failure pushed us close to the capacity edge. Can you expedite to 8 weeks, and what's the warranty on the compressor?\n- Vendor: We can pull it to 8 weeks if you accept a 2-year warranty instead of 3. On top of that, the CRAH controls ship with remote monitoring at no extra cost.\n- 小白: Deal — but I need the extended PUE reporting baked into the contract, plus a liquid-cooling-ready manifold option for future high-density racks.\n\n**重点表达**：\n- `commit to a lead time` — 承诺交货周期（交期）\n- `hot failover rather than cold standby` — 热故障切换而非冷备（随时可切 vs 需手动启）\n- `expedite to 8 weeks` — 加急到 8 周（expedite = 加急/加速）",
-        "category": "供应商对接",
-        "difficulty": "精通 Proficient",
-        "expressions": [
-          {
-            "en": "commit to a lead time",
-            "zh": "承诺交货周期（交期）"
-          },
-          {
-            "en": "hot failover rather than cold standby",
-            "zh": "热故障切换而非冷备（随时可切 vs 需手动启）"
-          },
-          {
-            "en": "expedite to 8 weeks",
-            "zh": "加急到 8 周（expedite = 加急/加速）"
           }
         ]
       }
