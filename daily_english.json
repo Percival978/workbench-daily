@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-08-16",
+    "generatedAt": "2026-08-16T09:20:36+08:00",
+    "cycleDay": 3,
+    "difficulty": "高级 Advanced",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "故障排查 · BMS 误关阀致 CRAH 断冷 RCA",
+        "subtitle": "高级 Advanced",
+        "content": "- **情境**：B 区热通道温度快速抬升、业务 latency 出现毛刺，定位为 BMS 逻辑误动关闭一次侧冷冻水电动阀导致 CRAH 断冷，牵头做 RCA 并确认备用冷源 failover 链路完整。\n- **对话**：\n  - A: We just saw the B-zone hot aisle creep past 32°C and latency spiked on the compute cluster. What triggered it?\n  - B: RCA shows a BMS logic glitch shut the primary chilled-water motorized valve — CRAHs went cold-dark for four minutes before we caught it.\n  - A: Did the standby chiller and the thermal buffer pick up the load?\n  - B: Yes. Failover to the standby plant and the ice-storage buffer held rack inlet within tolerance; capacity headroom kept the hot-cold aisle contained.\n  - A: Good. Let's add an interlock so a single valve command can't isolate a whole row, and close the RCA with the controls team.\n- **重点表达**：\n  - `a logic glitch shut the valve` — 逻辑故障关闭了阀门（描述控制系统误动）\n  - `fail over to the standby plant` — 切换到备用冷源\n  - `close the RCA with the controls team` — 与控制团队完成根因分析闭环\n",
+        "category": "故障排查",
+        "difficulty": "高级 Advanced",
+        "expressions": [
+          {
+            "en": "a logic glitch shut the valve",
+            "zh": "逻辑故障关闭了阀门（描述控制系统误动）"
+          },
+          {
+            "en": "fail over to the standby plant",
+            "zh": "切换到备用冷源"
+          },
+          {
+            "en": "close the RCA with the controls team",
+            "zh": "与控制团队完成根因分析闭环"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "容量规划 · R44–R46 网络机柜上架核算",
+        "subtitle": "基础 Basic",
+        "content": "- **情境**：为新一批 42U 网络接入机柜 R44–R46 上架核算，对比列头柜剩余电力容量与 CRAH 制冷余量，确认封闭通道与 PUE 余量并预留 headroom。\n- **对话**：\n  - A: We're about to rack 18 new top-of-rack switches in R44 through R46. Have we checked the power and cooling budget?\n  - B: Yes. The rack PDU still has 22% headroom, and the CRAH on that row can absorb the extra load without breaking the hot-cold aisle.\n  - A: What about PUE — any risk of over-provisioning?\n  - B: No. Even at full load we keep a comfortable PUE margin, so we're safe to proceed.\n  - A: Great. Let's stage them this weekend and keep uptime intact.\n- **重点表达**：\n  - `keep headroom in the rack PDU` — 在机柜 PDU 上保留余量\n  - `absorb the extra load` — 吸收额外负荷\n  - `avoid over-provisioning` — 避免过度配置\n",
+        "category": "容量规划",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "keep headroom in the rack PDU",
+            "zh": "在机柜 PDU 上保留余量"
+          },
+          {
+            "en": "absorb the extra load",
+            "zh": "吸收额外负荷"
+          },
+          {
+            "en": "avoid over-provisioning",
+            "zh": "避免过度配置"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "日常工作 · CRAH 风机轴承异响开单交班",
+        "subtitle": "高级 Advanced",
+        "content": "- **情境**：晨间巡检发现 D 区 CRAH 冷凝风机轴承异响、振动偏高，开 work order 安排更换轴承，并在交班强调 failover 预案与容量裕度。\n- **对话**：\n  - A: Morning patrol flagged CRAH-D3 — condenser fan bearing is noisy and vibration is up. I've raised a work order for a bearing swap.\n  - B: Good catch. Can we keep it running until the night window, or pull it now?\n  - A: It's still within tolerance, so we'll schedule the swap overnight. I've noted the failover plan and capacity margin in the handover.\n  - B: Make sure the standby CRAH is armed and rack inlet stays green — uptime is the priority.\n  - A: Already confirmed. Standby unit is online and holding.\n- **重点表达**：\n  - `morning patrol flagged CRAH-D3` — 晨间巡检标记出 CRAH-D3 异常\n  - `raise a work order for a bearing swap` — 开一张更换轴承的工单\n  - `keep the standby unit armed` — 保持备用机组处于待命状态\n",
+        "category": "日常工作",
+        "difficulty": "高级 Advanced",
+        "expressions": [
+          {
+            "en": "morning patrol flagged CRAH-D3",
+            "zh": "晨间巡检标记出 CRAH-D3 异常"
+          },
+          {
+            "en": "raise a work order for a bearing swap",
+            "zh": "开一张更换轴承的工单"
+          },
+          {
+            "en": "keep the standby unit armed",
+            "zh": "保持备用机组处于待命状态"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-08-15",
     "generatedAt": "2026-08-15T18:57:56+08:00",
     "cycleDay": 2,
@@ -956,80 +1030,6 @@
           {
             "en": "roll it back",
             "zh": "回滚（撤销变更以恢复）"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-08-02",
-    "generatedAt": "2026-08-02T07:50:27+08:00",
-    "cycleDay": 1,
-    "difficulty": "基础 Basic",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "日常工作 · 交班发现 CRAH 滤网压差报警，开单更换并交代巡检要点",
-        "subtitle": "基础 Basic",
-        "content": "**情境**：早班与夜班交班时，发现 B2 区 CRAH-07 出现滤网压差偏高报警（未复位），小白需开工单更换滤网，并向接班同事交代巡检项与 uptime 情况。\n\n**对话**：\n- Night Shift: Morning. Here's the handover — CRAH-07 in Zone B2 threw a filter-pressure alarm last night, but the unit kept running and rack temps stayed normal.\n- 小白: Got it. I'll log a work order to replace the filter during the morning patrol, and I'll check the other CRAHs on that row too.\n- Night Shift: Good. Uptime stayed at 100% through the night, so no customer impact. Just keep an eye on the inlet temps after you swap the filter.\n- 小白: Will do. Thanks for the handover.\n\n**重点表达**：\n- `morning patrol` — 晨间巡检\n- `log a work order` — 开（登记）一张工单\n- `handover` — 交接班 / 交班",
-        "category": "日常工作",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "morning patrol",
-            "zh": "晨间巡检"
-          },
-          {
-            "en": "log a work order",
-            "zh": "开（登记）一张工单"
-          },
-          {
-            "en": "handover",
-            "zh": "交接班 / 交班"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "故障排查 · 业务报 A3 机柜区延迟抖动，核实 failover 与 chiller 制冷是否跟上",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：业务方报 A3 机柜区延迟抖动，小白与同事先核实负载是否已自动 failover 到备用链路，再确认备用 chiller 制冷能否压住冷通道进风，并启动 RCA。\n\n**对话**：\n- 小白: NOC just flagged latency spikes on the A3 rack row — before we page anyone, let me confirm whether the load balancer already failed over to the standby path.\n- Peer: It did fail over automatically, but the standby chiller on that loop is still ramping up, so the cold-aisle inlet is creeping toward the upper limit.\n- 小白: That explains the jitter. Let me pull the RCA data — if the chiller can't hold setpoint, we may need to shed non-critical load from those racks.\n- Peer: Agreed. I'll open the RCA ticket and watch the capacity margin; you check the CRAH fan speeds on A3.\n\n**重点表达**：\n- `failed over to the standby path` — 已切换到备用路径（failover）\n- `ramping up` — （制冷/设备）正在升负载 / 爬坡\n- `open the RCA ticket` — 开一张根因分析工单（RCA）",
-        "category": "故障排查",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "failed over to the standby path",
-            "zh": "已切换到备用路径（failover）"
-          },
-          {
-            "en": "ramping up",
-            "zh": "（制冷/设备）正在升负载 / 爬坡"
-          },
-          {
-            "en": "open the RCA ticket",
-            "zh": "开一张根因分析工单（RCA）"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "容量规划 · 评估 4 台新服务器上架空闲机柜 R21，核算电力与制冷容量",
-        "subtitle": "基础 Basic",
-        "content": "**情境**：评估将 4 台新服务器上架到空闲机柜 R21，向同事核算该 rack 的电力与制冷 capacity 余量，并确认冷热通道封闭状态后再放行。\n\n**对话**：\n- 小白: We want to install four new servers into the empty rack R21 — can you confirm we still have power and cooling capacity for that?\n- Peer: R21 is at 40% power draw now, so you've got headroom. But make sure the hot-cold aisle containment stays tight, or the CRAH load will climb.\n- 小白: Understood. I'll place them on the cold-aisle side and re-check the PUE after they're online.\n- Peer: Good. If PUE stays under 1.4, we're clear to proceed.\n\n**重点表达**：\n- `got headroom` — 还有余量（headroom = 安全裕度）\n- `hot-cold aisle containment` — 冷热通道封闭\n- `re-check the PUE` — 上线后再核对能效比（PUE）",
-        "category": "容量规划",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "got headroom",
-            "zh": "还有余量（headroom = 安全裕度）"
-          },
-          {
-            "en": "hot-cold aisle containment",
-            "zh": "冷热通道封闭"
-          },
-          {
-            "en": "re-check the PUE",
-            "zh": "上线后再核对能效比（PUE）"
           }
         ]
       }
