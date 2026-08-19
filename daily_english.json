@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-08-19",
+    "generatedAt": "2026-08-19T09:20:31+08:00",
+    "cycleDay": 2,
+    "difficulty": "进阶 Intermediate",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "供应商对接 · 与 DCIM/BA 监控平台供应商核对告警接口与交付里程碑",
+        "subtitle": "进阶 Intermediate",
+        "content": "- **情境**：与动环监控（DCIM/BA）软件供应商核对告警接口对接、遥测点位表与现场交付里程碑，确保 rack 进风与 latency 实时可读，守住冷却侧 chiller/CRAH 的 PUE 与 capacity 视图统一。\n- **对话**：\n  - Vendor: We'll expose the rack-inlet and latency telemetry through a REST API by the first milestone — about six weeks out. Will that lead time work for your onboarding plan?\n  - 小白: Six weeks is tight. Can you pre-stage the gateway and share the point list earlier so we can map alarms before cutover?\n  - Vendor: Yes. We'll deliver the point list in two weeks and keep the integration kit on-site; that protects uptime during the switch.\n  - 小白: Good. Please also confirm the chiller and CRAH points are included so we can track PUE and cooling capacity in one view.\n- **重点表达**：\n  - `pre-stage the gateway` — 提前到场部署网关（前置设备/备件）\n  - `point list / telemetry points` — 遥测点位表\n  - `protect uptime during the switch` — 在切换期间保障系统可用性",
+        "category": "供应商对接",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "pre-stage the gateway",
+            "zh": "提前到场部署网关（前置设备/备件）"
+          },
+          {
+            "en": "point list / telemetry points",
+            "zh": "遥测点位表"
+          },
+          {
+            "en": "protect uptime during the switch",
+            "zh": "在切换期间保障系统可用性"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "跨团队协作 · 与电气团队协调柴油发电机黑启动带载演练",
+        "subtitle": "基础 Basic",
+        "content": "- **情境**：与电气团队协作安排柴油发电机组季度黑启动带载演练，验证市电失压时 chiller/CRAH 连续制冷与 rack 供电无缝切换，全程守住 uptime 与 capacity 余量。\n- **对话**：\n  - 电气: We'll black-start the generator and transfer the chiller and CRAH loads to confirm cooling stays online if utility power drops.\n  - 小白: Perfect. Let's keep the rack inlet within tolerance and make sure the redundant CRAH picks up without a hiccup.\n  - 电气: Agreed. We'll stage the test in a low-load window so capacity headroom is comfortable and uptime isn't at risk.\n- **重点表达**：\n  - `black-start the generator` — 发电机黑启动（无外部电源自启）\n  - `transfer the load` — 转移负荷（切换供电回路）\n  - `redundant CRAH picks up` — 冗余 CRAH 接管制冷",
+        "category": "跨团队协作",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "black-start the generator",
+            "zh": "发电机黑启动（无外部电源自启）"
+          },
+          {
+            "en": "transfer the load",
+            "zh": "转移负荷（切换供电回路）"
+          },
+          {
+            "en": "redundant CRAH picks up",
+            "zh": "冗余 CRAH 接管制冷"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "运维沟通 · 冷冻水泵 VFD 改造后出水漂移，变更窗口重置曲线",
+        "subtitle": "进阶 Intermediate",
+        "content": "- **情境**：冷冻水泵变频改造后扬程曲线偏移致多次 CRAH 出水温度漂移，讨论变更窗口内重置 VFD 曲线并评估对 rack 进风/latency 影响，预设 failover 保护。\n- **对话**：\n  - NOC: After the pump VFD retrofit, several CRAH supply temps drifted and we saw latency spikes on the compute racks. What's the plan?\n  - 小白: We'll re-tune the VFD curve in a change window and hold chiller setpoint steady, keeping failover armed so a standby CRAH covers any dip.\n  - NOC: Make sure rack inlet stays in the green band and PUE doesn't take a hit — keep me posted on capacity margin.\n  - 小白: Will do. We'll watch the hot-cold aisle delta and roll back the curve if inlet temp trends up.\n- **重点表达**：\n  - `re-tune the VFD curve` — 重新整定变频器（扬程）曲线\n  - `keep failover armed` — 保持故障切换待命/就绪\n  - `roll back the curve` — 回退曲线（变更回滚）",
+        "category": "运维沟通",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "re-tune the VFD curve",
+            "zh": "重新整定变频器（扬程）曲线"
+          },
+          {
+            "en": "keep failover armed",
+            "zh": "保持故障切换待命/就绪"
+          },
+          {
+            "en": "roll back the curve",
+            "zh": "回退曲线（变更回滚）"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-08-18",
     "generatedAt": "2026-08-18T09:20:21+08:00",
     "cycleDay": 1,
@@ -956,80 +1030,6 @@
           {
             "en": "reserve capacity for a CDU expansion",
             "zh": "为 CDU 扩容预留容量（CDU = 液冷分配单元）"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-08-04",
-    "generatedAt": "2026-08-04T07:53:57+08:00",
-    "cycleDay": 3,
-    "difficulty": "高级 Advanced",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "故障排查 · 主冷源压缩机卸载致冷冻水升温，切换备用冷源并复盘 RCA",
-        "subtitle": "高级 Advanced",
-        "content": "**情境：** 主用冷源一台 chiller 压缩机异常卸载，冷冻水供水温度上升，B 区 rack 进风温度抬升、业务 latency 抬头；小白切到备用冷源并启动 RCA 复盘。\n\n**对话：**\n- 小白: We just lost one chiller compressor on the primary loop — the chilled-water supply is drifting up, and I can see the B-zone rack inlet temps climbing with it.\n- Ops Lead: I see the latency creep on the east cluster. Don't wait — fail over to the standby chiller plant before the CRAH setpoints slip.\n- 小白: Already initiated the failover; the standby plant is taking load and the hot-cold aisle temps are stabilizing. I'll pull the trend data and open the RCA now.\n- Ops Lead: Good. Keep watching the capacity margin on the standby loop, and confirm the latency recovers before you close the incident.\n\n**重点表达：**\n- `drift up` — （温度/设定值）缓慢上升、漂移\n- `fail over to the standby plant` — 切换到备用冷源（plant = 冷站/制冷机组）\n- `open the RCA` — 启动根因分析（RCA = Root Cause Analysis）",
-        "category": "故障排查",
-        "difficulty": "高级 Advanced",
-        "expressions": [
-          {
-            "en": "drift up",
-            "zh": "（温度/设定值）缓慢上升、漂移"
-          },
-          {
-            "en": "fail over to the standby plant",
-            "zh": "切换到备用冷源（plant = 冷站/制冷机组）"
-          },
-          {
-            "en": "open the RCA",
-            "zh": "启动根因分析（RCA = Root Cause Analysis）"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "容量规划 · 评估存储节点上架 R15，核算机柜电力预算与制冷容量",
-        "subtitle": "基础 Basic",
-        "content": "**情境：** 评估新到的一批存储节点上架到 R15 机柜，向同事核算机柜电力预算与 CRAH 制冷余量，并确认冷热通道封闭后再放行。\n\n**对话：**\n- 小白: We're adding a batch of storage servers to rack R15 — can you check if we still have power budget and cooling capacity for them?\n- Peer: R15 is drawing about 35% now, so you've got headroom. But keep the hot-cold aisle containment closed, or the CRAH load will rise.\n- 小白: Sure. I'll rack them on the cold-aisle side and we'll re-check the PUE after they're up.\n- Peer: Sounds good. If the inlet temp stays under 27°C and PUE holds, we're clear.\n\n**重点表达：**\n- `power budget` — 电力预算（机柜可分配功率）\n- `got headroom` — 还有余量（headroom = 安全裕度）\n- `hot-cold aisle containment` — 冷热通道封闭（containment = 封闭）",
-        "category": "容量规划",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "power budget",
-            "zh": "电力预算（机柜可分配功率）"
-          },
-          {
-            "en": "got headroom",
-            "zh": "还有余量（headroom = 安全裕度）"
-          },
-          {
-            "en": "hot-cold aisle containment",
-            "zh": "冷热通道封闭（containment = 封闭）"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "日常工作 · 巡检发现 A2 区 CRAH 表冷器疑似脏堵，开单冲洗并交班",
-        "subtitle": "高级 Advanced",
-        "content": "**情境：** 早班巡检发现 A2 区两台 CRAH 送风温差收窄、疑似表冷器脏堵，小白开单安排冲洗，并交班说明冗余单元可维持 uptime 直至处理完成。\n\n**对话：**\n- 小白: Morning patrol on A2 — two CRAHs are showing a narrowing supply-to-return temperature split; I suspect fouled coils are cutting their cooling capacity.\n- Peer: How bad? Are we still within the rack inlet limit and holding uptime?\n- 小白: Yes, the redundant units are covering it, so uptime is fine, but I'll log a work order to schedule a coil wash before the load peaks this afternoon.\n- Peer: Good call. Note it clearly in the handover so the day shift keeps an eye on those racks until the wash is done.\n\n**重点表达：**\n- `narrowing temperature split` — 送回风温差收窄（split = 温差）\n- `fouled coils` — 脏堵的表冷器（foul = 结垢/脏堵）\n- `log a work order` — 开（登记）一张工单（work order = 工单）",
-        "category": "日常工作",
-        "difficulty": "高级 Advanced",
-        "expressions": [
-          {
-            "en": "narrowing temperature split",
-            "zh": "送回风温差收窄（split = 温差）"
-          },
-          {
-            "en": "fouled coils",
-            "zh": "脏堵的表冷器（foul = 结垢/脏堵）"
-          },
-          {
-            "en": "log a work order",
-            "zh": "开（登记）一张工单（work order = 工单）"
           }
         ]
       }
