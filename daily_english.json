@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-08-20",
+    "generatedAt": "2026-08-20T09:38:46+08:00",
+    "cycleDay": 3,
+    "difficulty": "高级 Advanced",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "故障排查 · 自然冷却板换旁通阀内漏，chiller 负载虚高引发 rack 进风抬升",
+        "subtitle": "高级 Advanced",
+        "content": "- **情境**：自然冷却板换旁通阀内漏致冷冻水旁路、chiller 负载虚高、rack 进风抬升 + latency 毛刺；RCA 定位旁通阀密封失效 + BMS 关阀指令未生效，确认备用 chiller + 蓄冷罐 failover 链路完整。\n- **对话**：\n  - NOC: We're seeing rack-inlet creep and latency spikes on the east cluster, and the chiller is running hotter than the load justifies. Any idea what's driving it?\n  - 小白: Looks like the free-cooling plate HX bypass valve is leaking — chilled water is short-circuiting around the coil, so the chiller carries phantom load. I'm running an RCA now.\n  - 小白: Root cause: the bypass seal failed and the BMS close command never took effect. We've confirmed the standby chiller plus the cold-storage tank failover chain is intact, so capacity headroom holds.\n  - NOC: Good. Keep the redundant chiller armed and watch the hot-cold aisle delta until maintenance swaps the valve.\n- **重点表达**：\n  - `free-cooling plate HX bypass valve` — 自然冷却板换旁通阀（节能/防冻旁通）\n  - `short-circuit around the coil` — 冷冻水绕过盘管短路（旁路）\n  - `standby chiller + cold-storage tank failover chain` — 备用冷水机组 + 蓄冷罐故障切换链路",
+        "category": "故障排查",
+        "difficulty": "高级 Advanced",
+        "expressions": [
+          {
+            "en": "free-cooling plate HX bypass valve",
+            "zh": "自然冷却板换旁通阀（节能/防冻旁通）"
+          },
+          {
+            "en": "short-circuit around the coil",
+            "zh": "冷冻水绕过盘管短路（旁路）"
+          },
+          {
+            "en": "standby chiller + cold-storage tank failover chain",
+            "zh": "备用冷水机组 + 蓄冷罐故障切换链路"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "容量规划 · 微模块新增 2 台高密推理机柜，双上限核算上架容量",
+        "subtitle": "基础 Basic",
+        "content": "- **情境**：微模块新增 2 台高密推理机柜上架 R55–R56，核算双路 PDU 电力余量与 CRAH 制冷 capacity 双上限，确认封闭 hot-cold aisle、PUE 余量与预留 headroom 防 over-provision、守住 uptime。\n- **对话**：\n  - 规划: We want to land two high-density inference racks at R55 and R56 next month. Can the row support them without breaching our limits?\n  - 小白: Let's check both caps: the dual-feed PDU power budget and the CRAH cooling capacity. As long as we keep the hot-cold aisle contained, we stay inside the envelope.\n  - 规划: What about efficiency and headroom?\n  - 小白: PUE has margin, and I'll reserve headroom so we don't over-provision. Uptime stays protected while we stage the rollout.\n- **重点表达**：\n  - `dual-feed PDU power budget` — 双路供电 PDU 电力预算\n  - `cooling capacity envelope` — 制冷能力包络（电力/制冷双上限）\n  - `reserve headroom / avoid over-provision` — 预留余量 / 避免过度配置",
+        "category": "容量规划",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "dual-feed PDU power budget",
+            "zh": "双路供电 PDU 电力预算"
+          },
+          {
+            "en": "cooling capacity envelope",
+            "zh": "制冷能力包络（电力/制冷双上限）"
+          },
+          {
+            "en": "reserve headroom / avoid over-provision",
+            "zh": "预留余量 / 避免过度配置"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "日常工作 · 夜班消警未闭环，晨间复核趋势并交班 RCA 初判",
+        "subtitle": "高级 Advanced",
+        "content": "- **情境**：夜班 NOC 处置 CRAH-C2 高压报警复位但工单未闭环、根因未清；晨间巡检复核 BMS 趋势曲线、补录 RCA 初判，并在 handover 交代 failover 预案与制冷容量裕度、强调 uptime 闭环。\n- **对话**：\n  - 小白: Night shift cleared the CRAH-C2 high-pressure alarm and reset it, but the work order is still open with no root cause logged. I'm reviewing the BMS trend now.\n  - NOC: What did the curve show?\n  - 小白: Condenser approach climbed before the trip — likely fouling. I've noted the RCA lead in the ticket and will hand over the failover plan and cooling capacity margin so the day crew closes the loop.\n  - NOC: Appreciated. Keep uptime protected and make sure the standby unit stays armed.\n- **重点表达**：\n  - `clear the alarm and reset it` — 消警并复位（处置报警）\n  - `close the loop on the work order` — 闭环工单（完整处置并归档）\n  - `hand over the failover plan` — 交班时交代故障切换预案",
+        "category": "日常工作",
+        "difficulty": "高级 Advanced",
+        "expressions": [
+          {
+            "en": "clear the alarm and reset it",
+            "zh": "消警并复位（处置报警）"
+          },
+          {
+            "en": "close the loop on the work order",
+            "zh": "闭环工单（完整处置并归档）"
+          },
+          {
+            "en": "hand over the failover plan",
+            "zh": "交班时交代故障切换预案"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-08-19",
     "generatedAt": "2026-08-19T09:20:31+08:00",
     "cycleDay": 2,
@@ -956,80 +1030,6 @@
           {
             "en": "over-provision",
             "zh": "过度配置 / 超额上架"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-08-05",
-    "generatedAt": "2026-08-05T09:20:25+08:00",
-    "cycleDay": 4,
-    "difficulty": "精通 Proficient",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "运维沟通 · 变更窗口内协调 BMS 控制策略调整",
-        "subtitle": "精通 Proficient",
-        "content": "**情境**：计划对冷站并联运行的控制策略做小幅变更（低峰减掉一台 chiller、上调冷冻水设定以压低 PUE），在变更窗口前与值班主管对齐步骤，确认 rack 进风与 latency 不受影响、保留 fail back 预案，守住 uptime。\n\n**对话**：\n- 小白: Before we touch the BMS tonight, I want to align on the chiller staging change — we'll drop one chiller from the parallel loop during off-peak to shave PUE, then watch the rack inlet and the hot-cold aisle margin.\n- Ops Lead: Fine, but set a hard ceiling on inlet temp. If latency on the compute cluster nudges up, abort and fail back to the current baseline immediately.\n- 小白: Understood. I'll keep the standby CRAH units auto-enabled and log the whole change window; we verify capacity headroom for 30 minutes before we declare it stable.\n- Ops Lead: Good. Uptime is non-negotiable — only commit the new setpoint once you confirm both PUE and the cold-aisle delta hold.\n\n**重点表达**：\n- `drop one chiller from the parallel loop` — 从并联冷站中减掉一台 chiller（降载节能）\n- `fail back to the current baseline` — 回退 / 切回当前基准（fail back = 回切）\n- `declare it stable` — 确认（系统）已稳定、可定型",
-        "category": "运维沟通",
-        "difficulty": "精通 Proficient",
-        "expressions": [
-          {
-            "en": "drop one chiller from the parallel loop",
-            "zh": "从并联冷站中减掉一台 chiller（降载节能）"
-          },
-          {
-            "en": "fail back to the current baseline",
-            "zh": "回退 / 切回当前基准（fail back = 回切）"
-          },
-          {
-            "en": "declare it stable",
-            "zh": "确认（系统）已稳定、可定型"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "跨团队协作 · 与电气团队核算高密度 GPU 机柜供电与制冷冗余",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：新到一批高密度 GPU 服务器计划上架到 R09 机柜，与电气团队核对 UPS 与母线（busway）余量，并确认该 rack 的 CRAH 制冷冗余能否匹配，避免热通道升温拖累 latency。\n\n**对话**：\n- 小白: We're about to rack a batch of high-density GPU nodes in R09 — can the electrical team confirm the UPS and busway still have headroom for the extra draw?\n- Electrical Peer: R09's PDU is fed from UPS-B, which sits around 62% now, so you've got capacity. But these GPUs run hot, so the CRAH side needs to keep up.\n- 小白: Right. I've asked cooling to add a redundant CRAH on that hot-cold aisle so the inlet stays controlled even if one unit trips.\n- Electrical Peer: Good. As long as the aisle stays contained and latency holds, we're clear to energize.\n\n**重点表达**：\n- `fed from UPS-B` — 由 UPS-B 供电（fed = 取电 / 由…供电）\n- `add a redundant CRAH` — 增设一台冗余 CRAH（冗余冷量备份）\n- `energize` — 上电 / 送电（energize the rack = 给机柜加电）",
-        "category": "跨团队协作",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "fed from UPS-B",
-            "zh": "由 UPS-B 供电（fed = 取电 / 由…供电）"
-          },
-          {
-            "en": "add a redundant CRAH",
-            "zh": "增设一台冗余 CRAH（冗余冷量备份）"
-          },
-          {
-            "en": "energize",
-            "zh": "上电 / 送电（energize the rack = 给机柜加电）"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "供应商对接 · 与设备供应商谈判关键备件 SLA 与延保",
-        "subtitle": "精通 Proficient",
-        "content": "**情境**：与冷源设备供应商就关键备件（chiller 压缩机、液冷 CDU 循环泵）的现场响应 SLA 与延保展开谈判，要求 4 小时到场、本地备件库存，并争取冗余配置与液冷 CDU 扩容接口预留，保障 uptime。\n\n**对话**：\n- 小白: Our SLA needs tightening — for the chiller compressors and liquid-cooling CDU pumps, we require on-site response within four hours, not next-day.\n- Vendor: We can do four hours for compressors under a premium warranty, and we'll stock a standby pump locally to protect your uptime.\n- 小白: Good. I also want the contract to reserve capacity for a CDU expansion and a hot failover loop when we scale the liquid cooling later this year.\n- Vendor: Agreed — we'll lock the lead time for the CDU upgrade and include PUE-optimized staging in the service scope.\n\n**重点表达**：\n- `tighten the SLA` — 收紧 SLA（提高服务等级与响应要求）\n- `stock a standby pump locally` — 在本地备货一台备用泵（缩短到场时间）\n- `reserve capacity for a CDU expansion` — 为 CDU 扩容预留容量（CDU = 液冷分配单元）",
-        "category": "供应商对接",
-        "difficulty": "精通 Proficient",
-        "expressions": [
-          {
-            "en": "tighten the SLA",
-            "zh": "收紧 SLA（提高服务等级与响应要求）"
-          },
-          {
-            "en": "stock a standby pump locally",
-            "zh": "在本地备货一台备用泵（缩短到场时间）"
-          },
-          {
-            "en": "reserve capacity for a CDU expansion",
-            "zh": "为 CDU 扩容预留容量（CDU = 液冷分配单元）"
           }
         ]
       }
