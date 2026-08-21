@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-08-21",
+    "generatedAt": "2026-08-21T09:34:11+08:00",
+    "cycleDay": 4,
+    "difficulty": "精通 Proficient",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "运维沟通 · 年度 SLO 评审后协调冷源群控升级，动态设 setpoint 保留 fail back",
+        "subtitle": "精通 Proficient",
+        "content": "- **情境**：年度可用性 SLO 评审后，协调冷源群控策略升级，结合 AI 训练负载峰谷动态设定冷冻水 setpoint，在变更窗口统一 chiller 群控与冷源冗余，保留 fail back，平衡 PUE 与 rack 进风 / latency / uptime。\n- **对话**：\n  - 主管: After the annual SLO review, we need to tighten our cooling strategy. Can we run the chillers smarter without risking the rack-inlet temp or latency?\n  - 小白: Yes. I'll dynamically set the chilled-water setpoint against the AI training load curve, keep the hot-cold aisle contained, and hold a fail back to design point so PUE and rack inlet stay balanced.\n  - 小白: In the change window I'll stage the chiller plant sequence and keep one redundant unit armed, so uptime is protected even if we trim capacity headroom for efficiency.\n  - 主管: Good. Confirm the CRAH fan curve tracks the new setpoint, and log the RCA notes if anything drifts before we make it permanent.\n- **重点表达**：\n  - `dynamically set the chilled-water setpoint` — 根据负载动态设定冷冻水温度设定值\n  - `hold a fail back to design point` — 保留退回设计工况的回退预案\n  - `keep one redundant unit armed` — 保持一台冗余机组处于待命（在线热备）",
+        "category": "运维沟通",
+        "difficulty": "精通 Proficient",
+        "expressions": [
+          {
+            "en": "dynamically set the chilled-water setpoint",
+            "zh": "根据负载动态设定冷冻水温度设定值"
+          },
+          {
+            "en": "hold a fail back to design point",
+            "zh": "保留退回设计工况的回退预案"
+          },
+          {
+            "en": "keep one redundant unit armed",
+            "zh": "保持一台冗余机组处于待命（在线热备）"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "跨团队协作 · 与云 / SRE 团队协调新业务潮汐调度，确认机架落位与冷电冗余",
+        "subtitle": "进阶 Intermediate",
+        "content": "- **情境**：与云 / SRE 团队协调新业务上线潮汐调度，确认机架落位与制冷 / 供电冗余，保证 uptime 与 latency 遥测共享，核对 rack 进风与 hot-cold aisle 温控边界。\n- **对话**：\n  - SRE: We're launching a burstable workload next week and need a couple of racks landed without tipping the cooling or power limits. Can your side confirm headroom?\n  - 小白: We'll place them in the contained hot-cold aisle row and verify the CRAH capacity and power budget. As long as rack inlet holds, latency should stay clean.\n  - SRE: What about failover if a CRAH trips during the spike?\n  - 小白: The redundant CRAH picks up automatically and we keep uptime protected. I'll hand over the telemetry mapping so your SRE dashboard reads rack inlet and latency in real time.\n- **重点表达**：\n  - `burstable workload` — 潮汐 / 突发型负载（可突发扩容）\n  - `redundant CRAH picks up automatically` — 冗余精密空调自动接管\n  - `hand over the telemetry mapping` — 交接遥测点位映射（跨团队数据共享）",
+        "category": "跨团队协作",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "burstable workload",
+            "zh": "潮汐 / 突发型负载（可突发扩容）"
+          },
+          {
+            "en": "redundant CRAH picks up automatically",
+            "zh": "冗余精密空调自动接管"
+          },
+          {
+            "en": "hand over the telemetry mapping",
+            "zh": "交接遥测点位映射（跨团队数据共享）"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "供应商对接 · 与 BMS 群控供应商谈判冗余热备、年度 SLA 与本地前置备件",
+        "subtitle": "精通 Proficient",
+        "content": "- **情境**：与 BMS / 冷源群控系统供应商谈判控制逻辑定制 + 冗余控制器热备 + 年度服务 SLA，确保 chiller / CRAH 群控 failover 无单点，预留液冷 CDU 联动与 free-cooling 调度，争取本地前置备件与快速响应。\n- **对话**：\n  - 供应商: Our standard BMS package covers chiller and CRAH sequencing, but the custom control logic you asked for pushes the quote up. Is it really necessary?\n  - 小白: We need the redundant controller hot-standby and a failover path with no single point of failure, otherwise a controller fault could take down the whole cooling loop and hit uptime.\n  - 小白: I also want a yearly service SLA with pre-staged spares locally and a response window that protects free-cooling and future liquid-cooling CDU integration. Can you commit to that in writing?\n  - 供应商: We can include the redundant controller, a 4-hour on-site SLA, and staged spares, and we'll leave capacity headroom in the logic for the CDU link.\n- **重点表达**：\n  - `redundant controller hot-standby` — 冗余控制器热备（消除单点故障）\n  - `no single point of failure` — 无单点故障（高可用设计）\n  - `pre-staged spares + on-site SLA` — 本地前置备件 + 现场服务等级协议",
+        "category": "供应商对接",
+        "difficulty": "精通 Proficient",
+        "expressions": [
+          {
+            "en": "redundant controller hot-standby",
+            "zh": "冗余控制器热备（消除单点故障）"
+          },
+          {
+            "en": "no single point of failure",
+            "zh": "无单点故障（高可用设计）"
+          },
+          {
+            "en": "pre-staged spares + on-site SLA",
+            "zh": "本地前置备件 + 现场服务等级协议"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-08-20",
     "generatedAt": "2026-08-20T09:38:46+08:00",
     "cycleDay": 3,
@@ -956,80 +1030,6 @@
           {
             "en": "fail over to the standby",
             "zh": "切到备用冷源（故障 / 冗余切换）"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-08-06",
-    "generatedAt": "2026-08-06T09:22:26+08:00",
-    "cycleDay": 1,
-    "difficulty": "基础 Basic",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "日常工作 · 晨间巡检发现冷通道密封条破损，开整改工单并交班提醒",
-        "subtitle": "基础 Basic",
-        "content": "**情境**：小白例行晨间巡检（morning patrol），用热成像发现 A1 区冷通道密封条破损导致冷量外泄、相邻 rack 进风风量不足；开整改工单并标记 \"inlet at risk\"，在 handover 中提醒夜班关注 CRAH 与 rack 进风温度，守住 uptime。\n\n**对话**：\n- 小白: Morning patrol on A1 — the thermal cam shows cold air leaking past a broken containment strip, so the adjacent racks aren't getting their design airflow.\n- 同事: Good catch. Tag those racks as \"inlet at risk\" and raise a work order to reseal the aisle before the next load goes in.\n- 小白: Done. I'll note it in the handover log so the night shift keeps an eye on the CRAH and the rack inlet temps until it's fixed. Uptime stays our top priority.\n\n**重点表达**：\n- `morning patrol` — 晨间巡检（例行巡查）\n- `raise a work order` — 开一张工单（报修 / 整改单）\n- `tag ... as \"inlet at risk\"` — 把…标记为\"进风风险\"（标注隐患机柜）",
-        "category": "日常工作",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "morning patrol",
-            "zh": "晨间巡检（例行巡查）"
-          },
-          {
-            "en": "raise a work order",
-            "zh": "开一张工单（报修 / 整改单）"
-          },
-          {
-            "en": "tag ... as \"inlet at risk\"",
-            "zh": "把…标记为\"进风风险\"（标注隐患机柜）"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "故障排查 · 二次泵压力波动致 CRAH 出水漂移，核实 failover 并启动 RCA",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：冷冻水二次泵出现压力波动，多台 CRAH 出水温度漂移，B2 区 rack 进风逼近上限；小白核实备用泵是否已 failover 接管、拉趋势数据启动 RCA 排查根因（疑似气蚀），并确认 latency 未受影响。\n\n**对话**：\n- 小白: We've got chilled-water pumps showing pressure swings — several CRAHs are drifting on supply temp, and the B2 rack inlet is approaching the upper limit.\n- 冷却主管: Did the standby pump fail over, or are we still on the primary loop? I don't want the inlet to breach the ceiling.\n- 小白: The standby pump picked up automatically — failover's clean. I'm pulling the trend logs now to start the RCA; looks like cavitation on the primary, not a controls fault.\n- 冷却主管: Good. Confirm latency on B2 hasn't slipped, then write up the RCA so we can schedule the pump fix in a low-risk window.\n\n**重点表达**：\n- `pressure swings` — 压力波动（swings = 摆动 / 震荡）\n- `fail over to the standby` — 切到备用（fail over = 故障切换）\n- `start the RCA` — 启动根因分析（RCA = Root Cause Analysis）",
-        "category": "故障排查",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "pressure swings",
-            "zh": "压力波动（swings = 摆动 / 震荡）"
-          },
-          {
-            "en": "fail over to the standby",
-            "zh": "切到备用（fail over = 故障切换）"
-          },
-          {
-            "en": "start the RCA",
-            "zh": "启动根因分析（RCA = Root Cause Analysis）"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "容量规划 · 核算 R20–R22 上架容量，确认电力预算与制冷余量并预留 headroom",
-        "subtitle": "基础 Basic",
-        "content": "**情境**：小白为下季度上架计划核算 R20–R22 三个机柜的可用容量，核对每柜电力预算（kW）与对应 CRAH 制冷余量，确认冷热通道封闭良好、PUE 不超标，预留 headroom 避免 over-provision。\n\n**对话**：\n- 小白: Before we stage the new nodes, I'm checking capacity on R20 through R22 — each rack has about 8 kW of power budget left after the current draw.\n- 同事: And the cooling side? Make sure the CRAHs serving that row still have headroom so the hot-cold aisle stays contained.\n- 小白: Yes, roughly 30% cooling margin, and PUE holds under target. I'll reserve that headroom and log it so we don't over-provision next quarter.\n\n**重点表达**：\n- `power budget left` — 剩余电力预算（机柜可承载功率余量）\n- `cooling margin / headroom` — 制冷余量（安全裕度）\n- `over-provision` — 过度配置 / 超额上架",
-        "category": "容量规划",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "power budget left",
-            "zh": "剩余电力预算（机柜可承载功率余量）"
-          },
-          {
-            "en": "cooling margin / headroom",
-            "zh": "制冷余量（安全裕度）"
-          },
-          {
-            "en": "over-provision",
-            "zh": "过度配置 / 超额上架"
           }
         ]
       }
