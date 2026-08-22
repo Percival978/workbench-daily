@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-08-22",
+    "generatedAt": "2026-08-22T09:33:59+08:00",
+    "cycleDay": 1,
+    "difficulty": "基础 Basic",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "日常工作 · 晨间巡检发现空置机架盲板缺失致冷热混风",
+        "subtitle": "基础 Basic",
+        "content": "- **情境**：早班巡检发现 D 区一排空置（未上电）机架缺失盲板（blanking panel），冷风从空 U 位漏出、被热通道回风吸入，rack 进风温度缓慢抬升。\n- 小白（巡检）：Morning patrol found several blanking panels missing on the empty racks in Row D. Cold air is leaking and the rack inlet is creeping up.\n- 资深工程师：Good catch. Install the blanking panels before shift change and raise a work order. We need to keep the hot-cold aisle contained.\n- 小白：Noted. I'll log it and hand it over to the night shift so uptime stays protected.\n- **重点表达**：\n- `blanking panel` — 机架盲板（封堵空 U 位，防止冷热混风）\n- `morning patrol` — 晨间巡检\n- `keep the hot-cold aisle contained` — 保持冷热通道封闭隔离",
+        "category": "日常工作",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "blanking panel",
+            "zh": "机架盲板（封堵空 U 位，防止冷热混风）"
+          },
+          {
+            "en": "morning patrol",
+            "zh": "晨间巡检"
+          },
+          {
+            "en": "keep the hot-cold aisle contained",
+            "zh": "保持冷热通道封闭隔离"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "故障排查 · 冷冻水压差旁通阀内漏致末端流量不足、rack 进风升温",
+        "subtitle": "进阶 Intermediate",
+        "content": "- **情境**：监控告警 Zone C 部分 rack 进风温度抬升、关键支付业务 latency 偶发毛刺；核查为冷冻水压差旁通阀（DPV）内漏，一次侧冷冻水短路回流 chiller，末端 CRAH 换热不足。核实备用冷源 failover 并复盘 RCA。\n- 小白：We're seeing rack inlet temps climb in Zone C and latency spikes on the payment service. What changed?\n- 资深工程师：The differential-pressure bypass valve is leaking internally — chilled water short-circuits back to the chiller, so the CRAHs get less flow.\n- 小白：So the cooling at the racks dropped. Did we fail over to the standby plant?\n- 资深工程师：Yes, standby chiller is online and holding capacity. RCA points to a failed valve seat; I'll stage a replacement.\n- **重点表达**：\n- `short-circuit back to the chiller` — 短路回流到冷水机组（旁通致有效流量损失）\n- `fail over to the standby plant` — 切换到备用冷源\n- `RCA points to a failed valve seat` — 根因分析指向阀座失效",
+        "category": "故障排查",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "short-circuit back to the chiller",
+            "zh": "短路回流到冷水机组（旁通致有效流量损失）"
+          },
+          {
+            "en": "fail over to the standby plant",
+            "zh": "切换到备用冷源"
+          },
+          {
+            "en": "RCA points to a failed valve seat",
+            "zh": "根因分析指向阀座失效"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "容量规划 · 评估 R70–R72 高密度存储节点上架，核算三相平衡与制冷余量",
+        "subtitle": "基础 Basic",
+        "content": "- **情境**：下月新增一批高密度存储节点落入 R70–R72，核算双路供电三相平衡与 CRAH 制冷 capacity，确认封闭 hot-cold aisle、PUE 余量与 headroom，防 over-provision。\n- 小白：The new storage nodes go into R70 through R72 next month. Can we fit them without overloading power?\n- 资深工程师：Power budget looks fine if we balance the phases. The dual-feed PDUs still have headroom.\n- 小白：And cooling? Will the CRAHs hold the rack inlet within the limit?\n- 资深工程师：Yes — closed hot-cold aisle plus spare CRAH capacity keeps PUE in margin. Just don't over-provision the row.\n- **重点表达**：\n- `balance the phases` — 平衡三相负载\n- `dual-feed PDUs still have headroom` — 双路供电 PDU 仍有余量\n- `don't over-provision the row` — 别把这一排机架塞太满（避免过度配置）",
+        "category": "容量规划",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "balance the phases",
+            "zh": "平衡三相负载"
+          },
+          {
+            "en": "dual-feed PDUs still have headroom",
+            "zh": "双路供电 PDU 仍有余量"
+          },
+          {
+            "en": "don't over-provision the row",
+            "zh": "别把这一排机架塞太满（避免过度配置）"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-08-21",
     "generatedAt": "2026-08-21T09:34:11+08:00",
     "cycleDay": 4,
@@ -956,80 +1030,6 @@
           {
             "en": "trigger the failover",
             "zh": "触发故障切换（让冗余接管）"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-08-07",
-    "generatedAt": "2026-08-07T09:20:32+08:00",
-    "cycleDay": 2,
-    "difficulty": "进阶 Intermediate",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "供应商对接 · 与冷却塔厂商核对夏季工况参数、备件交期与现场质保响应",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：小白与冷却塔（cooling tower）及冷却水泵供应商核对夏季高负荷工况下的关键参数（逼近度、风机功率）与关键备件交期、现场质保响应，确保 Q3 高温季前备件到场、守住 uptime 与 PUE。\n\n**对话**：\n- 小白: The cooling towers are running near design at peak summer load — I need to confirm the approach temperature and fan power draw under your rated conditions before we commit.\n- 供应商: Understood. At 35°C wet-bulb, our CTI-certified towers hold a 4°C approach with the VFD fans at 80%. Lead time for the spare VFD and gearbox is six weeks, and we cover parts and labor under a 24-month warranty.\n- 小白: Six weeks is tight before the Q3 heat peak. Can you stage one spare VFD at the local depot so we cut the on-site swap to a couple of days if a unit fails? That protects our uptime and PUE.\n- 供应商: Agreed — we'll stage the VFD locally and commit to a 48-hour field response. I'll send the revised quote and the capacity sheet this afternoon.\n\n**重点表达**：\n- `lead time` — 交货周期 / 货期（从下单到到货的时间）\n- `stage the spare locally` — 在本地库房预置备件（前置备货，缩短换件周期）\n- `commit to a 48-hour field response` — 承诺 48 小时现场响应（到场服务 SLA）",
-        "category": "供应商对接",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "lead time",
-            "zh": "交货周期 / 货期（从下单到到货的时间）"
-          },
-          {
-            "en": "stage the spare locally",
-            "zh": "在本地库房预置备件（前置备货，缩短换件周期）"
-          },
-          {
-            "en": "commit to a 48-hour field response",
-            "zh": "承诺 48 小时现场响应（到场服务 SLA）"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "跨团队协作 · 与云团队确认新业务上线机柜落位与供电/制冷容量",
-        "subtitle": "基础 Basic",
-        "content": "**情境**：小白与云 / 业务团队沟通下周新业务集群上线，核对落位机柜与每柜功率，确认机柜位于封闭冷热通道、对应 CRAH 有制冷余量，并在 handover 中把 uptime 列为优先。\n\n**对话**：\n- 小白: We're staging the new service cluster next week — which racks do you plan to use, and what's the power draw per rack?\n- 云团队: We'll take R30 to R33, about 7 kW each. Are those racks within the same cold aisle and served by healthy CRAHs?\n- 小白: Yes, R30–R33 sit in the contained hot-cold aisle and the CRAHs there have headroom. I'll confirm the capacity and flag uptime as the priority in the handover.\n\n**重点表达**：\n- `stage the new service cluster` — 部署 / 上架新业务集群\n- `contained hot-cold aisle` — 封闭冷热通道（通道封闭良好，冷量不外泄）\n- `flag ... as the priority in the handover` — 在交班中把…列为优先事项",
-        "category": "跨团队协作",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "stage the new service cluster",
-            "zh": "部署 / 上架新业务集群"
-          },
-          {
-            "en": "contained hot-cold aisle",
-            "zh": "封闭冷热通道（通道封闭良好，冷量不外泄）"
-          },
-          {
-            "en": "flag ... as the priority in the handover",
-            "zh": "在交班中把…列为优先事项"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "运维沟通 · 进风高温告警后在变更窗口临时调度制冷，评估 PUE/latency 并预设 failover",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：小白收到 A 区部分 rack 进风高温告警，协调在变更窗口内临时提升 CRAH 风量，评估对 PUE 与 latency 的影响，必要时由备用 chiller fail over 接管，守住 capacity 上限。\n\n**对话**：\n- 小白: We just got a high rack-inlet alarm on A-zone — a couple of racks are creeping toward 27°C. I want to ramp up the CRAH fan speed in the next change window.\n- 运维主管: Watch the trade-off: more airflow helps the inlet, but it pushes PUE up and adds vibration. Confirm latency on the affected kits stays flat first.\n- 小白: Latency's steady. If the inlet keeps climbing, the standby chiller will fail over automatically — I've pre-checked the capacity margin so we don't breach the limit.\n- 运维主管: Good. Log the change and roll it back if PUE drifts past target. Keep the hot-cold aisle contained while we tune it.\n\n**重点表达**：\n- `high rack-inlet alarm` — 机柜进风高温告警\n- `ramp up the CRAH fan speed` — 调高 CRAH 风机转速（加大送风量）\n- `fail over to the standby` — 切到备用冷源（故障 / 冗余切换）",
-        "category": "运维沟通",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "high rack-inlet alarm",
-            "zh": "机柜进风高温告警"
-          },
-          {
-            "en": "ramp up the CRAH fan speed",
-            "zh": "调高 CRAH 风机转速（加大送风量）"
-          },
-          {
-            "en": "fail over to the standby",
-            "zh": "切到备用冷源（故障 / 冗余切换）"
           }
         ]
       }
