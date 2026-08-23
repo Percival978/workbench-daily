@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-08-23",
+    "generatedAt": "2026-08-23T09:33:46+08:00",
+    "cycleDay": 2,
+    "difficulty": "进阶 Intermediate",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "供应商对接 · 与 CRAH 整机供应商谈判关键备件本地前置、交期与现场质保响应",
+        "subtitle": "进阶 Intermediate",
+        "content": "- **情境**：为降低 CRAC/CRAH 关键部件故障后的停机风险，与精密空调 OEM 谈判风机/电机/表冷器等关键备件的本地前置、交付周期与含人工的现场质保响应 SLA，确保 chiller/CRAH 冗余链路由 uptime 守住。\n- 小白：We're reviewing the CRAH fleet with your team. Can we pre-stage the critical spares — fans, motors, coils — at the local hub to cut lead time?\n- 供应商：Yes. We propose a 24/7 parts-and-labor warranty with a four-hour on-site response, and the standby CRAH keeps the rack inlet in range during any swap.\n- 小白：Good. As long as chiller and CRAH redundancy holds capacity, latency won't move and PUE stays in margin. Please put the SLA in writing.\n- **重点表达**：\n- `pre-stage the critical spares` — 关键备件本地前置（提前布放到就近 hub，缩短到场时间）\n- `parts-and-labor warranty` — 含人工的整机质保（到场+更换都包）\n- `cut lead time` — 缩短交付/到场周期",
+        "category": "供应商对接",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "pre-stage the critical spares",
+            "zh": "关键备件本地前置（提前布放到就近 hub，缩短到场时间）"
+          },
+          {
+            "en": "parts-and-labor warranty",
+            "zh": "含人工的整机质保（到场+更换都包）"
+          },
+          {
+            "en": "cut lead time",
+            "zh": "缩短交付/到场周期"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "跨团队协作 · 与网络团队协调新增管理网布线，确认走线不遮挡冷通道、冷电余量",
+        "subtitle": "基础 Basic",
+        "content": "- **情境**：网络团队新增管理/监控网独立物理布线，需与暖通确认走线路径避开冷通道送风面、核对 rack 供电与 CRAH 制冷余量，确保割接期间 uptime 不被影响。\n- 小白：The network team is pulling new management cabling. Let's make sure the trays run clear of the cold aisle so we don't block supply air to the racks.\n- 网络工程师：Agreed. We'll route above the rack tops and keep the hot-cold aisle contained. Does cooling have headroom for the new switches?\n- 小白：Yes — CRAH capacity is fine and we keep uptime during the cutover. Just confirm the rack layout before you start.\n- **重点表达**：\n- `run the cabling clear of the cold aisle` — 走线避开冷通道（不遮挡送风面）\n- `keep the hot-cold aisle contained` — 保持冷热通道封闭隔离\n- `keep uptime during the cutover` — 在割接/切换期间保持可用",
+        "category": "跨团队协作",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "run the cabling clear of the cold aisle",
+            "zh": "走线避开冷通道（不遮挡送风面）"
+          },
+          {
+            "en": "keep the hot-cold aisle contained",
+            "zh": "保持冷热通道封闭隔离"
+          },
+          {
+            "en": "keep uptime during the cutover",
+            "zh": "在割接/切换期间保持可用"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "运维沟通 · 夜间 chiller 频繁启停致冷冻水波动，变更窗口调整群控死区并预设 failover",
+        "subtitle": "进阶 Intermediate",
+        "content": "- **情境**：夜间低负荷时段 chiller 频繁启停（short-cycling），冷冻水温度波动、rack 进风轻微抖动，PUE 漂移；讨论在变更窗口内放宽群控启停死区、设最小运行台数，平衡 PUE 与 rack 进风/latency，并保持 failover 待命。\n- 小白：At night the chiller keeps short-cycling — the supply water swings and the rack inlet twitches a bit. Latency is still OK but PUE is drifting up.\n- 资深工程师：The staging deadband is too tight. In the change window, widen it and set a minimum run count so one unit doesn't hunt on and off.\n- 小白：And we keep failover armed in case a unit trips? I don't want the hot-cold aisle to break.\n- 资深工程师：Exactly. We hold CRAH capacity, watch rack inlet and latency, and roll back the deadband if the inlet creeps.\n- **重点表达**：\n- `chiller short-cycling` — 冷水机组频繁启停（短循环，伤机且扰动水温）\n- `widen the staging deadband` — 放宽群控启停死区（减少频繁加卸载）\n- `keep failover armed` — 保持 failover 处于待命（随时可切）",
+        "category": "运维沟通",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "chiller short-cycling",
+            "zh": "冷水机组频繁启停（短循环，伤机且扰动水温）"
+          },
+          {
+            "en": "widen the staging deadband",
+            "zh": "放宽群控启停死区（减少频繁加卸载）"
+          },
+          {
+            "en": "keep failover armed",
+            "zh": "保持 failover 处于待命（随时可切）"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-08-22",
     "generatedAt": "2026-08-22T09:33:59+08:00",
     "cycleDay": 1,
@@ -956,80 +1030,6 @@
           {
             "en": "single-points-of-failure / documented failover path",
             "zh": "单点故障 / 书面化的故障切换路径"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-08-08",
-    "generatedAt": "2026-08-08T09:21:04+08:00",
-    "cycleDay": 3,
-    "difficulty": "高级 Advanced",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "故障排查 · 计划内 UPS 切换后局部 rack 进风温升与 latency 毛刺，牵头三方日志 RCA",
-        "subtitle": "高级 Advanced",
-        "content": "**情境**：昨晚按计划对 D 区做 UPS 母线转移维护。今早复盘监控发现 D 区部分 rack 进风温度短暂上扬、对应业务 latency 出现几秒毛刺。小白牵头拉取电力、制冷、监控三方日志做 RCA，定位到 CRAH 变频器在供电瞬断后重启动、风量短时回落致热通道升温，确认 failover 制冷冗余正常、未影响 uptime，给出抗晃电整改项。\n\n**对话**：\n- 小白: After last night's planned UPS bus transfer on D-zone, the monitoring shows a brief inlet-temperature bump on a few racks and a couple of latency spikes on the affected services. I want to run the RCA with the power, cooling, and NOC logs side by side.\n- 电气同事: On our side the transfer was clean — the bus picked up within the design window and there was no sustained outage. But I do see a momentary dip on the CRAH feeder right at the switch.\n- 小白: That matches the cooling trace: the CRAH VFD dropped out for a few seconds during re-energization, so fan speed fell and the hot aisle drifted up before it spun back. It was the airflow, not the chilled-water source — the standby chiller and failover cooling held fine.\n- 冷却主管: Agreed. Latency recovered as soon as the VFD re-synced and uptime stayed green. Let's add an anti-sag setting and a delayed VFD restart so a bus transfer never costs us aisle temperature again.\n\n**重点表达**：\n- `run the RCA side by side` — 把（多方日志）并排做根因分析\n- `momentary dip on the feeder` — 馈线瞬间压降 / 掉电（供电瞬断）\n- `anti-sag setting / delayed VFD restart` — 抗晃电设置 / 变频器延时重启（防瞬断后风量回落）",
-        "category": "故障排查",
-        "difficulty": "高级 Advanced",
-        "expressions": [
-          {
-            "en": "run the RCA side by side",
-            "zh": "把（多方日志）并排做根因分析"
-          },
-          {
-            "en": "momentary dip on the feeder",
-            "zh": "馈线瞬间压降 / 掉电（供电瞬断）"
-          },
-          {
-            "en": "anti-sag setting / delayed VFD restart",
-            "zh": "抗晃电设置 / 变频器延时重启（防瞬断后风量回落）"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "容量规划 · 为下月新增服务器规划落位，核算 rack 容量、电力预算与 CRAH 制冷余量",
-        "subtitle": "基础 Basic",
-        "content": "**情境**：小白为下月新增的一批 2U 服务器规划落位，带新同事核算 R40–R42 三个机柜的剩余 U 位与电力预算，确认对应 CRAH 制冷余量、封闭 hot-cold aisle 状态与 PUE 余量，预留 headroom 避免 over-provision。\n\n**对话**：\n- 小白: Let's check the capacity on R40 through R42 before we land the new nodes — count the free U-space and the power budget per rack.\n- 同事: R40 has 12 U free at 7 kW, R41 about 10 U at 6 kW, and R42 is nearly full. Do the CRAHs on that row have cooling headroom?\n- 小白: Yes, roughly 30% margin and the hot-cold aisle is well contained, PUE's under target. I'll log the headroom so we don't over-provision next quarter.\n\n**重点表达**：\n- `free U-space / power budget` — 剩余 U 位 / 电力预算（机柜可承载功率余量）\n- `cooling headroom` — 制冷余量（安全裕度）\n- `over-provision` — 过度配置 / 超额上架",
-        "category": "容量规划",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "free U-space / power budget",
-            "zh": "剩余 U 位 / 电力预算（机柜可承载功率余量）"
-          },
-          {
-            "en": "cooling headroom",
-            "zh": "制冷余量（安全裕度）"
-          },
-          {
-            "en": "over-provision",
-            "zh": "过度配置 / 超额上架"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "日常工作 · 夜班尾声巡检发现 CRAH 滤网压差高、送风量下降，开单并交班交代 failover 预案",
-        "subtitle": "高级 Advanced",
-        "content": "**情境**：小白夜班尾声巡检发现 C 区 CRAH-03 回风滤网压差偏高、送风量下降，相邻热通道温度缓慢爬升。他开 work order 安排更换，并在 handover 给白班交代监控阈值与制冷 failover 预案、核对容量裕度，强调 uptime 优先。\n\n**对话**：\n- 小白: End-of-shift patrol on C-zone — CRAH-03's return-filter differential pressure is running high and supply airflow has dropped, so the adjacent hot aisle is creeping up. I'm raising a work order to swap the filter.\n- 白班同事: How's the capacity margin while we wait? If that unit fully drops, can the row hold on the neighbors?\n- 小白: Margin's tight but positive — the other CRAHs on the loop pick up the load, and if CRAH-03 fails, the standby chiller backs the loop, so failover's covered. I've noted the threshold and the contingency in the handover.\n- 白班同事: Good. Keep uptime first — if the inlet trends past the limit, don't wait, trigger the failover and call me. I'll close the work order once the filter's swapped and the pressure's back to normal.\n\n**重点表达**：\n- `return-filter differential pressure` — 回风滤网压差（压差高 = 滤网脏堵）\n- `pick up the load on the neighbors` — 由相邻机组接管负荷（冗余顶上）\n- `trigger the failover` — 触发故障切换（让冗余接管）",
-        "category": "日常工作",
-        "difficulty": "高级 Advanced",
-        "expressions": [
-          {
-            "en": "return-filter differential pressure",
-            "zh": "回风滤网压差（压差高 = 滤网脏堵）"
-          },
-          {
-            "en": "pick up the load on the neighbors",
-            "zh": "由相邻机组接管负荷（冗余顶上）"
-          },
-          {
-            "en": "trigger the failover",
-            "zh": "触发故障切换（让冗余接管）"
           }
         ]
       }
