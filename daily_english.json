@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-08-24",
+    "generatedAt": "2026-08-24T09:38:40+08:00",
+    "cycleDay": 3,
+    "difficulty": "高级 Advanced",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "故障排查 · 定压补水压力震荡致二次泵汽蚀，RCA 后确认冷源 failover 链路",
+        "subtitle": "高级 Advanced",
+        "content": "**情境**：巡检发现 B 排 CRAH 出水温度漂移、rack 进风逼近上限，计算集群 latency 出现毛刺；RCA 定位膨胀罐预充压力失配叠加真空脱气罐排气不畅，确认 chiller + 蓄冷罐 failover 链路完整。\n\n**对话**\n- Ops Lead: We're seeing CRAH supply temp drifting and rack-inlet creeping past 27°C in row B, plus latency spikes on the compute cluster. The secondary pump sounds like it's cavitating — pressure's hunting on the constant-pressure make-up system.\n- Controls: RCA points to two things: the expansion tank pre-charge is way off spec, so the make-up can't hold setpoint, and the vacuum deaerator isn't venting — trapped air is feeding cavitation at the pump suction.\n- Ops Lead: Got it. Confirm the chiller-plus-thermal-storage failover path is intact so we can ride through while we re-pressurize. What's the safe window?\n- Controls: Failover link checks out — standby chiller and the buffer tank will carry row B for the 40-minute re-charge. Let's stage the work order and keep failover armed.\n\n**重点表达**\n- `pressure is hunting` — 压力震荡 / 频繁波动（设定值附近爬行）\n- `re-pressurize the expansion tank` — 重新给膨胀罐充压（恢复预充压力）\n- `ride through on standby plant` — 由备用冷源 / 蓄冷支撑度过故障窗口",
+        "category": "故障排查",
+        "difficulty": "高级 Advanced",
+        "expressions": [
+          {
+            "en": "pressure is hunting",
+            "zh": "压力震荡 / 频繁波动（设定值附近爬行）"
+          },
+          {
+            "en": "re-pressurize the expansion tank",
+            "zh": "重新给膨胀罐充压（恢复预充压力）"
+          },
+          {
+            "en": "ride through on standby plant",
+            "zh": "由备用冷源 / 蓄冷支撑度过故障窗口"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "容量规划 · 高密 GPU 机柜上架，按铭牌折算负载核对电力与制冷双上限",
+        "subtitle": "基础 Basic",
+        "content": "**情境**：评估新交付的高密 GPU 机柜 R48–R50 上架，按铭牌 15 kW/rack 折算实际运行负载，交叉核对双路 PDU 电力余量与 CRAH 制冷 capacity 双上限，确认封闭 hot-cold aisle、PUE 余量并预留 headroom。\n\n**对话**\n- Planner: We're staging three new GPU racks, R48 through R50. Nameplate is 15 kW per rack — what's our headroom after we de-rate to expected load?\n- Ops: At measured ~11 kW per rack, the dual-feed PDU has about 30% spare, and the paired CRAH still has cooling capacity to spare. Hot-cold aisle is contained, so we're within envelope.\n- Planner: Good — keep some headroom in the plan so we don't over-provision. What's the projected PUE hit?\n- Ops: PUE stays under target; we've got margin, and uptime isn't at risk.\n\n**重点表达**\n- `de-rate to expected load` — 按预期负载折算（铭牌降额）\n- `cooling capacity to spare` — 制冷余量充足\n- `leave headroom in the plan` — 在规划中预留余量（防 over-provision）",
+        "category": "容量规划",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "de-rate to expected load",
+            "zh": "按预期负载折算（铭牌降额）"
+          },
+          {
+            "en": "cooling capacity to spare",
+            "zh": "制冷余量充足"
+          },
+          {
+            "en": "leave headroom in the plan",
+            "zh": "在规划中预留余量（防 over-provision）"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "日常工作 · 蓄冷罐液位传感器假低位，开单校准并交班强调 failover 闭环",
+        "subtitle": "高级 Advanced",
+        "content": "**情境**：晨间巡检发现 B 区蓄冷罐液位传感器读数跳变、存在假低位风险（可能误触发停泵），开 work order 校准传感器，并在 handover 交代 failover 预案与制冷容量裕度、强调 uptime 闭环。\n\n**对话**\n- Operator: Morning patrol — the thermal-storage tank level sensor in zone B is bouncing around, reading a false low. If it trips the pump on a bad reading, we lose buffer capacity.\n- Lead: Open a work order to calibrate the transmitter and trend it against the manual dip check. Until it's verified, keep the redundant CRAH and standby chiller armed.\n- Operator: Right — I'll note it in the handover: failover plan stays live, cooling capacity margin is OK, and we don't close the loop until the sensor's confirmed good. Uptime first.\n- Lead: Copy. I'll watch the trend overnight and flag if it drifts again.\n\n**重点表达**\n- `false-low reading` — 假低位读数（误报低值）\n- `trend against the manual dip check` — 与人工探深（实测）做趋势比对\n- `don't close the loop until...` — 在…确认前不闭环（工单不销）",
+        "category": "日常工作",
+        "difficulty": "高级 Advanced",
+        "expressions": [
+          {
+            "en": "false-low reading",
+            "zh": "假低位读数（误报低值）"
+          },
+          {
+            "en": "trend against the manual dip check",
+            "zh": "与人工探深（实测）做趋势比对"
+          },
+          {
+            "en": "don't close the loop until...",
+            "zh": "在…确认前不闭环（工单不销）"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-08-23",
     "generatedAt": "2026-08-23T09:33:46+08:00",
     "cycleDay": 2,
@@ -956,80 +1030,6 @@
           {
             "en": "stage the install in a maintenance window",
             "zh": "把上架安排在维护窗口"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-08-09",
-    "generatedAt": "2026-08-09T09:23:28+08:00",
-    "cycleDay": 4,
-    "difficulty": "精通 Proficient",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "运维沟通 · 换季切换自然冷却协调 BMS 控制策略，平衡 PUE 与 rack 进风",
-        "subtitle": "精通 Proficient",
-        "content": "**情境** — 入秋昼夜温差拉大，小白在低峰窗口协调 BMS 团队把冷源从纯机械制冷切换到 free-cooling 经济器模式优化 PUE，同时紧盯 rack 进风与 latency，验证转换期间热通道稳定，并要求保留随时 fail back 回机械制冷的预案，确保安全与 uptime。\n\n**英语对话**\n- 小白: With the swing-season nights getting cooler, I'd like to shift the plant toward free-cooling economizer mode during off-peak and shave a few points off PUE. But I want the transition staged, not an abrupt cutover.\n- BMS 同事: Agreed. We'll open the economizer based on outdoor wet-bulb and let the chillers ride down gradually, while the CRAHs hold rack inlet within tolerance. What's the latency concern during the swing?\n- 小白: The risk is a false economizer call on a sudden warm-up — if chilled-water supply drifts, the hot aisle creeps and latency on the compute cluster spikes. So keep a fast fail-back to mechanical cooling and alarm on any inlet excursion.\n- BMS 同事: Understood. I'll set the fail-back trigger tight and we monitor capacity headroom on the standby chiller. If everything's clean through the night, we keep it in economizer through the cool window. Uptime stays the priority.\n\n**重点表达**\n- `free-cooling economizer mode` — 自然冷却经济器模式（利用室外冷源省机械制冷）\n- `staged transition, not an abrupt cutover` — 分阶段切换，而非 abrupt 切换\n- `fail back to mechanical cooling` — 回退到机械制冷（failback 预案）",
-        "category": "运维沟通",
-        "difficulty": "精通 Proficient",
-        "expressions": [
-          {
-            "en": "free-cooling economizer mode",
-            "zh": "自然冷却经济器模式（利用室外冷源省机械制冷）"
-          },
-          {
-            "en": "staged transition, not an abrupt cutover",
-            "zh": "分阶段切换，而非 abrupt 切换"
-          },
-          {
-            "en": "fail back to mechanical cooling",
-            "zh": "回退到机械制冷（failback 预案）"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "跨团队协作 · 与消防/安保团队协调气体灭火季度测试与门禁权限审计",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境** — 季度消防演练临近，小白与安保/消防团队对齐：气体灭火（洁净气体）释放测试期间机房冗余 CRAH 保持在线、hot-cold aisle 封闭完好、rack 进风受控；同时审计运维门禁权限，避免施工/测试误触导致容量或 uptime 风险。\n\n**英语对话**\n- 小白: For the quarterly fire-suppression test on Hall B, I need your side to coordinate so the redundant CRAHs stay live and the hot-cold aisle containment isn't breached while the room is evacuated.\n- 安保同事: We can sequence the discharge so only the target zone is isolated, and we'll keep the cooling loop running. But can you confirm the rack inlet stays within limit if the unit in that zone trips?\n- 小白: Yes — the neighbor CRAHs pick up the load and the standby chiller backs the loop, so capacity margin holds and uptime's protected. Also, please audit the access permissions so no contractor badge opens the wrong cabinet row.\n- 安保同事: Will do. We'll lock the contractor badges to B-zone only and log every door event. Send me the cooling redundancy confirmation before we schedule the test.\n\n**重点表达**\n- `sequence the discharge / isolate the target zone` — 分阶段释放 / 仅隔离目标区域（避免全机房停机）\n- `keep the cooling loop running` — 保持制冷回路运行（不停冷）\n- `lock badges to a zone / audit access permissions` — 把门禁卡限定到某区 / 审计访问权限",
-        "category": "跨团队协作",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "sequence the discharge / isolate the target zone",
-            "zh": "分阶段释放 / 仅隔离目标区域（避免全机房停机）"
-          },
-          {
-            "en": "keep the cooling loop running",
-            "zh": "保持制冷回路运行（不停冷）"
-          },
-          {
-            "en": "lock badges to a zone / audit access permissions",
-            "zh": "把门禁卡限定到某区 / 审计访问权限"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "供应商对接 · 与冷水机组 OEM 谈判年度全包保养 + 应急响应 SLA",
-        "subtitle": "精通 Proficient",
-        "content": "**情境** — 为下一制冷季做准备，小白与 chiller 原厂谈判年度全包式维护合同：覆盖 RCA 远程支持、关键备件 staging、应急到场时效与延保；要求把机组大修排在 free-cooling 窗口前完成，并预留液冷 CDU 与高密 rack 供电的扩容接口，守住 PUE 与 capacity 目标。\n\n**英语对话**\n- 小白: We're scoping a full-service annual contract for the chillers — I want RCA support on call, critical spares staged locally, and a tight emergency-response SLA, not just a break-fix visit.\n- 供应商: We can bundle a preventive-maintenance plan with a four-hour on-site SLA and keep the compressor and VFD spares in your regional depot. What's the uptime commitment you need?\n- 小白: The plant must never be single-points-of-failure during peak — I want the overhaul slotted before the free-cooling season and a documented failover path. Also reserve capacity and interfaces for liquid-cooling CDUs and high-density racks.\n- 供应商: Understood. We'll extend the warranty through the overhaul window, stage the CDU tie-ins, and guarantee the PUE target with the upgraded controls. I'll send the lead time and the SLA matrix for sign-off.\n\n**重点表达**\n- `full-service annual contract / break-fix visit` — 全包式年度合同 / 坏了再修式（单次）上门\n- `critical spares staged locally / regional depot` — 关键备件本地前置 / 区域备件库\n- `single-points-of-failure / documented failover path` — 单点故障 / 书面化的故障切换路径",
-        "category": "供应商对接",
-        "difficulty": "精通 Proficient",
-        "expressions": [
-          {
-            "en": "full-service annual contract / break-fix visit",
-            "zh": "全包式年度合同 / 坏了再修式（单次）上门"
-          },
-          {
-            "en": "critical spares staged locally / regional depot",
-            "zh": "关键备件本地前置 / 区域备件库"
-          },
-          {
-            "en": "single-points-of-failure / documented failover path",
-            "zh": "单点故障 / 书面化的故障切换路径"
           }
         ]
       }
