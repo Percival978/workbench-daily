@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-08-25",
+    "generatedAt": "2026-08-25T09:34:02+08:00",
+    "cycleDay": 4,
+    "difficulty": "精通 Proficient",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "运维沟通 · 算力负载跟随冷源余量错峰调度，平衡 PUE 与 latency 并保留 fail-back",
+        "subtitle": "精通 Proficient",
+        "content": "**情境**：季度能效与 SLO 评审后，协调把批处理/训练任务错峰调度到冷源充裕时段（load steering），平衡 PUE、rack 进风与 latency，全程保留 fail-back 链路。\n\n**对话**\n- Ops Lead: After the quarterly efficiency and SLO review, we want to steer the batch and training jobs to the hours when our cooling headroom is deepest. Can we shift the heavy jobs off the 2-to-6 p.m. peak without hurting latency?\n- SRE: Yes — if we load-steer the non-latency-critical jobs to the overnight window, the chiller plant runs closer to its sweet spot and rack-inlet stays well under limit. Latency on the interactive tier is untouched.\n- Ops Lead: Good. Keep PUE in target and hold the hot-cold aisle contained. Most importantly, leave the fail-back path live so we can revert instantly if a chiller trips.\n- SRE: Fail-back stays armed — we can snap back to the original schedule in under a minute. Uptime and capacity margin both look healthy.\n\n**重点表达**\n- `load-steering the batch jobs` — 把批处理任务错峰调度（跟随冷源 / 电价余量）\n- `run closer to its sweet spot` — 让冷源运行在最佳效率区间（贴近设计工况）\n- `leave the fail-back path live` — 保留 fail-back 链路随时可切回（不解除冗余）",
+        "category": "运维沟通",
+        "difficulty": "精通 Proficient",
+        "expressions": [
+          {
+            "en": "load-steering the batch jobs",
+            "zh": "把批处理任务错峰调度（跟随冷源 / 电价余量）"
+          },
+          {
+            "en": "run closer to its sweet spot",
+            "zh": "让冷源运行在最佳效率区间（贴近设计工况）"
+          },
+          {
+            "en": "leave the fail-back path live",
+            "zh": "保留 fail-back 链路随时可切回（不解除冗余）"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "跨团队协作 · 嘉善 D02 新模组机电带载联调，确认供电/制冷余量与 handover 口径",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：与项目建设团队协调 D02 新模组机电带载调试，确认双路供电与 CRAH 制冷余量、rack 落位与 handover 验收口径，守住 uptime。\n\n**对话**\n- Construction PM: We're ready to commission the D02 module — dual-feed power and the CRAH loop are wired. What do you need from us before we hand it over?\n- Ops: First, load-test the dual-feed path and confirm the CRAH redundancy picks up if one unit drops. Then we'll walk the rack layout and the hot-cold aisle containment before sign-off.\n- Construction PM: Understood. We'll stage the load bank this week and keep uptime the priority during the cutover. The handover pack will include the commissioning logs.\n- Ops: Perfect — once capacity checks out and the aisle is sealed, we'll take it. Keep me looped on the commissioning trend.\n\n**重点表达**\n- `commission the module` — 对模组进行机电带载联调 / 调试投运\n- `load-test the dual-feed path` — 对双路供电路径做带载测试\n- `take it / take over` — 接管（验收后接手运维）",
+        "category": "跨团队协作",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "commission the module",
+            "zh": "对模组进行机电带载联调 / 调试投运"
+          },
+          {
+            "en": "load-test the dual-feed path",
+            "zh": "对双路供电路径做带载测试"
+          },
+          {
+            "en": "take it / take over",
+            "zh": "接管（验收后接手运维）"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "供应商对接 · 柴发 / 黑启动供应商谈判年度带载演练与应急响应 SLA，保无缝 failover",
+        "subtitle": "精通 Proficient",
+        "content": "**情境**：与柴油发电机 / 黑启动供应商谈判年度带载演练 + 应急响应 SLA 与本地前置备件，确保市电失压时 chiller/CRAH 连续制冷与 rack 供电无缝 failover，预留液冷 CDU 联动。\n\n**对话**\n- Facilities: We need the generator service contract to cover an annual black-start load test and a four-hour emergency response SLA. If utility power is lost, the chiller and CRAH must keep cooling without a gap.\n- Vendor: We can commit to the 4-hour SLA and pre-stage critical spares locally. For seamless failover, we'll validate the transfer scheme so rack power and cooling ride through on the generator.\n- Facilities: Good — and make sure there are no single-points-of-failure in the start sequence. We're also expanding liquid-cooling CDUs, so leave headroom to interlock them with the generator.\n- Vendor: Agreed. We'll document the start logic, interlock the CDUs, and keep capacity margin so uptime holds even during a prolonged outage.\n\n**重点表达**\n- `black-start load test` — 黑启动带载测试（失电后自启并带载验证）\n- `pre-stage critical spares locally` — 在本地前置关键备件（缩短抢修时间）\n- `no single-points-of-failure` — 无单点故障（冗余设计原则）",
+        "category": "供应商对接",
+        "difficulty": "精通 Proficient",
+        "expressions": [
+          {
+            "en": "black-start load test",
+            "zh": "黑启动带载测试（失电后自启并带载验证）"
+          },
+          {
+            "en": "pre-stage critical spares locally",
+            "zh": "在本地前置关键备件（缩短抢修时间）"
+          },
+          {
+            "en": "no single-points-of-failure",
+            "zh": "无单点故障（冗余设计原则）"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-08-24",
     "generatedAt": "2026-08-24T09:38:40+08:00",
     "cycleDay": 3,
@@ -956,80 +1030,6 @@
           {
             "en": "proven failover / capacity margin holds",
             "zh": "已验证的故障切换 / 容量裕度保持"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-08-10",
-    "generatedAt": "2026-08-10T09:20:30+08:00",
-    "cycleDay": 1,
-    "difficulty": "基础 Basic",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "日常工作 · 晨间巡检发现 CRAH 出风偏高、rack 进风逼近上限",
-        "subtitle": "基础 Basic",
-        "content": "**情境** 晨间巡检发现 B3 排一台 CRAH 出风温度高于邻机、rack 进风逼近上限，开单更换滤网并交班。\n\n- **小白:** Morning patrol on Row B3 — CRAH-12's supply temp is reading two degrees above its neighbors, and rack inlet on the middle cabinets is creeping toward the limit. I'm logging a work order to swap the filter.\n- **夜班同事:** Copy. Is the unit still holding uptime, or do we need to pull it?\n- **小白:** It's still live, no trip — but please watch rack inlet overnight and hand over the work order so day shift can replace the filter before peak. Keep uptime first.\n- **夜班同事:** Got it. I'll note it in the handover and keep an eye on the inlet temp.\n\n**重点表达**\n- `morning patrol` — 晨间巡检\n- `log a work order` — 开一张工单（登记缺陷单）\n- `hand over the work order` — 在交班时交接这张工单",
-        "category": "日常工作",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "morning patrol",
-            "zh": "晨间巡检"
-          },
-          {
-            "en": "log a work order",
-            "zh": "开一张工单（登记缺陷单）"
-          },
-          {
-            "en": "hand over the work order",
-            "zh": "在交班时交接这张工单"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "故障排查 · latency 偶发升高，核实 failover 与 chiller 制冷，RCA 指向阀门控制滞后",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境** 监控报某计算集群 latency 偶发升高，小白牵头核实 failover 与 chiller 制冷是否跟上，RCA 指向冷冻水阀控制滞后。\n\n- **小白:** We're seeing intermittent latency spikes on the compute cluster in Hall A — before we blame the network, I want to rule out cooling. Did the chilled-water supply drift?\n- **监控同事:** Supply temp rose about 1.5°C for a few minutes; rack inlet nudged up and latency on those nodes ticked. The standby chiller failed over, but I want to confirm it's fully carrying load.\n- **小白:** Pull the CRAH valve logs — my hunch is the control loop lagged and the failover wasn't fast enough to hold capacity. Let's open an RCA and confirm the standby plant is now holding the loop.\n- **监控同事:** Agreed. RCA it is. Capacity margin looks recovered now that the standby chiller is online; I'll track inlet temp through the next peak to be safe.\n\n**重点表达**\n- `rule out cooling / before we blame the network` — 先排除制冷问题 / 在怪网络之前\n- `failed over to the standby chiller` — 故障切换到了备用冷水机组\n- `open an RCA` — 发起一次根因分析",
-        "category": "故障排查",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "rule out cooling",
-            "zh": "先排除制冷问题"
-          },
-          {
-            "en": "failed over to the standby chiller",
-            "zh": "故障切换到了备用冷水机组"
-          },
-          {
-            "en": "open an RCA",
-            "zh": "发起一次根因分析"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "容量规划 · 核算 R30–R32 剩余 U 位与电力预算，预留 CRAH 制冷 headroom",
-        "subtitle": "基础 Basic",
-        "content": "**情境** 为下月新增存储节点核算 R30–R32 剩余 U 位与电力预算，确认 CRAH 制冷余量、封闭 hot-cold aisle 完好、PUE 余量，预留 headroom。\n\n- **小白:** Next month we're adding storage nodes to Racks R30 through R32. Can you confirm the free U-space and the power budget so we don't overload the row?\n- **容量同事:** R30–R32 have about 12U free each, and the power budget leaves roughly 30% headroom after the new nodes. Cooling looks fine — the CRAH on that row isn't near capacity.\n- **小白:** Good. Make sure the hot-cold aisle containment stays sealed and the PUE stays in target — I'd rather keep 20% headroom than push it to the edge. Let's stage the install for off-peak.\n- **容量同事:** Will do. I'll book the install in a maintenance window and flag any U-space or cooling shortfall before we rack them.\n\n**重点表达**\n- `free U-space / power budget` — 剩余 U 位 / 电力预算\n- `leave headroom` — 预留余量（不直接打满）\n- `stage the install in a maintenance window` — 把上架安排在维护窗口",
-        "category": "容量规划",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "free U-space / power budget",
-            "zh": "剩余 U 位 / 电力预算"
-          },
-          {
-            "en": "leave headroom",
-            "zh": "预留余量（不直接打满）"
-          },
-          {
-            "en": "stage the install in a maintenance window",
-            "zh": "把上架安排在维护窗口"
           }
         ]
       }
