@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-08-26",
+    "generatedAt": "2026-08-26T09:34:09+08:00",
+    "cycleDay": 1,
+    "difficulty": "基础 Basic",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "日常工作 · 晨间巡检发现 CRAH 加湿罐结垢、送风湿度偏低，开单更换并交班",
+        "subtitle": "基础 Basic",
+        "content": "**情境**：晨间巡检发现 C 区 CRAH-C2 加湿罐结垢报警、送风湿度低于下限，有静电放电风险，开 work order 更换并 handover 提醒监控 rack 进风与 uptime。\n\n**对话**：\n- A：Morning patrol shows CRAH-C2 flagged a humidifier canister fault, and the supply air humidity is sitting at 28% — well below our 40% floor. That raises a static-discharge risk around the racks.\n- B：Got it. Let me log a work order to replace the canister and clear the fault after the swap. Keep CRAH-C2 online and lean on the redundant unit so we don't lose cooling headroom.\n- A：Understood. I'll note it in the handover: swap the canister tonight, watch the rack inlet and supply humidity, and don't close the loop until the reading holds steady. Uptime stays the priority.\n\n**重点表达**：\n- `morning patrol` — 晨间巡检\n- `log a work order` — 开（记录）一张工单\n- `lean on the redundant unit` — 依靠冗余机组（维持制冷 / 不掉余量）",
+        "category": "日常工作",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "morning patrol",
+            "zh": "晨间巡检"
+          },
+          {
+            "en": "log a work order",
+            "zh": "开（记录）一张工单"
+          },
+          {
+            "en": "lean on the redundant unit",
+            "zh": "依靠冗余机组（维持制冷 / 不掉余量）"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "故障排查 · CRAH 风机皮带打滑送风量下降，RCA 指向皮带磨损并确认冗余接管",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：监控发现 B3 区 rack 进风温度抬升、业务侧 latency 偶发毛刺，核实为 CRAH-B3 风机皮带打滑送风量下降，RCA 指向皮带磨损，确认冗余 CRAH 接管。\n\n**对话**：\n- A：B3 rack inlet just crept to 27°C and we're seeing latency spikes on the compute cluster. CRAH-B3 supply airflow looks 15% low — what's the root cause?\n- B：Belt slip on the CRAH-B3 fan. The drive belt is worn, so the fan can't hold design airflow. RCA confirms it's mechanical wear, not a control fault.\n- A：Good. Confirm the redundant CRAH picked up the load so capacity holds, then schedule a belt swap. Keep failover armed until the unit is back online.\n- B：Confirmed — standby CRAH is carrying B3, chiller and PUE are stable. I'll stage the spare belt and close the RCA once airflow returns to setpoint.\n\n**重点表达**：\n- `belt slip / the drive belt is worn` — 皮带打滑 / 传动皮带磨损\n- `the redundant CRAH picked up the load` — 冗余 CRAH 接管了负荷\n- `keep failover armed` — 保持故障切换待命（不解除冗余）",
+        "category": "故障排查",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "belt slip / the drive belt is worn",
+            "zh": "皮带打滑 / 传动皮带磨损"
+          },
+          {
+            "en": "the redundant CRAH picked up the load",
+            "zh": "冗余 CRAH 接管了负荷"
+          },
+          {
+            "en": "keep failover armed",
+            "zh": "保持故障切换待命（不解除冗余）"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "容量规划 · 新增网络汇聚机柜 R80–R82 上架，核算电力与制冷双上限并预留 headroom",
+        "subtitle": "基础 Basic",
+        "content": "**情境**：评估新一批网络汇聚机柜 R80–R82 上架，按设备铭牌折算热密度，交叉核对双路 PDU 电力余量与 CRAH 制冷 capacity 双上限，确认封闭通道、PUE 余量、预留 headroom。\n\n**对话**：\n- A：We're staging three network aggregation racks, R80 through R82. Before racking, let's check the dual-feed PDU power budget and the CRAH cooling-capacity envelope.\n- B：Per the nameplate, each rack lands around 6 kW — 18 kW total. The column PDU shows 35% headroom and the CRAH still has cooling capacity to spare, so we're within both limits.\n- A：Keep the hot-cold aisle contained and leave headroom in the plan so we don't over-provision. Confirm PUE stays in band and uptime is protected through the install.\n- B：Agreed. With blanking panels in place and the aisle sealed, PUE holds and we keep margin for the next growth wave.\n\n**重点表达**：\n- `power budget / cooling-capacity envelope` — 电力预算 / 制冷容量上限\n- `leave headroom in the plan` — 在规划中预留余量\n- `don't over-provision` — 不要过度配置（避免过度预留）",
+        "category": "容量规划",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "power budget / cooling-capacity envelope",
+            "zh": "电力预算 / 制冷容量上限"
+          },
+          {
+            "en": "leave headroom in the plan",
+            "zh": "在规划中预留余量"
+          },
+          {
+            "en": "don't over-provision",
+            "zh": "不要过度配置（避免过度预留）"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-08-25",
     "generatedAt": "2026-08-25T09:34:02+08:00",
     "cycleDay": 4,
@@ -956,80 +1030,6 @@
           {
             "en": "hand over the work order and flag it",
             "zh": "交班移交工单并标注提醒"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-08-11",
-    "generatedAt": "2026-08-11T09:20:31+08:00",
-    "cycleDay": 2,
-    "difficulty": "进阶 Intermediate",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "供应商对接 · 与 UPS/电池供应商谈判本地备件库存、交期与延保",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境** 为 Q4 容量扩容向 UPS 供应商锁定电池组与功率模块备件，谈判本地城市仓储备件、交货周期与 5 年全包延保，要求把 SLA 与交期落到书面，避免新 rack 排上量后供货缺口危及 uptime。\n\n- **小白:** We're planning a Q4 capacity expansion and I need to lock in spare batteries and power modules for the UPS fleet. With the new rack rows drawing more load, any supply gap puts uptime at risk — what's your local stock and lead time if we don't pre-stage?\n- **供应商:** Locally we keep two battery strings and one power module on the shelf; a full set from the factory is about six weeks lead time. If you pre-stage spares onsite, we cut on-site response to under four hours.\n- **小白:** Six weeks is too long for critical spares. I'd like a stocking agreement — you hold one string and one module at our city depot, and we extend the warranty to five years in return. Can you match that?\n- **供应商:** I can do the city-depot stocking and a five-year parts-and-labor warranty, but the price moves with the commitment. Let's put the SLA and lead time in writing before we sign.\n\n**重点表达**\n- `lock in spare parts / pre-stage spares` — 锁定备件 / 预先在现场储备备件\n- `lead time / parts-and-labor warranty` — 交货周期 / 含人工与配件的质保\n- `put the SLA and lead time in writing` — 把 SLA 与交期落到书面",
-        "category": "供应商对接",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "lock in spare parts / pre-stage spares",
-            "zh": "锁定备件 / 预先在现场储备备件"
-          },
-          {
-            "en": "lead time / parts-and-labor warranty",
-            "zh": "交货周期 / 含人工与配件的质保"
-          },
-          {
-            "en": "put the SLA and lead time in writing",
-            "zh": "把 SLA 与交期落到书面"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "跨团队协作 · 与电气团队协调 UPS 带载测试、确认 rack 供电与 CRAH 冗余",
-        "subtitle": "基础 Basic",
-        "content": "**情境** 与电气团队商量下周对 B 区 UPS 做带载测试，需确认测试期间 rack 不停电、CRAH 冗余制冷在线；电气同事承诺旁路到干净电源、全程保留备用 CRAH，并先核实其制冷 capacity。\n\n- **小白:** Next week we need to load-test the UPS in Hall B. Can your electrical team support the maintenance window and confirm the racks stay powered?\n- **电气同事:** Yes. We'll bypass the UPS to a clean feed during the test, so rack power stays continuous and uptime isn't affected. How long is the window?\n- **小白:** Two hours, off-peak. Please also check the CRAH redundancy — if one unit is offline for service, the other must hold the hot-cold aisle so rack inlet stays in range.\n- **电气同事:** Understood. We'll verify capacity on the standby CRAH before we start, and keep the redundant unit running the whole time.\n\n**重点表达**\n- `load-test the UPS / bypass to a clean feed` — 对 UPS 做带载测试 / 旁路到干净电源\n- `keep rack power continuous / uptime isn't affected` — 保持机柜供电连续 / 不影响在线时长\n- `verify capacity on the standby CRAH` — 核实备用 CRAH 的制冷容量",
-        "category": "跨团队协作",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "load-test the UPS / bypass to a clean feed",
-            "zh": "对 UPS 做带载测试 / 旁路到干净电源"
-          },
-          {
-            "en": "keep rack power continuous / uptime isn't affected",
-            "zh": "保持机柜供电连续 / 不影响在线时长"
-          },
-          {
-            "en": "verify capacity on the standby CRAH",
-            "zh": "核实备用 CRAH 的制冷容量"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "运维沟通 · 月度能效复盘 PUE 超标，变更窗口优化冷冻水与 free-cooling",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境** 月度能效复盘 PUE 略高于目标，建议变更窗口内调高冷冻水温度设定、让 free-cooling 经济器多扛负载以省电；但需确保 rack 进风不升、latency 不抖、备用 chiller 可随时 failover，并预设回退。\n\n- **小白:** Our monthly PUE came in a bit above target. I'd like to raise the chilled-water setpoint a couple of degrees and let the free-cooling economizer carry more load during the change window — it should cut energy without hurting the racks.\n- **运维同事:** Raising the setpoint lowers compressor runtime, but we need to watch rack inlet. If the economizer can't keep up on a warm day, latency on the hot-aisle nodes could tick up.\n- **小白:** Right — so I'll stage the change in off-peak, confirm the standby chiller is ready to fail over, and keep CRAH fan speed demand-based so capacity margin holds. We roll back if inlet drifts.\n- **运维同事:** Agreed. I'll tighten the alarm thresholds for the window and monitor latency live. As long as failover is proven and PUE drops, this is a good trade.\n\n**重点表达**\n- `raise the chilled-water setpoint / free-cooling economizer` — 上调冷冻水温度设定 / 自然冷源经济器\n- `stage the change in off-peak / roll back if ...` — 把变更安排在低谷期 / 若…则回退\n- `proven failover / capacity margin holds` — 已验证的故障切换 / 容量裕度保持",
-        "category": "运维沟通",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "raise the chilled-water setpoint / free-cooling economizer",
-            "zh": "上调冷冻水温度设定 / 自然冷源经济器"
-          },
-          {
-            "en": "stage the change in off-peak / roll back if ...",
-            "zh": "把变更安排在低谷期 / 若…则回退"
-          },
-          {
-            "en": "proven failover / capacity margin holds",
-            "zh": "已验证的故障切换 / 容量裕度保持"
           }
         ]
       }
