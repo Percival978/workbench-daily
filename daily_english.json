@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-08-27",
+    "generatedAt": "2026-08-27T09:41:24+08:00",
+    "cycleDay": 2,
+    "difficulty": "进阶 Intermediate",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "供应商对接 · 与智能母线/rPDU 供应商核对三相遥测接口、交付里程碑与现场质保 SLA",
+        "subtitle": "进阶 Intermediate",
+        "content": "- **情境**：新模组配电上电前，与母线槽及 rPDU 供应商核对三相负载远程读数、不平衡告警阈值、BACnet 接口对接、交付里程碑与含人工现场质保 SLA，确保 rack 落位时供电遥测可读、CRAH/uptime 不受割接影响。\n- **A（暖通/电气工程师）**：Before we energize the new module, I need the busway and rPDU telemetry wired into our DCIM — per-phase load, neutral current, and an imbalance alarm at 15%. What's the delivery milestone and the on-site warranty coverage?\n- **B（供应商）**：We can stage the busway in week 3 and the rPDUs the following week; the BACnet points ship mapped. Warranty is parts-and-labor for 5 years, with a 4-hour response SLA once we're on-site.\n- **A（暖通/电气工程师）**：Cut the lead time if you can — we need the imbalance trend visible before racking so capacity planning stays accurate. Keep failover on the dual-feed PDUs and don't let the cutover trip rack uptime.\n- **B（供应商）**：Agreed. We'll pre-stage the gateways and validate the point list with your team; CRAH, hot-cold aisle and PUE stay unaffected because this is a power-side change only.\n- **重点表达**：\n  - `parts-and-labor warranty with a 4-hour response SLA` — 含人工的现场质保，4 小时响应 SLA\n  - `cut the lead time` — 缩短（压缩）交期\n  - `keep failover on the dual-feed PDUs` — 双路 PDU 保持故障切换（冗余供电）在线",
+        "category": "供应商对接",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "parts-and-labor warranty with a 4-hour response SLA",
+            "zh": "含人工的现场质保，4 小时响应 SLA"
+          },
+          {
+            "en": "cut the lead time",
+            "zh": "缩短（压缩）交期"
+          },
+          {
+            "en": "keep failover on the dual-feed PDUs",
+            "zh": "双路 PDU 保持故障切换（冗余供电）在线"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "跨团队协作 · 与安全团队协调机房动火作业许可，确认消防与制冷冗余可用",
+        "subtitle": "基础 Basic",
+        "content": "- **情境**：承包商需在机房内焊接机架支架，与安全团队协调动火作业许可（hot-work permit），确认烟感/气体灭火处于可用、制冷冗余在线、施工期间 rack 与 uptime 不受影响。\n- **A（你·暖通）**：A contractor needs to weld rack brackets in Aisle B today. Can safety issue a hot-work permit, and are the smoke detectors and gas suppression armed?\n- **B（安全工程师）**：Permit approved for a 2-hour window. Detection and suppression stay online, and we'll post a fire watch. Just keep the redundant CRAH running so the hot-cold aisle stays contained.\n- **A（你·暖通）**：Understood. We'll keep capacity headroom and watch rack inlet. If anything drifts, we pause the work and protect uptime first.\n- **B（安全工程师）**：Good. Log the permit in the handover and confirm the aisle is sealed before they start.\n- **重点表达**：\n  - `issue a hot-work permit` — 开具动火作业许可证\n  - `keep the redundant CRAH running` — 保持冗余 CRAH 运行（制冷不中断）\n  - `post a fire watch` — 安排动火监护（专人看火）",
+        "category": "跨团队协作",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "issue a hot-work permit",
+            "zh": "开具动火作业许可证"
+          },
+          {
+            "en": "keep the redundant CRAH running",
+            "zh": "保持冗余 CRAH 运行（制冷不中断）"
+          },
+          {
+            "en": "post a fire watch",
+            "zh": "安排动火监护（专人看火）"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "运维沟通 · 新模组投运前恒压补水/真空脱气装置保养，协调变更窗口并预设 failover",
+        "subtitle": "进阶 Intermediate",
+        "content": "- **情境**：扩建模组首次投运前，计划对恒压补水装置重充膨胀罐、真空脱气罐排污，运维沟通变更窗口，平衡 rack 进风/latency、预设冷源 failover 与 roll back，守住 uptime。\n- **A（你·暖通）**：Ahead of module commissioning, we need to re-pressurize the expansion tank and vent the vacuum degasser. Let's schedule it in a change window so the secondary pump won't cavitate and rack inlet stays stable.\n- **B（运维值班）**：Open the window after peak load. Keep failover armed on the standby chiller and CRAH so cooling never drops. What's the rollback if pressure hunts?\n- **A（你·暖通）**：Roll back is simple — hold the old setpoint and isolate the degasser if it faults. We'll watch latency and PUE; if either moves, we pause and protect uptime.\n- **B（运维值班）**：Agreed. I'll note the change in the handover and keep capacity headroom on the cooling loop. Confirm hot-cold aisle containment before we start.\n- **重点表达**：\n  - `re-pressurize the expansion tank` — 给膨胀罐重新充压\n  - `keep failover armed on the standby chiller` — 备用冷水机组保持故障切换待命\n  - `roll back to the old setpoint` — 回退到原设定值（撤销变更）",
+        "category": "运维沟通",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "re-pressurize the expansion tank",
+            "zh": "给膨胀罐重新充压"
+          },
+          {
+            "en": "keep failover armed on the standby chiller",
+            "zh": "备用冷水机组保持故障切换待命"
+          },
+          {
+            "en": "roll back to the old setpoint",
+            "zh": "回退到原设定值（撤销变更）"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-08-26",
     "generatedAt": "2026-08-26T09:34:09+08:00",
     "cycleDay": 1,
@@ -956,80 +1030,6 @@
           {
             "en": "pre-wired for the extra racks",
             "zh": "为新增机柜预接线（预留扩容）"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-08-12",
-    "generatedAt": "2026-08-12T09:20:11+08:00",
-    "cycleDay": 3,
-    "difficulty": "高级 Advanced",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "故障排查 · 液冷 CDU 流量低报警致 GPU 降频与 latency 抖动，RCA 定位主泵气蚀+过滤器半堵",
-        "subtitle": "高级 Advanced",
-        "content": "- 情境：液冷 CDU 二次侧流量低报警导致 GPU 节点进液温度攀升、触发降频与 latency 抖动；牵头制冷与监控复盘 RCA，定位主泵气蚀 + Y 型过滤器半堵，确认备用 CDU 可 failover 并切换验证。\n- 小白：We just got a low-flow alarm on the primary CDU's secondary loop. The GPU nodes on rack R18 are seeing rising coolant inlet temps and the training jobs are throttling — latency on the inference pods is spiking.\n- 制冷同事：I see it. Pump speed is maxed but flow is down — classic cavitation on the primary pump plus a half-clogged Y-strainer. The standby CDU is healthy; do you want me to fail over now?\n- 小白：Yes, fail over to the standby CDU and prove the handoff. While that holds, pull the logs and run the RCA — I need to know if capacity margin on the liquid loop is actually sufficient for the next GPU batch.\n- 制冷同事：Standby CDU is carrying the load, inlet temps back in range, latency recovering. RCA shows the filter restriction dropped headroom; I'll schedule a strainer clean and re-baseline PUE on the liquid side.\n- 重点表达：\n- `low-flow alarm on the secondary loop` — 二次侧流量低报警\n- `cavitation on the primary pump` — 主泵气蚀\n- `fail over to the standby CDU and prove the handoff` — 切到备用 CDU 并验证切换",
-        "category": "故障排查",
-        "difficulty": "高级 Advanced",
-        "expressions": [
-          {
-            "en": "low-flow alarm on the secondary loop",
-            "zh": "二次侧流量低报警"
-          },
-          {
-            "en": "cavitation on the primary pump",
-            "zh": "主泵气蚀"
-          },
-          {
-            "en": "fail over to the standby CDU and prove the handoff",
-            "zh": "切到备用 CDU 并验证切换"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "容量规划 · 核算 AI 训练机柜 CDU 制冷容量与二次侧流量余量，预留 headroom 防 over-provision",
-        "subtitle": "基础 Basic",
-        "content": "- 情境：为新到货的一批 AI 训练机柜核算 CDU 制冷 capacity 与二次侧流量余量，确认单 rack 散热负荷、封闭 hot-cold aisle、PUE 余量，预留 headroom 防 over-provision。\n- 小白：We're adding three AI training racks next month. Before they go live, I need to confirm the CDU can handle the extra heat load without starving the existing liquid-cooled racks.\n- 容量同事：Each new rack draws about 35 kW; the CDU has roughly 20% cooling capacity headroom and the secondary flow margin covers it. We'll keep the hot-cold aisle contained so the CRAH side isn't stressed.\n- 小白：Good. So PUE stays in budget as long as we don't over-provision the loop. I'll reserve that 20% headroom and stage the racks one at a time.\n- 容量同事：Agreed. Staging keeps uptime safe and lets us re-check inlet temps after each rack lands.\n- 重点表达：\n- `cooling capacity headroom` — 制冷容量余量\n- `over-provision the loop` — 让环路过度配置（超配）\n- `stage the racks one at a time` — 机柜逐台上架",
-        "category": "容量规划",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "cooling capacity headroom",
-            "zh": "制冷容量余量"
-          },
-          {
-            "en": "over-provision the loop",
-            "zh": "让环路过度配置（超配）"
-          },
-          {
-            "en": "stage the racks one at a time",
-            "zh": "机柜逐台上架"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "日常工作 · 晨间巡检 CRAH 冷凝水盘积水排水堵塞，开单疏通并交班",
-        "subtitle": "高级 Advanced",
-        "content": "- 情境：晨间巡检发现 CRAH-A 冷凝水盘积水、排水管轻微堵塞有渗水风险，开 work order 疏通并 handover 提醒监控 rack 进风与备用 CRAH 冗余。\n- 小白：Morning patrol on Hall C — CRAH-A's condensate pan is holding water and the drain line looks partly blocked. If it overflows we risk water near the racks, so I'm raising a work order to clear it.\n- 运维同事：Noted. While CRAH-A is down for the drain flush, is the redundant CRAH enough to hold rack inlet temps?\n- 小白：Yes — I checked capacity; the standby CRAH covers the load and uptime is safe. I'll hand over the work order and flag it so night shift keeps an eye on rack inlet and the failover status.\n- 运维同事：Good call. I'll add the pan cleaning to the PM checklist and confirm the alarm thresholds before you log off.\n- 重点表达：\n- `morning patrol` — 晨间巡检\n- `raise a work order to clear it` — 开整改工单疏通\n- `hand over the work order and flag it` — 交班移交工单并标注提醒",
-        "category": "日常工作",
-        "difficulty": "高级 Advanced",
-        "expressions": [
-          {
-            "en": "morning patrol",
-            "zh": "晨间巡检"
-          },
-          {
-            "en": "raise a work order to clear it",
-            "zh": "开整改工单疏通"
-          },
-          {
-            "en": "hand over the work order and flag it",
-            "zh": "交班移交工单并标注提醒"
           }
         ]
       }
