@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-08-28",
+    "generatedAt": "2026-08-28T09:34:10+08:00",
+    "cycleDay": 3,
+    "difficulty": "高级 Advanced",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "故障排查 · 离心式冷水机组润滑油携出（oil carryover）致制冷衰减，RCA 并确认 failover 链路",
+        "subtitle": "高级 Advanced",
+        "content": "- **情境**：计算集群 latency 偶发毛刺、rack 进风缓慢抬升，BMS 趋势显示主 chiller 蒸发温度偏高、制冷量衰减；RCA 定位离心式冷水机组润滑油携出（oil carryover）——油分离器效率下降 + 蒸发器回油不畅，油膜覆盖换热面，确认备用 chiller + 蓄冷罐 failover 链路完好。\n- **A（你·暖通）**：Cluster latency is spiking in short bursts and rack inlet is creeping up two degrees. The BMS shows the lead chiller's evaporator approach is widening — I suspect oil carryover is fouling the tubes.\n- **B（制冷工程师）**：Agreed. The oil separator efficiency dropped after the last compressor surge, and the evaporator isn't returning oil well. That oil film cuts heat transfer, so the chiller loses capacity and rack inlet climbs.\n- **A（你·暖通）**：Let's confirm the failover path — bring the standby chiller online and ride through on the thermal storage tank so cooling never drops. Then we pull the chiller for an RCA and re-tune the oil return.\n- **B（制冷工程师）**：Standby chiller and cold tank are armed; failover holds. After the RCA we'll service the separator and adjust the oil-return schedule to protect uptime and keep PUE in band.\n- **重点表达**：\n  - `oil carryover fouls the evaporator tubes` — 润滑油携出污染蒸发器换热管（降低换热效率）\n  - `ride through on the thermal storage tank` — 靠蓄冷罐（蓄冷水）扛过、维持制冷不中断\n  - `re-tune the oil-return schedule` — 重新整定（优化）回油周期/策略",
+        "category": "故障排查",
+        "difficulty": "高级 Advanced",
+        "expressions": [
+          {
+            "en": "oil carryover fouls the evaporator tubes",
+            "zh": "润滑油携出污染蒸发器换热管（降低换热效率）"
+          },
+          {
+            "en": "ride through on the thermal storage tank",
+            "zh": "靠蓄冷罐（蓄冷水）扛过、维持制冷不中断"
+          },
+          {
+            "en": "re-tune the oil-return schedule",
+            "zh": "重新整定（优化）回油周期/策略"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "容量规划 · 嘉善一期 D03 模组液冷+风冷混合机柜上架，核算 CDU 与 CRAH 双制冷余量",
+        "subtitle": "基础 Basic",
+        "content": "- **情境**：评估嘉善一期 D03 模组第一批机柜上架，液冷 GPU 机柜与风冷机柜混合部署；核算 CDU 二次侧流量 + CRAH 风冷 capacity 协同、双路 PDU 电力余量、封闭 hot-cold aisle、PUE 余量、预留 headroom 防 over-provision、守 uptime。\n- **A（你·暖通）**：For the first batch of racks in D03, we're mixing liquid-cooled GPU racks with air-cooled racks. Before we rack them, I need to confirm the CDU secondary flow and the CRAH cooling capacity both have headroom.\n- **B（容量/电气）**：The dual-feed PDUs have about 30% spare and the CRAH envelope is fine for the air-cooled rows. The CDUs cover the GPU racks' secondary loop. We keep the hot-cold aisle contained and PUE stays in band.\n- **A（你·暖通）**：Good. Leave headroom in the plan so we don't over-provision, and protect uptime if a CDU or CRAH drops. I'll log the capacity check in the handover.\n- **重点表达**：\n  - `leave headroom in the plan` — 在规划中预留余量（不超额配置）\n  - `the cooling-capacity envelope is fine` — 制冷容量包络（上限）足够、在安全范围内\n  - `mix liquid-cooled and air-cooled racks` — 液冷与风冷机柜混合部署",
+        "category": "容量规划",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "leave headroom in the plan",
+            "zh": "在规划中预留余量（不超额配置）"
+          },
+          {
+            "en": "the cooling-capacity envelope is fine",
+            "zh": "制冷容量包络（上限）足够、在安全范围内"
+          },
+          {
+            "en": "mix liquid-cooled and air-cooled racks",
+            "zh": "液冷与风冷机柜混合部署"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "日常工作 · 晨间巡检发现冷却塔收水器破损飘水漂移，开单整改并交班提示受潮风险",
+        "subtitle": "高级 Advanced",
+        "content": "- **情境**：晨间巡检发现 A 区冷却塔收水器（drift eliminator）破损、飘水漂移严重，飘滴落至相邻机柜区巡检通道地面湿滑、邻近 CRAH 电气柜有受潮风险；开 work order 更换收水器/调整布水，在 handover 交代冷却冗余与 failover 预案、强调 uptime 闭环。\n- **A（你·暖通）**：Morning patrol found the A-zone cooling tower drift eliminators are broken — drift is carrying water onto the aisle walkway and the CRAH electrical cabinets nearby. That's a slip and moisture-ingress risk.\n- **B（运维值班）**：Noted. Log a work order to swap the drift eliminators and re-balance the water distribution. Meanwhile keep the redundant CRAH online so we don't lose cooling headroom.\n- **A（你·暖通）**：Right. I'll add it to the handover: replace the eliminators tonight, watch rack inlet and the tower fan status, and confirm failover is armed. Don't close the loop until the drift stops.\n- **B（运维值班）**：Understood. I'll keep capacity headroom on the cooling loop and protect uptime as the priority. We'll verify the drift is gone before signing off.\n- **重点表达**：\n  - `drift eliminators are broken` — 收水器（飘水消除器）破损\n  - `moisture-ingress risk` — 受潮/进水风险\n  - `don't close the loop until the drift stops` — 在飘水彻底消除前不闭环（工单不销）",
+        "category": "日常工作",
+        "difficulty": "高级 Advanced",
+        "expressions": [
+          {
+            "en": "drift eliminators are broken",
+            "zh": "收水器（飘水消除器）破损"
+          },
+          {
+            "en": "moisture-ingress risk",
+            "zh": "受潮/进水风险"
+          },
+          {
+            "en": "don't close the loop until the drift stops",
+            "zh": "在飘水彻底消除前不闭环（工单不销）"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-08-27",
     "generatedAt": "2026-08-27T09:41:24+08:00",
     "cycleDay": 2,
@@ -956,80 +1030,6 @@
           {
             "en": "don't over-provision",
             "zh": "不要过度配置（过度上架）"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-08-13",
-    "generatedAt": "2026-08-13T09:20:35+08:00",
-    "cycleDay": 4,
-    "difficulty": "精通 Proficient",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "运维沟通 · 电价高峰协调制冷降载与工作负载迁移",
-        "subtitle": "精通 Proficient",
-        "content": "**情境：** 电价高峰时段，小白协调云/业务侧做制冷降载 + 工作负载迁移，平衡 PUE、rack 进风与 latency，保留 fail back。\n\n**对话：**\n- 小白: During the peak tariff window this afternoon, I want to shed some cooling load on the secondary plant and migrate the non-critical workloads off the warm aisle racks. Before we touch anything, confirm rack inlet stays within SLA and latency doesn't breach.\n- 云同事: The non-critical batch jobs can move to the secondary AZ in about 20 minutes. But the hot aisle on R10–R14 runs tight already; if we drop chiller staging, rack inlet could creep up. Do you have fail back ready?\n- 小白: Yes — I'll keep one chiller in hot standby and hold the CRAH fans at minimum before we shed. We still have cooling capacity headroom on the critical racks; PUE drops about 8% in the window. If inlet temp trends up I fail back instantly and the workloads stay put.\n- 云同事: Understood. I'll freeze the migration if rack inlet crosses threshold, and we keep uptime intact either way. Send me the go/no-go at 14:00.\n\n**重点表达：**\n- `shed some cooling load` — 削减部分制冷负荷\n- `drop chiller staging` — 降低冷水机组级联运行（减载）\n- `fail back instantly if inlet temp trends up` — 进风温度抬头立即切回原工况",
-        "category": "运维沟通",
-        "difficulty": "精通 Proficient",
-        "expressions": [
-          {
-            "en": "shed some cooling load",
-            "zh": "削减部分制冷负荷"
-          },
-          {
-            "en": "drop chiller staging",
-            "zh": "降低冷水机组级联运行（减载）"
-          },
-          {
-            "en": "fail back instantly if inlet temp trends up",
-            "zh": "进风温度抬头立即切回原工况"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "跨团队协作 · 与网络安全/等保团队协调 DCIM 遥测接口合规评审",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境：** 小白与网络安全/等保团队协调 DCIM 遥测接口合规评审，确认实时 rack 进风/latency 数据可读、制冷冗余在线、uptime 不受影响。\n\n**对话：**\n- 小白: Our DCIM team wants to open a telemetry API so the security/compliance guys can pull live rack inlet and latency data for the 等保 audit. I need to make sure it doesn't expose control paths or touch the failover logic.\n- 安全同事: As long as it's read-only and behind the DMZ, fine. But can we get CRAH status and chiller plant redundancy too, so we can prove uptime and cooling capacity are monitored in real time, and PUE stays auditable?\n- 小白: Yes — we'll expose read-only metrics only: rack inlet per row, CRAH runtime, chiller N+1 state, and the hot-cold aisle differential. The control plane stays isolated, so failover and capacity decisions are untouched.\n- 安全同事: Good. That covers the audit. We'll whitelist the source IPs and you keep uptime reporting as-is.\n\n**重点表达：**\n- `open a telemetry API` — 开放遥测接口\n- `behind the DMZ` — 置于隔离区（DMZ）之后\n- `control plane stays isolated` — 控制平面保持隔离（不被暴露）",
-        "category": "跨团队协作",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "open a telemetry API",
-            "zh": "开放遥测接口"
-          },
-          {
-            "en": "behind the DMZ",
-            "zh": "置于隔离区（DMZ）之后"
-          },
-          {
-            "en": "control plane stays isolated",
-            "zh": "控制平面保持隔离（不被暴露）"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "供应商对接 · 与液冷 CDU 供应商谈判批量交付、本地前置备件与延保 SLA",
-        "subtitle": "精通 Proficient",
-        "content": "**情境：** 小白与液冷 CDU 供应商谈判批量交付、关键泵阀备件本地前置、延保 SLA 与现场响应，预留二次侧扩容与 chiller 联动冗余。\n\n**对话：**\n- 小白: We're scaling the liquid-cooling footprint by Q4 — twelve CDUs. I need firm lead times, local pre-staged spares for the pumps and control valves, and an extended warranty with a four-hour on-site SLA.\n- 供应商: We can stage the pump and valve kits at your city hub within two weeks, four-hour response in contract. For warranty, five years parts-and-labor, but the secondary-loop expansion you mentioned needs a capacity study first.\n- 小白: Agreed on spares and SLA. On the secondary-loop expansion — I want the CDUs pre-wired for the extra racks and a documented interface to the chiller plant so failover between liquid and air sides is seamless. Capacity margin must cover the next GPU batch.\n- 供应商: We'll ship with the expansion ports open and hand over the chiller-interlock spec. With the standby CDU, redundant CRAH and a contained hot-cold aisle, your uptime and PUE target hold even during a maintenance swap.\n\n**重点表达：**\n- `local pre-staged spares` — 本地前置备件\n- `four-hour on-site SLA` — 4 小时现场响应 SLA\n- `pre-wired for the extra racks` — 为新增机柜预接线（预留扩容）",
-        "category": "供应商对接",
-        "difficulty": "精通 Proficient",
-        "expressions": [
-          {
-            "en": "local pre-staged spares",
-            "zh": "本地前置备件"
-          },
-          {
-            "en": "four-hour on-site SLA",
-            "zh": "4 小时现场响应 SLA"
-          },
-          {
-            "en": "pre-wired for the extra racks",
-            "zh": "为新增机柜预接线（预留扩容）"
           }
         ]
       }
