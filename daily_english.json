@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-08-29",
+    "generatedAt": "2026-08-29T09:36:38+08:00",
+    "cycleDay": 4,
+    "difficulty": "精通 Proficient",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "运维沟通 · 低谷时段验证 BMS 新群控策略（chiller sequencing + CRAH 送风重置）压降 PUE，保留 fail back",
+        "subtitle": "精通 Proficient",
+        "category": "运维沟通",
+        "difficulty": "精通 Proficient",
+        "expressions": [
+          {
+            "en": "shave PUE without letting rack inlet drift past the redline",
+            "zh": "在不让机柜进风突破红线（上限）的前提下压降 PUE"
+          },
+          {
+            "en": "keep failover armed and keep the manual override",
+            "zh": "保持 failover 待命并保留手动 override（干预）权限"
+          },
+          {
+            "en": "fail back to the current strategy instantly",
+            "zh": "立即回退到当前策略（fail back）"
+          }
+        ],
+        "content": "- **情境**：与 NOC 协调在用电低谷对冷源群控做 A/B 验证，对比新 setpoint 与现策略下的 PUE / rack 进风 / latency 漂移；保留手动 fail back 与 override，守 uptime，能量优化排在第二位。\n- **A（你·暖通）**：We want to trial a new chiller-sequencing and CRAH supply-air reset strategy during the low-load window tonight. Goal is to shave PUE without letting rack inlet drift past the redline.\n- **B（NOC/监控）**：Understood. I'll keep a trend on PUE, rack inlet and latency side by side. But we hold failover armed and keep the manual override in case the new setpoint misbehaves.\n- **A（你·暖通）**：Right. If rack inlet climbs or latency spikes, we fail back to the current strategy instantly — no waiting for the scheduler. Protect uptime first, tune energy second.\n- **B（NOC/监控）**：Agreed. I'll log the A/B window, snapshot the baseline, and only commit the change if capacity headroom and hot-cold aisle containment hold through the test.\n- **重点表达**：\n  - `shave PUE without letting rack inlet drift past the redline` — 在不让机柜进风突破红线（上限）的前提下压降 PUE\n  - `keep failover armed and keep the manual override` — 保持 failover 待命并保留手动 override（干预）权限\n  - `fail back to the current strategy instantly` — 立即回退到当前策略（fail back）"
+      },
+      {
+        "id": "en-2",
+        "title": "跨团队协作 · 与 IT / SRE 团队协调热点 rack 负载迁移，复核冷通道余量与 failover 接管",
+        "subtitle": "进阶 Intermediate",
+        "category": "跨团队协作",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "the heatmap shows R15 is running hot",
+            "zh": "热力图显示 R15 偏热（存在热点）"
+          },
+          {
+            "en": "free up cooling headroom",
+            "zh": "释放（腾出）制冷余量"
+          },
+          {
+            "en": "a contained hot-cold aisle",
+            "zh": "封闭（隔离）的冷热通道"
+          }
+        ],
+        "content": "- **情境**：与 IT / SRE 团队发现某高密度 rack 进风偏高、存在热点；协调把部分负载迁移到冷通道余量区，确认 CRAH 制冷 headroom 与冗余接管、保 uptime，迁移后交接新的负载分布图。\n- **A（你·暖通）**：The heatmap shows R15 is running hot — rack inlet is two degrees above the rest of the row. Can we migrate some load off it to free up cooling headroom?\n- **B（IT/SRE）**：We can move the bursty workloads to R22, which still has CRAH margin and a contained hot-cold aisle. Latency to users stays flat during the move.\n- **A（你·暖通）**：Good. Keep the redundant CRAH online so if one unit trips we don't lose cooling. I'll watch rack inlet and capacity while you shift the load.\n- **B（IT/SRE）**：On it. After the migration I'll confirm inlet temps normalize and hand it back to you with the new load map for the handover.\n- **重点表达**：\n  - `the heatmap shows R15 is running hot` — 热力图显示 R15 偏热（存在热点）\n  - `free up cooling headroom` — 释放（腾出）制冷余量\n  - `a contained hot-cold aisle` — 封闭（隔离）的冷热通道"
+      },
+      {
+        "id": "en-3",
+        "title": "供应商对接 · 与冷源联合运维服务商谈判节能绩效合同（EMC），按 PUE 降幅分成并预留液冷 CDU 联动",
+        "subtitle": "精通 Proficient",
+        "category": "供应商对接",
+        "difficulty": "精通 Proficient",
+        "expressions": [
+          {
+            "en": "payment ties to measured PUE reduction",
+            "zh": "付款与实测 PUE 降幅挂钩（按效果付费）"
+          },
+          {
+            "en": "pre-stage critical spares locally",
+            "zh": "在本地前置（预置）关键备件"
+          },
+          {
+            "en": "keep uptime as the non-negotiable",
+            "zh": "把 uptime（可用性）作为不可妥协的底线"
+          }
+        ],
+        "content": "- **情境**：与冷水机组 + 冷却塔联合运维（OM）服务商谈判合同能源管理 / 节能绩效保证——按实测 PUE 降幅分享收益、季度 chiller 性能再验证、本地前置关键备件 SLA，确保 failover 无单点、预留液冷 CDU 扩容联动、守 uptime。\n- **A（你·暖通）**：We're looking at an energy-performance contract for the chiller and cooling-tower plant. Payment ties to measured PUE reduction, with quarterly chiller performance re-verification.\n- **B（供应商）**：We can guarantee a PUE drop against the baseline and pre-stage critical spares locally so failover never has a single point of failure. We'd also re-baseline after each free-cooling season.\n- **A（你·暖通）**：Good. But the contract must leave capacity headroom for the upcoming liquid-cooling CDU expansion — your chiller sequencing has to stay in lockstep with the CDU loops.\n- **B（供应商）**：Agreed. We'll write the CDU interlock into the SLA and keep uptime as the non-negotiable. If a unit degrades, we fail over and you don't lose cooling capacity.\n- **重点表达**：\n  - `payment ties to measured PUE reduction` — 付款与实测 PUE 降幅挂钩（按效果付费）\n  - `pre-stage critical spares locally` — 在本地前置（预置）关键备件\n  - `keep uptime as the non-negotiable` — 把 uptime（可用性）作为不可妥协的底线"
+      }
+    ]
+  },
+  {
     "date": "2026-08-28",
     "generatedAt": "2026-08-28T09:34:10+08:00",
     "cycleDay": 3,
@@ -956,80 +1030,6 @@
           {
             "en": "keep failover armed",
             "zh": "保持故障切换待命（冷源冗余在线）"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-08-14",
-    "generatedAt": "2026-08-14T09:24:19+08:00",
-    "cycleDay": 1,
-    "difficulty": "基础 Basic",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "日常工作 · 晨间巡检发现冷通道地板送风口被遮挡，开整改工单并交班",
-        "subtitle": "基础 Basic",
-        "content": "**情境：** 小白晨间巡检 C 区，热成像发现 R18 排 rack 进风温度偏高，排查定位为冷通道一块地板送风口被临时线缆桥架压住、出风受阻；开整改工单清理并交班提醒巡检，守住 uptime。\n\n**对话：**\n- 小白: Morning patrol in Zone C — I found R18's rack inlet temp running about 4°C above setpoint. The thermal image shows weak cold-air supply along that row.\n- 同事: Did you check the raised-floor perforated tiles? Last week someone routed a temporary cable tray right over the cold aisle.\n- 小白: Exactly — one supply tile is blocked by the tray. I'll raise a work order to clear it and reset the CRAH supply fan to normal. Handover note: keep an eye on R18 inlet until the fix lands.\n- 同事: Got it. I'll add it to the shift handover and verify the rack inlet drops after the tile is cleared. Uptime stays green.\n\n**重点表达：**\n- `morning patrol` — 晨间巡检\n- `raise a work order` — 开一张整改/维修工单\n- `shift handover` — 班次交接（交班）",
-        "category": "日常工作",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "morning patrol",
-            "zh": "晨间巡检"
-          },
-          {
-            "en": "raise a work order",
-            "zh": "开一张整改/维修工单"
-          },
-          {
-            "en": "shift handover",
-            "zh": "班次交接（交班）"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "故障排查 · 冷却塔填料结垢致逼近温度升高、chiller 制冷量下降，核实 failover 并牵头 RCA",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境：** 白班监控发现 A 区 rack 进风温度周期性抬升、业务 latency 出现毛刺；小白 RCA 定位为冷却塔填料结垢、approach 温度升高致 chiller 制冷量下降。他核实备用冷源 failover 是否生效、制冷 capacity 余量，并牵头写 RCA，保持故障切换待命。\n\n**对话：**\n- 小白: A-zone rack inlet is creeping up on a regular cycle and we're seeing latency spikes on the east cluster. Chiller supply temp is drifting — I suspect the cooling towers, not the chillers themselves.\n- 同事: Confirmed — tower approach is 6°C above design. The fill's fouled, so the towers can't reject heat and chiller capacity is effectively down.\n- 小白: Is the standby tower staged and failover active? I want redundancy solid before we take a tower offline for cleaning.\n- 同事: Standby's up, N+1 holds. CRAH fans are still holding the hot-cold aisle differential. Let's open the RCA: fouled fill → high approach → reduced chiller capacity → rack inlet rise → latency.\n- 小白: Agreed. I'll own the RCA and schedule an off-peak clean. Until then, watch capacity margin and keep failover armed.\n\n**重点表达：**\n- `tower approach is above design` — 冷却塔逼近温度高于设计值\n- `open the RCA` — 启动根因分析（RCA）\n- `keep failover armed` — 保持故障切换待命（在线冗余）",
-        "category": "故障排查",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "tower approach is above design",
-            "zh": "冷却塔逼近温度高于设计值"
-          },
-          {
-            "en": "open the RCA",
-            "zh": "启动根因分析（RCA）"
-          },
-          {
-            "en": "keep failover armed",
-            "zh": "保持故障切换待命（在线冗余）"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "容量规划 · 评估 R60–R63 新机柜上架，对比电力/制冷双上限并预留 headroom",
-        "subtitle": "基础 Basic",
-        "content": "**情境：** 小白规划下季度 R60–R63 新一批机柜上架：核算单 rack 电力预算与整列 CRAH 制冷 capacity，对比哪一侧先触瓶颈，确认封闭 hot-cold aisle、PUE 余量并预留 headroom 防 over-provision，守住 uptime。\n\n**对话：**\n- 小白: We're adding racks R60 through R63 next quarter. Before we commit the layout, I need to know whether power or cooling hits the ceiling first.\n- 同事: Per rack, the power budget is 12 kW; the row's CRAH can cover about 11 kW each after we keep headroom. So cooling is the tighter limit, not power.\n- 小白: Then let's cap each rack at 10 kW, keep the hot-cold aisle contained, and reserve headroom so we don't over-provision. What's the PUE impact?\n- 同事: With the margin, PUE stays in band and uptime's protected. We'll flag R63 as the expansion slot if capacity runs out later.\n\n**重点表达：**\n- `hit the ceiling first` — 先到上限（先触瓶颈）\n- `keep headroom` — 预留余量（容量裕度）\n- `don't over-provision` — 不要过度配置（过度上架）",
-        "category": "容量规划",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "hit the ceiling first",
-            "zh": "先到上限（先触瓶颈）"
-          },
-          {
-            "en": "keep headroom",
-            "zh": "预留余量（容量裕度）"
-          },
-          {
-            "en": "don't over-provision",
-            "zh": "不要过度配置（过度上架）"
           }
         ]
       }
