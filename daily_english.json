@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-08-31",
+    "generatedAt": "2026-08-31T09:33:51+08:00",
+    "cycleDay": 2,
+    "difficulty": "进阶 Intermediate",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "供应商对接 · 液冷 QD/分集水器供应商核对接口与交期",
+        "subtitle": "进阶 Intermediate",
+        "content": "- **情境**：嘉善 D03 液冷模组建设，与液冷二次侧快速接头（QD）及分集水器供应商核对接口标准、泄漏检测、交期与现场质保，确保 CDU 联调前关键件到场。\n- **对话**：\n  - A：For the Jiashan D03 liquid-cooling build, we need to lock down the secondary-loop specs before CDU commissioning. Are the quick-disconnect couplers and manifold sized to our CDU flow?\n  - B：Yes — the QD couplers are rated to 32 L/min each with dry-break leak detection, and the manifold matches the CDU headers. We'll stage the critical spares locally and cut lead time to two weeks.\n  - A：Good. What about warranty and on-site response if a fitting weeps during the pressure test?\n  - B：Parts-and-labor warranty covers 24 months, and we keep an engineer on call through the commissioning window to protect uptime.\n- **重点表达**：\n  - `lock down the specs` — 敲定 / 锁定规格\n  - `dry-break leak detection` — 干断式防漏检测（快接不滴漏）\n  - `stage the critical spares locally` — 在本地前置关键备件\n",
+        "category": "供应商对接",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "lock down the specs",
+            "zh": "敲定 / 锁定规格"
+          },
+          {
+            "en": "dry-break leak detection",
+            "zh": "干断式防漏检测（快接不滴漏）"
+          },
+          {
+            "en": "stage the critical spares locally",
+            "zh": "在本地前置关键备件"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "跨团队协作 · 电气团队变压器/低压柜预防性试验",
+        "subtitle": "基础 Basic",
+        "content": "- **情境**：与电气团队协调年度变压器 / 低压柜预防性试验与继保校验，确认维护窗口内双路供电连续、CRAH 冗余在线、保 uptime。\n- **对话**：\n  - A：Morning. We're scheduling the annual transformer and LV switchgear preventive test. Can you keep both feeds live while you test one side?\n  - B：Yes. We'll transfer the load to the redundant feed and bypass the section under test, so rack power stays continuous.\n  - A：Perfect. And make sure the redundant CRAH stays online so the cold aisle doesn't warm up.\n  - B：Already in the plan — CRAH redundancy is online and we'll watch rack inlet during the window to protect uptime.\n- **重点表达**：\n  - `transfer the load to the redundant feed` — 把负载转移到冗余回路\n  - `bypass the section under test` — 旁路被测试的那一段\n  - `keep the redundant CRAH online` — 保持冗余 CRAH 在线\n",
+        "category": "跨团队协作",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "transfer the load to the redundant feed",
+            "zh": "把负载转移到冗余回路"
+          },
+          {
+            "en": "bypass the section under test",
+            "zh": "旁路被测试的那一段"
+          },
+          {
+            "en": "keep the redundant CRAH online",
+            "zh": "保持冗余 CRAH 在线"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "运维沟通 · 一次侧冷冻水管网年度物理清洗变更窗口",
+        "subtitle": "进阶 Intermediate",
+        "content": "- **情境**：冷冻站一次侧冷冻水主管年度物理清洗（除垢 / 排气）变更窗口，协调隔离管段、投运备用泵，平衡 rack 进风与 latency，预设 chiller failover 与回退。\n- **对话**：\n  - A：The primary chilled-water loop needs its annual physical flush. I want to isolate section B and run the standby pump during the change window.\n  - B：Agreed. We'll stage the standby pump and keep failover armed so a rack-inlet spike trips the redundant chiller, not the whole plant.\n  - A：Right. Watch latency on the compute cluster and roll back the loop if inlet temp drifts past setpoint.\n  - B：Understood — we'll hold PUE and rack inlet in band, and roll back before any capacity margin is eaten.\n- **重点表达**：\n  - `isolate section B` — 隔离 B 管段\n  - `keep failover armed` — 保持故障切换待命\n  - `roll back the loop` — 回退（恢复）该环路\n",
+        "category": "运维沟通",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "isolate section B",
+            "zh": "隔离 B 管段"
+          },
+          {
+            "en": "keep failover armed",
+            "zh": "保持故障切换待命"
+          },
+          {
+            "en": "roll back the loop",
+            "zh": "回退（恢复）该环路"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-08-30",
     "generatedAt": "2026-08-30T09:33:55+08:00",
     "cycleDay": 1,
@@ -956,80 +1030,6 @@
           {
             "en": "leave headroom so we won't over-provision",
             "zh": "预留余量以免过度配置"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-08-16",
-    "generatedAt": "2026-08-16T09:20:36+08:00",
-    "cycleDay": 3,
-    "difficulty": "高级 Advanced",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "故障排查 · BMS 误关阀致 CRAH 断冷 RCA",
-        "subtitle": "高级 Advanced",
-        "content": "- **情境**：B 区热通道温度快速抬升、业务 latency 出现毛刺，定位为 BMS 逻辑误动关闭一次侧冷冻水电动阀导致 CRAH 断冷，牵头做 RCA 并确认备用冷源 failover 链路完整。\n- **对话**：\n  - A: We just saw the B-zone hot aisle creep past 32°C and latency spiked on the compute cluster. What triggered it?\n  - B: RCA shows a BMS logic glitch shut the primary chilled-water motorized valve — CRAHs went cold-dark for four minutes before we caught it.\n  - A: Did the standby chiller and the thermal buffer pick up the load?\n  - B: Yes. Failover to the standby plant and the ice-storage buffer held rack inlet within tolerance; capacity headroom kept the hot-cold aisle contained.\n  - A: Good. Let's add an interlock so a single valve command can't isolate a whole row, and close the RCA with the controls team.\n- **重点表达**：\n  - `a logic glitch shut the valve` — 逻辑故障关闭了阀门（描述控制系统误动）\n  - `fail over to the standby plant` — 切换到备用冷源\n  - `close the RCA with the controls team` — 与控制团队完成根因分析闭环\n",
-        "category": "故障排查",
-        "difficulty": "高级 Advanced",
-        "expressions": [
-          {
-            "en": "a logic glitch shut the valve",
-            "zh": "逻辑故障关闭了阀门（描述控制系统误动）"
-          },
-          {
-            "en": "fail over to the standby plant",
-            "zh": "切换到备用冷源"
-          },
-          {
-            "en": "close the RCA with the controls team",
-            "zh": "与控制团队完成根因分析闭环"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "容量规划 · R44–R46 网络机柜上架核算",
-        "subtitle": "基础 Basic",
-        "content": "- **情境**：为新一批 42U 网络接入机柜 R44–R46 上架核算，对比列头柜剩余电力容量与 CRAH 制冷余量，确认封闭通道与 PUE 余量并预留 headroom。\n- **对话**：\n  - A: We're about to rack 18 new top-of-rack switches in R44 through R46. Have we checked the power and cooling budget?\n  - B: Yes. The rack PDU still has 22% headroom, and the CRAH on that row can absorb the extra load without breaking the hot-cold aisle.\n  - A: What about PUE — any risk of over-provisioning?\n  - B: No. Even at full load we keep a comfortable PUE margin, so we're safe to proceed.\n  - A: Great. Let's stage them this weekend and keep uptime intact.\n- **重点表达**：\n  - `keep headroom in the rack PDU` — 在机柜 PDU 上保留余量\n  - `absorb the extra load` — 吸收额外负荷\n  - `avoid over-provisioning` — 避免过度配置\n",
-        "category": "容量规划",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "keep headroom in the rack PDU",
-            "zh": "在机柜 PDU 上保留余量"
-          },
-          {
-            "en": "absorb the extra load",
-            "zh": "吸收额外负荷"
-          },
-          {
-            "en": "avoid over-provisioning",
-            "zh": "避免过度配置"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "日常工作 · CRAH 风机轴承异响开单交班",
-        "subtitle": "高级 Advanced",
-        "content": "- **情境**：晨间巡检发现 D 区 CRAH 冷凝风机轴承异响、振动偏高，开 work order 安排更换轴承，并在交班强调 failover 预案与容量裕度。\n- **对话**：\n  - A: Morning patrol flagged CRAH-D3 — condenser fan bearing is noisy and vibration is up. I've raised a work order for a bearing swap.\n  - B: Good catch. Can we keep it running until the night window, or pull it now?\n  - A: It's still within tolerance, so we'll schedule the swap overnight. I've noted the failover plan and capacity margin in the handover.\n  - B: Make sure the standby CRAH is armed and rack inlet stays green — uptime is the priority.\n  - A: Already confirmed. Standby unit is online and holding.\n- **重点表达**：\n  - `morning patrol flagged CRAH-D3` — 晨间巡检标记出 CRAH-D3 异常\n  - `raise a work order for a bearing swap` — 开一张更换轴承的工单\n  - `keep the standby unit armed` — 保持备用机组处于待命状态\n",
-        "category": "日常工作",
-        "difficulty": "高级 Advanced",
-        "expressions": [
-          {
-            "en": "morning patrol flagged CRAH-D3",
-            "zh": "晨间巡检标记出 CRAH-D3 异常"
-          },
-          {
-            "en": "raise a work order for a bearing swap",
-            "zh": "开一张更换轴承的工单"
-          },
-          {
-            "en": "keep the standby unit armed",
-            "zh": "保持备用机组处于待命状态"
           }
         ]
       }
