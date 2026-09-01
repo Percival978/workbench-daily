@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-09-01",
+    "generatedAt": "2026-09-01T09:34:04+08:00",
+    "cycleDay": 3,
+    "difficulty": "高级 Advanced",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "日常工作 · 早班巡检冷站交接",
+        "subtitle": "进阶 Intermediate",
+        "content": "- **情境**：早班巡检嘉善 D02 模组冷站，发现 B 区 CRAH 送风温度偏高，与夜班交接确认夜里有瞬时高温波动。\n- **对话**：\n  - A：Morning patrol on the Jiashan D02 chiller plant — the B-zone CRAHs are throwing supply air about 3°C above setpoint. Anything flagged on your shift?\n  - B：Yeah, we saw a transient swing around 02:00 when the lead chiller tripped to standby. Hot-cold aisle containment held, but the B-zone supply crept up.\n  - A：Got it. I'll log a work order and watch the PUE; if supply stays high through peak load, we escalate to maintenance.\n  - B：Noted. Handover complete — keep an eye on that chiller's restart sequence.\n- **重点表达**：\n  - `morning patrol` — 晨间巡检（定点巡场）\n  - `throw supply air above setpoint` — 送风温度超过设定值\n  - `hot-cold aisle containment held` — 冷热通道封闭起作用 / 兜住了",
+        "category": "日常工作",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "morning patrol",
+            "zh": "晨间巡检（定点巡场）"
+          },
+          {
+            "en": "throw supply air above setpoint",
+            "zh": "送风温度超过设定值"
+          },
+          {
+            "en": "hot-cold aisle containment held",
+            "zh": "冷热通道封闭起作用 / 兜住了"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "故障排查 · 核心机柜区制冷失效 RCA 与 failover",
+        "subtitle": "高级 Advanced",
+        "content": "- **情境**：D01 核心机柜区一台 CRAH 失效导致列间温度上升，触发高温告警，启动根因分析(RCA)并 failover 到冗余制冷回路。\n- **对话**：\n  - A：We've got a high-temp alarm on the D01 core rack row — CRAH-07 just dropped out and rack inlet temps are climbing. Latency on the management link spiked too.\n  - B：Initiate failover to the redundant CRAH loop and isolate CRAH-07. I want a root-cause analysis by end of shift — check the chilled-water valve and the unit's VFD.\n  - A：Failover's holding, inlet temps recovering. The RCA points to a stuck chilled-water control valve, not the chiller plant. Uptime stays protected.\n  - B：Good. Raise the finding in the incident review and confirm the spare valve is staged so we don't lose uptime on the next swing.\n- **重点表达**：\n  - `initiate failover to the redundant loop` — 切换到冗余回路（failover 接管）\n  - `root-cause analysis (RCA)` — 根因分析\n  - `rack inlet temps` — 机柜进风温度",
+        "category": "故障排查",
+        "difficulty": "高级 Advanced",
+        "expressions": [
+          {
+            "en": "initiate failover to the redundant loop",
+            "zh": "切换到冗余回路（failover 接管）"
+          },
+          {
+            "en": "root-cause analysis (RCA)",
+            "zh": "根因分析"
+          },
+          {
+            "en": "rack inlet temps",
+            "zh": "机柜进风温度"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "容量规划 · 新业务上架评估 rack 电力与制冷 capacity",
+        "subtitle": "进阶 Intermediate",
+        "content": "- **情境**：嘉善一期新业务上架，与架构团队评估 rack 电力与制冷 capacity，规划液冷扩容并设定 PUE 目标。\n- **对话**：\n  - A：For the new tenant build-out, we're forecasting 18 kW per rack on the high-density row. Do we have chiller and CRAH capacity to cover it without blowing the PUE target?\n  - B：Current plant has headroom, but the hot-cold aisle needs tighter containment. If we push past 20 kW/rack, we should move those cabinets to the liquid-cooling loop.\n  - A：Agreed. Let's cap air-cooled racks at 15 kW and route the 18 kW loads to CDU-backed racks. That keeps PUE under 1.3 and protects capacity margin.\n  - B：Sounds right. I'll model the capacity and stage the CDU capacity so we don't strand power at the bus.\n- **重点表达**：\n  - `forecast kW per rack` — 预测单机柜功率（kW/rack）\n  - `capacity margin` — 容量余量 / 安全裕度\n  - `strand power at the bus` — 在母线处闲置电力（容量被锁死浪费）",
+        "category": "容量规划",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "forecast kW per rack",
+            "zh": "预测单机柜功率（kW/rack）"
+          },
+          {
+            "en": "capacity margin",
+            "zh": "容量余量 / 安全裕度"
+          },
+          {
+            "en": "strand power at the bus",
+            "zh": "在母线处闲置电力（容量被锁死浪费）"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-08-31",
     "generatedAt": "2026-08-31T09:33:51+08:00",
     "cycleDay": 2,
@@ -956,80 +1030,6 @@
           {
             "en": "roll back the curve",
             "zh": "回退曲线（变更回滚）"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-08-18",
-    "generatedAt": "2026-08-18T09:20:21+08:00",
-    "cycleDay": 1,
-    "difficulty": "基础 Basic",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "日常工作 · 冷通道隔离门卡阻致冷热风短路",
-        "subtitle": "基础 Basic",
-        "content": "- **情境**：晨间巡检发现 A 区冷通道封闭隔离门卡阻常开，冷热风短路，相邻 rack 进风温度偏高，开整改工单并交班。\n- **对话**：\n  - A: Morning patrol shows the cold-aisle containment door in A-zone is stuck open — rack inlet on the adjacent cabinets is creeping past 24°C.\n  - B: Looks like the auto-closing hinge jammed. The cold air is short-circuiting straight into the hot aisle. I'll raise a remediation work order.\n  - A: Good. Note it in the handover and keep an eye on rack inlet until we fix the seal — uptime stays the priority.\n  - B: Will do. The standby CRAH is armed and holding for now.\n- **重点表达**：\n  - `cold-aisle containment door` — 冷通道封闭隔离门\n  - `short-circuit into the hot aisle` — 冷热风短路（冷风直接窜入热通道）\n  - `raise a remediation work order` — 开一张整改工单",
-        "category": "日常工作",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "cold-aisle containment door",
-            "zh": "冷通道封闭隔离门"
-          },
-          {
-            "en": "short-circuit into the hot aisle",
-            "zh": "冷热风短路（冷风直接窜入热通道）"
-          },
-          {
-            "en": "raise a remediation work order",
-            "zh": "开一张整改工单"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "故障排查 · CRAH 风机 VFD 过载跳闸 RCA",
-        "subtitle": "进阶 Intermediate",
-        "content": "- **情境**：末端 CRAH 风机变频器（VFD）过载跳闸、单台离线引发相邻热通道升温，核实冗余 CRAH 接管、业务 latency 可控，RCA 初步指向回风滤网脏堵致风阻升高。\n- **对话**：\n  - A: CRAH-09 tripped on a VFD overcurrent fault and went offline — the neighbor hot aisle is climbing past 30°C and we're seeing latency jitter on the east rack row.\n  - B: The redundant CRAH on that loop picked up the load; rack inlet is back within tolerance. Did latency stay under SLA?\n  - A: Yes, latency held. Preliminary RCA points to a clogged return-air filter raising static pressure until the VFD current tripped.\n  - B: Let's swap the filter, reset the drive, and add filter differential pressure to the alarm set so we catch it earlier next time.\n- **重点表达**：\n  - `tripped on a VFD overcurrent fault` — 因变频器过流故障跳闸\n  - `the redundant CRAH picked up the load` — 冗余 CRAH 接管了负荷\n  - `add filter diff-pressure to the alarm set` — 把滤网压差加入报警清单",
-        "category": "故障排查",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "tripped on a VFD overcurrent fault",
-            "zh": "因变频器过流故障跳闸"
-          },
-          {
-            "en": "the redundant CRAH picked up the load",
-            "zh": "冗余 CRAH 接管了负荷"
-          },
-          {
-            "en": "add filter diff-pressure to the alarm set",
-            "zh": "把滤网压差加入报警清单"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "容量规划 · 微模块新增机柜液冷容量核算",
-        "subtitle": "基础 Basic",
-        "content": "- **情境**：评估微模块内新增 3 台机柜上架，核算 CDU 制冷 capacity 与二次侧流量余量（轻量液冷），确认封闭通道、PUE 余量并预留 headroom 防 over-provision。\n- **对话**：\n  - A: We're adding three racks to the micro-module next month. Have we sized the cooling and power?\n  - B: Yes. The CDU still has about 30% cooling capacity headroom, and the secondary-loop flow margin covers the new racks without bumping PUE.\n  - A: What about containment and spare room for later expansion?\n  - B: Hot-cold aisle is sealed, PUE stays in margin, and we've left headroom so we won't over-provision if we add more later.\n  - A: Perfect. Stage them in the maintenance window and keep uptime intact.\n- **重点表达**：\n  - `cooling capacity headroom` — 制冷容量余量\n  - `secondary-loop flow margin` — 二次侧流量余量\n  - `leave headroom so we won't over-provision` — 预留余量以免过度配置",
-        "category": "容量规划",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "cooling capacity headroom",
-            "zh": "制冷容量余量"
-          },
-          {
-            "en": "secondary-loop flow margin",
-            "zh": "二次侧流量余量"
-          },
-          {
-            "en": "leave headroom so we won't over-provision",
-            "zh": "预留余量以免过度配置"
           }
         ]
       }
