@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-09-02",
+    "generatedAt": "2026-09-02T09:33:43+08:00",
+    "cycleDay": 4,
+    "difficulty": "精通 Proficient",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "供应商对接 · 冷水机组备件参数与交期确认",
+        "subtitle": "基础 Basic",
+        "content": "- **情境**：联系洪福智算中心冷水机组(chiller)原厂供应商，确认一台备用压缩机的参数匹配、交期(lead time)与质保(warranty)条款，保障高峰季机组 uptime。\n- **对话**：\n  - A：Hi, we need a standby compressor for our primary chiller at the Hongfu campus. What's the lead time, and does it carry the same 18-month warranty?\n  - B：Lead time is six weeks. The replacement matches the original spec — same refrigerant and capacity — and yes, the 18-month warranty applies.\n  - A：Good. Please stage it as a spare so our chiller uptime stays protected through the peak cooling season.\n- **重点表达**：\n  - `lead time` — 交货周期 / 交期\n  - `standby compressor` — 备用压缩机\n  - `carry the same warranty` — 享受同等质保",
+        "category": "供应商对接",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "lead time",
+            "zh": "交货周期 / 交期"
+          },
+          {
+            "en": "standby compressor",
+            "zh": "备用压缩机"
+          },
+          {
+            "en": "carry the same warranty",
+            "zh": "享受同等质保"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "跨团队协作 · 高密度 AI 机柜区网络/电气/制冷联合扩容",
+        "subtitle": "精通 Proficient",
+        "content": "- **情境**：与网络、电气、云团队联合评审洪福 D01 高密度 AI 机柜区扩容，协同带宽、馈电容量、制冷 capacity 与 failover，并锁定跨团队变更窗口以保 uptime。\n- **对话**：\n  - A (暖通)：Before we power up the new AI racks on D01, we must confirm the CRAH capacity and hot-cold aisle containment can hold the 25 kW/rack load without spiking rack inlet temps.\n  - B (电气)：Electrical's good — we've staged redundant feeders, but the bus needs a failover test before cutover. Any latency on the BMS link during the switch?\n  - C (网络)：Network's provisioning 400 GbE to the row; we'll schedule the change window with the cloud team off-peak to protect uptime. Latency stays under 2 ms.\n  - A (暖通)：Perfect. Let's lock the change window, run the failover drill, then bring the racks online once PUE modeling clears 1.25. I'll own the chiller and CRAH side.\n- **重点表达**：\n  - `power up the new racks` — 为新机柜上电\n  - `redundant feeders with a failover test` — 带 failover 测试的冗余馈线\n  - `lock the change window` — 锁定变更窗口",
+        "category": "跨团队协作",
+        "difficulty": "精通 Proficient",
+        "expressions": [
+          {
+            "en": "power up the new racks",
+            "zh": "为新机柜上电"
+          },
+          {
+            "en": "redundant feeders with a failover test",
+            "zh": "带 failover 测试的冗余馈线"
+          },
+          {
+            "en": "lock the change window",
+            "zh": "锁定变更窗口"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "运维沟通 · 制冷效率告警处置与 PUE 能效复盘",
+        "subtitle": "进阶 Intermediate",
+        "content": "- **情境**：早间发现制冷机组效率下降触发能效告警，与值班同事沟通变更窗口、PUE 趋势与冷热通道柔性再平衡方案，确保 rack 进风温度与 uptime 受控。\n- **对话**：\n  - A：We've got a PUE creep this morning — the chiller is running longer cycles and one CRAH shows higher supply temp. Any recent change on your watch?\n  - B：No config change, but the cooling-tower fan ramped weirdly at night. I'd suggest a soft rebalance of the hot-cold aisle and a chiller reset during the low-load window.\n  - A：Agreed. Let's schedule the reset off-peak, watch rack inlet temps, and confirm uptime holds. If PUE doesn't recover, we raise it in the energy review.\n- **重点表达**：\n  - `PUE creep` — PUE 缓慢攀升（能效变差）\n  - `soft rebalance of the hot-cold aisle` — 冷热通道柔性再平衡\n  - `off-peak window` — 低谷时段 / 非高峰窗口",
+        "category": "运维沟通",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "PUE creep",
+            "zh": "PUE 缓慢攀升（能效变差）"
+          },
+          {
+            "en": "soft rebalance of the hot-cold aisle",
+            "zh": "冷热通道柔性再平衡"
+          },
+          {
+            "en": "off-peak window",
+            "zh": "低谷时段 / 非高峰窗口"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-09-01",
     "generatedAt": "2026-09-01T09:34:04+08:00",
     "cycleDay": 3,
@@ -956,80 +1030,6 @@
           {
             "en": "hand over the failover plan",
             "zh": "交班时交代故障切换预案"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-08-19",
-    "generatedAt": "2026-08-19T09:20:31+08:00",
-    "cycleDay": 2,
-    "difficulty": "进阶 Intermediate",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "供应商对接 · 与 DCIM/BA 监控平台供应商核对告警接口与交付里程碑",
-        "subtitle": "进阶 Intermediate",
-        "content": "- **情境**：与动环监控（DCIM/BA）软件供应商核对告警接口对接、遥测点位表与现场交付里程碑，确保 rack 进风与 latency 实时可读，守住冷却侧 chiller/CRAH 的 PUE 与 capacity 视图统一。\n- **对话**：\n  - Vendor: We'll expose the rack-inlet and latency telemetry through a REST API by the first milestone — about six weeks out. Will that lead time work for your onboarding plan?\n  - 小白: Six weeks is tight. Can you pre-stage the gateway and share the point list earlier so we can map alarms before cutover?\n  - Vendor: Yes. We'll deliver the point list in two weeks and keep the integration kit on-site; that protects uptime during the switch.\n  - 小白: Good. Please also confirm the chiller and CRAH points are included so we can track PUE and cooling capacity in one view.\n- **重点表达**：\n  - `pre-stage the gateway` — 提前到场部署网关（前置设备/备件）\n  - `point list / telemetry points` — 遥测点位表\n  - `protect uptime during the switch` — 在切换期间保障系统可用性",
-        "category": "供应商对接",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "pre-stage the gateway",
-            "zh": "提前到场部署网关（前置设备/备件）"
-          },
-          {
-            "en": "point list / telemetry points",
-            "zh": "遥测点位表"
-          },
-          {
-            "en": "protect uptime during the switch",
-            "zh": "在切换期间保障系统可用性"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "跨团队协作 · 与电气团队协调柴油发电机黑启动带载演练",
-        "subtitle": "基础 Basic",
-        "content": "- **情境**：与电气团队协作安排柴油发电机组季度黑启动带载演练，验证市电失压时 chiller/CRAH 连续制冷与 rack 供电无缝切换，全程守住 uptime 与 capacity 余量。\n- **对话**：\n  - 电气: We'll black-start the generator and transfer the chiller and CRAH loads to confirm cooling stays online if utility power drops.\n  - 小白: Perfect. Let's keep the rack inlet within tolerance and make sure the redundant CRAH picks up without a hiccup.\n  - 电气: Agreed. We'll stage the test in a low-load window so capacity headroom is comfortable and uptime isn't at risk.\n- **重点表达**：\n  - `black-start the generator` — 发电机黑启动（无外部电源自启）\n  - `transfer the load` — 转移负荷（切换供电回路）\n  - `redundant CRAH picks up` — 冗余 CRAH 接管制冷",
-        "category": "跨团队协作",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "black-start the generator",
-            "zh": "发电机黑启动（无外部电源自启）"
-          },
-          {
-            "en": "transfer the load",
-            "zh": "转移负荷（切换供电回路）"
-          },
-          {
-            "en": "redundant CRAH picks up",
-            "zh": "冗余 CRAH 接管制冷"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "运维沟通 · 冷冻水泵 VFD 改造后出水漂移，变更窗口重置曲线",
-        "subtitle": "进阶 Intermediate",
-        "content": "- **情境**：冷冻水泵变频改造后扬程曲线偏移致多次 CRAH 出水温度漂移，讨论变更窗口内重置 VFD 曲线并评估对 rack 进风/latency 影响，预设 failover 保护。\n- **对话**：\n  - NOC: After the pump VFD retrofit, several CRAH supply temps drifted and we saw latency spikes on the compute racks. What's the plan?\n  - 小白: We'll re-tune the VFD curve in a change window and hold chiller setpoint steady, keeping failover armed so a standby CRAH covers any dip.\n  - NOC: Make sure rack inlet stays in the green band and PUE doesn't take a hit — keep me posted on capacity margin.\n  - 小白: Will do. We'll watch the hot-cold aisle delta and roll back the curve if inlet temp trends up.\n- **重点表达**：\n  - `re-tune the VFD curve` — 重新整定变频器（扬程）曲线\n  - `keep failover armed` — 保持故障切换待命/就绪\n  - `roll back the curve` — 回退曲线（变更回滚）",
-        "category": "运维沟通",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "re-tune the VFD curve",
-            "zh": "重新整定变频器（扬程）曲线"
-          },
-          {
-            "en": "keep failover armed",
-            "zh": "保持故障切换待命/就绪"
-          },
-          {
-            "en": "roll back the curve",
-            "zh": "回退曲线（变更回滚）"
           }
         ]
       }
