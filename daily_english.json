@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-09-03",
+    "generatedAt": "2026-09-03T09:33:43+08:00",
+    "cycleDay": 1,
+    "difficulty": "基础 Basic",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "日常工作 · 晨间巡检发现 CRAH 过滤网脏堵致送风量下降",
+        "subtitle": "基础 Basic",
+        "content": "- **情境**：晨间巡检发现 D 区 CRAH-D4 回风过滤网压差偏高、送风量下降约 12%，局部 rack 进风有抬升趋势；开 work order 在低谷窗口更换并在 handover 提示保持冗余机组在线、守 uptime。\n- **对话**：\n  - A：Morning patrol shows CRAH-D4 filter differential pressure is high — supply airflow is down about 12%. Should I raise a work order?\n  - B：Yes. Log it and replace the filter during the low-load window. Keep the redundant CRAH online so we don't lose cooling capacity or uptime.\n  - A：Got it. I'll note it in the handover and watch the rack inlet until the swap is done.\n- **重点表达**：\n  - `morning patrol` — 晨间巡检\n  - `filter differential pressure` — 过滤网压差（脏堵指示）\n  - `keep the redundant CRAH online` — 保持冗余 CRAH 在线",
+        "category": "日常工作",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "morning patrol",
+            "zh": "晨间巡检"
+          },
+          {
+            "en": "filter differential pressure",
+            "zh": "过滤网压差（脏堵指示）"
+          },
+          {
+            "en": "keep the redundant CRAH online",
+            "zh": "保持冗余 CRAH 在线"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "故障排查 · 主 chiller 高压跳机，failover 接管并启动 RCA",
+        "subtitle": "进阶 Intermediate",
+        "content": "- **情境**：主 chiller 因高压跳机退出，备用机组经 failover 接管、capacity 守住、业务侧 latency 未受影响；启动 RCA 排查高压根因（冷凝器脏堵/冷却塔阀卡），并复核蓄冷罐冗余链路与 PUE 余量。\n- **对话**：\n  - A：Primary chiller tripped on high-head-pressure and dropped out. Did the standby pick up the load through failover?\n  - B：Yes — failover kicked in within seconds and capacity held; the rack inlet stayed in band and we saw no latency spike on the compute side.\n  - A：Good. Let me run the RCA: I suspect condenser fouling or a stuck cooling-tower valve. I'll pull the trend and confirm the cold-storage buffer is armed.\n  - B：Keep failover armed and hold PUE in margin while we service the unit. Close the loop only after the root cause is cleared.\n- **重点表达**：\n  - `high-head-pressure trip` — 高压跳机（冷水机组高压保护动作）\n  - `failover kicked in` — failover 自动投入 / 接管\n  - `run the RCA` — 开展根因分析（Root Cause Analysis）",
+        "category": "故障排查",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "high-head-pressure trip",
+            "zh": "高压跳机（冷水机组高压保护动作）"
+          },
+          {
+            "en": "failover kicked in",
+            "zh": "failover 自动投入 / 接管"
+          },
+          {
+            "en": "run the RCA",
+            "zh": "开展根因分析（Root Cause Analysis）"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "容量规划 · 新一批高密度 AI 机柜上架评估 rack 电力与制冷容量",
+        "subtitle": "基础 Basic",
+        "content": "- **情境**：评估下月 R60–R63 高密度 AI 机柜上架（约 20 kW/rack），与规划团队交叉核对双路 PDU 电力预算与 CRAH 制冷 capacity、封闭 hot-cold aisle，核算 PUE 与 headroom，并考虑液冷 CDU 扩容。\n- **对话**：\n  - A：The new AI racks land at R60 through R63 next month, about 20 kW each. Do we have rack power and cooling capacity for them?\n  - B：Dual-feed PDUs have headroom, and the CRAH envelope is fine if we keep the hot-cold aisle contained. But at 20 kW we should think about liquid cooling.\n  - A：Agreed. Let's cap the air-cooled load and route the hottest racks to the CDU loop so PUE stays under 1.3 and uptime is safe.\n- **重点表达**：\n  - `cooling capacity envelope` — 制冷能力包络（制冷上限）\n  - `hot-cold aisle containment` — 冷热通道封闭隔离\n  - `route to the CDU loop` — 改走液冷 CDU 回路（二次侧）",
+        "category": "容量规划",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "cooling capacity envelope",
+            "zh": "制冷能力包络（制冷上限）"
+          },
+          {
+            "en": "hot-cold aisle containment",
+            "zh": "冷热通道封闭隔离"
+          },
+          {
+            "en": "route to the CDU loop",
+            "zh": "改走液冷 CDU 回路（二次侧）"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-09-02",
     "generatedAt": "2026-09-02T09:33:43+08:00",
     "cycleDay": 4,
@@ -956,80 +1030,6 @@
           {
             "en": "pre-staged spares + on-site SLA",
             "zh": "本地前置备件 + 现场服务等级协议"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-08-20",
-    "generatedAt": "2026-08-20T09:38:46+08:00",
-    "cycleDay": 3,
-    "difficulty": "高级 Advanced",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "故障排查 · 自然冷却板换旁通阀内漏，chiller 负载虚高引发 rack 进风抬升",
-        "subtitle": "高级 Advanced",
-        "content": "- **情境**：自然冷却板换旁通阀内漏致冷冻水旁路、chiller 负载虚高、rack 进风抬升 + latency 毛刺；RCA 定位旁通阀密封失效 + BMS 关阀指令未生效，确认备用 chiller + 蓄冷罐 failover 链路完整。\n- **对话**：\n  - NOC: We're seeing rack-inlet creep and latency spikes on the east cluster, and the chiller is running hotter than the load justifies. Any idea what's driving it?\n  - 小白: Looks like the free-cooling plate HX bypass valve is leaking — chilled water is short-circuiting around the coil, so the chiller carries phantom load. I'm running an RCA now.\n  - 小白: Root cause: the bypass seal failed and the BMS close command never took effect. We've confirmed the standby chiller plus the cold-storage tank failover chain is intact, so capacity headroom holds.\n  - NOC: Good. Keep the redundant chiller armed and watch the hot-cold aisle delta until maintenance swaps the valve.\n- **重点表达**：\n  - `free-cooling plate HX bypass valve` — 自然冷却板换旁通阀（节能/防冻旁通）\n  - `short-circuit around the coil` — 冷冻水绕过盘管短路（旁路）\n  - `standby chiller + cold-storage tank failover chain` — 备用冷水机组 + 蓄冷罐故障切换链路",
-        "category": "故障排查",
-        "difficulty": "高级 Advanced",
-        "expressions": [
-          {
-            "en": "free-cooling plate HX bypass valve",
-            "zh": "自然冷却板换旁通阀（节能/防冻旁通）"
-          },
-          {
-            "en": "short-circuit around the coil",
-            "zh": "冷冻水绕过盘管短路（旁路）"
-          },
-          {
-            "en": "standby chiller + cold-storage tank failover chain",
-            "zh": "备用冷水机组 + 蓄冷罐故障切换链路"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "容量规划 · 微模块新增 2 台高密推理机柜，双上限核算上架容量",
-        "subtitle": "基础 Basic",
-        "content": "- **情境**：微模块新增 2 台高密推理机柜上架 R55–R56，核算双路 PDU 电力余量与 CRAH 制冷 capacity 双上限，确认封闭 hot-cold aisle、PUE 余量与预留 headroom 防 over-provision、守住 uptime。\n- **对话**：\n  - 规划: We want to land two high-density inference racks at R55 and R56 next month. Can the row support them without breaching our limits?\n  - 小白: Let's check both caps: the dual-feed PDU power budget and the CRAH cooling capacity. As long as we keep the hot-cold aisle contained, we stay inside the envelope.\n  - 规划: What about efficiency and headroom?\n  - 小白: PUE has margin, and I'll reserve headroom so we don't over-provision. Uptime stays protected while we stage the rollout.\n- **重点表达**：\n  - `dual-feed PDU power budget` — 双路供电 PDU 电力预算\n  - `cooling capacity envelope` — 制冷能力包络（电力/制冷双上限）\n  - `reserve headroom / avoid over-provision` — 预留余量 / 避免过度配置",
-        "category": "容量规划",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "dual-feed PDU power budget",
-            "zh": "双路供电 PDU 电力预算"
-          },
-          {
-            "en": "cooling capacity envelope",
-            "zh": "制冷能力包络（电力/制冷双上限）"
-          },
-          {
-            "en": "reserve headroom / avoid over-provision",
-            "zh": "预留余量 / 避免过度配置"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "日常工作 · 夜班消警未闭环，晨间复核趋势并交班 RCA 初判",
-        "subtitle": "高级 Advanced",
-        "content": "- **情境**：夜班 NOC 处置 CRAH-C2 高压报警复位但工单未闭环、根因未清；晨间巡检复核 BMS 趋势曲线、补录 RCA 初判，并在 handover 交代 failover 预案与制冷容量裕度、强调 uptime 闭环。\n- **对话**：\n  - 小白: Night shift cleared the CRAH-C2 high-pressure alarm and reset it, but the work order is still open with no root cause logged. I'm reviewing the BMS trend now.\n  - NOC: What did the curve show?\n  - 小白: Condenser approach climbed before the trip — likely fouling. I've noted the RCA lead in the ticket and will hand over the failover plan and cooling capacity margin so the day crew closes the loop.\n  - NOC: Appreciated. Keep uptime protected and make sure the standby unit stays armed.\n- **重点表达**：\n  - `clear the alarm and reset it` — 消警并复位（处置报警）\n  - `close the loop on the work order` — 闭环工单（完整处置并归档）\n  - `hand over the failover plan` — 交班时交代故障切换预案",
-        "category": "日常工作",
-        "difficulty": "高级 Advanced",
-        "expressions": [
-          {
-            "en": "clear the alarm and reset it",
-            "zh": "消警并复位（处置报警）"
-          },
-          {
-            "en": "close the loop on the work order",
-            "zh": "闭环工单（完整处置并归档）"
-          },
-          {
-            "en": "hand over the failover plan",
-            "zh": "交班时交代故障切换预案"
           }
         ]
       }
