@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-09-04",
+    "generatedAt": "2026-09-04T09:35:54+08:00",
+    "cycleDay": 2,
+    "difficulty": "进阶 Intermediate",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "运维沟通 · 周会复盘 PUE 偏高",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：周三晨会，运维负责人指出本周 PUE 从 1.45 升到 1.52，请暖通侧排查制冷端原因。\n\n**对话**：\n- Ops Lead: Our PUE crept up to 1.52 this week. Have you checked the chiller staging?\n- 小白 (HVAC): Yes. The CRAH units near the hot aisle are short-cycling, and the cold aisle containment has a gap on rack row B.\n- Ops Lead: Let's reseal the containment and shift load to the free-cooling chiller during off-peak hours.\n- 小白 (HVAC): Agreed. I'll monitor uptime and re-baseline PUE tomorrow morning.\n\n**重点表达**：\n- `creep up to` — 缓慢攀升至（指指标逐渐变差）\n- `short-cycling` — 短循环——设备频繁启停，效率低且伤设备\n- `re-baseline PUE` — 重新标定 PUE 基线，便于对比优化效果",
+        "category": "运维沟通",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "creep up to",
+            "zh": "缓慢攀升至（指指标逐渐变差）"
+          },
+          {
+            "en": "short-cycling",
+            "zh": "短循环——设备频繁启停，效率低且伤设备"
+          },
+          {
+            "en": "re-baseline PUE",
+            "zh": "重新标定 PUE 基线，便于对比优化效果"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "跨团队协作 · 高密交换机上架的制冷余量评估",
+        "subtitle": "高级 Advanced",
+        "content": "**情境**：网络团队计划周一在 C 排机柜新增 40G 交换机，单机柜功耗约 +3 kW，需确认制冷与电力能否支撑。\n\n**对话**：\n- NetEng: We're adding 40G switches to rack row C next Monday — power draw jumps about 3 kW per cabinet. Can your cooling handle the extra heat load?\n- 小白 (HVAC): The CRAHs there now run at 70% capacity. With that added load, supply-air temperature will rise unless we rebalance the hot-cold aisle.\n- NetEng: What's our failover margin if a CRAH trips during the cutover?\n- 小白 (HVAC): We keep N+1 redundancy; failover holds uptime, but latency on the management link spikes if we don't pre-cool the row first.\n- NetEng: Let's schedule the install in a low-traffic window and pre-cool the row two hours ahead.\n\n**重点表达**：\n- `power draw jumps ~3 kW per cabinet` — 单机柜功耗跃升约 3 kW\n- `rebalance the hot-cold aisle` — 重新平衡冷热通道气流\n- `low-traffic window` — 低业务流量窗口期（适合割接）",
+        "category": "跨团队协作",
+        "difficulty": "高级 Advanced",
+        "expressions": [
+          {
+            "en": "power draw jumps ~3 kW per cabinet",
+            "zh": "单机柜功耗跃升约 3 kW"
+          },
+          {
+            "en": "rebalance the hot-cold aisle",
+            "zh": "重新平衡冷热通道气流"
+          },
+          {
+            "en": "low-traffic window",
+            "zh": "低业务流量窗口期（适合割接）"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "供应商对接 · 冷水机组备件交期与延保谈判",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：冷水机组压缩机需更换，向原厂供应商确认交期、本地备货与延长质保方案。\n\n**对话**：\n- Vendor: The replacement compressor ships in 6 weeks; lead time is tight because demand is high this quarter.\n- 小白 (HVAC): Six weeks is too long — our chiller redundancy drops to N without the spare. Can you stage a unit at the local depot?\n- Vendor: We can provide a loaner and extend the warranty to 3 years if you sign the service contract.\n- 小白 (HVAC): Acceptable. Please confirm the capacity rating and a failover test in the written quote.\n\n**重点表达**：\n- `lead time is tight` — 交期紧张\n- `redundancy drops to N` — 冗余降为 N（无热备用，风险升高）\n- `extend the warranty to 3 years` — 将质保延长至 3 年",
+        "category": "供应商对接",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "lead time is tight",
+            "zh": "交期紧张"
+          },
+          {
+            "en": "redundancy drops to N",
+            "zh": "冗余降为 N（无热备用，风险升高）"
+          },
+          {
+            "en": "extend the warranty to 3 years",
+            "zh": "将质保延长至 3 年"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-09-03",
     "generatedAt": "2026-09-03T09:33:43+08:00",
     "cycleDay": 1,
@@ -956,80 +1030,6 @@
           {
             "en": "don't over-provision the row",
             "zh": "别把这一排机架塞太满（避免过度配置）"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-08-21",
-    "generatedAt": "2026-08-21T09:34:11+08:00",
-    "cycleDay": 4,
-    "difficulty": "精通 Proficient",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "运维沟通 · 年度 SLO 评审后协调冷源群控升级，动态设 setpoint 保留 fail back",
-        "subtitle": "精通 Proficient",
-        "content": "- **情境**：年度可用性 SLO 评审后，协调冷源群控策略升级，结合 AI 训练负载峰谷动态设定冷冻水 setpoint，在变更窗口统一 chiller 群控与冷源冗余，保留 fail back，平衡 PUE 与 rack 进风 / latency / uptime。\n- **对话**：\n  - 主管: After the annual SLO review, we need to tighten our cooling strategy. Can we run the chillers smarter without risking the rack-inlet temp or latency?\n  - 小白: Yes. I'll dynamically set the chilled-water setpoint against the AI training load curve, keep the hot-cold aisle contained, and hold a fail back to design point so PUE and rack inlet stay balanced.\n  - 小白: In the change window I'll stage the chiller plant sequence and keep one redundant unit armed, so uptime is protected even if we trim capacity headroom for efficiency.\n  - 主管: Good. Confirm the CRAH fan curve tracks the new setpoint, and log the RCA notes if anything drifts before we make it permanent.\n- **重点表达**：\n  - `dynamically set the chilled-water setpoint` — 根据负载动态设定冷冻水温度设定值\n  - `hold a fail back to design point` — 保留退回设计工况的回退预案\n  - `keep one redundant unit armed` — 保持一台冗余机组处于待命（在线热备）",
-        "category": "运维沟通",
-        "difficulty": "精通 Proficient",
-        "expressions": [
-          {
-            "en": "dynamically set the chilled-water setpoint",
-            "zh": "根据负载动态设定冷冻水温度设定值"
-          },
-          {
-            "en": "hold a fail back to design point",
-            "zh": "保留退回设计工况的回退预案"
-          },
-          {
-            "en": "keep one redundant unit armed",
-            "zh": "保持一台冗余机组处于待命（在线热备）"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "跨团队协作 · 与云 / SRE 团队协调新业务潮汐调度，确认机架落位与冷电冗余",
-        "subtitle": "进阶 Intermediate",
-        "content": "- **情境**：与云 / SRE 团队协调新业务上线潮汐调度，确认机架落位与制冷 / 供电冗余，保证 uptime 与 latency 遥测共享，核对 rack 进风与 hot-cold aisle 温控边界。\n- **对话**：\n  - SRE: We're launching a burstable workload next week and need a couple of racks landed without tipping the cooling or power limits. Can your side confirm headroom?\n  - 小白: We'll place them in the contained hot-cold aisle row and verify the CRAH capacity and power budget. As long as rack inlet holds, latency should stay clean.\n  - SRE: What about failover if a CRAH trips during the spike?\n  - 小白: The redundant CRAH picks up automatically and we keep uptime protected. I'll hand over the telemetry mapping so your SRE dashboard reads rack inlet and latency in real time.\n- **重点表达**：\n  - `burstable workload` — 潮汐 / 突发型负载（可突发扩容）\n  - `redundant CRAH picks up automatically` — 冗余精密空调自动接管\n  - `hand over the telemetry mapping` — 交接遥测点位映射（跨团队数据共享）",
-        "category": "跨团队协作",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "burstable workload",
-            "zh": "潮汐 / 突发型负载（可突发扩容）"
-          },
-          {
-            "en": "redundant CRAH picks up automatically",
-            "zh": "冗余精密空调自动接管"
-          },
-          {
-            "en": "hand over the telemetry mapping",
-            "zh": "交接遥测点位映射（跨团队数据共享）"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "供应商对接 · 与 BMS 群控供应商谈判冗余热备、年度 SLA 与本地前置备件",
-        "subtitle": "精通 Proficient",
-        "content": "- **情境**：与 BMS / 冷源群控系统供应商谈判控制逻辑定制 + 冗余控制器热备 + 年度服务 SLA，确保 chiller / CRAH 群控 failover 无单点，预留液冷 CDU 联动与 free-cooling 调度，争取本地前置备件与快速响应。\n- **对话**：\n  - 供应商: Our standard BMS package covers chiller and CRAH sequencing, but the custom control logic you asked for pushes the quote up. Is it really necessary?\n  - 小白: We need the redundant controller hot-standby and a failover path with no single point of failure, otherwise a controller fault could take down the whole cooling loop and hit uptime.\n  - 小白: I also want a yearly service SLA with pre-staged spares locally and a response window that protects free-cooling and future liquid-cooling CDU integration. Can you commit to that in writing?\n  - 供应商: We can include the redundant controller, a 4-hour on-site SLA, and staged spares, and we'll leave capacity headroom in the logic for the CDU link.\n- **重点表达**：\n  - `redundant controller hot-standby` — 冗余控制器热备（消除单点故障）\n  - `no single point of failure` — 无单点故障（高可用设计）\n  - `pre-staged spares + on-site SLA` — 本地前置备件 + 现场服务等级协议",
-        "category": "供应商对接",
-        "difficulty": "精通 Proficient",
-        "expressions": [
-          {
-            "en": "redundant controller hot-standby",
-            "zh": "冗余控制器热备（消除单点故障）"
-          },
-          {
-            "en": "no single point of failure",
-            "zh": "无单点故障（高可用设计）"
-          },
-          {
-            "en": "pre-staged spares + on-site SLA",
-            "zh": "本地前置备件 + 现场服务等级协议"
           }
         ]
       }
