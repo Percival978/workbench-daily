@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-09-07",
+    "generatedAt": "2026-09-07T09:33:06+08:00",
+    "cycleDay": 1,
+    "difficulty": "基础 Basic",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "日常工作 · 晨间巡检交接",
+        "subtitle": "基础 Basic",
+        "content": "**情境**：早班接班时发现 D02 模组 A12 机柜温度偏高，与夜班同事做交接记录。\n\n**对话**：\n- Day Shift（小白）: Morning! How's the floor? I see rack A12 in D02 showing a high temp on my dashboard.\n- Night Shift: Rack A12 ran warm after we swapped a CRAH filter last night. Hot-cold aisle looks fine, but the return air is a bit high.\n- Day Shift（小白）: Got it. I'll check the CRAH setpoint and keep an eye on it during the morning patrol.\n- Night Shift: Noted in the handover. Chiller plant is stable — no alarms overnight.\n\n**重点表达**：\n- `morning patrol` — 晨间巡检\n- `handover noted` — 交接已记录\n- `running warm` — 温度偏高（设备偏热运行）",
+        "category": "日常工作",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "morning patrol",
+            "zh": "晨间巡检"
+          },
+          {
+            "en": "handover noted",
+            "zh": "交接已记录"
+          },
+          {
+            "en": "running warm",
+            "zh": "温度偏高（设备偏热运行）"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "故障排查 · 备用空调未 failover 的 RCA",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：周末一台 CRAH 故障，备用机未按设计 failover，周一 RCA 复盘会讨论根因与整改。\n\n**对话**：\n- Ops Lead: What triggered the hot-aisle breach on Saturday? The standby CRAH didn't failover as designed.\n- 小白（HVAC）: Root cause looks like control-loop latency — the BMS saw the alarm, but the standby unit started about 90 seconds late.\n- Ops Lead: So we lost redundancy for a minute and a half. Did the chiller ramp to cover the load?\n- 小白（HVAC）: Partially. Capacity margin was thin, so the inlet temp spiked before failover completed. We're revising the trip logic.\n\n**重点表达**：\n- `failover didn't kick in` — 故障切换未启动\n- `control-loop latency` — 控制回路延迟\n- `root cause / RCA` — 根因分析（Root Cause Analysis）",
+        "category": "故障排查",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "failover didn't kick in",
+            "zh": "故障切换未启动"
+          },
+          {
+            "en": "control-loop latency",
+            "zh": "控制回路延迟"
+          },
+          {
+            "en": "root cause / RCA",
+            "zh": "根因分析（Root Cause Analysis）"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "容量规划 · 21 模组新增机柜制冷评估",
+        "subtitle": "基础 Basic",
+        "content": "**情境**：计划下月在 21 模组新增 20 个 rack，与规划同事评估制冷与电力容量是否充足。\n\n**对话**：\n- Planner: We're adding 20 racks to Module 21 next month. Do we have the cooling capacity?\n- 小白（HVAC）: Each rack averages 8 kW, so that's 160 kW. Our CRAH banks can cover it without hurting PUE.\n- Planner: Good. And does the chiller have enough headroom for the summer peak?\n- 小白（HVAC）: Yes — roughly 25% spare capacity. We'll stage the rack load-in to avoid a sudden spike.\n\n**重点表达**：\n- `cooling capacity` — 制冷容量\n- `headroom / spare capacity` — 余量（余裕）\n- `stage the load-in` — 分批上电（错峰加载）",
+        "category": "容量规划",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "cooling capacity",
+            "zh": "制冷容量"
+          },
+          {
+            "en": "headroom / spare capacity",
+            "zh": "余量（余裕）"
+          },
+          {
+            "en": "stage the load-in",
+            "zh": "分批上电（错峰加载）"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-09-04",
     "generatedAt": "2026-09-04T09:35:54+08:00",
     "cycleDay": 2,
@@ -956,80 +1030,6 @@
           {
             "en": "keep failover armed",
             "zh": "保持 failover 处于待命（随时可切）"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-08-22",
-    "generatedAt": "2026-08-22T09:33:59+08:00",
-    "cycleDay": 1,
-    "difficulty": "基础 Basic",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "日常工作 · 晨间巡检发现空置机架盲板缺失致冷热混风",
-        "subtitle": "基础 Basic",
-        "content": "- **情境**：早班巡检发现 D 区一排空置（未上电）机架缺失盲板（blanking panel），冷风从空 U 位漏出、被热通道回风吸入，rack 进风温度缓慢抬升。\n- 小白（巡检）：Morning patrol found several blanking panels missing on the empty racks in Row D. Cold air is leaking and the rack inlet is creeping up.\n- 资深工程师：Good catch. Install the blanking panels before shift change and raise a work order. We need to keep the hot-cold aisle contained.\n- 小白：Noted. I'll log it and hand it over to the night shift so uptime stays protected.\n- **重点表达**：\n- `blanking panel` — 机架盲板（封堵空 U 位，防止冷热混风）\n- `morning patrol` — 晨间巡检\n- `keep the hot-cold aisle contained` — 保持冷热通道封闭隔离",
-        "category": "日常工作",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "blanking panel",
-            "zh": "机架盲板（封堵空 U 位，防止冷热混风）"
-          },
-          {
-            "en": "morning patrol",
-            "zh": "晨间巡检"
-          },
-          {
-            "en": "keep the hot-cold aisle contained",
-            "zh": "保持冷热通道封闭隔离"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "故障排查 · 冷冻水压差旁通阀内漏致末端流量不足、rack 进风升温",
-        "subtitle": "进阶 Intermediate",
-        "content": "- **情境**：监控告警 Zone C 部分 rack 进风温度抬升、关键支付业务 latency 偶发毛刺；核查为冷冻水压差旁通阀（DPV）内漏，一次侧冷冻水短路回流 chiller，末端 CRAH 换热不足。核实备用冷源 failover 并复盘 RCA。\n- 小白：We're seeing rack inlet temps climb in Zone C and latency spikes on the payment service. What changed?\n- 资深工程师：The differential-pressure bypass valve is leaking internally — chilled water short-circuits back to the chiller, so the CRAHs get less flow.\n- 小白：So the cooling at the racks dropped. Did we fail over to the standby plant?\n- 资深工程师：Yes, standby chiller is online and holding capacity. RCA points to a failed valve seat; I'll stage a replacement.\n- **重点表达**：\n- `short-circuit back to the chiller` — 短路回流到冷水机组（旁通致有效流量损失）\n- `fail over to the standby plant` — 切换到备用冷源\n- `RCA points to a failed valve seat` — 根因分析指向阀座失效",
-        "category": "故障排查",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "short-circuit back to the chiller",
-            "zh": "短路回流到冷水机组（旁通致有效流量损失）"
-          },
-          {
-            "en": "fail over to the standby plant",
-            "zh": "切换到备用冷源"
-          },
-          {
-            "en": "RCA points to a failed valve seat",
-            "zh": "根因分析指向阀座失效"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "容量规划 · 评估 R70–R72 高密度存储节点上架，核算三相平衡与制冷余量",
-        "subtitle": "基础 Basic",
-        "content": "- **情境**：下月新增一批高密度存储节点落入 R70–R72，核算双路供电三相平衡与 CRAH 制冷 capacity，确认封闭 hot-cold aisle、PUE 余量与 headroom，防 over-provision。\n- 小白：The new storage nodes go into R70 through R72 next month. Can we fit them without overloading power?\n- 资深工程师：Power budget looks fine if we balance the phases. The dual-feed PDUs still have headroom.\n- 小白：And cooling? Will the CRAHs hold the rack inlet within the limit?\n- 资深工程师：Yes — closed hot-cold aisle plus spare CRAH capacity keeps PUE in margin. Just don't over-provision the row.\n- **重点表达**：\n- `balance the phases` — 平衡三相负载\n- `dual-feed PDUs still have headroom` — 双路供电 PDU 仍有余量\n- `don't over-provision the row` — 别把这一排机架塞太满（避免过度配置）",
-        "category": "容量规划",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "balance the phases",
-            "zh": "平衡三相负载"
-          },
-          {
-            "en": "dual-feed PDUs still have headroom",
-            "zh": "双路供电 PDU 仍有余量"
-          },
-          {
-            "en": "don't over-provision the row",
-            "zh": "别把这一排机架塞太满（避免过度配置）"
           }
         ]
       }
