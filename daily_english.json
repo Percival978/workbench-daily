@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-09-25",
+    "generatedAt": "2026-09-25T09:35:45+08:00",
+    "cycleDay": 3,
+    "difficulty": "高级 Advanced",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "① 运维沟通 · 能效告警处置与 PUE 优化",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**\n- 早例会上回顾夜间 CRAH-03 送风高温告警，与运维主管讨论抬升冷冻水供水温度以优化 PUE，同时保持 rack 进风与 uptime 受控。\n\n**对话**\n- 小白（HVAC）: Morning handover — we logged a CRAH-03 supply-air high alarm at 02:10. The lead chiller has since recovered, but PUE crept to 1.46 overnight.\n- Ops Lead: The cold-aisle containment has a small gap on rack row B, so hot air recirculates and the CRAHs work harder. Can we trim PUE without risking uptime?\n- 小白（HVAC）: Yes. If we raise the chilled-water supply 1°C, the compressors ease off and PUE drops — rack inlet stays in band because the hot-cold aisle holds.\n- Ops Lead: Worth a trial in the low-load window. I'll green-light it and keep an eye on the trend to protect uptime.\n\n**重点表达**\n- `logged a ... high alarm` — 记录了一条…高报警\n- `cold-aisle containment gap` — 冷通道封闭有缝隙（漏热）\n- `raise the chilled-water supply 1°C` — 把冷冻水供水温度抬升 1℃",
+        "category": "运维沟通",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "logged a ... high alarm",
+            "zh": "记录了一条…高报警"
+          },
+          {
+            "en": "cold-aisle containment gap",
+            "zh": "冷通道封闭有缝隙（漏热）"
+          },
+          {
+            "en": "raise the chilled-water supply 1°C",
+            "zh": "把冷冻水供水温度抬升 1℃"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "② 跨团队协作 · 网络升级致机柜功率上升与制冷余量协调",
+        "subtitle": "高级 Advanced",
+        "content": "**情境**\n- 网络团队计划在 B 排机柜升级 TOR 交换机，单机柜功耗 +3 kW，跨团队会议讨论制冷 headroom、failover 与切换 latency，保障 uptime 不低于 99.99%。\n\n**对话**\n- NetEng: We're upgrading TOR switches in rack row B next week — about 3 kW extra per rack. Can your cooling absorb the added heat load without hurting latency?\n- 小白（HVAC）: Row B is served by two CRAHs at 78% load, so the cooling headroom is thin. Another 3 kW per rack pushes us past the safe delta-T on the hot-cold aisle.\n- NetEng: We can't slip the upgrade — it's for latency-sensitive traffic. Can we shift load to the N+1 chiller and free up capacity on the cooling side?\n- 小白（HVAC）: Agreed. We'll move two low-density racks off row B and stage failover testing so uptime holds above 99.99% through the cutover. I'll also check the chiller sequencing so a CRAH trip doesn't spike rack inlet.\n\n**重点表达**\n- `cooling headroom is thin` — 制冷余量很紧张\n- `safe delta-T` — 安全送回风温差（热通道不超标）\n- `stage failover testing through the cutover` — 在割接全程做 failover 测试（验证冗余）",
+        "category": "跨团队协作",
+        "difficulty": "高级 Advanced",
+        "expressions": [
+          {
+            "en": "cooling headroom is thin",
+            "zh": "制冷余量很紧张"
+          },
+          {
+            "en": "safe delta-T",
+            "zh": "安全送回风温差（热通道不超标）"
+          },
+          {
+            "en": "stage failover testing through the cutover",
+            "zh": "在割接全程做 failover 测试（验证冗余）"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "③ 供应商对接 · 备件交期、质保与维保谈判",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**\n- 与冷水机组（chiller）供应商电话沟通润滑油分离器备件交期、质保期限与年度维保合同谈判，确保 chiller uptime 与维护窗口匹配。\n\n**对话**\n- 小白（HVAC）: We need the oil separator for the lead chiller by next Friday. Can you pull the delivery forward from the standard lead time?\n- Supplier: Standard lead time is six weeks, but I can offer three weeks at a small premium — the part carries an 18-month warranty.\n- 小白（HVAC）: Three weeks still misses our service window. If we commit to a yearly service contract, can you hold the price and extend the warranty to 24 months?\n- Supplier: For a yearly contract I can do a two-week delivery, price held, with a 24-month warranty. I'll send the quote this afternoon.\n\n**重点表达**\n- `pull the delivery forward` — 提前交货期\n- `standard lead time` — 标准交期\n- `yearly service contract` — 年度维保合同",
+        "category": "供应商对接",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "pull the delivery forward",
+            "zh": "提前交货期"
+          },
+          {
+            "en": "standard lead time",
+            "zh": "标准交期"
+          },
+          {
+            "en": "yearly service contract",
+            "zh": "年度维保合同"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-09-09",
     "generatedAt": "2026-09-09T09:41:02+08:00",
     "cycleDay": 3,
@@ -956,80 +1030,6 @@
           {
             "en": "don't over-provision",
             "zh": "不要过度配置（避免过度预留）"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-08-25",
-    "generatedAt": "2026-08-25T09:34:02+08:00",
-    "cycleDay": 4,
-    "difficulty": "精通 Proficient",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "运维沟通 · 算力负载跟随冷源余量错峰调度，平衡 PUE 与 latency 并保留 fail-back",
-        "subtitle": "精通 Proficient",
-        "content": "**情境**：季度能效与 SLO 评审后，协调把批处理/训练任务错峰调度到冷源充裕时段（load steering），平衡 PUE、rack 进风与 latency，全程保留 fail-back 链路。\n\n**对话**\n- Ops Lead: After the quarterly efficiency and SLO review, we want to steer the batch and training jobs to the hours when our cooling headroom is deepest. Can we shift the heavy jobs off the 2-to-6 p.m. peak without hurting latency?\n- SRE: Yes — if we load-steer the non-latency-critical jobs to the overnight window, the chiller plant runs closer to its sweet spot and rack-inlet stays well under limit. Latency on the interactive tier is untouched.\n- Ops Lead: Good. Keep PUE in target and hold the hot-cold aisle contained. Most importantly, leave the fail-back path live so we can revert instantly if a chiller trips.\n- SRE: Fail-back stays armed — we can snap back to the original schedule in under a minute. Uptime and capacity margin both look healthy.\n\n**重点表达**\n- `load-steering the batch jobs` — 把批处理任务错峰调度（跟随冷源 / 电价余量）\n- `run closer to its sweet spot` — 让冷源运行在最佳效率区间（贴近设计工况）\n- `leave the fail-back path live` — 保留 fail-back 链路随时可切回（不解除冗余）",
-        "category": "运维沟通",
-        "difficulty": "精通 Proficient",
-        "expressions": [
-          {
-            "en": "load-steering the batch jobs",
-            "zh": "把批处理任务错峰调度（跟随冷源 / 电价余量）"
-          },
-          {
-            "en": "run closer to its sweet spot",
-            "zh": "让冷源运行在最佳效率区间（贴近设计工况）"
-          },
-          {
-            "en": "leave the fail-back path live",
-            "zh": "保留 fail-back 链路随时可切回（不解除冗余）"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "跨团队协作 · 嘉善 D02 新模组机电带载联调，确认供电/制冷余量与 handover 口径",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：与项目建设团队协调 D02 新模组机电带载调试，确认双路供电与 CRAH 制冷余量、rack 落位与 handover 验收口径，守住 uptime。\n\n**对话**\n- Construction PM: We're ready to commission the D02 module — dual-feed power and the CRAH loop are wired. What do you need from us before we hand it over?\n- Ops: First, load-test the dual-feed path and confirm the CRAH redundancy picks up if one unit drops. Then we'll walk the rack layout and the hot-cold aisle containment before sign-off.\n- Construction PM: Understood. We'll stage the load bank this week and keep uptime the priority during the cutover. The handover pack will include the commissioning logs.\n- Ops: Perfect — once capacity checks out and the aisle is sealed, we'll take it. Keep me looped on the commissioning trend.\n\n**重点表达**\n- `commission the module` — 对模组进行机电带载联调 / 调试投运\n- `load-test the dual-feed path` — 对双路供电路径做带载测试\n- `take it / take over` — 接管（验收后接手运维）",
-        "category": "跨团队协作",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "commission the module",
-            "zh": "对模组进行机电带载联调 / 调试投运"
-          },
-          {
-            "en": "load-test the dual-feed path",
-            "zh": "对双路供电路径做带载测试"
-          },
-          {
-            "en": "take it / take over",
-            "zh": "接管（验收后接手运维）"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "供应商对接 · 柴发 / 黑启动供应商谈判年度带载演练与应急响应 SLA，保无缝 failover",
-        "subtitle": "精通 Proficient",
-        "content": "**情境**：与柴油发电机 / 黑启动供应商谈判年度带载演练 + 应急响应 SLA 与本地前置备件，确保市电失压时 chiller/CRAH 连续制冷与 rack 供电无缝 failover，预留液冷 CDU 联动。\n\n**对话**\n- Facilities: We need the generator service contract to cover an annual black-start load test and a four-hour emergency response SLA. If utility power is lost, the chiller and CRAH must keep cooling without a gap.\n- Vendor: We can commit to the 4-hour SLA and pre-stage critical spares locally. For seamless failover, we'll validate the transfer scheme so rack power and cooling ride through on the generator.\n- Facilities: Good — and make sure there are no single-points-of-failure in the start sequence. We're also expanding liquid-cooling CDUs, so leave headroom to interlock them with the generator.\n- Vendor: Agreed. We'll document the start logic, interlock the CDUs, and keep capacity margin so uptime holds even during a prolonged outage.\n\n**重点表达**\n- `black-start load test` — 黑启动带载测试（失电后自启并带载验证）\n- `pre-stage critical spares locally` — 在本地前置关键备件（缩短抢修时间）\n- `no single-points-of-failure` — 无单点故障（冗余设计原则）",
-        "category": "供应商对接",
-        "difficulty": "精通 Proficient",
-        "expressions": [
-          {
-            "en": "black-start load test",
-            "zh": "黑启动带载测试（失电后自启并带载验证）"
-          },
-          {
-            "en": "pre-stage critical spares locally",
-            "zh": "在本地前置关键备件（缩短抢修时间）"
-          },
-          {
-            "en": "no single-points-of-failure",
-            "zh": "无单点故障（冗余设计原则）"
           }
         ]
       }
