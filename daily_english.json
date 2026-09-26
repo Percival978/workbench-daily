@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-09-26",
+    "generatedAt": "2026-09-26T09:33:34+08:00",
+    "cycleDay": 4,
+    "difficulty": "精通 Proficient",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "① 日常工作 · 晨巡交接 CRAH 回风湿度瞬时偏高",
+        "subtitle": "基础 Basic",
+        "content": "**情境**\n- 早班接班时，夜班同事报告 21 模组 CRAH-12 回风湿度瞬时偏高并伴随轻微异响，与夜班做交接，约定低谷窗口核查、保持冗余 CRAH 在线、守 uptime。\n\n**对话**\n- 小白（HVAC）: Morning patrol — night shift logged CRAH-12 in Module 21 with a brief high return-humidity blip and a faint hum. Anything else I should watch?\n- Night Ops: No alarms, but the hot-cold aisle looked fine. I'd keep the redundant CRAH online and check the drain pan during the low-load window.\n- 小白（HVAC）: Got it. I'll add it to the handover, watch rack inlet and supply humidity, and keep uptime as the priority.\n- Night Ops: Noted. Chiller plant was stable overnight — no other flags.\n\n**重点表达**\n- `morning patrol` — 晨间巡检\n- `keep the redundant CRAH online` — 保持冗余 CRAH 在线\n- `add it to the handover` — 记入交班（交接单）",
+        "category": "日常工作",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "morning patrol",
+            "zh": "晨间巡检"
+          },
+          {
+            "en": "keep the redundant CRAH online",
+            "zh": "保持冗余 CRAH 在线"
+          },
+          {
+            "en": "add it to the handover",
+            "zh": "记入交班（交接单）"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "② 故障排查 · 冷水机组喘振跳机 RCA 与 failover 复盘",
+        "subtitle": "精通 Proficient",
+        "content": "**情境**\n- 用电晚高峰一台离心式冷水机组发生喘振跳机，蓄冷罐支撑、备用机经 failover 接管；你与运维主管复盘 RCA（喘振源于导叶控制滞后 + 冷却水流量不足），评估切换期间对延迟敏感业务的 latency 影响，并定下控制整定与预冷缓冲整改。\n\n**对话**\n- 小白（HVAC）: The lead chiller surged and tripped at 18:55 during the evening peak. RCA shows the surge came from lagging guide-vane control plus low condenser water flow — the standby picked up the load via automatic failover.\n- Ops Lead: Right. But the transition added about 45 ms of network latency in the east pod before the CRAH fans ramped to full speed. How close did we get to the SLA redline?\n- 小白（HVAC）: Uptime held, but we cut it fine. The fix is to retune the chiller sequencing and add a pre-cool buffer so latency stays under threshold during failover, not after.\n- Ops Lead: Agreed. Raise a change ticket to re-stage the failover sequence and re-run the DR drill next week — I want the surge guard proven before summer peak.\n\n**重点表达**\n- `surged and tripped` — 发生喘振并跳机\n- `automatic failover` — 自动故障切换（接管负荷）\n- `retune the chiller sequencing` — 重新整定冷水机组群控时序",
+        "category": "故障排查",
+        "difficulty": "精通 Proficient",
+        "expressions": [
+          {
+            "en": "surged and tripped",
+            "zh": "发生喘振并跳机"
+          },
+          {
+            "en": "automatic failover",
+            "zh": "自动故障切换（接管负荷）"
+          },
+          {
+            "en": "retune the chiller sequencing",
+            "zh": "重新整定冷水机组群控时序"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "③ 容量规划 · 新 AI 集群上架的 rack 电力与制冷 capacity 核算",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**\n- 评估新一批 AI 训练集群上架，需核算 rack 电力、制冷 capacity 与液冷引入；与规划同事讨论 PUE、chiller 余量及分批次上线方案。\n\n**对话**\n- 小白（HVAC）: The new AI cluster needs 18 racks at about 22 kW each. Do we have enough cooling capacity in the existing CRAH loop to absorb that?\n- Planner: Current PUE is 1.32. If we load all 18 at once, chiller capacity hits 92% — we'd be short on headroom for the summer peak.\n- 小白（HVAC）: Then let's phase it in and route the hottest racks to liquid cooling so the room-level load stays manageable and PUE holds.\n- Planner: Sounds right. Let's model a hybrid air-and-liquid layout before we commit the space and the power budget.\n\n**重点表达**\n- `cooling capacity / headroom` — 制冷容量 / 余量\n- `phase it in` — 分批次上线（错峰加载）\n- `hybrid air-and-liquid layout` — 风冷 + 液冷混合布局",
+        "category": "容量规划",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "cooling capacity / headroom",
+            "zh": "制冷容量 / 余量"
+          },
+          {
+            "en": "phase it in",
+            "zh": "分批次上线（错峰加载）"
+          },
+          {
+            "en": "hybrid air-and-liquid layout",
+            "zh": "风冷 + 液冷混合布局"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-09-25",
     "generatedAt": "2026-09-25T09:35:45+08:00",
     "cycleDay": 3,
@@ -956,80 +1030,6 @@
           {
             "en": "roll back to the old setpoint",
             "zh": "回退到原设定值（撤销变更）"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-08-26",
-    "generatedAt": "2026-08-26T09:34:09+08:00",
-    "cycleDay": 1,
-    "difficulty": "基础 Basic",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "日常工作 · 晨间巡检发现 CRAH 加湿罐结垢、送风湿度偏低，开单更换并交班",
-        "subtitle": "基础 Basic",
-        "content": "**情境**：晨间巡检发现 C 区 CRAH-C2 加湿罐结垢报警、送风湿度低于下限，有静电放电风险，开 work order 更换并 handover 提醒监控 rack 进风与 uptime。\n\n**对话**：\n- A：Morning patrol shows CRAH-C2 flagged a humidifier canister fault, and the supply air humidity is sitting at 28% — well below our 40% floor. That raises a static-discharge risk around the racks.\n- B：Got it. Let me log a work order to replace the canister and clear the fault after the swap. Keep CRAH-C2 online and lean on the redundant unit so we don't lose cooling headroom.\n- A：Understood. I'll note it in the handover: swap the canister tonight, watch the rack inlet and supply humidity, and don't close the loop until the reading holds steady. Uptime stays the priority.\n\n**重点表达**：\n- `morning patrol` — 晨间巡检\n- `log a work order` — 开（记录）一张工单\n- `lean on the redundant unit` — 依靠冗余机组（维持制冷 / 不掉余量）",
-        "category": "日常工作",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "morning patrol",
-            "zh": "晨间巡检"
-          },
-          {
-            "en": "log a work order",
-            "zh": "开（记录）一张工单"
-          },
-          {
-            "en": "lean on the redundant unit",
-            "zh": "依靠冗余机组（维持制冷 / 不掉余量）"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "故障排查 · CRAH 风机皮带打滑送风量下降，RCA 指向皮带磨损并确认冗余接管",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：监控发现 B3 区 rack 进风温度抬升、业务侧 latency 偶发毛刺，核实为 CRAH-B3 风机皮带打滑送风量下降，RCA 指向皮带磨损，确认冗余 CRAH 接管。\n\n**对话**：\n- A：B3 rack inlet just crept to 27°C and we're seeing latency spikes on the compute cluster. CRAH-B3 supply airflow looks 15% low — what's the root cause?\n- B：Belt slip on the CRAH-B3 fan. The drive belt is worn, so the fan can't hold design airflow. RCA confirms it's mechanical wear, not a control fault.\n- A：Good. Confirm the redundant CRAH picked up the load so capacity holds, then schedule a belt swap. Keep failover armed until the unit is back online.\n- B：Confirmed — standby CRAH is carrying B3, chiller and PUE are stable. I'll stage the spare belt and close the RCA once airflow returns to setpoint.\n\n**重点表达**：\n- `belt slip / the drive belt is worn` — 皮带打滑 / 传动皮带磨损\n- `the redundant CRAH picked up the load` — 冗余 CRAH 接管了负荷\n- `keep failover armed` — 保持故障切换待命（不解除冗余）",
-        "category": "故障排查",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "belt slip / the drive belt is worn",
-            "zh": "皮带打滑 / 传动皮带磨损"
-          },
-          {
-            "en": "the redundant CRAH picked up the load",
-            "zh": "冗余 CRAH 接管了负荷"
-          },
-          {
-            "en": "keep failover armed",
-            "zh": "保持故障切换待命（不解除冗余）"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "容量规划 · 新增网络汇聚机柜 R80–R82 上架，核算电力与制冷双上限并预留 headroom",
-        "subtitle": "基础 Basic",
-        "content": "**情境**：评估新一批网络汇聚机柜 R80–R82 上架，按设备铭牌折算热密度，交叉核对双路 PDU 电力余量与 CRAH 制冷 capacity 双上限，确认封闭通道、PUE 余量、预留 headroom。\n\n**对话**：\n- A：We're staging three network aggregation racks, R80 through R82. Before racking, let's check the dual-feed PDU power budget and the CRAH cooling-capacity envelope.\n- B：Per the nameplate, each rack lands around 6 kW — 18 kW total. The column PDU shows 35% headroom and the CRAH still has cooling capacity to spare, so we're within both limits.\n- A：Keep the hot-cold aisle contained and leave headroom in the plan so we don't over-provision. Confirm PUE stays in band and uptime is protected through the install.\n- B：Agreed. With blanking panels in place and the aisle sealed, PUE holds and we keep margin for the next growth wave.\n\n**重点表达**：\n- `power budget / cooling-capacity envelope` — 电力预算 / 制冷容量上限\n- `leave headroom in the plan` — 在规划中预留余量\n- `don't over-provision` — 不要过度配置（避免过度预留）",
-        "category": "容量规划",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "power budget / cooling-capacity envelope",
-            "zh": "电力预算 / 制冷容量上限"
-          },
-          {
-            "en": "leave headroom in the plan",
-            "zh": "在规划中预留余量"
-          },
-          {
-            "en": "don't over-provision",
-            "zh": "不要过度配置（避免过度预留）"
           }
         ]
       }
