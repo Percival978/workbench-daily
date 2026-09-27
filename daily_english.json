@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-09-27",
+    "generatedAt": "2026-09-27T09:32:15+08:00",
+    "cycleDay": 1,
+    "difficulty": "基础 Basic",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "运维沟通 · 早班交接的冷机回风高温告警",
+        "subtitle": "基础 Basic",
+        "content": "**情境：** 早班交接时发现 CRAH-07 回风高温告警，与搭档确认 PUE 与能效，决定是否开单。\n\n**对话：**\n- A: Morning handover — I see a high return-air temperature alarm on CRAH-07. What's the PUE reading right now?\n- B: PUE is at 1.42, a bit above target. The chiller is running, but the hot-cold aisle containment looks loose near rack row C.\n- A: Let me check the rack inlet temperature. If it's over 27°C, we should open a ticket right away.\n- B: Agreed. I'll log it as a cooling-efficiency issue and keep an eye on uptime.\n\n**重点表达：**\n- `high return-air temperature alarm` — 回风高温告警\n- `PUE is at 1.42` — PUE（电源使用效率）为 1.42\n- `log it as a cooling-efficiency issue` — 将其登记为制冷能效问题",
+        "category": "运维沟通",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "high return-air temperature alarm",
+            "zh": "回风高温告警"
+          },
+          {
+            "en": "PUE is at 1.42",
+            "zh": "PUE（电源使用效率）为 1.42"
+          },
+          {
+            "en": "log it as a cooling-efficiency issue",
+            "zh": "将其登记为制冷能效问题"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "跨团队协作 · 带宽扩容对制冷与机柜容量的影响",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境：** 与网络团队讨论 rack row B 的带宽扩容，需协调电气团队评估 PDU 负载，并保证切换期间零停机。\n\n**对话：**\n- A: We're planning a bandwidth expansion for rack row B — the new switches will pull extra power and add heat load.\n- B: That hits our capacity planning. We'll need more CRAH airflow to hold the cold aisle below 24°C.\n- A: Can you loop in the electrical team on the PDU load before we push the change?\n- B: Sure. We also need zero downtime, so the failover path has to stay green through the whole cutover.\n\n**重点表达：**\n- `bandwidth expansion` — 带宽扩容\n- `hold the cold aisle below 24°C` — 将冷通道温度维持在 24°C 以下\n- `zero downtime` — 零停机",
+        "category": "跨团队协作",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "bandwidth expansion",
+            "zh": "带宽扩容"
+          },
+          {
+            "en": "hold the cold aisle below 24°C",
+            "zh": "将冷通道温度维持在 24°C 以下"
+          },
+          {
+            "en": "zero downtime",
+            "zh": "零停机"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "供应商对接 · 冷水机组备件的交期与质保谈判",
+        "subtitle": "基础 Basic",
+        "content": "**情境：** 与冷水机组供应商确认备用压缩机的参数、交货周期与质保条款。\n\n**对话：**\n- A: We need a spare chiller compressor. What's the lead time and warranty?\n- B: Lead time is six weeks, and the warranty covers 24 months on parts.\n- A: Can you match the original capacity spec — 800 kW at 7°C supply water?\n- B: Yes, same capacity and footprint. I'll send the quote this afternoon.\n\n**重点表达：**\n- `lead time` — 交货周期\n- `warranty covers 24 months` — 质保覆盖 24 个月\n- `match the original capacity spec` — 与原制冷量规格保持一致",
+        "category": "供应商对接",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "lead time",
+            "zh": "交货周期"
+          },
+          {
+            "en": "warranty covers 24 months",
+            "zh": "质保覆盖 24 个月"
+          },
+          {
+            "en": "match the original capacity spec",
+            "zh": "与原制冷量规格保持一致"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-09-26",
     "generatedAt": "2026-09-26T09:33:34+08:00",
     "cycleDay": 4,
@@ -956,80 +1030,6 @@
           {
             "en": "don't close the loop until the drift stops",
             "zh": "在飘水彻底消除前不闭环（工单不销）"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-08-27",
-    "generatedAt": "2026-08-27T09:41:24+08:00",
-    "cycleDay": 2,
-    "difficulty": "进阶 Intermediate",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "供应商对接 · 与智能母线/rPDU 供应商核对三相遥测接口、交付里程碑与现场质保 SLA",
-        "subtitle": "进阶 Intermediate",
-        "content": "- **情境**：新模组配电上电前，与母线槽及 rPDU 供应商核对三相负载远程读数、不平衡告警阈值、BACnet 接口对接、交付里程碑与含人工现场质保 SLA，确保 rack 落位时供电遥测可读、CRAH/uptime 不受割接影响。\n- **A（暖通/电气工程师）**：Before we energize the new module, I need the busway and rPDU telemetry wired into our DCIM — per-phase load, neutral current, and an imbalance alarm at 15%. What's the delivery milestone and the on-site warranty coverage?\n- **B（供应商）**：We can stage the busway in week 3 and the rPDUs the following week; the BACnet points ship mapped. Warranty is parts-and-labor for 5 years, with a 4-hour response SLA once we're on-site.\n- **A（暖通/电气工程师）**：Cut the lead time if you can — we need the imbalance trend visible before racking so capacity planning stays accurate. Keep failover on the dual-feed PDUs and don't let the cutover trip rack uptime.\n- **B（供应商）**：Agreed. We'll pre-stage the gateways and validate the point list with your team; CRAH, hot-cold aisle and PUE stay unaffected because this is a power-side change only.\n- **重点表达**：\n  - `parts-and-labor warranty with a 4-hour response SLA` — 含人工的现场质保，4 小时响应 SLA\n  - `cut the lead time` — 缩短（压缩）交期\n  - `keep failover on the dual-feed PDUs` — 双路 PDU 保持故障切换（冗余供电）在线",
-        "category": "供应商对接",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "parts-and-labor warranty with a 4-hour response SLA",
-            "zh": "含人工的现场质保，4 小时响应 SLA"
-          },
-          {
-            "en": "cut the lead time",
-            "zh": "缩短（压缩）交期"
-          },
-          {
-            "en": "keep failover on the dual-feed PDUs",
-            "zh": "双路 PDU 保持故障切换（冗余供电）在线"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "跨团队协作 · 与安全团队协调机房动火作业许可，确认消防与制冷冗余可用",
-        "subtitle": "基础 Basic",
-        "content": "- **情境**：承包商需在机房内焊接机架支架，与安全团队协调动火作业许可（hot-work permit），确认烟感/气体灭火处于可用、制冷冗余在线、施工期间 rack 与 uptime 不受影响。\n- **A（你·暖通）**：A contractor needs to weld rack brackets in Aisle B today. Can safety issue a hot-work permit, and are the smoke detectors and gas suppression armed?\n- **B（安全工程师）**：Permit approved for a 2-hour window. Detection and suppression stay online, and we'll post a fire watch. Just keep the redundant CRAH running so the hot-cold aisle stays contained.\n- **A（你·暖通）**：Understood. We'll keep capacity headroom and watch rack inlet. If anything drifts, we pause the work and protect uptime first.\n- **B（安全工程师）**：Good. Log the permit in the handover and confirm the aisle is sealed before they start.\n- **重点表达**：\n  - `issue a hot-work permit` — 开具动火作业许可证\n  - `keep the redundant CRAH running` — 保持冗余 CRAH 运行（制冷不中断）\n  - `post a fire watch` — 安排动火监护（专人看火）",
-        "category": "跨团队协作",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "issue a hot-work permit",
-            "zh": "开具动火作业许可证"
-          },
-          {
-            "en": "keep the redundant CRAH running",
-            "zh": "保持冗余 CRAH 运行（制冷不中断）"
-          },
-          {
-            "en": "post a fire watch",
-            "zh": "安排动火监护（专人看火）"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "运维沟通 · 新模组投运前恒压补水/真空脱气装置保养，协调变更窗口并预设 failover",
-        "subtitle": "进阶 Intermediate",
-        "content": "- **情境**：扩建模组首次投运前，计划对恒压补水装置重充膨胀罐、真空脱气罐排污，运维沟通变更窗口，平衡 rack 进风/latency、预设冷源 failover 与 roll back，守住 uptime。\n- **A（你·暖通）**：Ahead of module commissioning, we need to re-pressurize the expansion tank and vent the vacuum degasser. Let's schedule it in a change window so the secondary pump won't cavitate and rack inlet stays stable.\n- **B（运维值班）**：Open the window after peak load. Keep failover armed on the standby chiller and CRAH so cooling never drops. What's the rollback if pressure hunts?\n- **A（你·暖通）**：Roll back is simple — hold the old setpoint and isolate the degasser if it faults. We'll watch latency and PUE; if either moves, we pause and protect uptime.\n- **B（运维值班）**：Agreed. I'll note the change in the handover and keep capacity headroom on the cooling loop. Confirm hot-cold aisle containment before we start.\n- **重点表达**：\n  - `re-pressurize the expansion tank` — 给膨胀罐重新充压\n  - `keep failover armed on the standby chiller` — 备用冷水机组保持故障切换待命\n  - `roll back to the old setpoint` — 回退到原设定值（撤销变更）",
-        "category": "运维沟通",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "re-pressurize the expansion tank",
-            "zh": "给膨胀罐重新充压"
-          },
-          {
-            "en": "keep failover armed on the standby chiller",
-            "zh": "备用冷水机组保持故障切换待命"
-          },
-          {
-            "en": "roll back to the old setpoint",
-            "zh": "回退到原设定值（撤销变更）"
           }
         ]
       }
