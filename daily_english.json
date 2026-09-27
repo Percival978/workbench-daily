@@ -1,7 +1,7 @@
 [
   {
     "date": "2026-09-27",
-    "generatedAt": "2026-09-27T09:32:15+08:00",
+    "generatedAt": "2026-09-27T23:19:48+08:00",
     "cycleDay": 1,
     "difficulty": "基础 Basic",
     "cards": [
@@ -68,6 +68,72 @@
           {
             "en": "match the original capacity spec",
             "zh": "与原制冷量规格保持一致"
+          }
+        ]
+      },
+      {
+        "id": "en-4",
+        "title": "日常工作 · 夜巡发现盲板缺失导致热风回流",
+        "subtitle": "基础 Basic",
+        "content": "**情境：** 夜班巡检 21 模组 D 列机柜，发现多处盲板缺失，热风从空位回流到冷通道，冷通道出现热点。\n\n**对话：**\n- A: Night patrol in Module 21 — I found several missing blanking panels in rack row D. Warm air is bypassing straight back to the cold aisle.\n- B: That would explain the hot spots. What's the rack inlet temperature at the top of the row?\n- A: It's 28°C at the top and 22°C at the bottom — a six-degree spread is way too much.\n- B: Let's fit the blanking panels and brush grommets tonight, then re-check the spread in thirty minutes.\n\n**重点表达：**\n- `missing blanking panels` — 缺失的盲板（机柜空位挡板）\n- `warm air is bypassing back to the cold aisle` — 热风短路回流至冷通道\n- `re-check the temperature spread` — 复核（上下）进风温差",
+        "category": "日常工作",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "missing blanking panels",
+            "zh": "缺失的盲板（机柜空位挡板）"
+          },
+          {
+            "en": "warm air is bypassing back to the cold aisle",
+            "zh": "热风短路回流至冷通道"
+          },
+          {
+            "en": "re-check the temperature spread",
+            "zh": "复核（上下）进风温差"
+          }
+        ]
+      },
+      {
+        "id": "en-5",
+        "title": "故障排查 · CRAH-18 变频器过流跳闸与 failover 复盘",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境：** 21 模组 CRAH-18 因变频器过流跳闸，备用机组自动接管，需确认切换期间对 latency、uptime 的影响并做初步 RCA。\n\n**对话：**\n- A: CRAH-18 tripped on a VFD overcurrent fault. Did the standby unit fail over automatically?\n- B: Yes, CRAH-19 picked up the load within thirty seconds. Rack inlet climbed to 26.5°C for about two minutes, then settled back.\n- A: Any impact on latency or uptime?\n- B: No packet loss, latency stayed flat, so uptime is intact. I pulled the trend log — the belt was slipping well before the trip. We'll swap the belt and then re-test the failover logic.\n\n**重点表达：**\n- `the standby unit failed over automatically` — 备用机组自动切换（failover）成功\n- `latency stayed flat, so uptime is intact` — 时延平稳，在线率未受影响\n- `pull the trend log` — 调取历史趋势曲线（用于 RCA）",
+        "category": "故障排查",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "the standby unit failed over automatically",
+            "zh": "备用机组自动切换（failover）成功"
+          },
+          {
+            "en": "latency stayed flat, so uptime is intact",
+            "zh": "时延平稳，在线率未受影响"
+          },
+          {
+            "en": "pull the trend log",
+            "zh": "调取历史趋势曲线（用于 RCA）"
+          }
+        ]
+      },
+      {
+        "id": "en-6",
+        "title": "容量规划 · AI 集群新增液冷机柜的电力与制冷余量核算",
+        "subtitle": "基础 Basic",
+        "content": "**情境：** AI 团队计划再上 6 个 30 kW 液冷机柜，与电气、制冷侧核对 PDU 余量、chiller 与 CRAH 的 capacity，以及 PUE 影响。\n\n**对话：**\n- A: The AI cluster team wants six more racks at 30 kW each. Do we have the capacity for that?\n- B: On the power side, yes — the PDU still has about 200 kW of headroom. On cooling, I need to confirm the chiller can absorb another 180 kW of heat load.\n- A: These are liquid-cooled racks, so most of the heat goes to the CDU rather than the CRAH.\n- B: True, but the facility loop still has to reject it. I'll update the capacity model and check the PUE impact before we commit to a date.\n\n**重点表达：**\n- `six more racks at 30 kW each` — 再上 6 个单机柜 30 kW 的机柜\n- `200 kW of headroom` — 约 200 千瓦的余量\n- `update the capacity model and check the PUE impact` — 更新容量模型并评估对 PUE 的影响",
+        "category": "容量规划",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "six more racks at 30 kW each",
+            "zh": "再上 6 个单机柜 30 kW 的机柜"
+          },
+          {
+            "en": "200 kW of headroom",
+            "zh": "约 200 千瓦的余量"
+          },
+          {
+            "en": "update the capacity model and check the PUE impact",
+            "zh": "更新容量模型并评估对 PUE 的影响"
           }
         ]
       }
