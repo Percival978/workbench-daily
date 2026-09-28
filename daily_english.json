@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-09-28",
+    "generatedAt": "2026-09-28T23:17:33+08:00",
+    "cycleDay": 2,
+    "difficulty": "进阶 Intermediate",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "运维沟通 · 冷冻水供水温度重设以压降 PUE",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境：**为降低夏季 PUE，运维团队提议把冷冻水供水温度由 7°C 逐步上调至 10°C，需在变更窗口内执行并守住冷通道温度红线。\n\n**对话：**\n- A: We're proposing a chilled water reset — raising the supply temperature from 7°C to 10°C to trim PUE. Any pushback from the operations side?\n- B: Not if we do it gradually. I'd step it up one degree per hour and watch the rack inlet temps across the hot-cold aisle layout.\n- A: What's our guard rail? If the cold aisle crosses 27°C, we roll back immediately?\n- B: Exactly. We'll run it inside the approved change window, keep the chiller plant on manual, and log every step until the trend flattens out.\n\n**重点表达：**\n- `chilled water reset` — 冷冻水水温重设（提高供水温度以节能）\n- `trim PUE` — 压降 PUE / 降低电能使用效率比值\n- `guard rail ... roll back immediately` — 安全红线……一旦越线立即回退",
+        "category": "运维沟通",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "chilled water reset",
+            "zh": "冷冻水水温重设（提高供水温度以节能）"
+          },
+          {
+            "en": "trim PUE",
+            "zh": "压降 PUE / 降低电能使用效率比值"
+          },
+          {
+            "en": "guard rail ... roll back immediately",
+            "zh": "安全红线……一旦越线立即回退"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "跨团队协作 · 液冷 CDU 切换 UPS 回路的联锁与中止条件",
+        "subtitle": "高级 Advanced",
+        "content": "**情境：**液冷 CDU 泵组要切换到新增 UPS 供电回路，需电气团队确认相序、安全团队要求漏水联锁，且切换期间不得影响 uptime。\n\n**对话：**\n- A: Before we cut the CDU pumps over to the new UPS feed, I want electrical and safety aligned on the sequence.\n- B: Electrical is fine with the phasing check, but safety wants a leak-detection interlock live before any pump runs on the new feed.\n- A: Understood. If a leak is detected, the interlock trips the pump and triggers a failover to the standby CDU — no manual step in between.\n- B: Agreed. Let's also pre-agree the abort criteria: flow below 60% for more than ten seconds and we stop the cutover.\n- A: Good. With that in place we keep uptime intact and stay compliant with the MOP.\n- B: I'll circulate the updated MOP and lock the window for Thursday at 02:00.\n\n**重点表达：**\n- `cut ... over to the new UPS feed` — 将……切换至新的 UPS 供电回路\n- `leak-detection interlock` — 漏水检测联锁（液冷系统必备保护）\n- `pre-agree the abort criteria` — 事先约定中止/叫停条件",
+        "category": "跨团队协作",
+        "difficulty": "高级 Advanced",
+        "expressions": [
+          {
+            "en": "cut ... over to the new UPS feed",
+            "zh": "将……切换至新的 UPS 供电回路"
+          },
+          {
+            "en": "leak-detection interlock",
+            "zh": "漏水检测联锁（液冷系统必备保护）"
+          },
+          {
+            "en": "pre-agree the abort criteria",
+            "zh": "事先约定中止/叫停条件"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "容量规划 · 冷通道封闭改造后单柜密度提升的余量核算",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境：**D02 模组完成冷通道封闭改造，业务方希望把单柜密度从 6 kW 提到 12 kW，需要核对配电三相平衡、PDU 与 CRAH 容量。\n\n**对话：**\n- A: Now that the cold aisle containment is done, the business wants to take rack density from 6 kW to 12 kW. Where do we stand on capacity?\n- B: On power, we have to watch phase balance first — loading A phase much harder than B and C will bite us later.\n- A: Fair point. Cooling-wise, the CRAH units in that hall still have roughly 20% headroom at the current setpoint.\n- B: That's enough for the first eight racks, not for the whole row. I'll rerun the capacity model and check the PUE impact before we commit to a date.\n\n**重点表达：**\n- `take rack density from 6 kW to 12 kW` — 把单柜功率密度从 6 kW 提升到 12 kW\n- `watch phase balance` — 关注三相负载均衡（A/B/C 相电流平衡）\n- `roughly 20% headroom at the current setpoint` — 在当前设定值下约有 20% 余量",
+        "category": "容量规划",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "take rack density from 6 kW to 12 kW",
+            "zh": "把单柜功率密度从 6 kW 提升到 12 kW"
+          },
+          {
+            "en": "watch phase balance",
+            "zh": "关注三相负载均衡（A/B/C 相电流平衡）"
+          },
+          {
+            "en": "roughly 20% headroom at the current setpoint",
+            "zh": "在当前设定值下约有 20% 余量"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-09-27",
     "generatedAt": "2026-09-27T23:19:48+08:00",
     "cycleDay": 1,
@@ -1024,80 +1098,6 @@
           }
         ],
         "content": "- **情境**：与冷水机组 + 冷却塔联合运维（OM）服务商谈判合同能源管理 / 节能绩效保证——按实测 PUE 降幅分享收益、季度 chiller 性能再验证、本地前置关键备件 SLA，确保 failover 无单点、预留液冷 CDU 扩容联动、守 uptime。\n- **A（你·暖通）**：We're looking at an energy-performance contract for the chiller and cooling-tower plant. Payment ties to measured PUE reduction, with quarterly chiller performance re-verification.\n- **B（供应商）**：We can guarantee a PUE drop against the baseline and pre-stage critical spares locally so failover never has a single point of failure. We'd also re-baseline after each free-cooling season.\n- **A（你·暖通）**：Good. But the contract must leave capacity headroom for the upcoming liquid-cooling CDU expansion — your chiller sequencing has to stay in lockstep with the CDU loops.\n- **B（供应商）**：Agreed. We'll write the CDU interlock into the SLA and keep uptime as the non-negotiable. If a unit degrades, we fail over and you don't lose cooling capacity.\n- **重点表达**：\n  - `payment ties to measured PUE reduction` — 付款与实测 PUE 降幅挂钩（按效果付费）\n  - `pre-stage critical spares locally` — 在本地前置（预置）关键备件\n  - `keep uptime as the non-negotiable` — 把 uptime（可用性）作为不可妥协的底线"
-      }
-    ]
-  },
-  {
-    "date": "2026-08-28",
-    "generatedAt": "2026-08-28T09:34:10+08:00",
-    "cycleDay": 3,
-    "difficulty": "高级 Advanced",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "故障排查 · 离心式冷水机组润滑油携出（oil carryover）致制冷衰减，RCA 并确认 failover 链路",
-        "subtitle": "高级 Advanced",
-        "content": "- **情境**：计算集群 latency 偶发毛刺、rack 进风缓慢抬升，BMS 趋势显示主 chiller 蒸发温度偏高、制冷量衰减；RCA 定位离心式冷水机组润滑油携出（oil carryover）——油分离器效率下降 + 蒸发器回油不畅，油膜覆盖换热面，确认备用 chiller + 蓄冷罐 failover 链路完好。\n- **A（你·暖通）**：Cluster latency is spiking in short bursts and rack inlet is creeping up two degrees. The BMS shows the lead chiller's evaporator approach is widening — I suspect oil carryover is fouling the tubes.\n- **B（制冷工程师）**：Agreed. The oil separator efficiency dropped after the last compressor surge, and the evaporator isn't returning oil well. That oil film cuts heat transfer, so the chiller loses capacity and rack inlet climbs.\n- **A（你·暖通）**：Let's confirm the failover path — bring the standby chiller online and ride through on the thermal storage tank so cooling never drops. Then we pull the chiller for an RCA and re-tune the oil return.\n- **B（制冷工程师）**：Standby chiller and cold tank are armed; failover holds. After the RCA we'll service the separator and adjust the oil-return schedule to protect uptime and keep PUE in band.\n- **重点表达**：\n  - `oil carryover fouls the evaporator tubes` — 润滑油携出污染蒸发器换热管（降低换热效率）\n  - `ride through on the thermal storage tank` — 靠蓄冷罐（蓄冷水）扛过、维持制冷不中断\n  - `re-tune the oil-return schedule` — 重新整定（优化）回油周期/策略",
-        "category": "故障排查",
-        "difficulty": "高级 Advanced",
-        "expressions": [
-          {
-            "en": "oil carryover fouls the evaporator tubes",
-            "zh": "润滑油携出污染蒸发器换热管（降低换热效率）"
-          },
-          {
-            "en": "ride through on the thermal storage tank",
-            "zh": "靠蓄冷罐（蓄冷水）扛过、维持制冷不中断"
-          },
-          {
-            "en": "re-tune the oil-return schedule",
-            "zh": "重新整定（优化）回油周期/策略"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "容量规划 · 嘉善一期 D03 模组液冷+风冷混合机柜上架，核算 CDU 与 CRAH 双制冷余量",
-        "subtitle": "基础 Basic",
-        "content": "- **情境**：评估嘉善一期 D03 模组第一批机柜上架，液冷 GPU 机柜与风冷机柜混合部署；核算 CDU 二次侧流量 + CRAH 风冷 capacity 协同、双路 PDU 电力余量、封闭 hot-cold aisle、PUE 余量、预留 headroom 防 over-provision、守 uptime。\n- **A（你·暖通）**：For the first batch of racks in D03, we're mixing liquid-cooled GPU racks with air-cooled racks. Before we rack them, I need to confirm the CDU secondary flow and the CRAH cooling capacity both have headroom.\n- **B（容量/电气）**：The dual-feed PDUs have about 30% spare and the CRAH envelope is fine for the air-cooled rows. The CDUs cover the GPU racks' secondary loop. We keep the hot-cold aisle contained and PUE stays in band.\n- **A（你·暖通）**：Good. Leave headroom in the plan so we don't over-provision, and protect uptime if a CDU or CRAH drops. I'll log the capacity check in the handover.\n- **重点表达**：\n  - `leave headroom in the plan` — 在规划中预留余量（不超额配置）\n  - `the cooling-capacity envelope is fine` — 制冷容量包络（上限）足够、在安全范围内\n  - `mix liquid-cooled and air-cooled racks` — 液冷与风冷机柜混合部署",
-        "category": "容量规划",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "leave headroom in the plan",
-            "zh": "在规划中预留余量（不超额配置）"
-          },
-          {
-            "en": "the cooling-capacity envelope is fine",
-            "zh": "制冷容量包络（上限）足够、在安全范围内"
-          },
-          {
-            "en": "mix liquid-cooled and air-cooled racks",
-            "zh": "液冷与风冷机柜混合部署"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "日常工作 · 晨间巡检发现冷却塔收水器破损飘水漂移，开单整改并交班提示受潮风险",
-        "subtitle": "高级 Advanced",
-        "content": "- **情境**：晨间巡检发现 A 区冷却塔收水器（drift eliminator）破损、飘水漂移严重，飘滴落至相邻机柜区巡检通道地面湿滑、邻近 CRAH 电气柜有受潮风险；开 work order 更换收水器/调整布水，在 handover 交代冷却冗余与 failover 预案、强调 uptime 闭环。\n- **A（你·暖通）**：Morning patrol found the A-zone cooling tower drift eliminators are broken — drift is carrying water onto the aisle walkway and the CRAH electrical cabinets nearby. That's a slip and moisture-ingress risk.\n- **B（运维值班）**：Noted. Log a work order to swap the drift eliminators and re-balance the water distribution. Meanwhile keep the redundant CRAH online so we don't lose cooling headroom.\n- **A（你·暖通）**：Right. I'll add it to the handover: replace the eliminators tonight, watch rack inlet and the tower fan status, and confirm failover is armed. Don't close the loop until the drift stops.\n- **B（运维值班）**：Understood. I'll keep capacity headroom on the cooling loop and protect uptime as the priority. We'll verify the drift is gone before signing off.\n- **重点表达**：\n  - `drift eliminators are broken` — 收水器（飘水消除器）破损\n  - `moisture-ingress risk` — 受潮/进水风险\n  - `don't close the loop until the drift stops` — 在飘水彻底消除前不闭环（工单不销）",
-        "category": "日常工作",
-        "difficulty": "高级 Advanced",
-        "expressions": [
-          {
-            "en": "drift eliminators are broken",
-            "zh": "收水器（飘水消除器）破损"
-          },
-          {
-            "en": "moisture-ingress risk",
-            "zh": "受潮/进水风险"
-          },
-          {
-            "en": "don't close the loop until the drift stops",
-            "zh": "在飘水彻底消除前不闭环（工单不销）"
-          }
-        ]
       }
     ]
   }
