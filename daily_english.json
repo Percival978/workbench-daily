@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-09-30",
+    "generatedAt": "2026-09-30T23:17:49+08:00",
+    "cycleDay": 4,
+    "difficulty": "精通 Proficient",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "运维沟通 · 月度能效复盘会上汇报 PUE 并申请调高冷冻水供水温度",
+        "subtitle": "基础 Basic",
+        "content": "**情境**：月度能效复盘会上，向运维经理汇报本月 PUE 走势，并申请把冷冻水供水温度上调 1℃ 以进一步节能。\n\n**对话**：\n- **Alex (Facility Ops)**：This month our PUE came in at 1.38, down two points from August, mostly because we nudged the chilled water setpoint up by half a degree.\n- **Sarah (Ops Manager)**：Good number. How much headroom do we still have before we brush against the ASHRAE allowable envelope?\n- **Alex**：Average rack inlet is 24.5°C against a 27°C allowable limit, so I'd call it roughly two degrees of headroom.\n- **Sarah**：Then file a change request to move the chilled water supply from 7°C to 8°C, and put the rollback plan in the MOP.\n- **Alex**：Will do. I'll attach the last 30 days of trend data so the approvers can see the cooling capacity margin for themselves.\n\n**重点表达**：\n- `PUE (Power Usage Effectiveness)` — 电能使用效率，越接近 1.0 越节能\n- `headroom` — 余量、可用裕度（温度/容量还剩多少空间）\n- `file a change request` — 提交变更申请",
+        "category": "运维沟通",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "PUE (Power Usage Effectiveness)",
+            "zh": "电能使用效率，越接近 1.0 越节能"
+          },
+          {
+            "en": "headroom",
+            "zh": "余量、可用裕度（温度/容量还剩多少空间）"
+          },
+          {
+            "en": "file a change request",
+            "zh": "提交变更申请"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "跨团队协作 · 配合电气团队做 UPS 维护旁路切换期间的制冷保障",
+        "subtitle": "精通 Proficient",
+        "content": "**情境**：电气团队要在周六凌晨对 2 号 UPS 做维护旁路切换，需与暖通、云/网络团队敲定窗口内的制冷冗余、热续航与中止判据。\n\n**对话**：\n- **David (Electrical)**：We're taking UPS-2 into maintenance bypass Saturday, 01:00 to 04:00. What's your cooling position during that window?\n- **Alex (HVAC)**：While you're on wrap-around bypass, we lose N+1 on the feed to CRAH group B. I'll pre-cool the room by two degrees and pin that group to the A-side feed.\n- **David**：How long can the room ride through if the A-side drops as well?\n- **Alex**：About twelve minutes of thermal ride-through at 8 kW per rack. We'll stage a portable spot cooler and set an abort criterion: if rack inlet hits 30°C, we stop and restore the bypass.\n- **Nina (Cloud/Network)**：From my side I'll drain the non-critical workloads off that pod beforehand and keep the latency-sensitive nodes on the redundant pods.\n- **Alex**：That helps a lot — it drops the heat load by roughly fifteen percent and buys us another four minutes of ride-through.\n- **David**：Then we're aligned. I'll circulate the MOP with the rollback steps and the failover contacts by Friday noon.\n\n**重点表达**：\n- `maintenance bypass` — 维护旁路（检修时隔离 UPS 的供电通路）\n- `thermal ride-through` — 热续航（断电后机房温度维持在限值内的时长）\n- `abort criterion` — 中止判据（变更中触发回退的明确条件）",
+        "category": "跨团队协作",
+        "difficulty": "精通 Proficient",
+        "expressions": [
+          {
+            "en": "maintenance bypass",
+            "zh": "维护旁路（检修时隔离 UPS 的供电通路）"
+          },
+          {
+            "en": "thermal ride-through",
+            "zh": "热续航（断电后机房温度维持在限值内的时长）"
+          },
+          {
+            "en": "abort criterion",
+            "zh": "中止判据（变更中触发回退的明确条件）"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "容量规划 · 液冷改造前的机柜密度与冷源容量核算",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：AI 集群下季度落地，20 台 30kW 高密度机柜，需要核算现有风冷余量，并给出冷板液冷 CDU 的设施侧方案。\n\n**对话**：\n- **Leo (Planning)**：The AI cluster lands next quarter — twenty racks at 30 kW each. Can the current room absorb that?\n- **Alex (HVAC)**：Not on air. With the existing CRAH layout we've got capacity for about 8 kW per rack; anything above 15 kW needs rear-door heat exchangers or direct-to-chip liquid cooling.\n- **Leo**：Let's go direct-to-chip then. What do you need on the facility side?\n- **Alex**：Two CDUs with N+1 redundancy, facility water at 32°C supply, and roughly 600 kW of heat rejection at the chiller plant. I'd keep 20% headroom for the failover case.\n- **Leo**：And what does that do to PUE?\n- **Alex**：It should land near 1.25 — we can run the chillers at a higher setpoint and cut CRAH fan power substantially.\n\n**重点表达**：\n- `kW per rack / rack density` — 单机柜功率密度（容量规划的核心指标）\n- `direct-to-chip liquid cooling` — 芯片级冷板液冷\n- `heat rejection` — 排热量（冷源侧需要带走的热量）",
+        "category": "容量规划",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "kW per rack / rack density",
+            "zh": "单机柜功率密度（容量规划的核心指标）"
+          },
+          {
+            "en": "direct-to-chip liquid cooling",
+            "zh": "芯片级冷板液冷"
+          },
+          {
+            "en": "heat rejection",
+            "zh": "排热量（冷源侧需要带走的热量）"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-09-29",
     "generatedAt": "2026-09-29T23:17:31+08:00",
     "cycleDay": 3,
@@ -1022,80 +1096,6 @@
           {
             "en": "roll back the loop",
             "zh": "回退（恢复）该环路"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-08-30",
-    "generatedAt": "2026-08-30T09:33:55+08:00",
-    "cycleDay": 1,
-    "difficulty": "基础 Basic",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "日常工作 · 顶部走线槽线缆垂落遮挡 CRAH 回风口",
-        "subtitle": "基础 Basic",
-        "content": "- **情境**：晨间巡检发现 D 区顶部走线槽（cable tray）捆扎带松脱、线缆垂落遮挡 CRAH-D1 回风口，局部回风受阻、送风量下降、rack 进风抬升，开整改工单并交班。\n- **对话**：\n- A: Morning. I found some loose cables hanging from the cable tray above CRAH-D1. They're blocking the return-air intake.\n- B: Got it. Is the rack inlet temperature rising because of that?\n- A: Yes, slightly. I'll log a work order to re-tie the cables and keep the redundant unit online. Please watch it during handover.\n- B: Noted. I'll keep an eye on the CRAH and make sure uptime stays solid.\n- **重点表达**：\n- `log a work order` — 开一张工单\n- `block the return-air intake` — 挡住回风口\n- `keep the redundant unit online` — 让冗余机组保持在线\n",
-        "category": "日常工作",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "log a work order",
-            "zh": "开一张工单"
-          },
-          {
-            "en": "block the return-air intake",
-            "zh": "挡住回风口"
-          },
-          {
-            "en": "keep the redundant unit online",
-            "zh": "让冗余机组保持在线"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "故障排查 · 一次侧冷冻水 Y 型过滤器脏堵致 CRAH 流量不足",
-        "subtitle": "进阶 Intermediate",
-        "content": "- **情境**：一次侧冷冻水主管 Y 型过滤器脏堵，末端多台 CRAH 流量不足、rack 进风升温、计算集群 latency 毛刺，核实备用冷源 failover 并牵头 RCA。\n- **对话**：\n- NOC: We're seeing rack-inlet creep and latency spikes on the compute cluster. Any idea what's driving it?\n- 运维: Primary chilled-water loop pressure looks off. I suspect the Y-strainer on the main header is clogged — CRAHs downstream aren't getting enough flow.\n- NOC: Did the standby chiller pick up the load? We need to hold uptime.\n- 运维: Yes, failover is complete and capacity is covered. I'm pulling the trend logs to confirm, and we'll open an RCA on the strainer fouling.\n- **重点表达**：\n- `suspect the Y-strainer is clogged` — 怀疑 Y 型过滤器堵了\n- `failover is complete and capacity is covered` — 切换已完成、容量已覆盖\n- `open an RCA on the strainer fouling` — 就过滤器脏堵开 RCA（根因分析）\n",
-        "category": "故障排查",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "suspect the Y-strainer is clogged",
-            "zh": "怀疑 Y 型过滤器堵了"
-          },
-          {
-            "en": "failover is complete and capacity is covered",
-            "zh": "切换已完成、容量已覆盖"
-          },
-          {
-            "en": "open an RCA on the strainer fouling",
-            "zh": "就过滤器脏堵开 RCA（根因分析）"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "容量规划 · 评估 B 区新增 4 台机柜上架容量",
-        "subtitle": "基础 Basic",
-        "content": "- **情境**：评估 B 区新增 4 台计算机柜 R88–R91 上架，按铭牌折算运行负载、交叉核对双路 PDU 电力预算与 CRAH 制冷容量双上限，确认封闭通道、PUE 余量、预留 headroom 防 over-provision。\n- **对话**：\n- 规划: We want to add four racks, R88 to R91, in Zone B. Can the power and cooling handle it?\n- 运维: Let's check. We'll size the load from the nameplate and compare both the dual-feed PDU budget and the CRAH cooling envelope.\n- 规划: And we should keep the hot-cold aisle contained, right?\n- 运维: Exactly. If we leave enough headroom and avoid over-provisioning, PUE stays in range and uptime is safe.\n- **重点表达**：\n- `size the load from the nameplate` — 按设备铭牌折算负载\n- `cooling capacity envelope` — 制冷能力包络（制冷上限）\n- `leave enough headroom` — 预留足够余量\n",
-        "category": "容量规划",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "size the load from the nameplate",
-            "zh": "按设备铭牌折算负载"
-          },
-          {
-            "en": "cooling capacity envelope",
-            "zh": "制冷能力包络（制冷上限）"
-          },
-          {
-            "en": "leave enough headroom",
-            "zh": "预留足够余量"
           }
         ]
       }
