@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-10-01",
+    "generatedAt": "2026-10-01T23:17:40+08:00",
+    "cycleDay": 1,
+    "difficulty": "基础 Basic",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "日常工作 · 早班交班与冷通道巡检",
+        "subtitle": "基础 Basic",
+        "content": "**情境**：早班接班，夜班同事提到网络割接时拆走了两块机柜盲板，巡检中还发现一台 CRAH 滤网压差偏高。\n\n**对话：**\n- 小白（运维）：Morning. Anything left over from the night shift I should know about?\n- 同事 / 供应商：Yes. Two blanking panels were pulled in row 12 during a network cutover, and CRAH-07 is showing a high filter differential pressure.\n- 小白（运维）：Got it. Those missing panels will let hot exhaust recirculate into the cold aisle. I'll put them back and log a filter change ticket.\n- 同事 / 供应商：Good. Watch the inlet temperature at the top of those racks — 27°C is our action limit.\n- 小白（运维）：Understood. Uptime comes first, so I'll finish the hot-cold aisle walk before I touch anything else.\n\n**重点表达：**\n- `blanking panel` — 机柜空位盲板（挡住空 U 位，防止热风回流）\n- `filter differential pressure` — 滤网压差（判断滤网是否该换的核心指标）\n- `action limit` — 处置阈值——超过就必须动作的临界值",
+        "category": "日常工作",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "blanking panel",
+            "zh": "机柜空位盲板（挡住空 U 位，防止热风回流）"
+          },
+          {
+            "en": "filter differential pressure",
+            "zh": "滤网压差（判断滤网是否该换的核心指标）"
+          },
+          {
+            "en": "action limit",
+            "zh": "处置阈值——超过就必须动作的临界值"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "故障排查 · 市电闪断后 CRAH 群控失联",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：市电瞬间跌落之后，BMS 与 CRAH 群控通信中断，八台 CRAH 全部退回本地控制，冷通道送风温度持续爬升，需要判断是否启用备用冷机。\n\n**对话：**\n- 小白（运维）：We lost the group-control link right after the utility dip. All eight CRAH units fell back to local control.\n- 同事 / 供应商：Is the BMS reading live, or is it lagging?\n- 小白（运维）：There's roughly a 30-second latency on the polling, so the trend lags what I see on the local panel. Cold aisle inlet climbed from 21°C to 25.5°C in fifteen minutes.\n- 同事 / 供应商：The chiller is still running, but if the valves are stuck at their last position we don't have enough cooling capacity in the loop.\n- 小白（运维）：Right. I'll start the standby chiller and open the bypass valve by hand.\n- 同事 / 供应商：Agreed. If inlet hits 27°C, fail over the remaining load to the standby unit and call out the controls vendor. Log every step for the RCA.\n\n**重点表达：**\n- `fell back to local control` — 回退到本地控制——脱离群控后机组按自身设定运行\n- `cooling capacity in the loop` — 冷冻水环路当前可用制冷量\n- `fail over the load to ...` — 把负载切换（failover）到备用设备",
+        "category": "故障排查",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "fell back to local control",
+            "zh": "回退到本地控制——脱离群控后机组按自身设定运行"
+          },
+          {
+            "en": "cooling capacity in the loop",
+            "zh": "冷冻水环路当前可用制冷量"
+          },
+          {
+            "en": "fail over the load to ...",
+            "zh": "把负载切换（failover）到备用设备"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "供应商对接 · CRAH 滤网到货验收与换货",
+        "subtitle": "基础 Basic",
+        "content": "**情境**：新采购的一批 CRAH 滤网到货，开箱后发现边框尺寸与订单规格不符，装不进机组，需要联系供应商换货并确认质保。\n\n**对话：**\n- 小白（运维）：The filters arrived this morning, but they're not what we ordered. The frame is 25 mm too wide for our CRAH-07 housing.\n- 同事 / 供应商：Let me pull the PO... You're right. Our spec sheet calls for 592×592×96 mm, and we shipped the 100 mm deep version.\n- 小白（运维）：Can you swap them out this week? We're running low on spares and the differential pressure is already high on three units.\n- 同事 / 供应商：I'll put a rush on it. Replacement stock ships Thursday, and it's covered under the 12-month warranty — no charge.\n- 小白（运维）：Send me the revised delivery note by email so I can close the ticket.\n\n**重点表达：**\n- `spec sheet` — 规格书 / 技术参数表（对参数和验收的依据）\n- `put a rush on it` — 加急处理——供应商侧优先排产发货\n- `delivery note` — 送货单 / 发货单（验收与关单凭证）",
+        "category": "供应商对接",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "spec sheet",
+            "zh": "规格书 / 技术参数表（对参数和验收的依据）"
+          },
+          {
+            "en": "put a rush on it",
+            "zh": "加急处理——供应商侧优先排产发货"
+          },
+          {
+            "en": "delivery note",
+            "zh": "送货单 / 发货单（验收与关单凭证）"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-09-30",
     "generatedAt": "2026-09-30T23:17:49+08:00",
     "cycleDay": 4,
@@ -1022,80 +1096,6 @@
           {
             "en": "strand power at the bus",
             "zh": "在母线处闲置电力（容量被锁死浪费）"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-08-31",
-    "generatedAt": "2026-08-31T09:33:51+08:00",
-    "cycleDay": 2,
-    "difficulty": "进阶 Intermediate",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "供应商对接 · 液冷 QD/分集水器供应商核对接口与交期",
-        "subtitle": "进阶 Intermediate",
-        "content": "- **情境**：嘉善 D03 液冷模组建设，与液冷二次侧快速接头（QD）及分集水器供应商核对接口标准、泄漏检测、交期与现场质保，确保 CDU 联调前关键件到场。\n- **对话**：\n  - A：For the Jiashan D03 liquid-cooling build, we need to lock down the secondary-loop specs before CDU commissioning. Are the quick-disconnect couplers and manifold sized to our CDU flow?\n  - B：Yes — the QD couplers are rated to 32 L/min each with dry-break leak detection, and the manifold matches the CDU headers. We'll stage the critical spares locally and cut lead time to two weeks.\n  - A：Good. What about warranty and on-site response if a fitting weeps during the pressure test?\n  - B：Parts-and-labor warranty covers 24 months, and we keep an engineer on call through the commissioning window to protect uptime.\n- **重点表达**：\n  - `lock down the specs` — 敲定 / 锁定规格\n  - `dry-break leak detection` — 干断式防漏检测（快接不滴漏）\n  - `stage the critical spares locally` — 在本地前置关键备件\n",
-        "category": "供应商对接",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "lock down the specs",
-            "zh": "敲定 / 锁定规格"
-          },
-          {
-            "en": "dry-break leak detection",
-            "zh": "干断式防漏检测（快接不滴漏）"
-          },
-          {
-            "en": "stage the critical spares locally",
-            "zh": "在本地前置关键备件"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "跨团队协作 · 电气团队变压器/低压柜预防性试验",
-        "subtitle": "基础 Basic",
-        "content": "- **情境**：与电气团队协调年度变压器 / 低压柜预防性试验与继保校验，确认维护窗口内双路供电连续、CRAH 冗余在线、保 uptime。\n- **对话**：\n  - A：Morning. We're scheduling the annual transformer and LV switchgear preventive test. Can you keep both feeds live while you test one side?\n  - B：Yes. We'll transfer the load to the redundant feed and bypass the section under test, so rack power stays continuous.\n  - A：Perfect. And make sure the redundant CRAH stays online so the cold aisle doesn't warm up.\n  - B：Already in the plan — CRAH redundancy is online and we'll watch rack inlet during the window to protect uptime.\n- **重点表达**：\n  - `transfer the load to the redundant feed` — 把负载转移到冗余回路\n  - `bypass the section under test` — 旁路被测试的那一段\n  - `keep the redundant CRAH online` — 保持冗余 CRAH 在线\n",
-        "category": "跨团队协作",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "transfer the load to the redundant feed",
-            "zh": "把负载转移到冗余回路"
-          },
-          {
-            "en": "bypass the section under test",
-            "zh": "旁路被测试的那一段"
-          },
-          {
-            "en": "keep the redundant CRAH online",
-            "zh": "保持冗余 CRAH 在线"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "运维沟通 · 一次侧冷冻水管网年度物理清洗变更窗口",
-        "subtitle": "进阶 Intermediate",
-        "content": "- **情境**：冷冻站一次侧冷冻水主管年度物理清洗（除垢 / 排气）变更窗口，协调隔离管段、投运备用泵，平衡 rack 进风与 latency，预设 chiller failover 与回退。\n- **对话**：\n  - A：The primary chilled-water loop needs its annual physical flush. I want to isolate section B and run the standby pump during the change window.\n  - B：Agreed. We'll stage the standby pump and keep failover armed so a rack-inlet spike trips the redundant chiller, not the whole plant.\n  - A：Right. Watch latency on the compute cluster and roll back the loop if inlet temp drifts past setpoint.\n  - B：Understood — we'll hold PUE and rack inlet in band, and roll back before any capacity margin is eaten.\n- **重点表达**：\n  - `isolate section B` — 隔离 B 管段\n  - `keep failover armed` — 保持故障切换待命\n  - `roll back the loop` — 回退（恢复）该环路\n",
-        "category": "运维沟通",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "isolate section B",
-            "zh": "隔离 B 管段"
-          },
-          {
-            "en": "keep failover armed",
-            "zh": "保持故障切换待命"
-          },
-          {
-            "en": "roll back the loop",
-            "zh": "回退（恢复）该环路"
           }
         ]
       }
