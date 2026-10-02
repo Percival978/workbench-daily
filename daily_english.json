@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-10-02",
+    "generatedAt": "2026-10-02T23:17:59+08:00",
+    "cycleDay": 2,
+    "difficulty": "进阶 Intermediate",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "运维沟通 · 冷冻水小温差综合征与二次泵调整",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：BMS 弹出冷冻水「供回水温差过低」告警，压差旁通阀持续开在 60%，需要与值班主管沟通是先调泵还是先加开冷机，并评估对 PUE 的影响。\n\n**对话：**\n- 小白（运维）：The DP bypass valve on the secondary loop has been sitting at 60% open for two hours, and BMS just pushed a low delta-T alarm.\n- 值班主管：Low delta-T usually means we're circulating more water than the CRAH coils can actually use. What's the supply temperature right now?\n- 小白（运维）：7.2°C supply, 11.4°C return — only about 4.2°C across the loop. The design delta-T is 6°C.\n- 值班主管：That's classic low delta-T syndrome. Trim the secondary pump to 40 Hz and watch whether the bypass starts closing. We shouldn't chase this with more chiller capacity.\n- 小白（运维）：Agreed. I'll trim the pump first, then watch the cold aisle inlet for fifteen minutes. If inlet drifts above 24°C I'll roll back.\n- 值班主管：Good. Log the before-and-after PUE as well — any pump kW we cut goes straight into the monthly number.\n\n**重点表达：**\n- `low delta-T syndrome` — 小温差综合征——供回水温差远低于设计值，导致水泵/冷机做无用功\n- `trim the pump to 40 Hz` — 把水泵频率降到 40Hz（trim = 小幅下调出力）\n- `roll back` — 回滚——调整后指标恶化时退回上一个状态",
+        "category": "运维沟通",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "low delta-T syndrome",
+            "zh": "小温差综合征——供回水温差远低于设计值，导致水泵/冷机做无用功"
+          },
+          {
+            "en": "trim the pump to 40 Hz",
+            "zh": "把水泵频率降到 40Hz（trim = 小幅下调出力）"
+          },
+          {
+            "en": "roll back",
+            "zh": "回滚——调整后指标恶化时退回上一个状态"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "跨团队协作 · ATS 切换演练前的制冷保障确认",
+        "subtitle": "高级 Advanced",
+        "content": "**情境**：电气团队计划本周做 A 段开关柜的 ATS 市电/柴发切换演练，制冷侧需要确认 CRAH 群控不掉电、风机穿越时间、温度抬升幅度，并写入 MOP 的中止判据。\n\n**对话：**\n- 小白（运维）：Before you run the ATS transfer test on the A-side switchgear, I need to confirm the CRAH group-control panel is on a UPS feed.\n- 电气团队：It is. Panel MCC-3 is fed from UPS-2, so the controllers stay alive through the transfer. The real question is your restart latency.\n- 小白（运维）：That's exactly what I'm worried about. The CRAH fans drop out for roughly 12 seconds during transfer, and the compressors need another 90 seconds to come back online.\n- 电气团队：So it's a fan ride-through problem, not a controls problem. How much does the inlet rise in that window?\n- 小白（运维）：We modelled it — about 3.5°C, from 22°C to 25.5°C. That's inside our 27°C action limit, but only if both chillers stay running.\n- 电气团队：Then let's write the abort criteria into the MOP: if inlet hits 26°C, or a chiller fails to restart within 120 seconds, we stop and fail back to utility. Uptime is non-negotiable.\n- 小白（运维）：Agreed. I'll pre-cool the loop to 6.5°C for thirty minutes before the window — that buys us extra thermal buffer for the failover.\n\n**重点表达：**\n- `ride-through` — 穿越能力——短暂断电/切换期间设备维持运行而不停机的能力\n- `abort criteria` — 中止判据——演练/变更中触发立即停止并回退的量化条件\n- `fail back to utility` — 切回市电（fail back = 故障切换后回到原供电路径）",
+        "category": "跨团队协作",
+        "difficulty": "高级 Advanced",
+        "expressions": [
+          {
+            "en": "ride-through",
+            "zh": "穿越能力——短暂断电/切换期间设备维持运行而不停机的能力"
+          },
+          {
+            "en": "abort criteria",
+            "zh": "中止判据——演练/变更中触发立即停止并回退的量化条件"
+          },
+          {
+            "en": "fail back to utility",
+            "zh": "切回市电（fail back = 故障切换后回到原供电路径）"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "容量规划 · B 区新增机柜的制冷与电力余量核算",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：IT 团队希望在 B 区冷通道再落 8 个 12kW 机柜，需要一起核算冷通道显冷量余量与 PDU 备用回路，判断瓶颈在制冷还是在电力。\n\n**对话：**\n- 小白（运维）：IT wants eight more racks in the B-side hot-cold aisle, at 12 kW each. Can the cooling keep up?\n- IT 容量同事：Let's do the math. Eight racks at 12 kW is 96 kW of IT load. The four CRAH units covering that aisle give us roughly 130 kW of sensible capacity, so we have about 34 kW of headroom.\n- 小白（运维）：That's tight once you add fan heat and lighting. What about power?\n- IT 容量同事：Power is the tighter constraint. Each rack wants a dual 32 A feed, and B-side has only six spare ways left on the PDU. We'd have to pull a new feeder.\n- 小白（运维）：So the bottleneck is power, not cooling. Should we price the rear-door heat exchanger option instead, so we don't push the whole room's density up?\n- IT 容量同事：That's the smarter play. Rear-door units handle the 12 kW locally and keep the containment intact. Let's cost both options and take the numbers to the capacity review.\n\n**重点表达：**\n- `sensible capacity` — 显冷量——真正用于降温的那部分制冷量（不含除湿潜热）\n- `headroom` — 余量/裕度——当前用量到设计上限之间还剩多少\n- `the tighter constraint` — 更紧的那个约束——多因素比较时真正卡脖子的环节",
+        "category": "容量规划",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "sensible capacity",
+            "zh": "显冷量——真正用于降温的那部分制冷量（不含除湿潜热）"
+          },
+          {
+            "en": "headroom",
+            "zh": "余量/裕度——当前用量到设计上限之间还剩多少"
+          },
+          {
+            "en": "the tighter constraint",
+            "zh": "更紧的那个约束——多因素比较时真正卡脖子的环节"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-01",
     "generatedAt": "2026-10-01T23:17:40+08:00",
     "cycleDay": 1,
@@ -1022,80 +1096,6 @@
           {
             "en": "off-peak window",
             "zh": "低谷时段 / 非高峰窗口"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-09-01",
-    "generatedAt": "2026-09-01T09:34:04+08:00",
-    "cycleDay": 3,
-    "difficulty": "高级 Advanced",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "日常工作 · 早班巡检冷站交接",
-        "subtitle": "进阶 Intermediate",
-        "content": "- **情境**：早班巡检嘉善 D02 模组冷站，发现 B 区 CRAH 送风温度偏高，与夜班交接确认夜里有瞬时高温波动。\n- **对话**：\n  - A：Morning patrol on the Jiashan D02 chiller plant — the B-zone CRAHs are throwing supply air about 3°C above setpoint. Anything flagged on your shift?\n  - B：Yeah, we saw a transient swing around 02:00 when the lead chiller tripped to standby. Hot-cold aisle containment held, but the B-zone supply crept up.\n  - A：Got it. I'll log a work order and watch the PUE; if supply stays high through peak load, we escalate to maintenance.\n  - B：Noted. Handover complete — keep an eye on that chiller's restart sequence.\n- **重点表达**：\n  - `morning patrol` — 晨间巡检（定点巡场）\n  - `throw supply air above setpoint` — 送风温度超过设定值\n  - `hot-cold aisle containment held` — 冷热通道封闭起作用 / 兜住了",
-        "category": "日常工作",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "morning patrol",
-            "zh": "晨间巡检（定点巡场）"
-          },
-          {
-            "en": "throw supply air above setpoint",
-            "zh": "送风温度超过设定值"
-          },
-          {
-            "en": "hot-cold aisle containment held",
-            "zh": "冷热通道封闭起作用 / 兜住了"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "故障排查 · 核心机柜区制冷失效 RCA 与 failover",
-        "subtitle": "高级 Advanced",
-        "content": "- **情境**：D01 核心机柜区一台 CRAH 失效导致列间温度上升，触发高温告警，启动根因分析(RCA)并 failover 到冗余制冷回路。\n- **对话**：\n  - A：We've got a high-temp alarm on the D01 core rack row — CRAH-07 just dropped out and rack inlet temps are climbing. Latency on the management link spiked too.\n  - B：Initiate failover to the redundant CRAH loop and isolate CRAH-07. I want a root-cause analysis by end of shift — check the chilled-water valve and the unit's VFD.\n  - A：Failover's holding, inlet temps recovering. The RCA points to a stuck chilled-water control valve, not the chiller plant. Uptime stays protected.\n  - B：Good. Raise the finding in the incident review and confirm the spare valve is staged so we don't lose uptime on the next swing.\n- **重点表达**：\n  - `initiate failover to the redundant loop` — 切换到冗余回路（failover 接管）\n  - `root-cause analysis (RCA)` — 根因分析\n  - `rack inlet temps` — 机柜进风温度",
-        "category": "故障排查",
-        "difficulty": "高级 Advanced",
-        "expressions": [
-          {
-            "en": "initiate failover to the redundant loop",
-            "zh": "切换到冗余回路（failover 接管）"
-          },
-          {
-            "en": "root-cause analysis (RCA)",
-            "zh": "根因分析"
-          },
-          {
-            "en": "rack inlet temps",
-            "zh": "机柜进风温度"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "容量规划 · 新业务上架评估 rack 电力与制冷 capacity",
-        "subtitle": "进阶 Intermediate",
-        "content": "- **情境**：嘉善一期新业务上架，与架构团队评估 rack 电力与制冷 capacity，规划液冷扩容并设定 PUE 目标。\n- **对话**：\n  - A：For the new tenant build-out, we're forecasting 18 kW per rack on the high-density row. Do we have chiller and CRAH capacity to cover it without blowing the PUE target?\n  - B：Current plant has headroom, but the hot-cold aisle needs tighter containment. If we push past 20 kW/rack, we should move those cabinets to the liquid-cooling loop.\n  - A：Agreed. Let's cap air-cooled racks at 15 kW and route the 18 kW loads to CDU-backed racks. That keeps PUE under 1.3 and protects capacity margin.\n  - B：Sounds right. I'll model the capacity and stage the CDU capacity so we don't strand power at the bus.\n- **重点表达**：\n  - `forecast kW per rack` — 预测单机柜功率（kW/rack）\n  - `capacity margin` — 容量余量 / 安全裕度\n  - `strand power at the bus` — 在母线处闲置电力（容量被锁死浪费）",
-        "category": "容量规划",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "forecast kW per rack",
-            "zh": "预测单机柜功率（kW/rack）"
-          },
-          {
-            "en": "capacity margin",
-            "zh": "容量余量 / 安全裕度"
-          },
-          {
-            "en": "strand power at the bus",
-            "zh": "在母线处闲置电力（容量被锁死浪费）"
           }
         ]
       }
