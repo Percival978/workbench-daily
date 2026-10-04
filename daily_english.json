@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-10-04",
+    "generatedAt": "2026-10-04T23:18:05+08:00",
+    "cycleDay": 4,
+    "difficulty": "精通 Proficient",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "运维沟通 · 冷却塔冬季防冻与 free cooling 切换窗口",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：夜间最低气温降到 3℃，需要跟运维经理确认冷却塔防冻措施是否到位，并讨论明天白班能否切入 free cooling 模式、把冷机停掉省电。\n\n**对话：**\n- 小白（运维）：It's down to 3°C outside tonight. Before we talk about free cooling, I want to confirm the tower freeze protection is actually live.\n- 运维经理：Basin heaters are on the freeze stat, and the bypass valve is holding the basin at 12°C. Have you checked the fill deck for ice at the air inlet?\n- 小白（运维）：I walked the deck an hour ago — no ice build-up, and the fan is running in reverse at low speed to keep the airflow balanced.\n- 运维经理：Then let's look at the switch. What's the wet-bulb forecast for tomorrow afternoon?\n- 小白（运维）：Around 5°C. With an 3°C approach that puts us near 8°C condenser water, so we can hold 10°C chilled water supply without starting a chiller.\n- 运维经理：Good — run it in waterside economizer mode from 10:00, but keep Chiller-1 on hot standby. One PUE point isn't worth losing uptime if the wet-bulb climbs.\n\n**重点表达：**\n- `freeze protection is live` — 防冻保护已投入运行（live 强调「带电 / 生效中」，不是「已安装」）\n- `run it in waterside economizer mode` — 切到水侧自然冷却模式运行——用冷却塔直接供冷、冷机停机节能\n- `keep ... on hot standby` — 让……处于热备状态（随时可加载，但不承担负荷）",
+        "category": "运维沟通",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "freeze protection is live",
+            "zh": "防冻保护已投入运行（live 强调「带电 / 生效中」，不是「已安装」）"
+          },
+          {
+            "en": "run it in waterside economizer mode",
+            "zh": "切到水侧自然冷却模式运行——用冷却塔直接供冷、冷机停机节能"
+          },
+          {
+            "en": "keep ... on hot standby",
+            "zh": "让……处于热备状态（随时可加载，但不承担负荷）"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "跨团队协作 · OT 网络隔离：CRAH 群控接入 DCIM 的安全评审",
+        "subtitle": "精通 Proficient",
+        "content": "**情境**：要把 CRAH 与冷机群控的运行数据接入 DCIM 平台做能效分析，IT 安全团队担心 OT 网络被暴露。双方开会敲定隔离方案、数据方向与应急失效时的降级策略。\n\n**对话：**\n- 小白（运维）：We want CRAH and chiller telemetry in DCIM for PUE trending. The question is how we get it there without exposing the controls network.\n- IT 安全工程师：Acceptable, but the flow has to be one-way. We'll terminate the OT segment on a read-only gateway — a data diode — so nothing can write back to the group controller.\n- 小白（运维）：One-way works for trending. But our failover logic lives in the group controller, so if the gateway drops, we lose visibility, not control. Can you live with that?\n- IT 安全工程师：Yes, visibility loss is a monitoring issue, not an uptime one. I do need the polling interval capped at sixty seconds and no SNMP write community anywhere in the design.\n- 小白（运维）：Agreed on both. One caveat from our side: firmware patches on the group controller still need a maintenance window, because a reboot takes the whole row to local control.\n- IT 安全工程师：Then we'll document it as a shared-risk item — patching goes through change management, and we hold the OT VLAN segmented from the corporate network permanently.\n\n**重点表达：**\n- `the flow has to be one-way` — 数据流向必须是单向的——OT 安全评审里对跨网传输的核心要求\n- `we lose visibility, not control` — 我们丢的是可观测性，不是控制权——区分「看不见」与「控不了」，是跨团队沟通的关键切割\n- `document it as a shared-risk item` — 把它作为共担风险项记录在案——不消除风险，但双方书面确认接受",
+        "category": "跨团队协作",
+        "difficulty": "精通 Proficient",
+        "expressions": [
+          {
+            "en": "the flow has to be one-way",
+            "zh": "数据流向必须是单向的——OT 安全评审里对跨网传输的核心要求"
+          },
+          {
+            "en": "we lose visibility, not control",
+            "zh": "我们丢的是可观测性，不是控制权——区分「看不见」与「控不了」，是跨团队沟通的关键切割"
+          },
+          {
+            "en": "document it as a shared-risk item",
+            "zh": "把它作为共担风险项记录在案——不消除风险，但双方书面确认接受"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "容量规划 · 存量风冷区改冷板液冷的分阶段容量核算",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：IT 计划明年在存量风冷区部署 40kW/rack 的 GPU 机柜。需要一起核算：风冷还能吃多少、液冷什么时候必须上、以及电力与制冷的时序是否对得上。\n\n**对话：**\n- 小白（运维）：You're asking for forty kilowatts a rack in a hall that was designed for eight. Air cooling won't carry that, whatever we do with the aisles.\n- IT 容量同事：That's why we're looking at cold plates. The question is how far we can go before the liquid loop has to be in place.\n- 小白（运维）：With the hot-cold aisle containment you already have, roughly twelve kilowatts per rack is the ceiling. Beyond that we'd be fighting hot spots at the top of every rack.\n- IT 容量同事：So phase one is a handful of 12 kW racks on air, and phase two waits for the CDU. How much capacity does the loop give us?\n- 小白（运维）：Two CDUs at 500 kW each, running on 32°C supply water — that's free cooling for most of the year, and it drops our PUE by about 0.12 on those rows.\n- IT 容量同事：Then we'll hold the general compute on air and put only GPU nodes on the liquid loop. I'll rework the rack layout to keep the liquid rows together.\n\n**重点表达：**\n- `... is the ceiling` — ……就是上限了——容量规划里给「还能吃多少」下定量结论的常用说法\n- `we'd be fighting hot spots` — 我们就得一直跟热点作斗争——暗示风冷已到物理极限、局部过热无法根治\n- `phase one / phase two` — 一期 / 二期——分阶段落地容量或改造时的标准表述",
+        "category": "容量规划",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "... is the ceiling",
+            "zh": "……就是上限了——容量规划里给「还能吃多少」下定量结论的常用说法"
+          },
+          {
+            "en": "we'd be fighting hot spots",
+            "zh": "我们就得一直跟热点作斗争——暗示风冷已到物理极限、局部过热无法根治"
+          },
+          {
+            "en": "phase one / phase two",
+            "zh": "一期 / 二期——分阶段落地容量或改造时的标准表述"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-03",
     "generatedAt": "2026-10-03T23:17:29+08:00",
     "cycleDay": 3,
@@ -1022,80 +1096,6 @@
           {
             "en": "extend the warranty to 3 years",
             "zh": "将质保延长至 3 年"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-09-03",
-    "generatedAt": "2026-09-03T09:33:43+08:00",
-    "cycleDay": 1,
-    "difficulty": "基础 Basic",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "日常工作 · 晨间巡检发现 CRAH 过滤网脏堵致送风量下降",
-        "subtitle": "基础 Basic",
-        "content": "- **情境**：晨间巡检发现 D 区 CRAH-D4 回风过滤网压差偏高、送风量下降约 12%，局部 rack 进风有抬升趋势；开 work order 在低谷窗口更换并在 handover 提示保持冗余机组在线、守 uptime。\n- **对话**：\n  - A：Morning patrol shows CRAH-D4 filter differential pressure is high — supply airflow is down about 12%. Should I raise a work order?\n  - B：Yes. Log it and replace the filter during the low-load window. Keep the redundant CRAH online so we don't lose cooling capacity or uptime.\n  - A：Got it. I'll note it in the handover and watch the rack inlet until the swap is done.\n- **重点表达**：\n  - `morning patrol` — 晨间巡检\n  - `filter differential pressure` — 过滤网压差（脏堵指示）\n  - `keep the redundant CRAH online` — 保持冗余 CRAH 在线",
-        "category": "日常工作",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "morning patrol",
-            "zh": "晨间巡检"
-          },
-          {
-            "en": "filter differential pressure",
-            "zh": "过滤网压差（脏堵指示）"
-          },
-          {
-            "en": "keep the redundant CRAH online",
-            "zh": "保持冗余 CRAH 在线"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "故障排查 · 主 chiller 高压跳机，failover 接管并启动 RCA",
-        "subtitle": "进阶 Intermediate",
-        "content": "- **情境**：主 chiller 因高压跳机退出，备用机组经 failover 接管、capacity 守住、业务侧 latency 未受影响；启动 RCA 排查高压根因（冷凝器脏堵/冷却塔阀卡），并复核蓄冷罐冗余链路与 PUE 余量。\n- **对话**：\n  - A：Primary chiller tripped on high-head-pressure and dropped out. Did the standby pick up the load through failover?\n  - B：Yes — failover kicked in within seconds and capacity held; the rack inlet stayed in band and we saw no latency spike on the compute side.\n  - A：Good. Let me run the RCA: I suspect condenser fouling or a stuck cooling-tower valve. I'll pull the trend and confirm the cold-storage buffer is armed.\n  - B：Keep failover armed and hold PUE in margin while we service the unit. Close the loop only after the root cause is cleared.\n- **重点表达**：\n  - `high-head-pressure trip` — 高压跳机（冷水机组高压保护动作）\n  - `failover kicked in` — failover 自动投入 / 接管\n  - `run the RCA` — 开展根因分析（Root Cause Analysis）",
-        "category": "故障排查",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "high-head-pressure trip",
-            "zh": "高压跳机（冷水机组高压保护动作）"
-          },
-          {
-            "en": "failover kicked in",
-            "zh": "failover 自动投入 / 接管"
-          },
-          {
-            "en": "run the RCA",
-            "zh": "开展根因分析（Root Cause Analysis）"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "容量规划 · 新一批高密度 AI 机柜上架评估 rack 电力与制冷容量",
-        "subtitle": "基础 Basic",
-        "content": "- **情境**：评估下月 R60–R63 高密度 AI 机柜上架（约 20 kW/rack），与规划团队交叉核对双路 PDU 电力预算与 CRAH 制冷 capacity、封闭 hot-cold aisle，核算 PUE 与 headroom，并考虑液冷 CDU 扩容。\n- **对话**：\n  - A：The new AI racks land at R60 through R63 next month, about 20 kW each. Do we have rack power and cooling capacity for them?\n  - B：Dual-feed PDUs have headroom, and the CRAH envelope is fine if we keep the hot-cold aisle contained. But at 20 kW we should think about liquid cooling.\n  - A：Agreed. Let's cap the air-cooled load and route the hottest racks to the CDU loop so PUE stays under 1.3 and uptime is safe.\n- **重点表达**：\n  - `cooling capacity envelope` — 制冷能力包络（制冷上限）\n  - `hot-cold aisle containment` — 冷热通道封闭隔离\n  - `route to the CDU loop` — 改走液冷 CDU 回路（二次侧）",
-        "category": "容量规划",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "cooling capacity envelope",
-            "zh": "制冷能力包络（制冷上限）"
-          },
-          {
-            "en": "hot-cold aisle containment",
-            "zh": "冷热通道封闭隔离"
-          },
-          {
-            "en": "route to the CDU loop",
-            "zh": "改走液冷 CDU 回路（二次侧）"
           }
         ]
       }
