@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-10-06",
+    "generatedAt": "2026-10-06T23:19:31+08:00",
+    "cycleDay": 2,
+    "difficulty": "进阶 Intermediate",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "运维沟通 · 告警疲劳治理：进风温度告警阈值改两级",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：B 区机房昨夜报了 47 次进风高温告警，其中 41 次两分钟内自动恢复，全是 CRAH 化霜引起的误报。跟主管商量把硬阈值改成两级告警并加抑制规则。\n\n**对话：**\n- 小白（运维）：We had forty-seven high inlet temperature alarms in hall B last night, and forty-one of them cleared within two minutes. That is classic alert fatigue.\n- 值班主管：Agreed. The threshold is a hard 27 degrees with no dampening, so every CRAH defrost cycle trips it. What do you propose?\n- 小白（运维）：Two-tier: a warning at 26 degrees averaged over five minutes, and a critical at 27.5 sustained for three minutes. Critical still pages the on-call.\n- 值班主管：And the warning goes where?\n- 小白（运维）：Dashboard only. I also want a suppression rule tied to CRAH maintenance mode, so planned work stops paging the on-call.\n- 值班主管：Fine. Raise it as a change request, attach last week's alarm log, and we will review it at Thursday's ops meeting.\n\n**重点表达：**\n- `That is classic alert fatigue.` — 这是典型的告警疲劳——误报太多导致值班人员对告警麻木，是运维沟通里的高频判断句\n- `averaged over five minutes` — 按五分钟取平均（移动平均）——用时间窗抑制瞬时尖峰，比单纯提阈值更专业\n- `Raise it as a change request.` — 走变更申请流程提交——任何阈值/逻辑改动都要挂 change request，不能直接改",
+        "category": "运维沟通",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "That is classic alert fatigue.",
+            "zh": "这是典型的告警疲劳——误报太多导致值班人员对告警麻木，是运维沟通里的高频判断句"
+          },
+          {
+            "en": "averaged over five minutes",
+            "zh": "按五分钟取平均（移动平均）——用时间窗抑制瞬时尖峰，比单纯提阈值更专业"
+          },
+          {
+            "en": "Raise it as a change request.",
+            "zh": "走变更申请流程提交——任何阈值/逻辑改动都要挂 change request，不能直接改"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "跨团队协作 · 气体灭火钢瓶更换：停用窗口与误喷风险",
+        "subtitle": "高级 Advanced",
+        "content": "**情境**：B 区 FM-200 钢瓶下月到期需送检，作业期间机房将失去气体灭火保护。需要与安全消防、网络团队一起敲定停用窗口、误喷防护与兜底措施。\n\n**对话：**\n- 小白（运维）：The FM-200 cylinders in hall B are due for hydrostatic testing next month. While they are out, the room has no clean agent suppression.\n- 消防与网络协调人：Then we run under an impairment permit. How long is the cylinder swap?\n- 小白（运维）：Two days if we pull all four. During that window I want the discharge circuit locked out and the abort switch held in, so an accidental discharge cannot take the room down.\n- 消防与网络协调人：Understood. The network team will fail over the critical workloads out of hall B the night before, so a discharge is an availability event, not an outage. What is the fallback if we do get a fire?\n- 小白（运维）：Manual hose reels and a fire watch on site around the clock. We keep the pre-action sprinkler charged but in single interlock, so it only floods on a confirmed second alarm.\n- 消防与网络协调人：Good. Put the impairment window, the fire watch roster and the abort criteria in the MOP, and get safety sign-off before we start.\n\n**重点表达：**\n- `run under an impairment permit` — 在消防设施停用许可下运行——灭火系统退出服役期间的正式合规说法，必须走书面许可\n- `an accidental discharge cannot take the room down` — 误喷不能把整个机房打掉——take ... down 指系统/机房整体失效，跨团队风险沟通的核心句\n- `single interlock` — 单联锁（预作用系统）——需两个独立探测信号才放水，避免误喷淹机房",
+        "category": "跨团队协作",
+        "difficulty": "高级 Advanced",
+        "expressions": [
+          {
+            "en": "run under an impairment permit",
+            "zh": "在消防设施停用许可下运行——灭火系统退出服役期间的正式合规说法，必须走书面许可"
+          },
+          {
+            "en": "an accidental discharge cannot take the room down",
+            "zh": "误喷不能把整个机房打掉——take ... down 指系统/机房整体失效，跨团队风险沟通的核心句"
+          },
+          {
+            "en": "single interlock",
+            "zh": "单联锁（预作用系统）——需两个独立探测信号才放水，避免误喷淹机房"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "容量规划 · 20kW 高密 GPU 机柜落位：电力/制冷/承重三方核算",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：业务方申请在 C 区落 8 个 20kW 的 GPU 机柜。需要同时核对 PDU 备用回路、CRAH 显冷余量、以及高架地板承重，再决定是整批上还是分期上。\n\n**对话：**\n- 小白（运维）：We have a request for eight racks at twenty kilowatts each in hall C. Before I reserve the space, I want to check power, cooling and floor loading together.\n- IT 容量规划同事：Power is fine at the panel, but each rack needs two sixty-three amp feeds and we only have ten spare ways in that PDU.\n- 小白（运维）：Cooling is the tighter limit. The hall has about one hundred and eighty kilowatts of usable sensible capacity left, so eight racks eats most of the cooling headroom in one go.\n- IT 容量规划同事：What about the floor? These are fully populated GPU racks, around thirteen hundred kilos each.\n- 小白（运维）：The raised floor is rated for twelve hundred kilos per rack, so we land them on the slab or add stringers. My suggestion is to phase the build-out: four racks now, four when the CRAH upgrade lands in Q1.\n- IT 容量规划同事：If we only take four now, we strand half the reserved space and pay for cooling we are not using.\n- 小白（运维）：Better stranded capacity than a hot aisle we cannot cool. I will model both cases and bring the numbers to the capacity review.\n\n**重点表达：**\n- `usable sensible capacity` — 可用显冷量——机房真正能吃掉的显热余量，容量核算时比名义制冷量更有意义\n- `stranded capacity` — 已预留但未投产的搁浅容量——容量规划经典概念，指占了空间/电力却没产生算力\n- `phase the build-out` — 分期建设、分批投产——把一次性满载拆成多期，给制冷改造留出窗口",
+        "category": "容量规划",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "usable sensible capacity",
+            "zh": "可用显冷量——机房真正能吃掉的显热余量，容量核算时比名义制冷量更有意义"
+          },
+          {
+            "en": "stranded capacity",
+            "zh": "已预留但未投产的搁浅容量——容量规划经典概念，指占了空间/电力却没产生算力"
+          },
+          {
+            "en": "phase the build-out",
+            "zh": "分期建设、分批投产——把一次性满载拆成多期，给制冷改造留出窗口"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-05",
     "generatedAt": "2026-10-05T23:17:42+08:00",
     "cycleDay": 1,
@@ -1022,80 +1096,6 @@
           {
             "en": "within spec",
             "zh": "符合规格 / 在规格范围内"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-09-07",
-    "generatedAt": "2026-09-07T09:33:06+08:00",
-    "cycleDay": 1,
-    "difficulty": "基础 Basic",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "日常工作 · 晨间巡检交接",
-        "subtitle": "基础 Basic",
-        "content": "**情境**：早班接班时发现 D02 模组 A12 机柜温度偏高，与夜班同事做交接记录。\n\n**对话**：\n- Day Shift（小白）: Morning! How's the floor? I see rack A12 in D02 showing a high temp on my dashboard.\n- Night Shift: Rack A12 ran warm after we swapped a CRAH filter last night. Hot-cold aisle looks fine, but the return air is a bit high.\n- Day Shift（小白）: Got it. I'll check the CRAH setpoint and keep an eye on it during the morning patrol.\n- Night Shift: Noted in the handover. Chiller plant is stable — no alarms overnight.\n\n**重点表达**：\n- `morning patrol` — 晨间巡检\n- `handover noted` — 交接已记录\n- `running warm` — 温度偏高（设备偏热运行）",
-        "category": "日常工作",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "morning patrol",
-            "zh": "晨间巡检"
-          },
-          {
-            "en": "handover noted",
-            "zh": "交接已记录"
-          },
-          {
-            "en": "running warm",
-            "zh": "温度偏高（设备偏热运行）"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "故障排查 · 备用空调未 failover 的 RCA",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：周末一台 CRAH 故障，备用机未按设计 failover，周一 RCA 复盘会讨论根因与整改。\n\n**对话**：\n- Ops Lead: What triggered the hot-aisle breach on Saturday? The standby CRAH didn't failover as designed.\n- 小白（HVAC）: Root cause looks like control-loop latency — the BMS saw the alarm, but the standby unit started about 90 seconds late.\n- Ops Lead: So we lost redundancy for a minute and a half. Did the chiller ramp to cover the load?\n- 小白（HVAC）: Partially. Capacity margin was thin, so the inlet temp spiked before failover completed. We're revising the trip logic.\n\n**重点表达**：\n- `failover didn't kick in` — 故障切换未启动\n- `control-loop latency` — 控制回路延迟\n- `root cause / RCA` — 根因分析（Root Cause Analysis）",
-        "category": "故障排查",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "failover didn't kick in",
-            "zh": "故障切换未启动"
-          },
-          {
-            "en": "control-loop latency",
-            "zh": "控制回路延迟"
-          },
-          {
-            "en": "root cause / RCA",
-            "zh": "根因分析（Root Cause Analysis）"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "容量规划 · 21 模组新增机柜制冷评估",
-        "subtitle": "基础 Basic",
-        "content": "**情境**：计划下月在 21 模组新增 20 个 rack，与规划同事评估制冷与电力容量是否充足。\n\n**对话**：\n- Planner: We're adding 20 racks to Module 21 next month. Do we have the cooling capacity?\n- 小白（HVAC）: Each rack averages 8 kW, so that's 160 kW. Our CRAH banks can cover it without hurting PUE.\n- Planner: Good. And does the chiller have enough headroom for the summer peak?\n- 小白（HVAC）: Yes — roughly 25% spare capacity. We'll stage the rack load-in to avoid a sudden spike.\n\n**重点表达**：\n- `cooling capacity` — 制冷容量\n- `headroom / spare capacity` — 余量（余裕）\n- `stage the load-in` — 分批上电（错峰加载）",
-        "category": "容量规划",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "cooling capacity",
-            "zh": "制冷容量"
-          },
-          {
-            "en": "headroom / spare capacity",
-            "zh": "余量（余裕）"
-          },
-          {
-            "en": "stage the load-in",
-            "zh": "分批上电（错峰加载）"
           }
         ]
       }
