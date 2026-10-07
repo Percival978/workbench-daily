@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-10-07",
+    "generatedAt": "2026-10-07T23:20:00+08:00",
+    "cycleDay": 3,
+    "difficulty": "高级 Advanced",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "日常工作 · 上架前场地核对：Row 12 新增四个机柜",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：IT 明天要在 Row 12 落四个新机柜，落位前需要暖通到现场核对机位、供电与冷量余量、冷热通道完整性，并在 checklist 上签字放行。\n\n**对话：**\n- Dan: We are dropping four new racks in Row 12 tomorrow. Can you walk the floor with me and sign off on the slots?\n- 小白: Sure. Let me pull the capacity sheet first. What is the per-rack draw on those?\n- Dan: Around eight kilowatts each, and they will be face-to-face inside the hot aisle containment.\n- 小白: Then we are fine on cooling. Row 12 still has headroom. But I need a blanking panel in every empty U before you energise. Open slots kill the hot and cold aisle separation.\n- Dan: Understood. Anything else on your checklist?\n- 小白: Yes. Confirm the floor tiles in front of each rack are perforated, not solid, and that the front and rear labels match the asset tags on the work order.\n\n**重点表达：**\n- `walk the floor` — 到机房现场走一圈实地核对——不是看图纸，是到现场逐项确认，验收前的标准动作\n- `Row 12 still has headroom.` — Row 12 还有余量——headroom 专指系统剩余可用余量，比 we have enough 更地道\n- `sign off on the slots` — 在机位上签字放行——sign off on 表示验收确认并承担责任，改动/交付场景高频",
+        "category": "日常工作",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "walk the floor",
+            "zh": "到机房现场走一圈实地核对——不是看图纸，是到现场逐项确认，验收前的标准动作"
+          },
+          {
+            "en": "Row 12 still has headroom.",
+            "zh": "Row 12 还有余量——headroom 专指系统剩余可用余量，比 we have enough 更地道"
+          },
+          {
+            "en": "sign off on the slots",
+            "zh": "在机位上签字放行——sign off on 表示验收确认并承担责任，改动/交付场景高频"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "故障排查 · 冷机群控加卸载震荡：供水温度来回摆动",
+        "subtitle": "高级 Advanced",
+        "content": "**情境**：冷冻水供水温度整个下午在 7.5 到 10 摄氏度之间来回摆动，两台冷机反复加载卸载，已经有一次波动触发了 CRAH 高温告警，需要定位根因并安排整改。\n\n**对话：**\n- 小白: Kate, chilled water supply has been swinging between seven point five and ten degrees all afternoon.\n- Kate: So the chillers are staging in and out again.\n- 小白: Right. The sequencer loads the second chiller, the loop over-cools, it unloads, and the whole cycle repeats every twelve minutes. Two CRAHs tripped a high inlet alarm during the last swing.\n- Kate: Classic hunting. Where does the RCA land?\n- 小白: On the staging setpoints. The load and unload thresholds sit only zero point three degrees apart, so there is effectively no deadband. I will widen it and extend the minimum run timer.\n- Kate: Do it inside the change window, and put the failover plan in the ticket first. One more swing like that and we are risking uptime.\n\n**重点表达：**\n- `The chillers are staging in and out.` — 冷机在反复加载卸载——stage 作动词指群控按负荷逐台投入/退出，比 start and stop 专业得多\n- `Where does the RCA land?` — 根因定位到哪儿了？——RCA = root cause analysis；land on 表示结论最终落在某个点上，汇报时的常用问法\n- `there is effectively no deadband` — 实际上等于没有回差/死区——deadband 指动作阈值之间的缓冲带，控制类故障排查的核心词",
+        "category": "故障排查",
+        "difficulty": "高级 Advanced",
+        "expressions": [
+          {
+            "en": "The chillers are staging in and out.",
+            "zh": "冷机在反复加载卸载——stage 作动词指群控按负荷逐台投入/退出，比 start and stop 专业得多"
+          },
+          {
+            "en": "Where does the RCA land?",
+            "zh": "根因定位到哪儿了？——RCA = root cause analysis；land on 表示结论最终落在某个点上，汇报时的常用问法"
+          },
+          {
+            "en": "there is effectively no deadband",
+            "zh": "实际上等于没有回差/死区——deadband 指动作阈值之间的缓冲带，控制类故障排查的核心词"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "供应商对接 · 开机调试与质保起算：变更前的尾项清单",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：新冷机安装进入收尾，厂商想尽快安排开机调试（commissioning）并起算质保期，需先关闭尾项清单，并谈清质保期内更换件的保修延展与缺失部件的到货周期。\n\n**对话：**\n- 小白: Before we lock in the commissioning date, I need the punch list from the install closed out.\n- Marco: Two items are still open. The flow meter and the BMS point mapping.\n- 小白: Then let us hold the witness test. I would rather start the warranty clock after those are cleared.\n- Marco: Fair. Once the TAB report is signed, the twelve-month warranty starts.\n- 小白: And I want it in writing that any replacement part shipped under warranty carries a fresh twelve months. We had a control board fail in month eleven last year.\n- Marco: Noted. I will send the revised terms along with the lead time for the flow meter. It is three weeks.\n\n**重点表达：**\n- `the punch list from the install` — 安装遗留的尾项清单——punch list 是工程收尾的待整改项清单，不闭环就不该进调试\n- `start the warranty clock` — 质保期开始计时——把「起算」说成 clock 很地道，谈判里要争的就是这个起算节点\n- `I want it in writing.` — 这条我要落到纸面上——口头承诺不生效，合同条款谈判里的硬句",
+        "category": "供应商对接",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "the punch list from the install",
+            "zh": "安装遗留的尾项清单——punch list 是工程收尾的待整改项清单，不闭环就不该进调试"
+          },
+          {
+            "en": "start the warranty clock",
+            "zh": "质保期开始计时——把「起算」说成 clock 很地道，谈判里要争的就是这个起算节点"
+          },
+          {
+            "en": "I want it in writing.",
+            "zh": "这条我要落到纸面上——口头承诺不生效，合同条款谈判里的硬句"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-06",
     "generatedAt": "2026-10-06T23:19:31+08:00",
     "cycleDay": 2,
@@ -1022,80 +1096,6 @@
           {
             "en": "model capacity before we commit",
             "zh": "在锁定（机柜布局）前先建模核算"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-09-08",
-    "generatedAt": "2026-09-08T09:40:01+08:00",
-    "cycleDay": 2,
-    "difficulty": "进阶 Intermediate",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "运维沟通 · 冷冻水设定温度变更沟通",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**\n- 晨会讨论将冷冻水设定温度上调 1℃ 以提升 PUE，与运行团队沟通变更窗口与风险。\n\n**对话**\n- Ops: We're seeing PUE creep up to 1.45 after the recent load growth. Can we lift the chilled-water setpoint to shave compressor energy?\n- 小白（HVAC）: Yes — raising the supply from 12 to 13°C gives us margin without stressing the CRAH coils. I'd stage it during the low-load window.\n- Ops: Good. Any risk to uptime if the chiller lags on a hot afternoon?\n- 小白（HVAC）: Minimal. We keep the second chiller on hot standby, so failover covers any trip within seconds.\n\n**重点表达**\n- `raise the chilled-water setpoint` — 上调冷冻水设定温度\n- `shave compressor energy` — 削减压缩机能耗\n- `keep on hot standby` — 保持热备（随时可切）",
-        "category": "运维沟通",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "raise the chilled-water setpoint",
-            "zh": "上调冷冻水设定温度"
-          },
-          {
-            "en": "shave compressor energy",
-            "zh": "削减压缩机能耗"
-          },
-          {
-            "en": "keep on hot standby",
-            "zh": "保持热备（随时可切）"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "跨团队协作 · 高密度 GPU 机柜容量评估",
-        "subtitle": "高级 Advanced",
-        "content": "**情境**\n- 网络/云团队要在 21 模组上线一台 35 kW 高密度 GPU 机柜，跨团队会议评估 hot-cold aisle 与制冷容量。\n\n**对话**\n- Network Lead: We're deploying a GPU rack at 35 kW next to your CRAH bank in Module 21. Will the hot-cold aisle containment hold?\n- 小白（HVAC）: At 35 kW the local heat density spikes — we need to verify the CRAH can deliver enough cold air before we sign off. Latency in the control loop also matters if a fan trips.\n- Network Lead: Understood. What's the failover plan if that CRAH drops?\n- 小白（HVAC）: We add a second unit in N+1 and tune the BMS so a trip triggers failover in under 30 seconds. Capacity headroom on the chiller is about 18%.\n\n**重点表达**\n- `heat density spikes` — 热密度骤增\n- `sign off` — 签字确认 / 批准\n- `N+1 redundancy` — N+1 冗余（一台备用）",
-        "category": "跨团队协作",
-        "difficulty": "高级 Advanced",
-        "expressions": [
-          {
-            "en": "heat density spikes",
-            "zh": "热密度骤增"
-          },
-          {
-            "en": "sign off",
-            "zh": "签字确认 / 批准"
-          },
-          {
-            "en": "N+1 redundancy",
-            "zh": "N+1 冗余（一台备用）"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "供应商对接 · 备用 CRAH 交期与质保谈判",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**\n- 与冷水机组/CRAH 供应商电话沟通备用机交期、质保条款与技术参数确认。\n\n**对话**\n- 小白（HVAC）: We need one standby CRAH delivered to Module 21 by end of next month. What's your lead time?\n- Supplier: Current lead time is 6 weeks, with a 2-year warranty on the coil and fans.\n- 小白（HVAC）: That misses our window. Can you pull it to 4 weeks? Also confirm the unit hits our capacity spec of 60 kW.\n- Supplier: We can do 4 weeks for a small premium, and yes — 60 kW at 12°C supply is within spec.\n\n**重点表达**\n- `lead time` — 交货周期 / 交期\n- `for a small premium` — 加一点溢价（加价）\n- `within spec` — 符合规格 / 在规格范围内",
-        "category": "供应商对接",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "lead time",
-            "zh": "交货周期 / 交期"
-          },
-          {
-            "en": "for a small premium",
-            "zh": "加一点溢价（加价）"
-          },
-          {
-            "en": "within spec",
-            "zh": "符合规格 / 在规格范围内"
           }
         ]
       }
