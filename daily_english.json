@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-10-08",
+    "generatedAt": "2026-10-08T23:20:00+08:00",
+    "cycleDay": 4,
+    "difficulty": "精通 Proficient",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "运维沟通 · 冬季湿度跌破下限：加湿与露点联锁",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：冷空气过境后 B 区相对湿度连续三天掉到 27%，低于 ASHRAE 推荐下限，静电风险上升；但冷冻水供水温度低、机房内有冷水管，加湿过量又有结露风险，需要向值班经理申请恢复加湿并锁死露点上限。\n\n**对话：**\n- 小白: Nina, relative humidity in Zone B has dropped to twenty-seven percent. That is below the ASHRAE lower limit, so we are into ESD territory.\n- Nina: How long has it been sitting there?\n- 小白: Since the cold front came in on Monday. With supply air at eighteen degrees, the air simply cannot hold moisture. I would like to bring the steam humidifier back online.\n- Nina: What is the dew point risk? I do not want condensation forming on a chilled water pipe.\n- 小白: I will cap the dew point at twelve degrees and interlock it with the CRAH discharge temperature. If discharge drops below fifteen, the humidifier trims back on its own.\n- Nina: Good. Raise it under a change ticket, log the setpoints, and we will review the trend at the end of the week.\n\n**重点表达：**\n- `we are into ESD territory` — 已经踩进静电放电的风险区了——ESD = electrostatic discharge；territory 表示进入某个区间/范畴，比 risky 更像现场判断\n- `cap the dew point at twelve degrees` — 把露点上限卡在 12 度——cap 作动词指设上限；加湿场景真正的控制对象是露点而不是相对湿度\n- `interlock it with the CRAH discharge temperature` — 把它和 CRAH 出风温度做联锁——interlock A with B 是自控/安全逻辑的标准说法，改动方案里必提",
+        "category": "运维沟通",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "we are into ESD territory",
+            "zh": "已经踩进静电放电的风险区了——ESD = electrostatic discharge；territory 表示进入某个区间/范畴，比 risky 更像现场判断"
+          },
+          {
+            "en": "cap the dew point at twelve degrees",
+            "zh": "把露点上限卡在 12 度——cap 作动词指设上限；加湿场景真正的控制对象是露点而不是相对湿度"
+          },
+          {
+            "en": "interlock it with the CRAH discharge temperature",
+            "zh": "把它和 CRAH 出风温度做联锁——interlock A with B 是自控/安全逻辑的标准说法，改动方案里必提"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "跨团队协作 · GPU 训练负载骤降：冷冻水回水温度塌方",
+        "subtitle": "精通 Proficient",
+        "content": "**情境**：AI 训练集群每跑完一个 stage 的 collective 通信，功率会在几十秒内从 80% 掉到接近空载，冷冻水回水温度 90 秒内跌 6 度，冷机被迫大幅卸载，上周两次逼近低流量保护跳闸；云团队、电气与暖通要一起定 ramp rate 限值和缓冲方案。\n\n**对话：**\n- 小白: Priya, return water temperature is falling by six degrees within ninety seconds every time the training job finishes a stage.\n- Priya: That is the collective. The GPUs go from eighty percent load to near idle almost instantly, and the step repeats every few minutes.\n- 小白: The chiller plant cannot track that. It unloads hard, and twice last week we came within a hair of a low flow trip. Can you put a ramp rate limit on the job scheduler?\n- Priya: We can throttle to ten percent per minute, but that will slow the training runs. Is there anything you can do on your side?\n- 小白: Yes, and I would rather do both. I am adding a buffer tank so the loop has enough thermal mass to ride through the swing, and I am widening the unloading deadband. Electrical is checking whether the UPS sees the same step change on the feeders.\n- Priya: Agreed. Let us set the limit at ten percent per minute, keep the failover plan warm, and revisit once we have a week of clean data.\n\n**重点表达：**\n- `The chiller plant cannot track that.` — 冷机跟不上这个变化速率——track 指控制系统跟得上给定/负荷变化；比 can not follow 更专业的说法\n- `put a ramp rate limit on the job scheduler` — 给作业调度器加上功率变化速率限制——ramp rate 是跨团队谈负载冲击的核心词，GPU/AI 场景高频\n- `thermal mass to ride through the swing` — 靠热惯性扛过这段波动——ride through 指不断电/不停机地挺过瞬态，thermal mass 是缓冲罐和管容的价值所在",
+        "category": "跨团队协作",
+        "difficulty": "精通 Proficient",
+        "expressions": [
+          {
+            "en": "The chiller plant cannot track that.",
+            "zh": "冷机跟不上这个变化速率——track 指控制系统跟得上给定/负荷变化；比 can not follow 更专业的说法"
+          },
+          {
+            "en": "put a ramp rate limit on the job scheduler",
+            "zh": "给作业调度器加上功率变化速率限制——ramp rate 是跨团队谈负载冲击的核心词，GPU/AI 场景高频"
+          },
+          {
+            "en": "thermal mass to ride through the swing",
+            "zh": "靠热惯性扛过这段波动——ride through 指不断电/不停机地挺过瞬态，thermal mass 是缓冲罐和管容的价值所在"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "容量规划 · 明年再上 1.5MW：瓶颈到底在哪一层",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：IT 给出明年新增 1.5MW 的负荷预测，需要暖通侧回答能接多少、瓶颈在哪、要不要分期，并给出可与 IT 排期对齐的承诺时间点。\n\n**对话：**\n- Marcus: IT is forecasting another one point five megawatts next year. How much can you absorb, and where?\n- 小白: At plant level, plenty. The chillers are sized for another two megawatts. The constraint is at row level.\n- Marcus: So where does it break first?\n- 小白: Zone C. The CRAH count there supports about eight hundred kilowatts of sensible load. Past that, inlet temperatures climb above twenty-seven degrees, and we lose the hot and cold aisle separation we are relying on.\n- Marcus: Can we spread the rest across Zones A and B instead?\n- 小白: You can, but that strands capacity we will need later, and those rows still have their own ceiling. I would rather phase it: eight hundred kilowatts in Zone C in Q2, then add two CRAHs over the summer before the rest lands.\n- Marcus: Understood. I will build the plan around that phasing and flag the Q2 date as the hard commitment.\n\n**重点表达：**\n- `The constraint is at row level.` — 瓶颈在末端列间这一层——区分 plant level / row level 是容量评审里最关键的判断，别只说 we have enough capacity\n- `That strands capacity we will need later.` — 那会把以后要用的容量白白锁死——stranded capacity 指被占用却无法有效利用的容量，容量规划高频词\n- `I would rather phase it.` — 我倾向分期实施——phase 作动词指分阶段落地；给 IT 排期时比 we can not do it all 更好接受",
+        "category": "容量规划",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "The constraint is at row level.",
+            "zh": "瓶颈在末端列间这一层——区分 plant level / row level 是容量评审里最关键的判断，别只说 we have enough capacity"
+          },
+          {
+            "en": "That strands capacity we will need later.",
+            "zh": "那会把以后要用的容量白白锁死——stranded capacity 指被占用却无法有效利用的容量，容量规划高频词"
+          },
+          {
+            "en": "I would rather phase it.",
+            "zh": "我倾向分期实施——phase 作动词指分阶段落地；给 IT 排期时比 we can not do it all 更好接受"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-07",
     "generatedAt": "2026-10-07T23:20:00+08:00",
     "cycleDay": 3,
@@ -1022,80 +1096,6 @@
           {
             "en": "yearly service contract",
             "zh": "年度维保合同"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-09-09",
-    "generatedAt": "2026-09-09T09:41:02+08:00",
-    "cycleDay": 3,
-    "difficulty": "高级 Advanced",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "① 日常工作 · 晨巡发现 CRAH 滤网压差报警",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**\n- 交接班晨巡时发现 21 模组 CRAH-07 滤网压差报警，与夜班同事交班确认并开立工单。\n\n**对话**\n- 小白（HVAC）: Morning patrol shows CRAH-07 in Module 21 tripping a filter differential-pressure alarm. Did anything change on your shift?\n- Night Ops: No alarms overnight, but the rack inlet temp crept up near 27°C before I logged it.\n- 小白（HVAC）: Likely a clogged filter starving the coil. I'll swap it during the low-load window to protect uptime.\n- Night Ops: Noted. I'll hand it over as an open work order.\n\n**重点表达**\n- `morning patrol` — 晨间巡检\n- `filter differential-pressure alarm` — 滤网压差报警\n- `hand it over as an open work order` — 作为未结工单交接",
-        "category": "日常工作",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "morning patrol",
-            "zh": "晨间巡检"
-          },
-          {
-            "en": "filter differential-pressure alarm",
-            "zh": "滤网压差报警"
-          },
-          {
-            "en": "hand it over as an open work order",
-            "zh": "作为未结工单交接"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "② 故障排查 · 冷水机组跳机 RCA 与 failover 验证",
-        "subtitle": "高级 Advanced",
-        "content": "**情境**\n- 傍晚一台离心式冷水机组跳机，组织 RCA 会议定位根因（润滑油携出致轴承高温），并验证备用机 failover 与切换延迟。\n\n**对话**\n- 小白（HVAC）: The lead chiller tripped at 18:40; RCA points to high bearing temperature from oil carry-over. How fast did failover kick in?\n- Ops Lead: Standby chiller picked up load in 42 seconds, so uptime held — but rack inlet temps spiked 3°C during the gap.\n- 小白（HVAC）: The latency is in the BMS valve sequencing, not the chiller. We'll retune the control loop so failover completes within 20 seconds.\n- Ops Lead: Agreed. Let's also run a hot-cold aisle audit to confirm no recirculation masked the spike.\n\n**重点表达**\n- `RCA points to` — 根因分析指向…\n- `oil carry-over` — 润滑油携出（压缩机故障常见诱因）\n- `retune the control loop` — 重新整定控制回路",
-        "category": "故障排查",
-        "difficulty": "高级 Advanced",
-        "expressions": [
-          {
-            "en": "RCA points to",
-            "zh": "根因分析指向…"
-          },
-          {
-            "en": "oil carry-over",
-            "zh": "润滑油携出（压缩机故障常见诱因）"
-          },
-          {
-            "en": "retune the control loop",
-            "zh": "重新整定控制回路"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "③ 容量规划 · 液冷机柜上架前的制冷余量核算",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**\n- 规划在 D02 模组新增两台 50 kW 液冷机柜，与架构/容量团队核算 chiller 与 CRAH 余量及 PUE 影响。\n\n**对话**\n- 小白（HVAC）: We're adding two 50 kW liquid-cooled racks in D02. Current chiller capacity headroom is only 12% — that won't cover it.\n- Capacity Planner: What's the PUE impact if we push CRAH supply colder to compensate?\n- 小白（HVAC）: Colder supply raises compressor load, PUE could climb from 1.38 to ~1.45. Better to stage the racks and add one chiller in N+1.\n- Capacity Planner: Sounds right. Let's model capacity before we commit the rack layout.\n\n**重点表达**\n- `capacity headroom` — 容量余量 / 裕度\n- `liquid-cooled racks` — 液冷机柜\n- `model capacity before we commit` — 在锁定（机柜布局）前先建模核算",
-        "category": "容量规划",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "capacity headroom",
-            "zh": "容量余量 / 裕度"
-          },
-          {
-            "en": "liquid-cooled racks",
-            "zh": "液冷机柜"
-          },
-          {
-            "en": "model capacity before we commit",
-            "zh": "在锁定（机柜布局）前先建模核算"
           }
         ]
       }
