@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-10-09",
+    "generatedAt": "2026-10-09T23:20:00+08:00",
+    "cycleDay": 1,
+    "difficulty": "基础 Basic",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "日常工作 · 巡检发现冷通道顶部串风：临时挡风与整改工单",
+        "subtitle": "基础 Basic",
+        "content": "**情境**：早班巡检走到 B 区 Row 14，红外测温枪显示机柜顶部进风 29℃、底部 22℃，同一列差 7 度；CRAH 出风 18℃ 且远未满载，判断不是制冷量不够，而是热通道气流从机柜顶部短路回流，需要当天做临时封堵并开整改工单闭环。\n\n**对话：**\n- 小白: Leo, I did the morning walk-through in Zone B. Row fourteen has warm air spilling over the top of the racks. Top inlet reads twenty-nine degrees, bottom reads twenty-two.\n- Leo: Is the CRAH struggling, or is it an airflow problem?\n- 小白: It is bypass air, not a capacity problem. Supply air is eighteen degrees and the unit is nowhere near full load. The hot aisle is short-circuiting back over the cabinets because the row ends are not capped and there is a two-U gap above the patch panel.\n- Leo: Can you fix it today, or do we need parts?\n- 小白: I can fix it today. I will fit blanking panels and a brush strip, then re-shoot the rack inlet with the IR gun and log the readings in the work order.\n- Leo: Good. Raise a corrective work order for the row-end doors too, so this does not come back on the next audit.\n\n**重点表达：**\n- `The hot aisle is short-circuiting back over the cabinets.` — 热通道的气流从机柜上方短路回流了——short-circuit 在气流里指「短路/串风」，比 hot air comes back 更专业\n- `It is bypass air, not a capacity problem.` — 这是旁通串风，不是制冷量不够——先定性是 airflow 还是 capacity，是巡检汇报的第一句话\n- `Raise a corrective work order.` — 开一张整改工单——raise 比 create 更地道；corrective 强调「纠正/根治」，区别于 routine 例行工单",
+        "category": "日常工作",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "The hot aisle is short-circuiting back over the cabinets.",
+            "zh": "热通道的气流从机柜上方短路回流了——short-circuit 在气流里指「短路/串风」，比 hot air comes back 更专业"
+          },
+          {
+            "en": "It is bypass air, not a capacity problem.",
+            "zh": "这是旁通串风，不是制冷量不够——先定性是 airflow 还是 capacity，是巡检汇报的第一句话"
+          },
+          {
+            "en": "Raise a corrective work order.",
+            "zh": "开一张整改工单——raise 比 create 更地道；corrective 强调「纠正/根治」，区别于 routine 例行工单"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "故障排查 · CRAH 温度传感器漂移引发群控抢风：RCA 定位",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：Row 9 末端热点连续三周复现，同一冷通道两台 CRAH 一台卸载、一台满载，进风温度却只差 2 度；怀疑其中一台温度传感器漂移导致群控误判，需要用标定探头比对取证，并给出根因与整改动作。\n\n**对话：**\n- 小白: Sofia, we have a recurring hot spot at the far end of Row nine. Two CRAHs there are fighting each other.\n- Sofia: Fighting how? Same setpoint, opposite action?\n- 小白: Exactly. Unit nine-A reads nineteen and throttles back, while nine-B reads twenty-four and runs flat out. Same aisle, only two degrees apart at rack inlet. I think the sensor on nine-A has drifted.\n- Sofia: If it is reading low, the group controller will unload the healthy unit and let the real temperature climb. Have you checked it against a calibrated probe?\n- 小白: Yes. Against the calibrated probe, nine-A is off by three point two degrees. When I pulled the sensor last night it failed over to local setpoint, and the hot spot cleared within ten minutes.\n- Sofia: Then the RCA lands on calibration drift, not on the control logic. Replace the sensor, add it to the quarterly calibration list, and I will widen the group deadband so one bad sensor cannot unload the whole row.\n\n**重点表达：**\n- `Two CRAHs are fighting each other.` — 两台 CRAH 在互相打架/抢风——fight 是暖通口语里描述执行器反向动作的常用说法，正式报告可写 conflicting control action\n- `the RCA lands on calibration drift` — 根因落在标定漂移上——lands on 表示结论最终指向某处，是 RCA 汇报里的固定搭配\n- `it failed over to local setpoint` — 它回退到了就地设定值运行——failover 不只是冗余切换，也用于控制模式降级回退；local setpoint = 就地设定值",
+        "category": "故障排查",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "Two CRAHs are fighting each other.",
+            "zh": "两台 CRAH 在互相打架/抢风——fight 是暖通口语里描述执行器反向动作的常用说法，正式报告可写 conflicting control action"
+          },
+          {
+            "en": "the RCA lands on calibration drift",
+            "zh": "根因落在标定漂移上——lands on 表示结论最终指向某处，是 RCA 汇报里的固定搭配"
+          },
+          {
+            "en": "it failed over to local setpoint",
+            "zh": "它回退到了就地设定值运行——failover 不只是冗余切换，也用于控制模式降级回退；local setpoint = 就地设定值"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "供应商对接 · 冷却水泵机械密封询价：替代件与质保起算",
+        "subtitle": "基础 Basic",
+        "content": "**情境**：2 号冷却水循环泵的机械密封出现渗漏，需要紧急询价。原厂件交期 6 周太长，供应商推荐库存替代件，需要确认材质证书、耐温等级与质保起算点，并决定备货数量。\n\n**对话：**\n- 小白: Ryan, I need a mechanical seal for the number two condenser water pump. Can you quote it, and tell me what you actually have on the shelf?\n- Ryan: The OEM seal is four thousand two hundred, with a six-week lead time. We do have an equivalent in stock that cross-references to the same part number.\n- 小白: Equivalent is fine only if it is the same face materials and the same temperature rating. Our loop runs at thirty-five degrees. And the warranty has to start from commissioning, not from the date it ships.\n- Ryan: Understood. I can hold the warranty to commissioning, and I will send the material certificate with the quote.\n- 小白: Send both by tomorrow. If the certificate checks out, I will take two so we keep one on the shelf. Six weeks is too long to gamble on a single pump.\n\n**重点表达：**\n- `What do you have on the shelf?` — 你们现货有什么——on the shelf 指仓库里现成的库存，和 in stock 同义但更口语\n- `It cross-references to the same part number.` — 它可以对照到同一个件号——替代件谈判必问句，cross-reference 指型号互换对照\n- `The warranty has to start from commissioning, not from the date it ships.` — 质保要从调试合格起算，不能从发货日起算——备件合同最容易被忽略的一条",
+        "category": "供应商对接",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "What do you have on the shelf?",
+            "zh": "你们现货有什么——on the shelf 指仓库里现成的库存，和 in stock 同义但更口语"
+          },
+          {
+            "en": "It cross-references to the same part number.",
+            "zh": "它可以对照到同一个件号——替代件谈判必问句，cross-reference 指型号互换对照"
+          },
+          {
+            "en": "The warranty has to start from commissioning, not from the date it ships.",
+            "zh": "质保要从调试合格起算，不能从发货日起算——备件合同最容易被忽略的一条"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-08",
     "generatedAt": "2026-10-08T23:20:00+08:00",
     "cycleDay": 4,
@@ -1022,80 +1096,6 @@
           {
             "en": "hybrid air-and-liquid layout",
             "zh": "风冷 + 液冷混合布局"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-09-25",
-    "generatedAt": "2026-09-25T09:35:45+08:00",
-    "cycleDay": 3,
-    "difficulty": "高级 Advanced",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "① 运维沟通 · 能效告警处置与 PUE 优化",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**\n- 早例会上回顾夜间 CRAH-03 送风高温告警，与运维主管讨论抬升冷冻水供水温度以优化 PUE，同时保持 rack 进风与 uptime 受控。\n\n**对话**\n- 小白（HVAC）: Morning handover — we logged a CRAH-03 supply-air high alarm at 02:10. The lead chiller has since recovered, but PUE crept to 1.46 overnight.\n- Ops Lead: The cold-aisle containment has a small gap on rack row B, so hot air recirculates and the CRAHs work harder. Can we trim PUE without risking uptime?\n- 小白（HVAC）: Yes. If we raise the chilled-water supply 1°C, the compressors ease off and PUE drops — rack inlet stays in band because the hot-cold aisle holds.\n- Ops Lead: Worth a trial in the low-load window. I'll green-light it and keep an eye on the trend to protect uptime.\n\n**重点表达**\n- `logged a ... high alarm` — 记录了一条…高报警\n- `cold-aisle containment gap` — 冷通道封闭有缝隙（漏热）\n- `raise the chilled-water supply 1°C` — 把冷冻水供水温度抬升 1℃",
-        "category": "运维沟通",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "logged a ... high alarm",
-            "zh": "记录了一条…高报警"
-          },
-          {
-            "en": "cold-aisle containment gap",
-            "zh": "冷通道封闭有缝隙（漏热）"
-          },
-          {
-            "en": "raise the chilled-water supply 1°C",
-            "zh": "把冷冻水供水温度抬升 1℃"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "② 跨团队协作 · 网络升级致机柜功率上升与制冷余量协调",
-        "subtitle": "高级 Advanced",
-        "content": "**情境**\n- 网络团队计划在 B 排机柜升级 TOR 交换机，单机柜功耗 +3 kW，跨团队会议讨论制冷 headroom、failover 与切换 latency，保障 uptime 不低于 99.99%。\n\n**对话**\n- NetEng: We're upgrading TOR switches in rack row B next week — about 3 kW extra per rack. Can your cooling absorb the added heat load without hurting latency?\n- 小白（HVAC）: Row B is served by two CRAHs at 78% load, so the cooling headroom is thin. Another 3 kW per rack pushes us past the safe delta-T on the hot-cold aisle.\n- NetEng: We can't slip the upgrade — it's for latency-sensitive traffic. Can we shift load to the N+1 chiller and free up capacity on the cooling side?\n- 小白（HVAC）: Agreed. We'll move two low-density racks off row B and stage failover testing so uptime holds above 99.99% through the cutover. I'll also check the chiller sequencing so a CRAH trip doesn't spike rack inlet.\n\n**重点表达**\n- `cooling headroom is thin` — 制冷余量很紧张\n- `safe delta-T` — 安全送回风温差（热通道不超标）\n- `stage failover testing through the cutover` — 在割接全程做 failover 测试（验证冗余）",
-        "category": "跨团队协作",
-        "difficulty": "高级 Advanced",
-        "expressions": [
-          {
-            "en": "cooling headroom is thin",
-            "zh": "制冷余量很紧张"
-          },
-          {
-            "en": "safe delta-T",
-            "zh": "安全送回风温差（热通道不超标）"
-          },
-          {
-            "en": "stage failover testing through the cutover",
-            "zh": "在割接全程做 failover 测试（验证冗余）"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "③ 供应商对接 · 备件交期、质保与维保谈判",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**\n- 与冷水机组（chiller）供应商电话沟通润滑油分离器备件交期、质保期限与年度维保合同谈判，确保 chiller uptime 与维护窗口匹配。\n\n**对话**\n- 小白（HVAC）: We need the oil separator for the lead chiller by next Friday. Can you pull the delivery forward from the standard lead time?\n- Supplier: Standard lead time is six weeks, but I can offer three weeks at a small premium — the part carries an 18-month warranty.\n- 小白（HVAC）: Three weeks still misses our service window. If we commit to a yearly service contract, can you hold the price and extend the warranty to 24 months?\n- Supplier: For a yearly contract I can do a two-week delivery, price held, with a 24-month warranty. I'll send the quote this afternoon.\n\n**重点表达**\n- `pull the delivery forward` — 提前交货期\n- `standard lead time` — 标准交期\n- `yearly service contract` — 年度维保合同",
-        "category": "供应商对接",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "pull the delivery forward",
-            "zh": "提前交货期"
-          },
-          {
-            "en": "standard lead time",
-            "zh": "标准交期"
-          },
-          {
-            "en": "yearly service contract",
-            "zh": "年度维保合同"
           }
         ]
       }
