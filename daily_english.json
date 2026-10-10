@@ -1,5 +1,91 @@
 [
   {
+    "date": "2026-10-10",
+    "generatedAt": "2026-10-10T23:16:00+08:00",
+    "cycleDay": 2,
+    "difficulty": "进阶 Intermediate",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "运维沟通 · 冷却水电导率持续爬升：浓缩倍数与排污方式变更评审",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：冷却水系统电导率连续三周爬升到 2100 µS/cm，逼近排污阈值；目前排污阀按定时器运行，导致补水量和加药量都偏高。在变更评审会上，需要提出把浓缩倍数设定值从 4 提到 5、并把排污由定时改为按电导率控制，同时说明结垢风险与监控手段。\n\n**对话：**\n- 小白: Marcus, the cooling tower loop has been creeping up again. Conductivity is at twenty-one hundred microsiemens, and we have been blowing down on a timer for three weeks.\n- Marcus: How much water are we burning through?\n- 小白: About sixty cubic metres a day, and the chemical dosing follows it. I want to raise the cycles of concentration from four to five and switch the bleed valve from a timer to conductivity control.\n- Marcus: That saves water, but it pushes the loop closer to scaling. What is the risk to the chillers?\n- 小白: That is the trade-off. I will hold the LSI in the slightly scaling band, pull the corrosion coupons monthly, and put a hard conductivity cap on the bleed valve so it cannot run away.\n- Marcus: Fine. Put it through change control with a two-week review, and bring me the water and chemical numbers.\n- 小白: Will do. One note though — it moves WUE more than PUE, so I will report it under water usage at the next efficiency review.\n\n**重点表达：**\n- `Conductivity has been creeping up for three weeks.` — 电导率已经连续三周缓慢爬升——creep up 专指指标缓慢恶化，比 go up 准确得多\n- `Switch the bleed valve from a timer to conductivity control.` — 把排污阀从定时控制改成按电导率控制——switch A from X to Y 是变更评审里说明改造方案的标准句式\n- `That is the trade-off.` — 这就是取舍所在——对方指出风险时，先承认 trade-off 再给监控措施，是高级沟通里最有说服力的节奏\n- `Put it through change control.` — 这个要走变更管控流程——暖通侧任何设定值改动都要先说这句话，不能直接动手改",
+        "category": "运维沟通",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "Conductivity has been creeping up for three weeks.",
+            "zh": "电导率已经连续三周缓慢爬升——creep up 专指指标缓慢恶化，比 go up 准确得多"
+          },
+          {
+            "en": "Switch the bleed valve from a timer to conductivity control.",
+            "zh": "把排污阀从定时控制改成按电导率控制——switch A from X to Y 是变更评审里说明改造方案的标准句式"
+          },
+          {
+            "en": "That is the trade-off.",
+            "zh": "这就是取舍所在——对方指出风险时，先承认 trade-off 再给监控措施，是高级沟通里最有说服力的节奏"
+          },
+          {
+            "en": "Put it through change control.",
+            "zh": "这个要走变更管控流程——暖通侧任何设定值改动都要先说这句话，不能直接动手改"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "跨团队协作 · 柴发带载测试窗口：UPS 续航与冷机重启时序对齐",
+        "subtitle": "高级 Advanced",
+        "content": "**情境**：下月要做柴油发电机带载测试，需要电气、暖通、网络三方排同一个窗口。柴发带载期间 CRAH 由 UPS 支撑，电池续航与冷机重启时序必须对齐；还要约定硬性中止判据，并确认测试不影响 Tier III 的并发可维护性与 uptime 承诺。\n\n**对话：**\n- 小白: Priya, before we lock the load bank test, I need the UPS runtime and the chiller restart sequence on the same page.\n- Priya: You have eleven minutes of battery at current load. The generators pick up in eight to ten seconds, so on paper you are fine.\n- 小白: On paper, yes. But the CRAHs do not come back the instant the transfer switch flips. Compressor restart delay plus the chillers coming back on-line is roughly four to six minutes. In that window the only thing holding the room is the thermal mass of the air in the cold aisle.\n- Priya: So the constraint is not the battery, it is the inlet temperature ramp during those six minutes.\n- 小白: Correct. We modelled about a five-degree rise in the hot aisle if all twelve CRAHs restart together. I want them staggered, and I want a hard abort criterion: if rack inlet hits thirty-two degrees, we stop the test and return to utility.\n- Priya: Agreed, and same on our side — if the transfer back to utility takes more than fifteen minutes, we abort. This stays within concurrent maintainability, so the uptime commitment is not affected. We will run it as a scheduled maintenance window, not an outage.\n- 小白: Then I am comfortable. I will write the staggered restart and the abort criterion into the MOP so everyone signs the same sheet.\n\n**重点表达：**\n- `I need the UPS runtime and the chiller restart sequence on the same page.` — 我需要把 UPS 续航和冷机重启时序对齐——on the same page 指多方对同一份计划口径一致，跨团队开会高频句\n- `The constraint is not the battery, it is the inlet temperature ramp.` — 瓶颈不在电池，而在进风温度的爬升速率——the constraint is not X, it is Y 用来纠正对方的判断焦点，语气专业且不冒犯\n- `A hard abort criterion.` — 硬性中止判据——演练/变更方案里必须有的一条；hard 强调不可协商，区别于 guideline 建议值\n- `This stays within concurrent maintainability.` — 这仍在并发可维护范围内——Tier III 的核心概念：任一设备离场检修时负载仍有冗余路径，uptime 承诺不受影响",
+        "category": "跨团队协作",
+        "difficulty": "高级 Advanced",
+        "expressions": [
+          {
+            "en": "I need the UPS runtime and the chiller restart sequence on the same page.",
+            "zh": "我需要把 UPS 续航和冷机重启时序对齐——on the same page 指多方对同一份计划口径一致，跨团队开会高频句"
+          },
+          {
+            "en": "The constraint is not the battery, it is the inlet temperature ramp.",
+            "zh": "瓶颈不在电池，而在进风温度的爬升速率——the constraint is not X, it is Y 用来纠正对方的判断焦点，语气专业且不冒犯"
+          },
+          {
+            "en": "A hard abort criterion.",
+            "zh": "硬性中止判据——演练/变更方案里必须有的一条；hard 强调不可协商，区别于 guideline 建议值"
+          },
+          {
+            "en": "This stays within concurrent maintainability.",
+            "zh": "这仍在并发可维护范围内——Tier III 的核心概念：任一设备离场检修时负载仍有冗余路径，uptime 承诺不受影响"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "容量规划 · 冷通道封闭改造后的制冷余量释放：新增 10 个 8kW 机柜核算",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：C 区做完冷通道封闭改造后，送风温度设定值可从 18℃ 提到 22℃，冷机效率提升并释放冷量；业务方想再落 10 个 8kW 机柜，需要核算释放出的制冷余量是否够用，并说明封闭的前提条件与对 PUE 的影响。\n\n**对话：**\n- 小白: Tom, once we close up the cold aisles in Zone C, I can raise the supply air setpoint from eighteen to twenty-two degrees.\n- Tom: Does that not mean less cooling?\n- 小白: It means less cooling at the CRAH, but more of it reaching the servers. Right now about thirty percent of the supply air bypasses the rack inlets entirely. With containment we cut that, raise the delta-T across the CRAH, and the chillers run at a higher evaporator temperature.\n- Tom: So how much capacity does that actually free up?\n- 小白: Roughly three hundred kilowatts of cooling headroom at plant level, which covers your ten racks at eight kilowatts. But the racks have to be filled front-to-back with blanking panels and the row ends need doors. If someone leaves a two-U gap, we are back to square one.\n- Tom: Understood. I will make containment a prerequisite in the rack request. Any impact on PUE?\n- 小白: It should pull PUE down by about four hundredths, mostly from chiller efficiency and fewer CRAH fan hours. I will confirm with a before-and-after trend once the doors are on.\n\n**重点表达：**\n- `About thirty percent of the supply air bypasses the rack inlets.` — 大约三成送风根本没经过机柜进风口——bypass 是气流管理的关键词，也是说服业务方做封闭改造最有力的一句话\n- `That frees up about three hundred kilowatts of cooling headroom.` — 这释放了大约 300kW 的制冷余量——headroom 指「还能往上加多少」的余量，容量规划必用\n- `If someone leaves a two-U gap, we are back to square one.` — 只要有人留个 2U 的空档，我们就回到原点——back to square one 形容整改成果归零，很地道\n- `Make containment a prerequisite in the rack request.` — 把通道封闭写进机柜申请的前置条件——prerequisite 比 requirement 更强调「先做完这个才受理」",
+        "category": "容量规划",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "About thirty percent of the supply air bypasses the rack inlets.",
+            "zh": "大约三成送风根本没经过机柜进风口——bypass 是气流管理的关键词，也是说服业务方做封闭改造最有力的一句话"
+          },
+          {
+            "en": "That frees up about three hundred kilowatts of cooling headroom.",
+            "zh": "这释放了大约 300kW 的制冷余量——headroom 指「还能往上加多少」的余量，容量规划必用"
+          },
+          {
+            "en": "If someone leaves a two-U gap, we are back to square one.",
+            "zh": "只要有人留个 2U 的空档，我们就回到原点——back to square one 形容整改成果归零，很地道"
+          },
+          {
+            "en": "Make containment a prerequisite in the rack request.",
+            "zh": "把通道封闭写进机柜申请的前置条件——prerequisite 比 requirement 更强调「先做完这个才受理」"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-09",
     "generatedAt": "2026-10-09T23:20:00+08:00",
     "cycleDay": 1,
@@ -1022,80 +1108,6 @@
           {
             "en": "update the capacity model and check the PUE impact",
             "zh": "更新容量模型并评估对 PUE 的影响"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-09-26",
-    "generatedAt": "2026-09-26T09:33:34+08:00",
-    "cycleDay": 4,
-    "difficulty": "精通 Proficient",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "① 日常工作 · 晨巡交接 CRAH 回风湿度瞬时偏高",
-        "subtitle": "基础 Basic",
-        "content": "**情境**\n- 早班接班时，夜班同事报告 21 模组 CRAH-12 回风湿度瞬时偏高并伴随轻微异响，与夜班做交接，约定低谷窗口核查、保持冗余 CRAH 在线、守 uptime。\n\n**对话**\n- 小白（HVAC）: Morning patrol — night shift logged CRAH-12 in Module 21 with a brief high return-humidity blip and a faint hum. Anything else I should watch?\n- Night Ops: No alarms, but the hot-cold aisle looked fine. I'd keep the redundant CRAH online and check the drain pan during the low-load window.\n- 小白（HVAC）: Got it. I'll add it to the handover, watch rack inlet and supply humidity, and keep uptime as the priority.\n- Night Ops: Noted. Chiller plant was stable overnight — no other flags.\n\n**重点表达**\n- `morning patrol` — 晨间巡检\n- `keep the redundant CRAH online` — 保持冗余 CRAH 在线\n- `add it to the handover` — 记入交班（交接单）",
-        "category": "日常工作",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "morning patrol",
-            "zh": "晨间巡检"
-          },
-          {
-            "en": "keep the redundant CRAH online",
-            "zh": "保持冗余 CRAH 在线"
-          },
-          {
-            "en": "add it to the handover",
-            "zh": "记入交班（交接单）"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "② 故障排查 · 冷水机组喘振跳机 RCA 与 failover 复盘",
-        "subtitle": "精通 Proficient",
-        "content": "**情境**\n- 用电晚高峰一台离心式冷水机组发生喘振跳机，蓄冷罐支撑、备用机经 failover 接管；你与运维主管复盘 RCA（喘振源于导叶控制滞后 + 冷却水流量不足），评估切换期间对延迟敏感业务的 latency 影响，并定下控制整定与预冷缓冲整改。\n\n**对话**\n- 小白（HVAC）: The lead chiller surged and tripped at 18:55 during the evening peak. RCA shows the surge came from lagging guide-vane control plus low condenser water flow — the standby picked up the load via automatic failover.\n- Ops Lead: Right. But the transition added about 45 ms of network latency in the east pod before the CRAH fans ramped to full speed. How close did we get to the SLA redline?\n- 小白（HVAC）: Uptime held, but we cut it fine. The fix is to retune the chiller sequencing and add a pre-cool buffer so latency stays under threshold during failover, not after.\n- Ops Lead: Agreed. Raise a change ticket to re-stage the failover sequence and re-run the DR drill next week — I want the surge guard proven before summer peak.\n\n**重点表达**\n- `surged and tripped` — 发生喘振并跳机\n- `automatic failover` — 自动故障切换（接管负荷）\n- `retune the chiller sequencing` — 重新整定冷水机组群控时序",
-        "category": "故障排查",
-        "difficulty": "精通 Proficient",
-        "expressions": [
-          {
-            "en": "surged and tripped",
-            "zh": "发生喘振并跳机"
-          },
-          {
-            "en": "automatic failover",
-            "zh": "自动故障切换（接管负荷）"
-          },
-          {
-            "en": "retune the chiller sequencing",
-            "zh": "重新整定冷水机组群控时序"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "③ 容量规划 · 新 AI 集群上架的 rack 电力与制冷 capacity 核算",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**\n- 评估新一批 AI 训练集群上架，需核算 rack 电力、制冷 capacity 与液冷引入；与规划同事讨论 PUE、chiller 余量及分批次上线方案。\n\n**对话**\n- 小白（HVAC）: The new AI cluster needs 18 racks at about 22 kW each. Do we have enough cooling capacity in the existing CRAH loop to absorb that?\n- Planner: Current PUE is 1.32. If we load all 18 at once, chiller capacity hits 92% — we'd be short on headroom for the summer peak.\n- 小白（HVAC）: Then let's phase it in and route the hottest racks to liquid cooling so the room-level load stays manageable and PUE holds.\n- Planner: Sounds right. Let's model a hybrid air-and-liquid layout before we commit the space and the power budget.\n\n**重点表达**\n- `cooling capacity / headroom` — 制冷容量 / 余量\n- `phase it in` — 分批次上线（错峰加载）\n- `hybrid air-and-liquid layout` — 风冷 + 液冷混合布局",
-        "category": "容量规划",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "cooling capacity / headroom",
-            "zh": "制冷容量 / 余量"
-          },
-          {
-            "en": "phase it in",
-            "zh": "分批次上线（错峰加载）"
-          },
-          {
-            "en": "hybrid air-and-liquid layout",
-            "zh": "风冷 + 液冷混合布局"
           }
         ]
       }
