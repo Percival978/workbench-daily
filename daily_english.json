@@ -1,5 +1,91 @@
 [
   {
+    "date": "2026-10-11",
+    "generatedAt": "2026-10-11T23:20:51+08:00",
+    "cycleDay": 3,
+    "difficulty": "高级 Advanced",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "日常工作 · CRAH 冷凝水盘与漏水检测绳的季度功能测试",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：季度例行保养工单：检查 CRAH 冷凝水盘与冷凝水管、做浮球高水位报警测试，并逐段触发冷通道漏水检测绳，确认 BMS 上报的报警点位与实际房间、 Zone 编号一致。小白需要先和值班同事确认影响范围，避免动阀影响到正在运行的机柜。\n\n**对话：**\n- 小白: Daniel, this is the quarterly PM on the CRAH condensate pans. Before I start, is any rack in Row 14 running a job we cannot disturb?\n- Daniel: Row 14 is clear. But two customers in Zone B asked for a heads-up before any work involving water. How close are you getting to the racks?\n- 小白: Only the leak detection rope along the cold aisle in Zone B. I am not touching any valve — I just need to trigger each zone and confirm the right alarm pops on the BMS. With dozens of metres of rope daisy-chained, the point mapping is often wrong.\n- Daniel: What happens if the mapping is off?\n- 小白: Then the interlock trips the wrong isolation valve. We lose capacity in a room that is completely dry, while the room that is actually taking water keeps running. Operator response goes the wrong way, and uptime is exactly what we are betting on here.\n- Daniel: Map it zone by zone then. Anything that does not line up, I will raise as a corrective work order.\n\n**重点表达：**\n- `I am not touching any valve — I just need to trigger each zone and confirm the right alarm pops on the BMS.` — 我不动阀，只需要逐段触发、确认对应报警在 BMS 上弹出来——作业前先划清动作边界，是避免对方担心的最好句式\n- `Then the interlock trips the wrong isolation valve.` — 联锁就会跳错隔离阀——interlock / isolation valve 是水系统保护的核心词\n- `We lose capacity in a room that is completely dry.` — 干区反倒丢了制冷能力——capacity 在运维口语里默认指「当前可用的制冷/供电能力」\n- `I will raise it as a corrective work order.` — 我会把它开成一张消缺工单——corrective（缺陷整改）与 preventive（预防性保养）必须分清，走错工单类型会影响 PUE 之外的运维考核口径",
+        "category": "日常工作",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "I am not touching any valve — I just need to trigger each zone and confirm the right alarm pops on the BMS.",
+            "zh": "我不动阀，只需要逐段触发、确认对应报警在 BMS 上弹出来——作业前先划清动作边界，是避免对方担心的最好句式"
+          },
+          {
+            "en": "Then the interlock trips the wrong isolation valve.",
+            "zh": "联锁就会跳错隔离阀——interlock / isolation valve 是水系统保护的核心词"
+          },
+          {
+            "en": "We lose capacity in a room that is completely dry.",
+            "zh": "干区反倒丢了制冷能力——capacity 在运维口语里默认指「当前可用的制冷/供电能力」"
+          },
+          {
+            "en": "I will raise it as a corrective work order.",
+            "zh": "我会把它开成一张消缺工单——corrective（缺陷整改）与 preventive（预防性保养）必须分清，走错工单类型会影响 PUE 之外的运维考核口径"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "故障排查 · 冷冻水管网气堵致末端换热不足：锁定立管排气失效",
+        "subtitle": "高级 Advanced",
+        "content": "**情境**：三台 CRAH 水阀已开到 100%、冷冻水供水温度正常，但盘管 delta-T 接近 9℃ 且末端房间温度缓慢爬升。经摸管判断为末端换热器气堵（air binding）。RCA 会上需讲清定位过程、根因（立管自动排气阀失效 + 周末换泵后补水过快、真空脱气罐来不及脱出夹带空气）、以及备用泵 failover 的延迟。\n\n**对话：**\n- 小白: Nadia, let me walk you through how we landed on it. The valve on CRAH-07 was wide open, supply water sat at seven degrees as normal, but the delta-T across the coil was almost nine — far too high for that load.\n- Nadia: High delta-T usually means too little flow through the coil, not too little capacity at the plant. Did you check the strainer?\n- 小白: We did, clean. Then we felt the coil — cool at the top, warm at the bottom. That is the classic air binding signature: the pocket sits at the high point of the return header and throttles the water film inside the tubes.\n- Nadia: So where did the air come from?\n- 小白: Two contributors. Three out of five automatic air vents on the risers are stuck shut. And after the weekend pump changeover, the loop was refilled faster than the vacuum degasser could pull the entrained air out. The RCA lands on a maintenance gap, not on the equipment itself.\n- Nadia: What was the real customer impact?\n- 小白: Rack inlet temperature in Row 9 touched twenty-nine degrees for about eleven minutes before the lead-lag logic brought the standby pump on-line. The failover itself worked, but the latency was around forty seconds — long enough for the inlet alarm to reach the customer portal.\n- Nadia: Fine. Vents first, then a controlled refill procedure with the degasser in the loop. I want both as dated action items.\n\n**重点表达：**\n- `Let me walk you through how we landed on it.` — 我带你捋一遍我们是怎么定位到这个点的——RCA 开场句，比直接甩结论专业得多\n- `That is the classic air binding signature.` — 这是典型的气堵特征——signature 指「故障指纹」，用来把现场手感上升成可复述的判断依据\n- `The RCA lands on a maintenance gap, not on the equipment itself.` — 根因落在维护缺位，而不是设备本身——lands on 是 RCA 里指定根因的常用搭配\n- `The failover itself worked, but the latency was around forty seconds.` — 切换本身成功，但延迟约 40 秒——failover 回答「能不能切」，latency 回答「切了多久」，两件事不能混着说",
+        "category": "故障排查",
+        "difficulty": "高级 Advanced",
+        "expressions": [
+          {
+            "en": "Let me walk you through how we landed on it.",
+            "zh": "我带你捋一遍我们是怎么定位到这个点的——RCA 开场句，比直接甩结论专业得多"
+          },
+          {
+            "en": "That is the classic air binding signature.",
+            "zh": "这是典型的气堵特征——signature 指「故障指纹」，用来把现场手感上升成可复述的判断依据"
+          },
+          {
+            "en": "The RCA lands on a maintenance gap, not on the equipment itself.",
+            "zh": "根因落在维护缺位，而不是设备本身——lands on 是 RCA 里指定根因的常用搭配"
+          },
+          {
+            "en": "The failover itself worked, but the latency was around forty seconds.",
+            "zh": "切换本身成功，但延迟约 40 秒——failover 回答「能不能切」，latency 回答「切了多久」，两件事不能混着说"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "供应商对接 · CDU 二次侧乙二醇溶液：取样超标后的补液与兼容谈判",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：CDU 二次侧冷却液年度取样，乙二醇浓度从规格 25% 掉到 19%，缓蚀剂储备碱度也偏低。需要与供应商谈补浓方案：书面确认配伍兼容性、出具新批次 COA、确认不影响冷板质保，并把 2 周交期压成分批到货，同时争取把现场复检折进本次费用。\n\n**对话：**\n- 小白: Hana, the annual sample on the CDU secondary loop came back at nineteen percent glycol. Spec is twenty-five, and the reserve alkalinity is down as well.\n- Hana: Nineteen still gives you freeze protection in most climates, but I agree it is below your operating spec. A top-up with concentrate normally sorts that out.\n- 小白: Top-up is my preference too, but I need three things before I sign anything: written confirmation that your concentrate is compatible with the existing formulation, a fresh COA, and confirmation that topping up does not void the warranty on the cold plates.\n- Hana: Compatibility we can confirm — you are already on our product line. And the warranty holds as long as the inhibitor level is maintained. That actually argues for topping up rather than dumping the whole loop.\n- 小白: Then let us talk timeline. Two weeks of lead time is too long to sit at nineteen percent. Can you ship one drum from your regional stock now and the balance later?\n- Hana: Yes. One drum tomorrow, balance in twelve working days. And since this is a top-up on our own product, I will include the on-site refractometer check at commissioning, no charge.\n- 小白: That works. Once the loop is back above twenty-five and we re-sample at thirty days, I sign it off.\n\n**重点表达：**\n- `The annual sample came back at nineteen percent glycol.` — 年度取样结果出来乙二醇只有 19%——came back at 专指化验/检测结果，比 is 地道\n- `I need written confirmation that your concentrate is compatible with the existing formulation.` — 我需要书面确认你们的浓缩液与现役配方兼容——compatibility 是液体化学品谈判的第一道关口\n- `Two weeks of lead time is too long to sit at nineteen percent.` — 两周交期太久，我们没法按 19% 一直挂着——把技术状态说成不可接受的等待，是压交期最自然的方式\n- `Ship one drum from your regional stock now, the balance later.` — 先从你们区域库发一桶，尾货后补——partial shipment / balance 是拖车物流谈判的高频搭配",
+        "category": "供应商对接",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "The annual sample came back at nineteen percent glycol.",
+            "zh": "年度取样结果出来乙二醇只有 19%——came back at 专指化验/检测结果，比 is 地道"
+          },
+          {
+            "en": "I need written confirmation that your concentrate is compatible with the existing formulation.",
+            "zh": "我需要书面确认你们的浓缩液与现役配方兼容——compatibility 是液体化学品谈判的第一道关口"
+          },
+          {
+            "en": "Two weeks of lead time is too long to sit at nineteen percent.",
+            "zh": "两周交期太久，我们没法按 19% 一直挂着——把技术状态说成不可接受的等待，是压交期最自然的方式"
+          },
+          {
+            "en": "Ship one drum from your regional stock now, the balance later.",
+            "zh": "先从你们区域库发一桶，尾货后补——partial shipment / balance 是拖车物流谈判的高频搭配"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-10",
     "generatedAt": "2026-10-10T23:16:00+08:00",
     "cycleDay": 2,
@@ -968,146 +1054,6 @@
           {
             "en": "roughly 20% headroom at the current setpoint",
             "zh": "在当前设定值下约有 20% 余量"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-09-27",
-    "generatedAt": "2026-09-27T23:19:48+08:00",
-    "cycleDay": 1,
-    "difficulty": "基础 Basic",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "运维沟通 · 早班交接的冷机回风高温告警",
-        "subtitle": "基础 Basic",
-        "content": "**情境：** 早班交接时发现 CRAH-07 回风高温告警，与搭档确认 PUE 与能效，决定是否开单。\n\n**对话：**\n- A: Morning handover — I see a high return-air temperature alarm on CRAH-07. What's the PUE reading right now?\n- B: PUE is at 1.42, a bit above target. The chiller is running, but the hot-cold aisle containment looks loose near rack row C.\n- A: Let me check the rack inlet temperature. If it's over 27°C, we should open a ticket right away.\n- B: Agreed. I'll log it as a cooling-efficiency issue and keep an eye on uptime.\n\n**重点表达：**\n- `high return-air temperature alarm` — 回风高温告警\n- `PUE is at 1.42` — PUE（电源使用效率）为 1.42\n- `log it as a cooling-efficiency issue` — 将其登记为制冷能效问题",
-        "category": "运维沟通",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "high return-air temperature alarm",
-            "zh": "回风高温告警"
-          },
-          {
-            "en": "PUE is at 1.42",
-            "zh": "PUE（电源使用效率）为 1.42"
-          },
-          {
-            "en": "log it as a cooling-efficiency issue",
-            "zh": "将其登记为制冷能效问题"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "跨团队协作 · 带宽扩容对制冷与机柜容量的影响",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境：** 与网络团队讨论 rack row B 的带宽扩容，需协调电气团队评估 PDU 负载，并保证切换期间零停机。\n\n**对话：**\n- A: We're planning a bandwidth expansion for rack row B — the new switches will pull extra power and add heat load.\n- B: That hits our capacity planning. We'll need more CRAH airflow to hold the cold aisle below 24°C.\n- A: Can you loop in the electrical team on the PDU load before we push the change?\n- B: Sure. We also need zero downtime, so the failover path has to stay green through the whole cutover.\n\n**重点表达：**\n- `bandwidth expansion` — 带宽扩容\n- `hold the cold aisle below 24°C` — 将冷通道温度维持在 24°C 以下\n- `zero downtime` — 零停机",
-        "category": "跨团队协作",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "bandwidth expansion",
-            "zh": "带宽扩容"
-          },
-          {
-            "en": "hold the cold aisle below 24°C",
-            "zh": "将冷通道温度维持在 24°C 以下"
-          },
-          {
-            "en": "zero downtime",
-            "zh": "零停机"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "供应商对接 · 冷水机组备件的交期与质保谈判",
-        "subtitle": "基础 Basic",
-        "content": "**情境：** 与冷水机组供应商确认备用压缩机的参数、交货周期与质保条款。\n\n**对话：**\n- A: We need a spare chiller compressor. What's the lead time and warranty?\n- B: Lead time is six weeks, and the warranty covers 24 months on parts.\n- A: Can you match the original capacity spec — 800 kW at 7°C supply water?\n- B: Yes, same capacity and footprint. I'll send the quote this afternoon.\n\n**重点表达：**\n- `lead time` — 交货周期\n- `warranty covers 24 months` — 质保覆盖 24 个月\n- `match the original capacity spec` — 与原制冷量规格保持一致",
-        "category": "供应商对接",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "lead time",
-            "zh": "交货周期"
-          },
-          {
-            "en": "warranty covers 24 months",
-            "zh": "质保覆盖 24 个月"
-          },
-          {
-            "en": "match the original capacity spec",
-            "zh": "与原制冷量规格保持一致"
-          }
-        ]
-      },
-      {
-        "id": "en-4",
-        "title": "日常工作 · 夜巡发现盲板缺失导致热风回流",
-        "subtitle": "基础 Basic",
-        "content": "**情境：** 夜班巡检 21 模组 D 列机柜，发现多处盲板缺失，热风从空位回流到冷通道，冷通道出现热点。\n\n**对话：**\n- A: Night patrol in Module 21 — I found several missing blanking panels in rack row D. Warm air is bypassing straight back to the cold aisle.\n- B: That would explain the hot spots. What's the rack inlet temperature at the top of the row?\n- A: It's 28°C at the top and 22°C at the bottom — a six-degree spread is way too much.\n- B: Let's fit the blanking panels and brush grommets tonight, then re-check the spread in thirty minutes.\n\n**重点表达：**\n- `missing blanking panels` — 缺失的盲板（机柜空位挡板）\n- `warm air is bypassing back to the cold aisle` — 热风短路回流至冷通道\n- `re-check the temperature spread` — 复核（上下）进风温差",
-        "category": "日常工作",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "missing blanking panels",
-            "zh": "缺失的盲板（机柜空位挡板）"
-          },
-          {
-            "en": "warm air is bypassing back to the cold aisle",
-            "zh": "热风短路回流至冷通道"
-          },
-          {
-            "en": "re-check the temperature spread",
-            "zh": "复核（上下）进风温差"
-          }
-        ]
-      },
-      {
-        "id": "en-5",
-        "title": "故障排查 · CRAH-18 变频器过流跳闸与 failover 复盘",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境：** 21 模组 CRAH-18 因变频器过流跳闸，备用机组自动接管，需确认切换期间对 latency、uptime 的影响并做初步 RCA。\n\n**对话：**\n- A: CRAH-18 tripped on a VFD overcurrent fault. Did the standby unit fail over automatically?\n- B: Yes, CRAH-19 picked up the load within thirty seconds. Rack inlet climbed to 26.5°C for about two minutes, then settled back.\n- A: Any impact on latency or uptime?\n- B: No packet loss, latency stayed flat, so uptime is intact. I pulled the trend log — the belt was slipping well before the trip. We'll swap the belt and then re-test the failover logic.\n\n**重点表达：**\n- `the standby unit failed over automatically` — 备用机组自动切换（failover）成功\n- `latency stayed flat, so uptime is intact` — 时延平稳，在线率未受影响\n- `pull the trend log` — 调取历史趋势曲线（用于 RCA）",
-        "category": "故障排查",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "the standby unit failed over automatically",
-            "zh": "备用机组自动切换（failover）成功"
-          },
-          {
-            "en": "latency stayed flat, so uptime is intact",
-            "zh": "时延平稳，在线率未受影响"
-          },
-          {
-            "en": "pull the trend log",
-            "zh": "调取历史趋势曲线（用于 RCA）"
-          }
-        ]
-      },
-      {
-        "id": "en-6",
-        "title": "容量规划 · AI 集群新增液冷机柜的电力与制冷余量核算",
-        "subtitle": "基础 Basic",
-        "content": "**情境：** AI 团队计划再上 6 个 30 kW 液冷机柜，与电气、制冷侧核对 PDU 余量、chiller 与 CRAH 的 capacity，以及 PUE 影响。\n\n**对话：**\n- A: The AI cluster team wants six more racks at 30 kW each. Do we have the capacity for that?\n- B: On the power side, yes — the PDU still has about 200 kW of headroom. On cooling, I need to confirm the chiller can absorb another 180 kW of heat load.\n- A: These are liquid-cooled racks, so most of the heat goes to the CDU rather than the CRAH.\n- B: True, but the facility loop still has to reject it. I'll update the capacity model and check the PUE impact before we commit to a date.\n\n**重点表达：**\n- `six more racks at 30 kW each` — 再上 6 个单机柜 30 kW 的机柜\n- `200 kW of headroom` — 约 200 千瓦的余量\n- `update the capacity model and check the PUE impact` — 更新容量模型并评估对 PUE 的影响",
-        "category": "容量规划",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "six more racks at 30 kW each",
-            "zh": "再上 6 个单机柜 30 kW 的机柜"
-          },
-          {
-            "en": "200 kW of headroom",
-            "zh": "约 200 千瓦的余量"
-          },
-          {
-            "en": "update the capacity model and check the PUE impact",
-            "zh": "更新容量模型并评估对 PUE 的影响"
           }
         ]
       }
