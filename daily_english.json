@@ -1,5 +1,103 @@
 [
   {
+    "date": "2026-10-12",
+    "generatedAt": "2026-10-12T23:20:20+08:00",
+    "cycleDay": 4,
+    "difficulty": "精通 Proficient",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "运维沟通 · 预防性保养延期：风险分级与补偿性控制",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：三季度收尾，11 项预防性保养因备件未到或窗口未批而超期。小白需要在运维周会上按风险分级说清哪些能延、哪些本周必须做，并提出补偿性控制措施（加密巡检、趋势复核提前、临时监测），把超 90 天的项目上报业主签批。\n\n**对话：**\n- 小白: Marcus, we have eleven PM items past their due date. I would rather put them on the table now than explain them after something trips.\n- Marcus: Eleven is a lot. Which ones actually carry cooling risk, and which ones are just paperwork slipping?\n- 小白: Two I would not defer: the tower basin cleaning on loop B and the CRAH belt inspection in Row 11. The rest are filter changes and visual rounds we can hold for two more weeks.\n- Marcus: If you defer the basin cleaning, what keeps us safe in the meantime?\n- 小白: Compensating controls. I bump the patrol on that loop to twice a shift, trend the condenser approach weekly instead of monthly, and log the deferral in the risk register with an owner and a firm date. If the approach drifts more than one degree off baseline, that item goes straight back to the top of the queue.\n- Marcus: Anything past ninety days?\n- 小白: One. The makeup water valve rebuild, sitting at one hundred and four days. That needs the customer sign-off, not just mine.\n\n**重点表达：**\n- `We have eleven PM items past their due date.` — 我们有 11 项预防性保养已经超期——past due / overdue 是台账类汇报的起手式，比 late 专业\n- `Which ones carry cooling risk, and which ones are just paperwork slipping?` — 哪些是真有制冷风险，哪些只是单据拖了——把延期项按风险分层，是避免被一锅端问责的关键问法\n- `Compensating controls.` — 补偿性控制——指原本的防护措施暂时失效时，用临时手段兜住风险（加密巡检、提前趋势复核、临时监测），是变更与延期评审的高频词\n- `Log the deferral in the risk register with an owner and a firm date.` — 把延期项记进风险台账，附责任人和确定日期——没有 owner 和 date 的延期等于没管\n- `That needs the customer sign-off, not just mine.` — 这项要客户签字放行，光我批不够——sign-off 指书面签批确认，是责任边界的分水岭",
+        "category": "运维沟通",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "We have eleven PM items past their due date.",
+            "zh": "我们有 11 项预防性保养已经超期——past due / overdue 是台账类汇报的起手式，比 late 专业"
+          },
+          {
+            "en": "Which ones carry cooling risk, and which ones are just paperwork slipping?",
+            "zh": "哪些是真有制冷风险，哪些只是单据拖了——把延期项按风险分层，是避免被一锅端问责的关键问法"
+          },
+          {
+            "en": "Compensating controls.",
+            "zh": "补偿性控制——指原本的防护措施暂时失效时，用临时手段兜住风险（加密巡检、提前趋势复核、临时监测），是变更与延期评审的高频词"
+          },
+          {
+            "en": "Log the deferral in the risk register with an owner and a firm date.",
+            "zh": "把延期项记进风险台账，附责任人和确定日期——没有 owner 和 date 的延期等于没管"
+          },
+          {
+            "en": "That needs the customer sign-off, not just mine.",
+            "zh": "这项要客户签字放行，光我批不够——sign-off 指书面签批确认，是责任边界的分水岭"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "跨团队协作 · 交换机风道与冷热通道相反：热风回流致进风超温",
+        "subtitle": "精通 Proficient",
+        "content": "**情境**：C 区新上线的一批叶交换机频繁报进风温度告警，实测 44℃，周末有两台热关机。现场核对发现这批设备是端口侧出风（port-side exhaust），风道方向与机柜前进后出相反，交换机进风口实际从热通道取风。小白要向网络团队讲清机理、给出纠正方案，并把 port-side intake 写进后续采购规范，存量无法改造的走例外审批加密验证。\n\n**对话：**\n- Priya: We are seeing inlet temperature alarms on ten leaf switches in Zone C. Forty-four degrees, and two of them thermally shut down over the weekend.\n- 小白: That is not a cooling failure, it is an airflow direction problem. That batch is port-side exhaust: the fans pull air in at the port side, so with the way they are racked, the intake is drawing straight from the hot aisle.\n- Priya: So we are feeding our own exhaust back into the switch.\n- 小白: Exactly. Front-to-back cooling only works if every box in the rack breathes the same way. One reversed box turns the cold aisle into a recirculation path, and we eat into our thermal margin for no reason.\n- Priya: What are my options? I cannot pull ten switches out of service during peak hours.\n- 小白: Two levels of fix. Fast: reverse the fan trays and the power supply airflow so they run front-to-back. Ten minutes a box, one at a time, no downtime. Structural: make port-side intake a line item in the procurement spec, so the next batch cannot land like this.\n- Priya: And the boxes we cannot re-orient?\n- 小白: We carve them out as a documented exception. Extended burn-in at forty degrees inlet, weekly thermal check, and a hard date to swap them at the next maintenance window. I want that in the joint runbook, not sitting in someone inbox.\n- Priya: Agreed. I will raise the spec change with procurement today and send you the serial numbers we cannot flip.\n\n**重点表达：**\n- `That is not a cooling failure, it is an airflow direction problem.` — 这不是制冷故障，是风向问题——先把事件定性，避免自家机房被扣上一顶温度事故的帽子\n- `Front-to-back cooling only works if every box in the rack breathes the same way.` — 前进后出只有在机柜内所有设备风向一致时才成立——breathes the same way 是很地道的口语说法，比 airflow consistent 更自然\n- `We eat into our thermal margin for no reason.` — 我们在平白透支热裕度——eat into ... margin 指一点点吃掉余量，比 reduce 更形象\n- `Make it a line item in the procurement spec.` — 把它写成采购规范里的一条硬性条款——line item 是合同/规范里的具体条目，写进去才追得到责\n- `I want that in the joint runbook, not sitting in someone inbox.` — 要写进联合处置手册，而不是躺在谁的收件箱里——跨团队最怕口头约定，这句话直接把责任落到文件上",
+        "category": "跨团队协作",
+        "difficulty": "精通 Proficient",
+        "expressions": [
+          {
+            "en": "That is not a cooling failure, it is an airflow direction problem.",
+            "zh": "这不是制冷故障，是风向问题——先把事件定性，避免自家机房被扣上一顶温度事故的帽子"
+          },
+          {
+            "en": "Front-to-back cooling only works if every box in the rack breathes the same way.",
+            "zh": "前进后出只有在机柜内所有设备风向一致时才成立——breathes the same way 是很地道的口语说法，比 airflow consistent 更自然"
+          },
+          {
+            "en": "We eat into our thermal margin for no reason.",
+            "zh": "我们在平白透支热裕度——eat into ... margin 指一点点吃掉余量，比 reduce 更形象"
+          },
+          {
+            "en": "Make it a line item in the procurement spec.",
+            "zh": "把它写成采购规范里的一条硬性条款——line item 是合同/规范里的具体条目，写进去才追得到责"
+          },
+          {
+            "en": "I want that in the joint runbook, not sitting in someone inbox.",
+            "zh": "要写进联合处置手册，而不是躺在谁的收件箱里——跨团队最怕口头约定，这句话直接把责任落到文件上"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "容量规划 · 还能再接多少：铭牌容量、同时系数与 N+1 之后的真实余量",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：销售侧问二区本季度还能接多少机柜，IT 同事手上压着 400kW 的意向。小白要先把口径对齐：按铭牌 IT 容量、合同负载还是实测电流算；套 diversity factor；扣掉 N+1 冗余后制冷侧还剩多少 headroom；结论是可落 400kW，但要分两期并锁定时间窗，避免 stranded capacity。\n\n**对话：**\n- Owen: Sales is asking how much we can commit in Hall 2 this quarter. I have four hundred kilowatts in the pipeline. Is that a yes?\n- 小白: Not on nameplate, no. Our nameplate IT capacity says nine hundred, but the contracted load is six-twenty and the actual draw has never passed four-eighty. If we size the plant off nameplate, we pay for capacity nobody plugs in.\n- Owen: So what is the honest number?\n- 小白: Apply a diversity factor of zero point eight to the contracted load, then check what is left after N plus one. On the power side we have room. On the cooling side, with both chillers running and the current aisle containment, I would call it four hundred kilowatts of real headroom, and that is before the summer peak.\n- Owen: Four hundred is exactly what I have. Can I book it all now?\n- 小白: Take it in two phases. Book two hundred for next month, hold the rest until the second chiller is back from overhaul and we re-baseline. If you reserve all four hundred and the customer ramps slowly, we strand cooling capacity in a room we could have sold twice.\n- Owen: Fair. And if they need it all at once?\n- 小白: Then it becomes a capacity project, not a booking. New lead time, new money, and I need it in writing before I promise a date.\n\n**重点表达：**\n- `Nameplate IT capacity says nine hundred, but the actual draw has never passed four-eighty.` — 铭牌 900，实测从没超过 480——nameplate 与 actual draw 是容量对账的第一组反义词，开口就必须分清\n- `Apply a diversity factor of zero point eight to the contracted load.` — 对合同负载套 0.8 的同时系数——diversity factor 是容量口径谈判的核心词，不说它就没法谈余量\n- `I would call it four hundred kilowatts of real headroom.` — 我给的口径是 400kW 的真实余量——headroom 前加 real，是在提醒对方别拿理论值当可用值\n- `We strand cooling capacity in a room we could have sold twice.` — 我们会把制冷能力闲置在一间本可以卖两遍的机房里——stranded capacity 指被结构或节奏卡住、卖不出去的容量\n- `It becomes a capacity project, not a booking.` — 那就成了扩容项目，不是下单占容量——把「走流程」和「走项目」分开，是不背锅的关键一句",
+        "category": "容量规划",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "Nameplate IT capacity says nine hundred, but the actual draw has never passed four-eighty.",
+            "zh": "铭牌 900，实测从没超过 480——nameplate 与 actual draw 是容量对账的第一组反义词，开口就必须分清"
+          },
+          {
+            "en": "Apply a diversity factor of zero point eight to the contracted load.",
+            "zh": "对合同负载套 0.8 的同时系数——diversity factor 是容量口径谈判的核心词，不说它就没法谈余量"
+          },
+          {
+            "en": "I would call it four hundred kilowatts of real headroom.",
+            "zh": "我给的口径是 400kW 的真实余量——headroom 前加 real，是在提醒对方别拿理论值当可用值"
+          },
+          {
+            "en": "We strand cooling capacity in a room we could have sold twice.",
+            "zh": "我们会把制冷能力闲置在一间本可以卖两遍的机房里——stranded capacity 指被结构或节奏卡住、卖不出去的容量"
+          },
+          {
+            "en": "It becomes a capacity project, not a booking.",
+            "zh": "那就成了扩容项目，不是下单占容量——把「走流程」和「走项目」分开，是不背锅的关键一句"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-11",
     "generatedAt": "2026-10-11T23:20:51+08:00",
     "cycleDay": 3,
@@ -980,80 +1078,6 @@
           {
             "en": "penalty clause",
             "zh": "违约赔偿条款"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-09-28",
-    "generatedAt": "2026-09-28T23:17:33+08:00",
-    "cycleDay": 2,
-    "difficulty": "进阶 Intermediate",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "运维沟通 · 冷冻水供水温度重设以压降 PUE",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境：**为降低夏季 PUE，运维团队提议把冷冻水供水温度由 7°C 逐步上调至 10°C，需在变更窗口内执行并守住冷通道温度红线。\n\n**对话：**\n- A: We're proposing a chilled water reset — raising the supply temperature from 7°C to 10°C to trim PUE. Any pushback from the operations side?\n- B: Not if we do it gradually. I'd step it up one degree per hour and watch the rack inlet temps across the hot-cold aisle layout.\n- A: What's our guard rail? If the cold aisle crosses 27°C, we roll back immediately?\n- B: Exactly. We'll run it inside the approved change window, keep the chiller plant on manual, and log every step until the trend flattens out.\n\n**重点表达：**\n- `chilled water reset` — 冷冻水水温重设（提高供水温度以节能）\n- `trim PUE` — 压降 PUE / 降低电能使用效率比值\n- `guard rail ... roll back immediately` — 安全红线……一旦越线立即回退",
-        "category": "运维沟通",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "chilled water reset",
-            "zh": "冷冻水水温重设（提高供水温度以节能）"
-          },
-          {
-            "en": "trim PUE",
-            "zh": "压降 PUE / 降低电能使用效率比值"
-          },
-          {
-            "en": "guard rail ... roll back immediately",
-            "zh": "安全红线……一旦越线立即回退"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "跨团队协作 · 液冷 CDU 切换 UPS 回路的联锁与中止条件",
-        "subtitle": "高级 Advanced",
-        "content": "**情境：**液冷 CDU 泵组要切换到新增 UPS 供电回路，需电气团队确认相序、安全团队要求漏水联锁，且切换期间不得影响 uptime。\n\n**对话：**\n- A: Before we cut the CDU pumps over to the new UPS feed, I want electrical and safety aligned on the sequence.\n- B: Electrical is fine with the phasing check, but safety wants a leak-detection interlock live before any pump runs on the new feed.\n- A: Understood. If a leak is detected, the interlock trips the pump and triggers a failover to the standby CDU — no manual step in between.\n- B: Agreed. Let's also pre-agree the abort criteria: flow below 60% for more than ten seconds and we stop the cutover.\n- A: Good. With that in place we keep uptime intact and stay compliant with the MOP.\n- B: I'll circulate the updated MOP and lock the window for Thursday at 02:00.\n\n**重点表达：**\n- `cut ... over to the new UPS feed` — 将……切换至新的 UPS 供电回路\n- `leak-detection interlock` — 漏水检测联锁（液冷系统必备保护）\n- `pre-agree the abort criteria` — 事先约定中止/叫停条件",
-        "category": "跨团队协作",
-        "difficulty": "高级 Advanced",
-        "expressions": [
-          {
-            "en": "cut ... over to the new UPS feed",
-            "zh": "将……切换至新的 UPS 供电回路"
-          },
-          {
-            "en": "leak-detection interlock",
-            "zh": "漏水检测联锁（液冷系统必备保护）"
-          },
-          {
-            "en": "pre-agree the abort criteria",
-            "zh": "事先约定中止/叫停条件"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "容量规划 · 冷通道封闭改造后单柜密度提升的余量核算",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境：**D02 模组完成冷通道封闭改造，业务方希望把单柜密度从 6 kW 提到 12 kW，需要核对配电三相平衡、PDU 与 CRAH 容量。\n\n**对话：**\n- A: Now that the cold aisle containment is done, the business wants to take rack density from 6 kW to 12 kW. Where do we stand on capacity?\n- B: On power, we have to watch phase balance first — loading A phase much harder than B and C will bite us later.\n- A: Fair point. Cooling-wise, the CRAH units in that hall still have roughly 20% headroom at the current setpoint.\n- B: That's enough for the first eight racks, not for the whole row. I'll rerun the capacity model and check the PUE impact before we commit to a date.\n\n**重点表达：**\n- `take rack density from 6 kW to 12 kW` — 把单柜功率密度从 6 kW 提升到 12 kW\n- `watch phase balance` — 关注三相负载均衡（A/B/C 相电流平衡）\n- `roughly 20% headroom at the current setpoint` — 在当前设定值下约有 20% 余量",
-        "category": "容量规划",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "take rack density from 6 kW to 12 kW",
-            "zh": "把单柜功率密度从 6 kW 提升到 12 kW"
-          },
-          {
-            "en": "watch phase balance",
-            "zh": "关注三相负载均衡（A/B/C 相电流平衡）"
-          },
-          {
-            "en": "roughly 20% headroom at the current setpoint",
-            "zh": "在当前设定值下约有 20% 余量"
           }
         ]
       }
