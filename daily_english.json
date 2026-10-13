@@ -1,5 +1,103 @@
 [
   {
+    "date": "2026-10-13",
+    "generatedAt": "2026-10-13T23:18:28+08:00",
+    "cycleDay": 1,
+    "difficulty": "基础 Basic",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "日常工作 · 早间巡检接报：冷却塔风机异响的初判与上报",
+        "subtitle": "基础 Basic",
+        "content": "**情境**：早间接班，夜班同事提到 3 号冷却塔风机传动侧有尖叫声，但还没上塔确认。小白需要先判断异响来源是皮带还是轴承，带红外测温仪上塔核对油位、皮带张力与电机外壳温度，再决定是立即停机还是开纠正性工单排队，同时说明当前冗余情况。\n\n**对话：**\n- 小白: Morning, Dave. Anything I should know before I walk the loop?\n- Dave: Tower three is squealing on the fan drive. I have not had eyes on it yet.\n- 小白: Belt or bearing?\n- Dave: Hard to tell from the floor. Gearbox oil level in the sight glass looks fine, and the basin is clean.\n- 小白: I will go up with the infrared gun and check belt tension and the motor casing temperature. If the belt is glazed or the bearing is howling, I will raise a corrective work order and flag it as P two.\n- Dave: Want me to shut it down now?\n- 小白: Not on a guess. Towers one and two are carrying the load and the loop is holding setpoint. I would rather lose ten minutes of inspection than lose redundancy I cannot get back.\n\n**重点表达：**\n- `Anything I should know before I walk the loop?` — 我巡一圈之前有什么要交代的——walk the loop 就是沿系统走一圈巡检，比 inspection 更口语、更常用\n- `Belt or bearing?` — 皮带还是轴承？——现场判断异响来源的最短问法，两个字定性，老运维一开口就这么问\n- `I will raise a corrective work order and flag it as P two.` — 我开一张纠正性工单并标为 P2 优先级——raise a work order 是开口常用搭配；corrective 与 preventive 相对，别混用\n- `Not on a guess.` — 不凭猜测动手——短促有力，用来挡住「先停机再说」的建议，比 I do not think so 更有分量\n- `I would rather lose ten minutes of inspection than lose redundancy I cannot get back.` — 我宁可多花十分钟检查，也不愿丢掉拿不回来的冗余——would rather A than B 是表达取舍的高级句型",
+        "category": "日常工作",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "Anything I should know before I walk the loop?",
+            "zh": "我巡一圈之前有什么要交代的——walk the loop 就是沿系统走一圈巡检，比 inspection 更口语、更常用"
+          },
+          {
+            "en": "Belt or bearing?",
+            "zh": "皮带还是轴承？——现场判断异响来源的最短问法，两个字定性，老运维一开口就这么问"
+          },
+          {
+            "en": "I will raise a corrective work order and flag it as P two.",
+            "zh": "我开一张纠正性工单并标为 P2 优先级——raise a work order 是开口常用搭配；corrective 与 preventive 相对，别混用"
+          },
+          {
+            "en": "Not on a guess.",
+            "zh": "不凭猜测动手——短促有力，用来挡住「先停机再说」的建议，比 I do not think so 更有分量"
+          },
+          {
+            "en": "I would rather lose ten minutes of inspection than lose redundancy I cannot get back.",
+            "zh": "我宁可多花十分钟检查，也不愿丢掉拿不回来的冗余——would rather A than B 是表达取舍的高级句型"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "故障排查 · 水阀全开却压不住温度：压差测点位置引发的低温差综合征",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：高温时段 B 区多台 CRAH 水阀开到 100%，回风温度仍高于设定值 2℃，但冷冻水供回水温差只有 3.2℃（设计 6℃）。小白要从「是不是冷量不够」的质疑中跳出来，定位到二次管网压差传感器装在泵出口而非最不利环路末端、旁通阀在低负载时回流的真实根因，并给出短期调整与根治方案。\n\n**对话：**\n- Sofia: Row fourteen CRAH valves are wide open and the return air is still two degrees above setpoint. Are we out of cooling capacity?\n- 小白: Not capacity. Flow. The delta-T across the loop has collapsed to three point two degrees. Wide-open valves with a low delta-T is classic low delta-T syndrome, the water is going somewhere it is not doing any work.\n- Sofia: So where is the extra water going?\n- 小白: Through the bypass. Our differential pressure sensor sits at the pump discharge instead of the end of the index circuit, so the controller always sees comfortable pressure and never lets the bypass valve close. The remote units starve.\n- Sofia: That would explain why the far end is the hottest.\n- 小白: It does. Two fixes. Short term I trim the DP setpoint down and let the bypass ride closed through peak hours. The real fix is relocating the sensor to the furthest coil and re-baselining the setpoint against that circuit.\n- Sofia: How long before you can say that with data?\n- 小白: One hot afternoon of trending. If delta-T climbs back toward five and a half and the far-end valves come off their stops, the RCA lands on the sensor location, not the chiller plant. And if it does not move, I will come back and say the plant is undersized.\n\n**重点表达：**\n- `Not capacity. Flow.` — 不是冷量，是流量——先定性再展开，两句话把故障的排查方向锁死，避免整场会都在争论要不要加冷机\n- `Classic low delta-T syndrome.` — 典型的低温差综合征——delta-T 读作 delta tee，syndrome 表示这是行业里被命名过的典型毛病，一说对方就懂\n- `The remote units starve.` — 远端机组吃不饱——starve 指末端拿不到足够流量，比 lack of flow 生动得多，是老外爱用的拟人说法\n- `The RCA lands on the sensor location, not the chiller plant.` — 根因落在测点位置，不在冷机侧——the RCA lands on X 是根因分析汇报里的黄金句型，直接给结论\n- `If it does not move, I will come back and say the plant is undersized.` — 如果数据不动，我会回来承认是冷机能力不够——先给出可证伪的判断标准，是专业工程师的担当",
+        "category": "故障排查",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "Not capacity. Flow.",
+            "zh": "不是冷量，是流量——先定性再展开，两句话把故障的排查方向锁死，避免整场会都在争论要不要加冷机"
+          },
+          {
+            "en": "Classic low delta-T syndrome.",
+            "zh": "典型的低温差综合征——delta-T 读作 delta tee，syndrome 表示这是行业里被命名过的典型毛病，一说对方就懂"
+          },
+          {
+            "en": "The remote units starve.",
+            "zh": "远端机组吃不饱——starve 指末端拿不到足够流量，比 lack of flow 生动得多，是老外爱用的拟人说法"
+          },
+          {
+            "en": "The RCA lands on the sensor location, not the chiller plant.",
+            "zh": "根因落在测点位置，不在冷机侧——the RCA lands on X 是根因分析汇报里的黄金句型，直接给结论"
+          },
+          {
+            "en": "If it does not move, I will come back and say the plant is undersized.",
+            "zh": "如果数据不动，我会回来承认是冷机能力不够——先给出可证伪的判断标准，是专业工程师的担当"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "供应商对接 · 风机电机烧毁更换：拆解报价、进场时间与质保起算",
+        "subtitle": "基础 Basic",
+        "content": "**情境**：3 号冷却塔风机电机对地绝缘为零，判定匝间短路烧毁，需要整体更换。小白向供应商询价，要求把电机本体、吊装、接线、试运行拆开逐项报价；交期三周但塔不能停太久，要拆分发货与安装；质保期坚持从试运行签字起算而非到货日，并明确试运行振动超标由供应商负责。\n\n**对话：**\n- 小白: Ryan, the fan motor on tower three is gone. Insulation to ground reads zero, so this is not something we can nurse along. I need a replacement.\n- Ryan: I can quote the same model. Motor only, or installation as well?\n- 小白: Both, quoted separately. I want the motor, the rigging, the reconnection and the run test broken out line by line. A single lump number tells me nothing.\n- Ryan: Understood. Lead time on the motor is three weeks, and the crew can mobilise five working days after it lands.\n- 小白: Three weeks out of service is longer than I can carry that tower. Can you ship the motor first and have the crew on site the day it arrives?\n- Ryan: We can do that, if you confirm the purchase order this week.\n- 小白: Then one more thing on warranty. I want the twelve months to start from the run test sign-off, not from the delivery date. And if the run test shows vibration above the limit, that is yours to fix, not ours.\n- Ryan: I will put both in writing and send the revised quote today.\n\n**重点表达：**\n- `Insulation to ground reads zero, so this is not something we can nurse along.` — 对地绝缘为零，这不是能凑合着用的——nurse along 指带病维持运行，是谈判里表明「必须换」的地道说法\n- `I want the motor, the rigging, the reconnection and the run test broken out line by line.` — 电机、吊装、接线、试运行要逐项拆开报——break out line by line 是压报价的标配句型，拆开才好砍价\n- `The crew can mobilise five working days after it lands.` — 货到后五个工作日进场——mobilise 指人员设备进场，比 come to site 专业\n- `I want the twelve months to start from the run test sign-off, not from the delivery date.` — 质保十二个月从试运行签字起算，不是到货日——质保起算点是设备采购最容易吃亏的一栏，必须开口争\n- `That is yours to fix, not ours.` — 那是你们要修的，不是我们——划责任边界的短句，语气平静但立场很硬",
+        "category": "供应商对接",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "Insulation to ground reads zero, so this is not something we can nurse along.",
+            "zh": "对地绝缘为零，这不是能凑合着用的——nurse along 指带病维持运行，是谈判里表明「必须换」的地道说法"
+          },
+          {
+            "en": "I want the motor, the rigging, the reconnection and the run test broken out line by line.",
+            "zh": "电机、吊装、接线、试运行要逐项拆开报——break out line by line 是压报价的标配句型，拆开才好砍价"
+          },
+          {
+            "en": "The crew can mobilise five working days after it lands.",
+            "zh": "货到后五个工作日进场——mobilise 指人员设备进场，比 come to site 专业"
+          },
+          {
+            "en": "I want the twelve months to start from the run test sign-off, not from the delivery date.",
+            "zh": "质保十二个月从试运行签字起算，不是到货日——质保起算点是设备采购最容易吃亏的一栏，必须开口争"
+          },
+          {
+            "en": "That is yours to fix, not ours.",
+            "zh": "那是你们要修的，不是我们——划责任边界的短句，语气平静但立场很硬"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-12",
     "generatedAt": "2026-10-12T23:20:20+08:00",
     "cycleDay": 4,
@@ -1004,80 +1102,6 @@
           {
             "en": "heat rejection",
             "zh": "排热量（冷源侧需要带走的热量）"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-09-29",
-    "generatedAt": "2026-09-29T23:17:31+08:00",
-    "cycleDay": 3,
-    "difficulty": "高级 Advanced",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "日常工作 · 早班巡检发现热通道机柜进风温度偏高",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：早班巡检时，B3 机房一台机柜进风温度比设定值高出约 3℃，需要判断原因、提工单并写进交班记录。\n\n**对话**：\n- **Alex (Day shift)**：Morning patrol found the inlet temperature at rack B3-14 hitting 27.5°C, roughly three degrees above our setpoint.\n- **Ben (Lead)**：That's on the hot aisle side, right? Did you check whether the CRAH unit above it is actually delivering airflow?\n- **Alex**：Yes. The CRAH is running at 80% fan speed, but two floor grilles in the cold aisle are partly blocked by cable bundles.\n- **Ben**：Log a ticket for cable cleanup, and keep monitoring that rack inlet for the rest of the shift. I don't want to risk uptime.\n- **Alex**：Will do. I'll also flag it in the shift handover so the night team re-checks before 22:00.\n\n**重点表达**：\n- `inlet temperature` — 机柜进风温度（判断制冷是否达标的第一指标）\n- `log a ticket` — 提工单 / 登记工单\n- `shift handover` — 交班记录 / 交接班说明",
-        "category": "日常工作",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "inlet temperature",
-            "zh": "机柜进风温度（判断制冷是否达标的第一指标）"
-          },
-          {
-            "en": "log a ticket",
-            "zh": "提工单 / 登记工单"
-          },
-          {
-            "en": "shift handover",
-            "zh": "交班记录 / 交接班说明"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "故障排查 · CRAH 群控通讯中断引发局部热点的 RCA 复盘",
-        "subtitle": "高级 Advanced",
-        "content": "**情境**：凌晨 CRAH 群控通讯中断导致 2 号模组出现热点，运维团队复盘 failover 表现与根因。\n\n**对话**：\n- **Alex**：We had a hot spot in Module 2 at 02:10. The CRAH group controller lost its network link, so six units dropped into local mode.\n- **Ben**：Did the failover to the standby controller kick in automatically?\n- **Alex**：It did, but there was about 45 seconds of latency before the standby took over. In that window, rack inlet temps climbed six degrees.\n- **Ben**：So the chiller plant itself was healthy — the failure was purely on the controls side.\n- **Alex**：Exactly. For the RCA I'd flag two gaps: no heartbeat alarm on the controller link, and the failover drill hasn't been run since the last maintenance window.\n- **Ben**：Agreed. Let's add a quarterly failover drill and tighten the alarm threshold from 90 seconds to 60.\n\n**重点表达**：\n- `hot spot` — 局部热点（机房内温度异常偏高的区域）\n- `failover to the standby controller` — 切换到备用控制器\n- `root cause analysis (RCA)` — 根因分析",
-        "category": "故障排查",
-        "difficulty": "高级 Advanced",
-        "expressions": [
-          {
-            "en": "hot spot",
-            "zh": "局部热点（机房内温度异常偏高的区域）"
-          },
-          {
-            "en": "failover to the standby controller",
-            "zh": "切换到备用控制器"
-          },
-          {
-            "en": "root cause analysis (RCA)",
-            "zh": "根因分析"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "供应商对接 · 冷水机组压缩机备件交期与质保谈判",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：现场仅剩一台冷水机组压缩机备件，与厂商确认交期、质保期与容量保证条款。\n\n**对话**：\n- **Alex**：I need a firm lead-time update on the chiller compressor replacement. Our current spare is the only one left on site.\n- **Vendor**：I can commit to eight weeks ex-works, or six weeks if you approve expedited freight.\n- **Alex**：Six weeks works, but I want the warranty extended to 24 months and a written capacity guarantee at 35°C ambient.\n- **Vendor**：That's acceptable. We'll also send a technician for commissioning so your PUE doesn't drift during the swap.\n- **Alex**：Good. And put the penalty clause in the contract — 0.5% of the order value for every week of delay.\n\n**重点表达**：\n- `lead time` — 交期 / 供货周期\n- `ex-works` — 工厂交货（不含运输，买方自提）\n- `penalty clause` — 违约赔偿条款",
-        "category": "供应商对接",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "lead time",
-            "zh": "交期 / 供货周期"
-          },
-          {
-            "en": "ex-works",
-            "zh": "工厂交货（不含运输，买方自提）"
-          },
-          {
-            "en": "penalty clause",
-            "zh": "违约赔偿条款"
           }
         ]
       }
