@@ -1,5 +1,115 @@
 [
   {
+    "date": "2026-10-14",
+    "generatedAt": "2026-10-14T23:20:23+08:00",
+    "cycleDay": 2,
+    "difficulty": "进阶 Intermediate",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "运维沟通 · 年度冷机电气年检：把停机窗口谈成一份可签字的方案",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：四台冷水机组要在秋季完成年度电气预防性试验，每台需要断电隔离至少六小时。IT 与业务部门担心影响 uptime，要求给出可评审的窗口方案。小白要用「一次只隔离一台 + 保留整机冗余」说明 concurrent maintainability，用冷通道温升速率而不是绝对温度作为验收判据，并给出明确的 abort criterion 写进 MOP 交变更评审。\n\n**对话：**\n- Marcus: The annual electrical PM on the chillers is due this quarter. IT will push back hard on any outage. How do you want to run it?\n- 小白: One plant at a time, never two. We isolate, test, restore and prove it stable before we touch the next one. That is the whole plan.\n- Marcus: And while unit two is open, what is carrying the load?\n- 小白: Three units against a peak of about two point six megawatts of heat load. We keep one full chiller of redundancy through the whole test, which is what concurrent maintainability actually looks like on the floor. Failover between units is automatic, ninety seconds of latency, and the buffer tank covers that easily.\n- Marcus: IT will still ask what number keeps you safe.\n- 小白: Rate of change, not absolute temperature. My abort criterion is one degree Celsius in the cold aisle per five minutes, sustained for ten. If it moves faster than that, we stop the test, restore the chiller and stand down. I will write it into the MOP with a named owner for the go or no-go call.\n- Marcus: Give me that by Friday and I will take it to the change board.\n- 小白: You will have it Thursday, with trend data from the last two transfers so nobody has to take my word for it.\n\n**重点表达：**\n- `One plant at a time, never two.` — 一次只停一台，绝不两台——把最关键的约束放在第一句，先定规矩再谈细节\n- `We keep one full chiller of redundancy through the whole test.` — 整个试验过程保留一整台的冷机冗余——keep redundancy 是运维对外承诺时的核心说法\n- `That is what concurrent maintainability actually looks like on the floor.` — 这就是「可同时维护」在现场的真实样子——把标准术语 TIA-942 concurrent maintainability 落到具体动作上，比背定义有说服力\n- `Failover between units is automatic, ninety seconds of latency.` — 机组间切换是自动的，延迟九十秒——latency 在这里指「响应滞后时间」，比 delay 更专业\n- `My abort criterion is one degree Celsius per five minutes, sustained for ten.` — 我的中止判据是每五分钟升高一摄氏度并持续十分钟——abort criterion 是施工方案里的硬条款，必须量化到可执行\n- `Rate of change, not absolute temperature.` — 看变化速率，不看绝对温度——用对比结构纠正对方的关注点，短促有力",
+        "category": "运维沟通",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "One plant at a time, never two.",
+            "zh": "一次只停一台，绝不两台——把最关键的约束放在第一句，先定规矩再谈细节"
+          },
+          {
+            "en": "We keep one full chiller of redundancy through the whole test.",
+            "zh": "整个试验过程保留一整台的冷机冗余——keep redundancy 是运维对外承诺时的核心说法"
+          },
+          {
+            "en": "That is what concurrent maintainability actually looks like on the floor.",
+            "zh": "这就是「可同时维护」在现场的真实样子——把标准术语 TIA-942 concurrent maintainability 落到具体动作上，比背定义有说服力"
+          },
+          {
+            "en": "Failover between units is automatic, ninety seconds of latency.",
+            "zh": "机组间切换是自动的，延迟九十秒——latency 在这里指「响应滞后时间」，比 delay 更专业"
+          },
+          {
+            "en": "My abort criterion is one degree Celsius per five minutes, sustained for ten.",
+            "zh": "我的中止判据是每五分钟升高一摄氏度并持续十分钟——abort criterion 是施工方案里的硬条款，必须量化到可执行"
+          },
+          {
+            "en": "Rate of change, not absolute temperature.",
+            "zh": "看变化速率，不看绝对温度——用对比结构纠正对方的关注点，短促有力"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "跨团队协作 · 光模块高温告警：不是冷量不够，是机柜顶部回流",
+        "subtitle": "高级 Advanced",
+        "content": "**情境**：网络团队连续一周反馈 B 区 Row 9 的 top-of-rack 交换机 100G 光模块 DOM 温度跑到 72–78℃，每天下午两点左右开始，要求把 CRAH 送风设定温度下调 2℃。小白带红外热像仪实测：冷通道进风 21.8℃、热通道回风 36℃，判断问题在机柜顶部空缺位漏风与线缆束遮挡排风造成的局部回流，提出与网络团队联合做气流整改并以整改前后 DOM 截图作为验收数据。\n\n**对话：**\n- Priya: We are getting hundred gig optics in row nine running at seventy to seventy-eight degrees. The DOM trend starts climbing around two every afternoon. Can you drop the CRAH setpoint two degrees?\n- 小白: I could, but I do not think it will move your number. I walked the row with a thermal camera yesterday. Cold aisle inlet at rack nine was twenty-one point eight, hot aisle return thirty-six. The plant is not starving you.\n- Priya: Then why does it track the afternoon?\n- 小白: Because that is when the room load peaks and your top-of-rack cable bundles start fighting the exhaust. You have three empty rack units above the switch with no blanks, and the bundle sits right across the exhaust path. Hot air rolls over the top of the rack and straight back into the intake. Local recirculation, not a capacity problem.\n- Priya: So blanking panels and a cable cleanup.\n- 小白: Both, and move the patch panels out of the exhaust stream. Give me thirty minutes of your next change window and we run it as a joint work order with before and after captures: tile temperatures, inlet temperatures and your DOM readings, taken at four in the afternoon when it peaks.\n- Priya: And if nothing changes?\n- 小白: Then it is my problem and I write the setpoint change myself. But I want the after data before we spend two degrees of that argument on a room that is already cold enough.\n\n**重点表达：**\n- `I could, but I do not think it will move your number.` — 我可以这么做，但我不认为这会让你的数据动起来——move the number 指让指标有变化，比 improve it 更口语、更地道\n- `The plant is not starving you.` — 冷源没饿着你（冷量是够的）——starve 拟人用法，一句切断「是你们空调不行」的甩锅\n- `Local recirculation, not a capacity problem.` — 是局部回流，不是容量问题——用逗号+否定并列给结论，专业且干脆\n- `Give me thirty minutes of your next change window and we run it as a joint work order.` — 给我下一个变更窗口的三十分钟，我们按联合工单来做——joint work order 是跨团队协作的标准动作\n- `Then it is my problem and I write the setpoint change myself.` — 那就是我的事，设定值变更我来提——先担责再谈数据，是建立跨团队信任的高效说法\n- `I want the after data before we spend two degrees of that argument on a room that is already cold enough.` — 在这间已经够冷的机房上再花掉两度之前，我先看整改后的数据——一整句高级长句，用金钱隐喻 spend 表达「别在错误战场上消耗资源」",
+        "category": "跨团队协作",
+        "difficulty": "高级 Advanced",
+        "expressions": [
+          {
+            "en": "I could, but I do not think it will move your number.",
+            "zh": "我可以这么做，但我不认为这会让你的数据动起来——move the number 指让指标有变化，比 improve it 更口语、更地道"
+          },
+          {
+            "en": "The plant is not starving you.",
+            "zh": "冷源没饿着你（冷量是够的）——starve 拟人用法，一句切断「是你们空调不行」的甩锅"
+          },
+          {
+            "en": "Local recirculation, not a capacity problem.",
+            "zh": "是局部回流，不是容量问题——用逗号+否定并列给结论，专业且干脆"
+          },
+          {
+            "en": "Give me thirty minutes of your next change window and we run it as a joint work order.",
+            "zh": "给我下一个变更窗口的三十分钟，我们按联合工单来做——joint work order 是跨团队协作的标准动作"
+          },
+          {
+            "en": "Then it is my problem and I write the setpoint change myself.",
+            "zh": "那就是我的事，设定值变更我来提——先担责再谈数据，是建立跨团队信任的高效说法"
+          },
+          {
+            "en": "I want the after data before we spend two degrees of that argument on a room that is already cold enough.",
+            "zh": "在这间已经够冷的机房上再花掉两度之前，我先看整改后的数据——一整句高级长句，用金钱隐喻 spend 表达「别在错误战场上消耗资源」"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "容量规划 · 提前六周的 300kW：租赁冷机过渡方案与退出成本",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：销售已签下六周后投产的 300kW 业务，但二期永久冷机还有五个月工期。小白提出租赁一套集装箱式冷水机组，从既有冷冻水母管的备用三通法兰处接驳作为过渡能力；同时明确该批次机组为单列无冗余、需业务方签风险接受，核算现有水泵与接驳口的水力上限、建议只投 300kW 留余量，并提醒临时机组 Partial load 效率低会让 PUE 抬升约 0.1，最后强调吊卸与退场的 roll-off 要提前锁进合同。\n\n**对话：**\n- Elena: Sales signed three hundred kilowatts of IT load with a go-live six weeks out. The permanent plant will not be online for another five months. What can we do that is not a shutdown?\n- 小白: We bridge it. A rental package chiller skid tied into the existing chilled water loop, sitting on the pad where the expansion gets poured next year. We already have isolation valves and a spare tee on the header, so the tie-in is a flange and a weekend of work.\n- Elena: Is that redundant?\n- 小白: No, and I would rather say that out loud than dress it up. The rental is a single train, no N plus one. Everything we put on it needs dual-corded IT behind it, and I want a written risk acceptance from the business owner, not just from us.\n- Elena: How much can we actually load onto it?\n- 小白: Hydraulically around four hundred kilowatts before the existing pumps and the venturi at the tie-in become the constraint. I would only commit three hundred and hold the rest in reserve. And expect PUE to pick up close to zero point one while the rental runs, because temporary units do not have the part-load efficiency of our permanent chillers.\n- Elena: Right. Anything else we should book now?\n- 小白: The roll-off, that is the part people forget. Get the return date and the crane move into the rental contract today and tie it to the permanent commissioning milestone. Otherwise you rent a box nobody needs and pay for it by the month.\n\n**重点表达：**\n- `We bridge it.` — 我们用过渡方案把它接过去——bridge 作动词，指用临时方案填补时间差，比 use a temporary solution 精炼得多\n- `I would rather say that out loud than dress it up.` — 我宁可把话挑明，也不去粉饰——谈临时方案的冗余缺陷时必须用的诚实句\n- `The rental is a single train, no N plus one.` — 租赁机组是单列系统，没有 N+1 冗余——redundancy level 的准确表述，避免含糊导致后续扯皮\n- `I would only commit three hundred and hold the rest in reserve.` — 我只承诺三百，其余留作余量——commit vs hold in reserve 是容量承诺的经典搭配\n- `PUE to pick up close to zero point one while the rental runs.` — 租赁机组运行期间 PUE 会抬升接近 0.1——pick up 表示「小幅上升」，比 increase 更贴合能效语境\n- `The roll-off is the part people forget.` — 设备退场是最容易被人忘掉的一环——roll-off 指租赁设备的撤场归还，容量规划里经常被忽视的成本项",
+        "category": "容量规划",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "We bridge it.",
+            "zh": "我们用过渡方案把它接过去——bridge 作动词，指用临时方案填补时间差，比 use a temporary solution 精炼得多"
+          },
+          {
+            "en": "I would rather say that out loud than dress it up.",
+            "zh": "我宁可把话挑明，也不去粉饰——谈临时方案的冗余缺陷时必须用的诚实句"
+          },
+          {
+            "en": "The rental is a single train, no N plus one.",
+            "zh": "租赁机组是单列系统，没有 N+1 冗余——redundancy level 的准确表述，避免含糊导致后续扯皮"
+          },
+          {
+            "en": "I would only commit three hundred and hold the rest in reserve.",
+            "zh": "我只承诺三百，其余留作余量——commit vs hold in reserve 是容量承诺的经典搭配"
+          },
+          {
+            "en": "PUE to pick up close to zero point one while the rental runs.",
+            "zh": "租赁机组运行期间 PUE 会抬升接近 0.1——pick up 表示「小幅上升」，比 increase 更贴合能效语境"
+          },
+          {
+            "en": "The roll-off is the part people forget.",
+            "zh": "设备退场是最容易被人忘掉的一环——roll-off 指租赁设备的撤场归还，容量规划里经常被忽视的成本项"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-13",
     "generatedAt": "2026-10-13T23:18:28+08:00",
     "cycleDay": 1,
@@ -1028,80 +1138,6 @@
           {
             "en": "delivery note",
             "zh": "送货单 / 发货单（验收与关单凭证）"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-09-30",
-    "generatedAt": "2026-09-30T23:17:49+08:00",
-    "cycleDay": 4,
-    "difficulty": "精通 Proficient",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "运维沟通 · 月度能效复盘会上汇报 PUE 并申请调高冷冻水供水温度",
-        "subtitle": "基础 Basic",
-        "content": "**情境**：月度能效复盘会上，向运维经理汇报本月 PUE 走势，并申请把冷冻水供水温度上调 1℃ 以进一步节能。\n\n**对话**：\n- **Alex (Facility Ops)**：This month our PUE came in at 1.38, down two points from August, mostly because we nudged the chilled water setpoint up by half a degree.\n- **Sarah (Ops Manager)**：Good number. How much headroom do we still have before we brush against the ASHRAE allowable envelope?\n- **Alex**：Average rack inlet is 24.5°C against a 27°C allowable limit, so I'd call it roughly two degrees of headroom.\n- **Sarah**：Then file a change request to move the chilled water supply from 7°C to 8°C, and put the rollback plan in the MOP.\n- **Alex**：Will do. I'll attach the last 30 days of trend data so the approvers can see the cooling capacity margin for themselves.\n\n**重点表达**：\n- `PUE (Power Usage Effectiveness)` — 电能使用效率，越接近 1.0 越节能\n- `headroom` — 余量、可用裕度（温度/容量还剩多少空间）\n- `file a change request` — 提交变更申请",
-        "category": "运维沟通",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "PUE (Power Usage Effectiveness)",
-            "zh": "电能使用效率，越接近 1.0 越节能"
-          },
-          {
-            "en": "headroom",
-            "zh": "余量、可用裕度（温度/容量还剩多少空间）"
-          },
-          {
-            "en": "file a change request",
-            "zh": "提交变更申请"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "跨团队协作 · 配合电气团队做 UPS 维护旁路切换期间的制冷保障",
-        "subtitle": "精通 Proficient",
-        "content": "**情境**：电气团队要在周六凌晨对 2 号 UPS 做维护旁路切换，需与暖通、云/网络团队敲定窗口内的制冷冗余、热续航与中止判据。\n\n**对话**：\n- **David (Electrical)**：We're taking UPS-2 into maintenance bypass Saturday, 01:00 to 04:00. What's your cooling position during that window?\n- **Alex (HVAC)**：While you're on wrap-around bypass, we lose N+1 on the feed to CRAH group B. I'll pre-cool the room by two degrees and pin that group to the A-side feed.\n- **David**：How long can the room ride through if the A-side drops as well?\n- **Alex**：About twelve minutes of thermal ride-through at 8 kW per rack. We'll stage a portable spot cooler and set an abort criterion: if rack inlet hits 30°C, we stop and restore the bypass.\n- **Nina (Cloud/Network)**：From my side I'll drain the non-critical workloads off that pod beforehand and keep the latency-sensitive nodes on the redundant pods.\n- **Alex**：That helps a lot — it drops the heat load by roughly fifteen percent and buys us another four minutes of ride-through.\n- **David**：Then we're aligned. I'll circulate the MOP with the rollback steps and the failover contacts by Friday noon.\n\n**重点表达**：\n- `maintenance bypass` — 维护旁路（检修时隔离 UPS 的供电通路）\n- `thermal ride-through` — 热续航（断电后机房温度维持在限值内的时长）\n- `abort criterion` — 中止判据（变更中触发回退的明确条件）",
-        "category": "跨团队协作",
-        "difficulty": "精通 Proficient",
-        "expressions": [
-          {
-            "en": "maintenance bypass",
-            "zh": "维护旁路（检修时隔离 UPS 的供电通路）"
-          },
-          {
-            "en": "thermal ride-through",
-            "zh": "热续航（断电后机房温度维持在限值内的时长）"
-          },
-          {
-            "en": "abort criterion",
-            "zh": "中止判据（变更中触发回退的明确条件）"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "容量规划 · 液冷改造前的机柜密度与冷源容量核算",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：AI 集群下季度落地，20 台 30kW 高密度机柜，需要核算现有风冷余量，并给出冷板液冷 CDU 的设施侧方案。\n\n**对话**：\n- **Leo (Planning)**：The AI cluster lands next quarter — twenty racks at 30 kW each. Can the current room absorb that?\n- **Alex (HVAC)**：Not on air. With the existing CRAH layout we've got capacity for about 8 kW per rack; anything above 15 kW needs rear-door heat exchangers or direct-to-chip liquid cooling.\n- **Leo**：Let's go direct-to-chip then. What do you need on the facility side?\n- **Alex**：Two CDUs with N+1 redundancy, facility water at 32°C supply, and roughly 600 kW of heat rejection at the chiller plant. I'd keep 20% headroom for the failover case.\n- **Leo**：And what does that do to PUE?\n- **Alex**：It should land near 1.25 — we can run the chillers at a higher setpoint and cut CRAH fan power substantially.\n\n**重点表达**：\n- `kW per rack / rack density` — 单机柜功率密度（容量规划的核心指标）\n- `direct-to-chip liquid cooling` — 芯片级冷板液冷\n- `heat rejection` — 排热量（冷源侧需要带走的热量）",
-        "category": "容量规划",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "kW per rack / rack density",
-            "zh": "单机柜功率密度（容量规划的核心指标）"
-          },
-          {
-            "en": "direct-to-chip liquid cooling",
-            "zh": "芯片级冷板液冷"
-          },
-          {
-            "en": "heat rejection",
-            "zh": "排热量（冷源侧需要带走的热量）"
           }
         ]
       }
