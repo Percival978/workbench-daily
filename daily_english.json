@@ -1,5 +1,131 @@
 [
   {
+    "date": "2026-10-15",
+    "generatedAt": "2026-10-15T23:21:05+08:00",
+    "cycleDay": 3,
+    "difficulty": "高级 Advanced",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "日常工作 · 客户审计陪检：台账、温度日志与一个主动暴露的问题",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：季度客户审计进场，审计员先要核对机柜台账与实际装机是否一致，再抽查温度趋势记录能否支撑可用性承诺。小白带他从 Row 14 的一次近期上架说起，讲清变更必须先关台账再供电供冷，用十八个月的进风温度趋势和每一次 failover 的时间戳支撑 uptime 声明，并主动把一台 CRAH 滤网压差超期未换的未闭环问题先说在前面。\n\n**对话：**\n- Daniel: Before we walk the floor, I want the rack census reconciled with what is actually installed. Last audit we found forty-eight racks still live in your system that were decommissioned two years ago.\n- 小白: That one is closed. We reconciled in March and we made it a standing monthly control. Every add, move and change has to close against the census before we release power or cooling to it.\n- Daniel: Show me one end to end. Pick a cabinet that changed recently.\n- 小白: Row fourteen, cabinet eight. Two twelve-kilowatt boxes went in last month. The work order carries the rack U positions, the dual-corded power assignment and the blanking panel count, and none of it gets signed off until the hot-cold aisle has its blanks back in and the inlet temperature has settled.\n- Daniel: And the temperature data behind your availability claim?\n- 小白: Eighteen months of inlet readings at one minute intervals, with every alarm and every failover timestamped against it. Our uptime certificate rests on that trend log, not on a design number. What we are not going to do is hand you a PUE figure and a temperature record that cannot be reconciled to each other.\n- Daniel: Fair. Anything open I should write down?\n- 小白: One, and I will raise it myself before you do. Filter differential pressure on two CRAHs has run above the change threshold for three weeks because our spare stock ran dry. There is a corrective work order with a due date of the thirtieth, and I will send you the closure evidence when it lands.\n\n**重点表达：**\n- `Every add, move and change has to close against the census before we release power or cooling to it.` — 每一次上架、迁移、变更都必须在台账里闭环，才能给它供上电和冷量——close against 指「与台账对上账」，是变更管控的核心句\n- `none of it gets signed off until the blanking panels are back in` — 盲板没归位之前一律不签字放行——signed off 是审计/验收场景的高频动词\n- `Our uptime certificate rests on that trend log, not on a design number.` — 我们的可用性声明建立在趋势数据上，而不是设计值——rest on 表示「建立在……基础上」，比 based on 更书面有力\n- `a PUE figure and a temperature record that cannot be reconciled to each other` — 一组互相无法核对的 PUE 与温度记录——reconcile A to B 是审计语境的核心词，意为对账、勾稽\n- `I will raise it myself before you do.` — 我会在你提出之前自己先把问题说出来——主动暴露未闭环项的加分句，比被查出来强得多\n- `I will send you the closure evidence when it lands.` — 闭环证据一落地我就发给你——corrective work order + closure evidence 是审计整改的标准搭配",
+        "category": "日常工作",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "Every add, move and change has to close against the census before we release power or cooling to it.",
+            "zh": "每一次上架、迁移、变更都必须在台账里闭环，才能给它供上电和冷量——close against 指「与台账对上账」，是变更管控的核心句"
+          },
+          {
+            "en": "none of it gets signed off until the blanking panels are back in",
+            "zh": "盲板没归位之前一律不签字放行——signed off 是审计/验收场景的高频动词"
+          },
+          {
+            "en": "Our uptime certificate rests on that trend log, not on a design number.",
+            "zh": "我们的可用性声明建立在趋势数据上，而不是设计值——rest on 表示「建立在……基础上」，比 based on 更书面有力"
+          },
+          {
+            "en": "a PUE figure and a temperature record that cannot be reconciled to each other",
+            "zh": "一组互相无法核对的 PUE 与温度记录——reconcile A to B 是审计语境的核心词，意为对账、勾稽"
+          },
+          {
+            "en": "I will raise it myself before you do.",
+            "zh": "我会在你提出之前自己先把问题说出来——主动暴露未闭环项的加分句，比被查出来强得多"
+          },
+          {
+            "en": "I will send you the closure evidence when it lands.",
+            "zh": "闭环证据一落地我就发给你——corrective work order + closure evidence 是审计整改的标准搭配"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "跨团队协作 · GPU 集群夜班超温：40 秒 failover 保住了可用性，却暴露了调试遗留",
+        "subtitle": "高级 Advanced",
+        "content": "**情境**：Row 18 的 AI 训练区冷板液冷投运仅六周，凌晨两个节点因冷却液进液温度高跳闸，自动 failover 到备用泵，约 40 秒后恢复。小白查二次侧趋势：14 天内供回水压差从 95kPa 升到 148kPa，支路流量下降 22%，判断不是泵的问题，而是新装支路冲洗不彻底残留的助焊剂与管垢堵在 25μm 过滤器上，另有两个快速接头的单向阀装反，进一步节流了支路。\n\n**对话：**\n- Naomi: Two nodes in row eighteen tripped on coolant inlet temperature at three this morning. They failed over onto the standby pump and came back in about forty seconds, but I want to know why a rack that is barely six weeks old is already running hot.\n- 小白: Let us start with what the loop is telling us. Secondary differential pressure has climbed from ninety-five kilopascals to one hundred and forty-eight in fourteen days, and rack branch flow is down twenty-two percent on the same trend. That is not a pump problem.\n- Naomi: Filter, then.\n- 小白: The strainer, yes, and I think I know what is in it. Row eighteen was flushed during commissioning, but the branch manifolds were not — flux residue and pipe scale came off the new spool pieces and parked themselves on a twenty-five micron element. Two quick-connects were also assembled with the check valve reversed, which throttled those two branches further.\n- Naomi: So the forty seconds did not save us, it just moved the problem.\n- 小白: Correct. Failover protects availability, it does not fix hydraulics. The forty seconds of latency bought us the tell, which is exactly why the nodes came back dirty instead of dropping. I would rather have that than a hard trip, but it is not a fix.\n- Naomi: What closes it?\n- 小白: Three things. We pull the strainers tonight and send the debris for a particle count and a culture, taking the wet sample before any biocide so the lab result means something. We correct the check valves on all fourteen racks in that row, not just the two that alarmed. And we re-flush to a defined endpoint — target turbidity and differential pressure held steady for four hours, not a stopwatch. The RCA lands on commissioning practice, and I will add three months of weekly dP trending as a compensating control.\n\n**重点表达：**\n- `Let us start with what the loop is telling us.` — 我们先看管网自己在说什么——开场先让数据说话，比先给结论更专业\n- `That is not a pump problem.` — 这不是泵的问题——短促定性句，用于切断对方的错误归因\n- `Failover protects availability, it does not fix hydraulics.` — 切换保护的是可用性，它修不了水力问题——高级对比并列句，一句话讲清冗余的边界\n- `The forty seconds of latency bought us the tell.` — 那四十秒的延迟换来的是线索——bought us 表示「换来」，tell 作名词指「征兆、线索」，非常地道\n- `The nodes came back dirty instead of dropping.` — 节点是带着脏状态回来的，而不是直接掉线——came back dirty 是运维口语，比 returned with an alarm 生动\n- `We re-flush to a defined endpoint, not a stopwatch.` — 我们按明确的终点重新冲洗，而不是按秒表——强调验收标准是状态量，不是时间量\n- `The RCA lands on commissioning practice.` — 根因落在了调试工艺上——RCA lands on 是写报告时的固定说法\n- `three months of weekly dP trending as a compensating control` — 三个月的每周压差趋势跟踪作为补偿性控制措施——compensating control 是风险整改里的正式用词",
+        "category": "故障排查",
+        "difficulty": "高级 Advanced",
+        "expressions": [
+          {
+            "en": "Let us start with what the loop is telling us.",
+            "zh": "我们先看管网自己在说什么——开场先让数据说话，比先给结论更专业"
+          },
+          {
+            "en": "That is not a pump problem.",
+            "zh": "这不是泵的问题——短促定性句，用于切断对方的错误归因"
+          },
+          {
+            "en": "Failover protects availability, it does not fix hydraulics.",
+            "zh": "切换保护的是可用性，它修不了水力问题——高级对比并列句，一句话讲清冗余的边界"
+          },
+          {
+            "en": "The forty seconds of latency bought us the tell.",
+            "zh": "那四十秒的延迟换来的是线索——bought us 表示「换来」，tell 作名词指「征兆、线索」，非常地道"
+          },
+          {
+            "en": "The nodes came back dirty instead of dropping.",
+            "zh": "节点是带着脏状态回来的，而不是直接掉线——came back dirty 是运维口语，比 returned with an alarm 生动"
+          },
+          {
+            "en": "We re-flush to a defined endpoint, not a stopwatch.",
+            "zh": "我们按明确的终点重新冲洗，而不是按秒表——强调验收标准是状态量，不是时间量"
+          },
+          {
+            "en": "The RCA lands on commissioning practice.",
+            "zh": "根因落在了调试工艺上——RCA lands on 是写报告时的固定说法"
+          },
+          {
+            "en": "three months of weekly dP trending as a compensating control",
+            "zh": "三个月的每周压差趋势跟踪作为补偿性控制措施——compensating control 是风险整改里的正式用词"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "供应商对接 · 冷机大修报价：拆包、锁工期、把保修改成从验收日起算",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：2 号冷水机组运行满八年，厂商建议做全面大修：两台换热器涡流探伤、制冷剂回收检测、叶轮与轴承检查、油系统复装，打包报价并承诺 12 天现场工期。小白要谈三件事：把保修起算日从发货日推到调试验收签字日；把打包价拆成单价清单并加封顶，避免后续以变更单形式加价；轴承套件与检测档期约十周，需本周先下采购单并写入延期违约条款。\n\n**对话：**\n- Kevin: For unit two at eight years we recommend the full overhaul package: eddy current testing on both barrels, refrigerant recovery and analysis, impeller and bearing inspection, oil system rebuild. Sixty-eight thousand US dollars, lump sum, twelve days on site.\n- 小白: Two things I need before this goes anywhere. Push the warranty start from shipment date to the date we sign off commissioning, and split the number. I want a schedule of rates, not just a bundle.\n- Kevin: If we break it out you will see contingencies we would normally absorb inside a lump sum.\n- 小白: And I would rather pay for them honestly than discover them later as a variation order. Give me unit rates for eddy current, refrigerant analysis and bearing replacement, plus a not-to-exceed cap. If the tubes come back clean we both win; if I am paying to plug eighty tubes I want to see the line item.\n- Kevin: There is also lead time. The bearing kit and the refrigerant analyser slot both run about ten weeks.\n- 小白: Then we order them against a written purchase order this week, and we put liquidated damages in the contract at zero point five percent per week of delay, capped at five. Nothing concentrates a schedule like a number attached to it.\n- Kevin: Anything else you want us to commit to?\n- 小白: Yes. I want a hold point on the eddy current results, the NDT report inside forty-eight hours, and your field engineer on site for the oil system work rather than a subcontractor. And I want capacity and COP measured before and after, against the same instrument. Without that baseline we have nothing to hold you to, and no way to prove we actually got what we paid for.\n\n**重点表达：**\n- `Two things I need before this goes anywhere.` — 在往下谈之前，我要先要两样东西——开价前置条件，把主动权拿回来\n- `Push the warranty start from shipment date to the date we sign off commissioning.` — 把保修起算日从发货日推到我们调试验收签字那天——保期起算点谈判的必背句\n- `I want a schedule of rates, not just a bundle.` — 我要单价清单，不只是个打包价——schedule of rates 对 lump sum，是控价第一刀\n- `I would rather pay for them honestly than discover them later as a variation order.` — 我宁可老实付钱，也不想后面以变更单的形式冒出来——variation order 是合同加价的核心词\n- `Plus a not-to-exceed cap.` — 再加一个不超过上限的封顶——not-to-exceed (NTE) cap 是采购谈判的标准武器\n- `Nothing concentrates a schedule like a number attached to it.` — 没有什么比挂上一个数字更能让人上心——谈延期违约金时的金句\n- `I want a hold point on the eddy current results.` — 涡流探伤结果我要设一个停工待检点——hold point 指必须停下来等确认的工序节点\n- `Without that baseline we have nothing to hold you to.` — 没有那条基线，我们就没有任何可以追责的依据——hold someone to something 表示要求对方兑现承诺",
+        "category": "供应商对接",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "Two things I need before this goes anywhere.",
+            "zh": "在往下谈之前，我要先要两样东西——开价前置条件，把主动权拿回来"
+          },
+          {
+            "en": "Push the warranty start from shipment date to the date we sign off commissioning.",
+            "zh": "把保修起算日从发货日推到我们调试验收签字那天——保期起算点谈判的必背句"
+          },
+          {
+            "en": "I want a schedule of rates, not just a bundle.",
+            "zh": "我要单价清单，不只是个打包价——schedule of rates 对 lump sum，是控价第一刀"
+          },
+          {
+            "en": "I would rather pay for them honestly than discover them later as a variation order.",
+            "zh": "我宁可老实付钱，也不想后面以变更单的形式冒出来——variation order 是合同加价的核心词"
+          },
+          {
+            "en": "Plus a not-to-exceed cap.",
+            "zh": "再加一个不超过上限的封顶——not-to-exceed (NTE) cap 是采购谈判的标准武器"
+          },
+          {
+            "en": "Nothing concentrates a schedule like a number attached to it.",
+            "zh": "没有什么比挂上一个数字更能让人上心——谈延期违约金时的金句"
+          },
+          {
+            "en": "I want a hold point on the eddy current results.",
+            "zh": "涡流探伤结果我要设一个停工待检点——hold point 指必须停下来等确认的工序节点"
+          },
+          {
+            "en": "Without that baseline we have nothing to hold you to.",
+            "zh": "没有那条基线，我们就没有任何可以追责的依据——hold someone to something 表示要求对方兑现承诺"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-14",
     "generatedAt": "2026-10-14T23:20:23+08:00",
     "cycleDay": 2,
@@ -1064,80 +1190,6 @@
           {
             "en": "the tighter constraint",
             "zh": "更紧的那个约束——多因素比较时真正卡脖子的环节"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-01",
-    "generatedAt": "2026-10-01T23:17:40+08:00",
-    "cycleDay": 1,
-    "difficulty": "基础 Basic",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "日常工作 · 早班交班与冷通道巡检",
-        "subtitle": "基础 Basic",
-        "content": "**情境**：早班接班，夜班同事提到网络割接时拆走了两块机柜盲板，巡检中还发现一台 CRAH 滤网压差偏高。\n\n**对话：**\n- 小白（运维）：Morning. Anything left over from the night shift I should know about?\n- 同事 / 供应商：Yes. Two blanking panels were pulled in row 12 during a network cutover, and CRAH-07 is showing a high filter differential pressure.\n- 小白（运维）：Got it. Those missing panels will let hot exhaust recirculate into the cold aisle. I'll put them back and log a filter change ticket.\n- 同事 / 供应商：Good. Watch the inlet temperature at the top of those racks — 27°C is our action limit.\n- 小白（运维）：Understood. Uptime comes first, so I'll finish the hot-cold aisle walk before I touch anything else.\n\n**重点表达：**\n- `blanking panel` — 机柜空位盲板（挡住空 U 位，防止热风回流）\n- `filter differential pressure` — 滤网压差（判断滤网是否该换的核心指标）\n- `action limit` — 处置阈值——超过就必须动作的临界值",
-        "category": "日常工作",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "blanking panel",
-            "zh": "机柜空位盲板（挡住空 U 位，防止热风回流）"
-          },
-          {
-            "en": "filter differential pressure",
-            "zh": "滤网压差（判断滤网是否该换的核心指标）"
-          },
-          {
-            "en": "action limit",
-            "zh": "处置阈值——超过就必须动作的临界值"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "故障排查 · 市电闪断后 CRAH 群控失联",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：市电瞬间跌落之后，BMS 与 CRAH 群控通信中断，八台 CRAH 全部退回本地控制，冷通道送风温度持续爬升，需要判断是否启用备用冷机。\n\n**对话：**\n- 小白（运维）：We lost the group-control link right after the utility dip. All eight CRAH units fell back to local control.\n- 同事 / 供应商：Is the BMS reading live, or is it lagging?\n- 小白（运维）：There's roughly a 30-second latency on the polling, so the trend lags what I see on the local panel. Cold aisle inlet climbed from 21°C to 25.5°C in fifteen minutes.\n- 同事 / 供应商：The chiller is still running, but if the valves are stuck at their last position we don't have enough cooling capacity in the loop.\n- 小白（运维）：Right. I'll start the standby chiller and open the bypass valve by hand.\n- 同事 / 供应商：Agreed. If inlet hits 27°C, fail over the remaining load to the standby unit and call out the controls vendor. Log every step for the RCA.\n\n**重点表达：**\n- `fell back to local control` — 回退到本地控制——脱离群控后机组按自身设定运行\n- `cooling capacity in the loop` — 冷冻水环路当前可用制冷量\n- `fail over the load to ...` — 把负载切换（failover）到备用设备",
-        "category": "故障排查",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "fell back to local control",
-            "zh": "回退到本地控制——脱离群控后机组按自身设定运行"
-          },
-          {
-            "en": "cooling capacity in the loop",
-            "zh": "冷冻水环路当前可用制冷量"
-          },
-          {
-            "en": "fail over the load to ...",
-            "zh": "把负载切换（failover）到备用设备"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "供应商对接 · CRAH 滤网到货验收与换货",
-        "subtitle": "基础 Basic",
-        "content": "**情境**：新采购的一批 CRAH 滤网到货，开箱后发现边框尺寸与订单规格不符，装不进机组，需要联系供应商换货并确认质保。\n\n**对话：**\n- 小白（运维）：The filters arrived this morning, but they're not what we ordered. The frame is 25 mm too wide for our CRAH-07 housing.\n- 同事 / 供应商：Let me pull the PO... You're right. Our spec sheet calls for 592×592×96 mm, and we shipped the 100 mm deep version.\n- 小白（运维）：Can you swap them out this week? We're running low on spares and the differential pressure is already high on three units.\n- 同事 / 供应商：I'll put a rush on it. Replacement stock ships Thursday, and it's covered under the 12-month warranty — no charge.\n- 小白（运维）：Send me the revised delivery note by email so I can close the ticket.\n\n**重点表达：**\n- `spec sheet` — 规格书 / 技术参数表（对参数和验收的依据）\n- `put a rush on it` — 加急处理——供应商侧优先排产发货\n- `delivery note` — 送货单 / 发货单（验收与关单凭证）",
-        "category": "供应商对接",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "spec sheet",
-            "zh": "规格书 / 技术参数表（对参数和验收的依据）"
-          },
-          {
-            "en": "put a rush on it",
-            "zh": "加急处理——供应商侧优先排产发货"
-          },
-          {
-            "en": "delivery note",
-            "zh": "送货单 / 发货单（验收与关单凭证）"
           }
         ]
       }
