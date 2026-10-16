@@ -1,5 +1,127 @@
 [
   {
+    "date": "2026-10-16",
+    "generatedAt": "2026-10-16T23:20:49+08:00",
+    "cycleDay": 4,
+    "difficulty": "精通 Proficient",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "运维沟通 · 水蓄冷罐投运变更评审：省钱可以，但别把它当冗余",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：园区新建的三千立方米水蓄冷罐要正式投运，思路是谷电时段充冷、峰电时段放冷做削峰填谷。小白在变更评审会上要讲清三件事：它是电费套利资产而不是容量资产，绝不能被当成 N+1 冷源计入可用性；放冷末期斜温层到达出水口后供水温度会从 7℃ 爬到 11℃，CRAH 阀门开大而除湿余量被吃掉，这一条必须写成 MOP 里的硬限值；冷机重启时机要按斜温层位置触发而非按时钟，并写明中止判据。\n\n**对话：**\n- Rachel: Walk me through the change. We have run this plant for six years without a tank, so I want to understand exactly what we are putting in the middle of it.\n- 小白: It is an energy arbitrage asset, not a capacity asset. We charge it overnight off-peak and discharge through the four-hour peak window, which takes about two point four megawatts off the chillers when the grid is dirtiest and most expensive. What it is not is a redundant source, and I do not want anyone counting it as N plus one. Our uptime commitment is backed by mechanical cooling, not by stored water.\n- Rachel: What changes at the tail end of the discharge?\n- 小白: Supply temperature creeps from seven to eleven degrees once the thermocline reaches the outlet. The CRAH valves open to compensate and we lose dehumidification margin on the two rows that already run tight. That is the part I want in the MOP as a hard limit, not as a note. And the PUE figure will flatter us during the discharge because the compressors are off — I want that documented as a measurement artefact, not claimed as an efficiency win.\n- Rachel: And if a chiller does not come back when we need it?\n- 小白: Then we are running on stored cooling with a shrinking buffer, which is the one condition I will not accept silently. I want the restart triggered on thermocline position rather than a clock, and an abort criterion written in: if any chiller fails to reach full load within ninety seconds of the restart command, we stop the discharge and go back to mechanical cooling. Storage buys us minutes. It does not buy us an hour.\n- Rachel: Fine. Put the valve limits, the abort logic and the tail-end temperature in the MOP and I will sign it.\n\n**重点表达：**\n- `It is an energy arbitrage asset, not a capacity asset.` — 它是个电费套利资产，不是容量资产——一句话划清蓄冷罐的定位，是变更评审的定调句\n- `I do not want anyone counting it as N plus one.` — 我不想有人把它当作 N+1 计入冗余——count something as 表示「把某物算作」，是容量口径争论里的高频说法\n- `Supply temperature creeps from seven to eleven degrees once the thermocline reaches the outlet.` — 斜温层一到出水口，供水温度就从 7℃ 慢慢爬到 11℃——thermocline 斜温层、creep 缓慢爬升，都是水蓄冷的专有说法\n- `That is the part I want in the MOP as a hard limit, not as a note.` — 这一段我要写进 MOP 里当硬限值，而不是当一条备注——hard limit vs note 的对比，体现文件严肃性\n- `We are running on stored cooling with a shrinking buffer.` — 我们正靠蓄冷运行，而缓冲在一点点缩水——shrinking buffer 形象表达风险敞口在扩大\n- `Storage buys us minutes. It does not buy us an hour.` — 蓄冷为我们买来的是几分钟，不是一个小时——并列否定句，谈应急能力边界时非常有说服力\n- `documented as a measurement artefact, not claimed as an efficiency win` — 记录为测量假象，而不是宣称成能效提升——artefact 指数据上的表观现象，是高水平汇报用词",
+        "category": "运维沟通",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "It is an energy arbitrage asset, not a capacity asset.",
+            "zh": "它是个电费套利资产，不是容量资产——一句话划清蓄冷罐的定位，是变更评审的定调句"
+          },
+          {
+            "en": "I do not want anyone counting it as N plus one.",
+            "zh": "我不想有人把它当作 N+1 计入冗余——count something as 表示「把某物算作」，是容量口径争论里的高频说法"
+          },
+          {
+            "en": "Supply temperature creeps from seven to eleven degrees once the thermocline reaches the outlet.",
+            "zh": "斜温层一到出水口，供水温度就从 7℃ 慢慢爬到 11℃——thermocline 斜温层、creep 缓慢爬升，都是水蓄冷的专有说法"
+          },
+          {
+            "en": "That is the part I want in the MOP as a hard limit, not as a note.",
+            "zh": "这一段我要写进 MOP 里当硬限值，而不是当一条备注——hard limit vs note 的对比，体现文件严肃性"
+          },
+          {
+            "en": "We are running on stored cooling with a shrinking buffer.",
+            "zh": "我们正靠蓄冷运行，而缓冲在一点点缩水——shrinking buffer 形象表达风险敞口在扩大"
+          },
+          {
+            "en": "Storage buys us minutes. It does not buy us an hour.",
+            "zh": "蓄冷为我们买来的是几分钟，不是一个小时——并列否定句，谈应急能力边界时非常有说服力"
+          },
+          {
+            "en": "documented as a measurement artefact, not claimed as an efficiency win",
+            "zh": "记录为测量假象，而不是宣称成能效提升——artefact 指数据上的表观现象，是高水平汇报用词"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "跨团队协作 · BMS 接入容量平台：口径、时效与告警所有权的一次边界谈判",
+        "subtitle": "精通 Proficient",
+        "content": "**情境**：DCIM 二期要把 BMS 数据接进统一容量平台，供 IT 做上架决策。小白要把接口边界谈死：只传机架进风温度、CRAH 状态和冷机负荷率，一分钟分辨率加死区，不做全量秒级推送；点位命名与单位全部走公制，禁止平台二次改名；链路中断时平台必须保留最后有效值并标时效、置灰为 stale，绝不能显示 0；热工阈值所有权归暖通，IT 只能在上面叠加标为 advisory 的建议告警，且不得回写 BMS。\n\n**对话：**\n- Priya: We are pulling your BMS into the capacity platform so placement decisions run on live data rather than a spreadsheet. How many points can you give us?\n- 小白: About eleven thousand live points, but I would not move all of them. What the platform needs is rack inlet temperature, CRAH status and chiller load, at one minute resolution with a deadband. At that cadence the alarm latency stays under two minutes, which is well inside the thermal time constant of the room. Pushing every valve position at one second will age the platform, not your decisions.\n- Priya: Then give me a naming convention and units you will commit to.\n- 小白: Metric only — degrees Celsius and kilowatts, no tons anywhere in the payload — and tag names follow the site, building, system, device hierarchy we already use in the BMS. If the platform renames a point on the way in, we have two sources of truth and nobody can tell you which one the capacity model is actually reading.\n- Priya: What happens when the link drops? Last outage the dashboard showed zero degrees across a full row and half the team thought the row had gone cold.\n- 小白: That is the part I care about more than the integration itself. On link loss the platform must hold the last known good value, stamp it with the age and grey it out as stale. Zero is a lie that looks like a cold aisle right up until somebody makes a placement decision on it.\n- Priya: And who owns the thresholds?\n- 小白: Facilities owns the thermal setpoints, and anyone who moves one raises a change ticket against it. You are welcome to build your own advisory alerts on top, but they have to be labelled advisory, and they must not write back to the BMS. The interface is one-way for control and two-way for data — that is the boundary I need in writing before a single point moves.\n\n**重点表达：**\n- `Pushing every valve position at one second will age the platform, not your decisions.` — 把所有阀门开度按一秒一个点推上去，只会把平台拖老，不会让你的决策更快——age 作动词表示「使老化、拖垮」\n- `At that cadence the alarm latency stays under two minutes.` — 按这个采样周期，告警延迟能控制在两分钟以内——cadence 采样节奏、latency 延迟，是接口谈判的硬指标\n- `If the platform renames a point on the way in, we have two sources of truth.` — 如果平台在接入时二次改名，我们就会有两个事实来源——single source of truth 的反面说法\n- `On link loss the platform must hold the last known good value and grey it out as stale.` — 链路中断时平台必须保留最后有效值并置灰标记为过期数据——last known good value 与 stale 是监控系统的标准术语\n- `Zero is a lie that looks like a cold aisle.` — 0 是一个看起来像冷通道的谎言——这句是全场记忆点，用来强调默认值的危险性\n- `You are welcome to build your own advisory alerts on top, but they have to be labelled advisory.` — 你们可以在上面叠加自己的建议告警，但必须标注为建议性质——advisory 表示非强制、仅供参考\n- `The interface is one-way for control and two-way for data.` — 控制单向、数据双向——接口边界谈判的收口金句",
+        "category": "跨团队协作",
+        "difficulty": "精通 Proficient",
+        "expressions": [
+          {
+            "en": "Pushing every valve position at one second will age the platform, not your decisions.",
+            "zh": "把所有阀门开度按一秒一个点推上去，只会把平台拖老，不会让你的决策更快——age 作动词表示「使老化、拖垮」"
+          },
+          {
+            "en": "At that cadence the alarm latency stays under two minutes.",
+            "zh": "按这个采样周期，告警延迟能控制在两分钟以内——cadence 采样节奏、latency 延迟，是接口谈判的硬指标"
+          },
+          {
+            "en": "If the platform renames a point on the way in, we have two sources of truth.",
+            "zh": "如果平台在接入时二次改名，我们就会有两个事实来源——single source of truth 的反面说法"
+          },
+          {
+            "en": "On link loss the platform must hold the last known good value and grey it out as stale.",
+            "zh": "链路中断时平台必须保留最后有效值并置灰标记为过期数据——last known good value 与 stale 是监控系统的标准术语"
+          },
+          {
+            "en": "Zero is a lie that looks like a cold aisle.",
+            "zh": "0 是一个看起来像冷通道的谎言——这句是全场记忆点，用来强调默认值的危险性"
+          },
+          {
+            "en": "You are welcome to build your own advisory alerts on top, but they have to be labelled advisory.",
+            "zh": "你们可以在上面叠加自己的建议告警，但必须标注为建议性质——advisory 表示非强制、仅供参考"
+          },
+          {
+            "en": "The interface is one-way for control and two-way for data.",
+            "zh": "控制单向、数据双向——接口边界谈判的收口金句"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "容量规划 · 后门换热器 RDHx：风冷到液冷之间那一步怎么走",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：一期 D02 模组明年要落 24 个 15–22kW 机柜，纯风冷已经摸到天花板。小白提出用后门换热器 RDHx 做过渡而不是一步上冷板：后门在机柜级带走约 70% 显热，房间级 CRAH 只剩 30%，温水回路可以做到 18–20℃，冷机蒸发温度抬高、COP 改善约 8–12%，同时多出约 600 小时自然冷却时长。约束是机柜深度与后部维修空间、温水回路必须经板式换热器与 7℃ 冷冻水隔离、且房间级要留 30% 兜底。\n\n**对话：**\n- Marcus: Twenty-four racks at fifteen to twenty-two kilowatts next spring. Can air still carry that, or are we going straight to liquid?\n- 小白: Air can carry it, but not comfortably and not with any headroom left. My proposal is a rear door heat exchanger as a transition, not a destination. The doors take about seventy percent of the sensible load right at the rack, and the room CRAHs are left with the remaining thirty.\n- Marcus: What does that buy us over just adding more CRAHs?\n- 小白: Three things. The doors let us run a warm water loop at eighteen to twenty degrees instead of seven, which lifts the chiller evaporating temperature and picks up roughly eight to twelve percent on COP. Eighteen degrees also buys us about six hundred more waterside economizer hours a year, which is where the PUE gain actually comes from. And it raises the room capacity ceiling without touching the raised floor, so we avoid a two-month outage to re-tile the hot-cold aisle.\n- Marcus: What do I have to design around?\n- 小白: Three constraints. Rack depth and rear clearance — you lose about two hundred millimetres at the back and you need door swing space, so the hot aisle has to be wider than you have it drawn. Second, the warm loop is not your seven degree loop; it sits behind a plate heat exchanger, so it is hydraulically separate and can run at a much higher delta T. Third, keep thirty percent of room cooling in reserve, because if a door loses flow it becomes a blocked grille, and the rack behind it goes hot in under two minutes.\n- Marcus: And if we decide to go direct-to-chip in two years?\n- 小白: Then the warm loop you built for the doors is the same loop the cold plates will want. Size the piping and the heat exchanger for the higher density now, and the doors become phase one rather than a stranded investment. What I do not want is to buy doors sized only for today and pay for the same capacity twice.\n\n**重点表达：**\n- `My proposal is a rear door heat exchanger as a transition, not a destination.` — 我的方案是把后门换热器当过渡，而不是当终点——transition vs destination 的对比，讲清技术路线的阶段性\n- `It raises the room capacity ceiling without touching the raised floor.` — 它不动防静电地板就能抬高房间容量天花板——capacity ceiling 容量上限，是容量规划的核心概念\n- `Eighteen degrees buys us about six hundred more waterside economizer hours a year.` — 18℃ 供水每年能多换回约 600 小时自然冷却时长——economizer hours 是能效收益的量化口径\n- `The warm loop is not your seven degree loop; it sits behind a plate heat exchanger.` — 温水回路不是你那条 7℃ 回路，它在板式换热器后面——hydraulically separate 水力隔离，是混合冷源方案的关键约束\n- `If a door loses flow it becomes a blocked grille.` — 后门一旦失流，它就变成一块堵死的网孔板——最直白的失效模式描述，比说 failure mode 更有画面\n- `Size the piping for the higher density now and the doors become phase one, not a stranded investment.` — 现在按更高密度预留管径，后门就成了第一期而不是搁浅投资——stranded investment 搁浅投资，是分期方案论证的关键词\n- `I do not want to pay for the same capacity twice.` — 我不想为同一份容量付两次钱——谈判与方案论证的收尾金句",
+        "category": "容量规划",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "My proposal is a rear door heat exchanger as a transition, not a destination.",
+            "zh": "我的方案是把后门换热器当过渡，而不是当终点——transition vs destination 的对比，讲清技术路线的阶段性"
+          },
+          {
+            "en": "It raises the room capacity ceiling without touching the raised floor.",
+            "zh": "它不动防静电地板就能抬高房间容量天花板——capacity ceiling 容量上限，是容量规划的核心概念"
+          },
+          {
+            "en": "Eighteen degrees buys us about six hundred more waterside economizer hours a year.",
+            "zh": "18℃ 供水每年能多换回约 600 小时自然冷却时长——economizer hours 是能效收益的量化口径"
+          },
+          {
+            "en": "The warm loop is not your seven degree loop; it sits behind a plate heat exchanger.",
+            "zh": "温水回路不是你那条 7℃ 回路，它在板式换热器后面——hydraulically separate 水力隔离，是混合冷源方案的关键约束"
+          },
+          {
+            "en": "If a door loses flow it becomes a blocked grille.",
+            "zh": "后门一旦失流，它就变成一块堵死的网孔板——最直白的失效模式描述，比说 failure mode 更有画面"
+          },
+          {
+            "en": "Size the piping for the higher density now and the doors become phase one, not a stranded investment.",
+            "zh": "现在按更高密度预留管径，后门就成了第一期而不是搁浅投资——stranded investment 搁浅投资，是分期方案论证的关键词"
+          },
+          {
+            "en": "I do not want to pay for the same capacity twice.",
+            "zh": "我不想为同一份容量付两次钱——谈判与方案论证的收尾金句"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-15",
     "generatedAt": "2026-10-15T23:21:05+08:00",
     "cycleDay": 3,
@@ -1116,80 +1238,6 @@
           {
             "en": "hold last year's rate",
             "zh": "维持去年的价格不涨价——续签谈判里争取价格锚点的常用说法"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-02",
-    "generatedAt": "2026-10-02T23:17:59+08:00",
-    "cycleDay": 2,
-    "difficulty": "进阶 Intermediate",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "运维沟通 · 冷冻水小温差综合征与二次泵调整",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：BMS 弹出冷冻水「供回水温差过低」告警，压差旁通阀持续开在 60%，需要与值班主管沟通是先调泵还是先加开冷机，并评估对 PUE 的影响。\n\n**对话：**\n- 小白（运维）：The DP bypass valve on the secondary loop has been sitting at 60% open for two hours, and BMS just pushed a low delta-T alarm.\n- 值班主管：Low delta-T usually means we're circulating more water than the CRAH coils can actually use. What's the supply temperature right now?\n- 小白（运维）：7.2°C supply, 11.4°C return — only about 4.2°C across the loop. The design delta-T is 6°C.\n- 值班主管：That's classic low delta-T syndrome. Trim the secondary pump to 40 Hz and watch whether the bypass starts closing. We shouldn't chase this with more chiller capacity.\n- 小白（运维）：Agreed. I'll trim the pump first, then watch the cold aisle inlet for fifteen minutes. If inlet drifts above 24°C I'll roll back.\n- 值班主管：Good. Log the before-and-after PUE as well — any pump kW we cut goes straight into the monthly number.\n\n**重点表达：**\n- `low delta-T syndrome` — 小温差综合征——供回水温差远低于设计值，导致水泵/冷机做无用功\n- `trim the pump to 40 Hz` — 把水泵频率降到 40Hz（trim = 小幅下调出力）\n- `roll back` — 回滚——调整后指标恶化时退回上一个状态",
-        "category": "运维沟通",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "low delta-T syndrome",
-            "zh": "小温差综合征——供回水温差远低于设计值，导致水泵/冷机做无用功"
-          },
-          {
-            "en": "trim the pump to 40 Hz",
-            "zh": "把水泵频率降到 40Hz（trim = 小幅下调出力）"
-          },
-          {
-            "en": "roll back",
-            "zh": "回滚——调整后指标恶化时退回上一个状态"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "跨团队协作 · ATS 切换演练前的制冷保障确认",
-        "subtitle": "高级 Advanced",
-        "content": "**情境**：电气团队计划本周做 A 段开关柜的 ATS 市电/柴发切换演练，制冷侧需要确认 CRAH 群控不掉电、风机穿越时间、温度抬升幅度，并写入 MOP 的中止判据。\n\n**对话：**\n- 小白（运维）：Before you run the ATS transfer test on the A-side switchgear, I need to confirm the CRAH group-control panel is on a UPS feed.\n- 电气团队：It is. Panel MCC-3 is fed from UPS-2, so the controllers stay alive through the transfer. The real question is your restart latency.\n- 小白（运维）：That's exactly what I'm worried about. The CRAH fans drop out for roughly 12 seconds during transfer, and the compressors need another 90 seconds to come back online.\n- 电气团队：So it's a fan ride-through problem, not a controls problem. How much does the inlet rise in that window?\n- 小白（运维）：We modelled it — about 3.5°C, from 22°C to 25.5°C. That's inside our 27°C action limit, but only if both chillers stay running.\n- 电气团队：Then let's write the abort criteria into the MOP: if inlet hits 26°C, or a chiller fails to restart within 120 seconds, we stop and fail back to utility. Uptime is non-negotiable.\n- 小白（运维）：Agreed. I'll pre-cool the loop to 6.5°C for thirty minutes before the window — that buys us extra thermal buffer for the failover.\n\n**重点表达：**\n- `ride-through` — 穿越能力——短暂断电/切换期间设备维持运行而不停机的能力\n- `abort criteria` — 中止判据——演练/变更中触发立即停止并回退的量化条件\n- `fail back to utility` — 切回市电（fail back = 故障切换后回到原供电路径）",
-        "category": "跨团队协作",
-        "difficulty": "高级 Advanced",
-        "expressions": [
-          {
-            "en": "ride-through",
-            "zh": "穿越能力——短暂断电/切换期间设备维持运行而不停机的能力"
-          },
-          {
-            "en": "abort criteria",
-            "zh": "中止判据——演练/变更中触发立即停止并回退的量化条件"
-          },
-          {
-            "en": "fail back to utility",
-            "zh": "切回市电（fail back = 故障切换后回到原供电路径）"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "容量规划 · B 区新增机柜的制冷与电力余量核算",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：IT 团队希望在 B 区冷通道再落 8 个 12kW 机柜，需要一起核算冷通道显冷量余量与 PDU 备用回路，判断瓶颈在制冷还是在电力。\n\n**对话：**\n- 小白（运维）：IT wants eight more racks in the B-side hot-cold aisle, at 12 kW each. Can the cooling keep up?\n- IT 容量同事：Let's do the math. Eight racks at 12 kW is 96 kW of IT load. The four CRAH units covering that aisle give us roughly 130 kW of sensible capacity, so we have about 34 kW of headroom.\n- 小白（运维）：That's tight once you add fan heat and lighting. What about power?\n- IT 容量同事：Power is the tighter constraint. Each rack wants a dual 32 A feed, and B-side has only six spare ways left on the PDU. We'd have to pull a new feeder.\n- 小白（运维）：So the bottleneck is power, not cooling. Should we price the rear-door heat exchanger option instead, so we don't push the whole room's density up?\n- IT 容量同事：That's the smarter play. Rear-door units handle the 12 kW locally and keep the containment intact. Let's cost both options and take the numbers to the capacity review.\n\n**重点表达：**\n- `sensible capacity` — 显冷量——真正用于降温的那部分制冷量（不含除湿潜热）\n- `headroom` — 余量/裕度——当前用量到设计上限之间还剩多少\n- `the tighter constraint` — 更紧的那个约束——多因素比较时真正卡脖子的环节",
-        "category": "容量规划",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "sensible capacity",
-            "zh": "显冷量——真正用于降温的那部分制冷量（不含除湿潜热）"
-          },
-          {
-            "en": "headroom",
-            "zh": "余量/裕度——当前用量到设计上限之间还剩多少"
-          },
-          {
-            "en": "the tighter constraint",
-            "zh": "更紧的那个约束——多因素比较时真正卡脖子的环节"
           }
         ]
       }
