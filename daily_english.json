@@ -1,5 +1,135 @@
 [
   {
+    "date": "2026-10-17",
+    "generatedAt": "2026-10-17T23:18:09+08:00",
+    "cycleDay": 1,
+    "difficulty": "基础 Basic",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "日常工作 · CDU 例行巡检抄表：压差从 35 爬到 62，该开工单了",
+        "subtitle": "基础 Basic",
+        "content": "**情境**：早班交接，小白带接班同事在液冷区做 CDU 例行巡检抄表。要按固定顺序核对六项：二次侧供液温度、回液温度、支路流量、过滤器压差、电导率、泄漏检测状态；一次侧只扫一眼，数字没动就不深究。抄到 3 号 CDU 时发现二次侧过滤器压差从 35kPa 爬到 62kPa，超过 50kPa 的清洗阈值，但流量仍然稳定，属于该整改还没出事的窗口期。\n\n**对话：**\n- Dave: Morning. What are we checking on the CDUs before I take the shift?\n- 小白: Six things, and I read them in the same order every time so I never skip one. Secondary supply temperature, return temperature, branch flow, differential pressure across the strainer, conductivity, and the leak detection status. On the primary side I only glance unless the numbers move.\n- Dave: Number three looks different from yesterday.\n- 小白: Good catch. The strainer differential has crept from thirty-five to sixty-two kilopascals. Our cleaning threshold is fifty, so it is due. Flow is still holding, which means the loop is not starved yet, but I would rather clean it on my shift than hand it over.\n- Dave: Does that mean a work order?\n- 小白: Yes, a corrective one, not a breakdown. I will log it against CDU-3, tag the unit as under maintenance in the DCIM, and keep the standby pump in auto so we still have failover if the primary trips while the strainer is open.\n\n**重点表达：**\n- `I read them in the same order every time so I never skip one.` — 我每次都按同一顺序读表，绝不漏项——交班时最该说的一句，强调巡检的规范性\n- `The strainer differential has crept from thirty-five to sixty-two kilopascals.` — 过滤器压差已经从 35 慢慢爬到 62 kPa——creep 表示缓慢爬升，比 rise 更贴合趋势劣化\n- `Our cleaning threshold is fifty, so it is due.` — 我们的清洗阈值是 50，所以它到期了——due 表示「到期该做了」，比 needs cleaning 更地道\n- `Flow is still holding, which means the loop is not starved yet.` — 流量还稳着，说明回路还没到缺流的程度——starve 缺流/供不上，是液冷与水系统高频词\n- `I would rather clean it on my shift than hand it over.` — 我宁可在自己这个班清掉，也不把它交出去——would rather ... than ... 是交班责任心最自然的说法\n- `I will log it as a corrective work order, not a breakdown.` — 我把它记为整改性工单，而不是故障停机——corrective work order 与 breakdown 的区分，直接影响 KPI 口径\n- `Keep the standby pump in auto so we still have failover.` — 把备泵保持在自动位，这样还留有故障切换能力——failover 冷源/泵组切换，是运维核心术语",
+        "category": "日常工作",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "I read them in the same order every time so I never skip one.",
+            "zh": "我每次都按同一顺序读表，绝不漏项——交班时最该说的一句，强调巡检的规范性"
+          },
+          {
+            "en": "The strainer differential has crept from thirty-five to sixty-two kilopascals.",
+            "zh": "过滤器压差已经从 35 慢慢爬到 62 kPa——creep 表示缓慢爬升，比 rise 更贴合趋势劣化"
+          },
+          {
+            "en": "Our cleaning threshold is fifty, so it is due.",
+            "zh": "我们的清洗阈值是 50，所以它到期了——due 表示「到期该做了」，比 needs cleaning 更地道"
+          },
+          {
+            "en": "Flow is still holding, which means the loop is not starved yet.",
+            "zh": "流量还稳着，说明回路还没到缺流的程度——starve 缺流/供不上，是液冷与水系统高频词"
+          },
+          {
+            "en": "I would rather clean it on my shift than hand it over.",
+            "zh": "我宁可在自己这个班清掉，也不把它交出去——would rather ... than ... 是交班责任心最自然的说法"
+          },
+          {
+            "en": "I will log it as a corrective work order, not a breakdown.",
+            "zh": "我把它记为整改性工单，而不是故障停机——corrective work order 与 breakdown 的区分，直接影响 KPI 口径"
+          },
+          {
+            "en": "Keep the standby pump in auto so we still have failover.",
+            "zh": "把备泵保持在自动位，这样还留有故障切换能力——failover 冷源/泵组切换，是运维核心术语"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "故障排查 · 液冷机柜进液温度偏高 9℃：不是堵了，是节流了",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：B 区第 7 排一台液冷机柜的进液温度比同排高 9℃，二次侧支路流量比同 manifold 其他机柜低约 18%。排查要先把层级分开：看总管流量与供液温度是否在设定值、上周的 CDU 泵切换测试是否过关，排除冷源侧；再下到支路看过滤器压差、平衡阀开度、快接头插接状态。最终落在上次换板卡后回液侧快接头未完全插合、O 圈压偏导致局部节流。\n\n**对话：**\n- Nadia: Row seven, rack B7-04. Liquid inlet is running nine degrees warmer than its neighbours. What is your read?\n- 小白: Before I touch anything, I want to know whether this is a plant problem or a branch problem. A rack-level inlet that runs hot while the loop header is steady points downstream, not at the CDU.\n- Nadia: Agreed. What did the CDU say?\n- 小白: Header flow and supply temperature are both on setpoint, and the pump failover test we ran last week came back clean at under thirty seconds latency. So the plant is not starving that rack. On the branch itself, flow is down about eighteen percent against the other racks on the same manifold.\n- Nadia: Eighteen percent is a lot. Strainer?\n- 小白: That was my first thought, and it is not the strainer — the differential is flat. What we found is the quick-disconnect on the return leg is not fully seated since the card swap on Tuesday. The O-ring is pinched, so we are throttling the branch rather than clogging it. Same symptom, completely different fix.\n- Nadia: So where does the RCA land?\n- 小白: On the seating check, not on the hardware. The connector passed a visual inspection and failed a flow test, which tells me the visual step in our MOP is not good enough. I want a post-swap flow verification added before the rack is released back to production, and I will write it up as a corrective action rather than a part failure.\n- Nadia: Do it, and bring the numbers to the review.\n\n**重点表达：**\n- `I want to know whether this is a plant problem or a branch problem.` — 我要先分清这是冷源侧问题还是支路问题——排查分层起手句，避免一上来就拆件\n- `The pump failover test came back clean at under thirty seconds latency.` — 泵切换测试结果干净，延迟在 30 秒以内——failover latency 是切换能力的核心量化指标\n- `The plant is not starving that rack.` — 冷源并没有让这个机柜缺流——starve 用在这里，一句话排除冷源侧嫌疑\n- `Flow is down about eighteen percent against the other racks on the same manifold.` — 与同一 manifold 上其他机柜相比，流量低了约 18%——against 表示「与……对照」\n- `It is not the strainer — the differential is flat.` — 不是过滤器，压差没有变化——flat 表示曲线不动，是排除法常用说法\n- `The quick-disconnect is not fully seated.` — 快接头没有完全插合到位——seated 就位/坐实，是液冷快接口的标准说法\n- `We are throttling the branch rather than clogging it.` — 我们是在节流这条支路，而不是堵住它——throttle vs clog 的对比，是本次 RCA 的结论核心\n- `The RCA lands on the seating check, not on the hardware.` — 根因落在插接检查环节，而不是硬件本身——lands on 表示根因归结到某处",
+        "category": "故障排查",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "I want to know whether this is a plant problem or a branch problem.",
+            "zh": "我要先分清这是冷源侧问题还是支路问题——排查分层起手句，避免一上来就拆件"
+          },
+          {
+            "en": "The pump failover test came back clean at under thirty seconds latency.",
+            "zh": "泵切换测试结果干净，延迟在 30 秒以内——failover latency 是切换能力的核心量化指标"
+          },
+          {
+            "en": "The plant is not starving that rack.",
+            "zh": "冷源并没有让这个机柜缺流——starve 用在这里，一句话排除冷源侧嫌疑"
+          },
+          {
+            "en": "Flow is down about eighteen percent against the other racks on the same manifold.",
+            "zh": "与同一 manifold 上其他机柜相比，流量低了约 18%——against 表示「与……对照」"
+          },
+          {
+            "en": "It is not the strainer — the differential is flat.",
+            "zh": "不是过滤器，压差没有变化——flat 表示曲线不动，是排除法常用说法"
+          },
+          {
+            "en": "The quick-disconnect is not fully seated.",
+            "zh": "快接头没有完全插合到位——seated 就位/坐实，是液冷快接口的标准说法"
+          },
+          {
+            "en": "We are throttling the branch rather than clogging it.",
+            "zh": "我们是在节流这条支路，而不是堵住它——throttle vs clog 的对比，是本次 RCA 的结论核心"
+          },
+          {
+            "en": "The RCA lands on the seating check, not on the hardware.",
+            "zh": "根因落在插接检查环节，而不是硬件本身——lands on 表示根因归结到某处"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "供应商对接 · CDU 年度备件包：交期、寄售与质保起算点",
+        "subtitle": "基础 Basic",
+        "content": "**情境**：小白与原厂确认 CDU 年度备件包，清单是快接头、Y 型过滤器滤芯、乙二醇和一块控制板。谈判要点四件事：控制板 8 周交期太长，要求合同写 4 周；常用件走寄售放现场，按领用结算；乙二醇每桶要随 COA 分析报告并标注保质期，因为库里放过一批十八个月后变浑浊；质保从现场验收起算而不是发货日起算，价格锁定十二个月。\n\n**对话：**\n- Ken: I have put the annual spares package together — quick-disconnects, strainer elements, glycol and one control board. Lead time on the board is eight weeks.\n- 小白: Eight weeks is too long for a board that takes the CDU out of failover when it fails. Two things: I want the board on the shelf here, and I want the lead time in the contract at four, not eight.\n- Ken: We can hold it on consignment, but you pay on issue and there is a minimum quantity.\n- 小白: Consignment works for the disconnects and the strainer elements, because those are the parts I actually turn. Glycol I will buy outright, but I need a certificate of analysis with each drum and the shelf life stated on the label. I have had a batch go cloudy after eighteen months in our store.\n- Ken: Understood. And the warranty?\n- 小白: Warranty starts from site acceptance, not from your ship date. If a board sits in your warehouse for six weeks and then another two in mine, I do not want to find it dead on the day I install it with the clock already running. Twelve months from acceptance, price held for twelve, and I will sign it.\n\n**重点表达：**\n- `Lead time on the board is eight weeks.` — 这块控制板交期八周——lead time 交期，是采购对话的开场数字\n- `I want the board on the shelf here.` — 我要这块板现场就有现货——on the shelf 字面「在货架上」，指现场备货\n- `We can hold it on consignment, but you pay on issue.` — 我们可以做寄售，但按领用结算——consignment 寄售、pay on issue 领用时付款\n- `Those are the parts I actually turn.` — 这些才是真正会周转的备件——turn 指库存周转，一句话划清该寄售哪些件\n- `I need a certificate of analysis with each drum.` — 每桶都要随附分析报告 COA——液冷介质验收的硬要求\n- `I have had a batch go cloudy after eighteen months.` — 我遇到过一批存放十八个月后变浑浊——用既往事故支撑验收条件，比空口要求更有力\n- `Warranty starts from site acceptance, not from your ship date.` — 质保从现场验收起算，而不是从发货日——质保起算点谈判的标准句式\n- `Price held for twelve months.` — 价格锁定十二个月——hold the price 表示锁价，年度框架协议常用",
+        "category": "供应商对接",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "Lead time on the board is eight weeks.",
+            "zh": "这块控制板交期八周——lead time 交期，是采购对话的开场数字"
+          },
+          {
+            "en": "I want the board on the shelf here.",
+            "zh": "我要这块板现场就有现货——on the shelf 字面「在货架上」，指现场备货"
+          },
+          {
+            "en": "We can hold it on consignment, but you pay on issue.",
+            "zh": "我们可以做寄售，但按领用结算——consignment 寄售、pay on issue 领用时付款"
+          },
+          {
+            "en": "Those are the parts I actually turn.",
+            "zh": "这些才是真正会周转的备件——turn 指库存周转，一句话划清该寄售哪些件"
+          },
+          {
+            "en": "I need a certificate of analysis with each drum.",
+            "zh": "每桶都要随附分析报告 COA——液冷介质验收的硬要求"
+          },
+          {
+            "en": "I have had a batch go cloudy after eighteen months.",
+            "zh": "我遇到过一批存放十八个月后变浑浊——用既往事故支撑验收条件，比空口要求更有力"
+          },
+          {
+            "en": "Warranty starts from site acceptance, not from your ship date.",
+            "zh": "质保从现场验收起算，而不是从发货日——质保起算点谈判的标准句式"
+          },
+          {
+            "en": "Price held for twelve months.",
+            "zh": "价格锁定十二个月——hold the price 表示锁价，年度框架协议常用"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-16",
     "generatedAt": "2026-10-16T23:20:49+08:00",
     "cycleDay": 4,
@@ -1164,80 +1294,6 @@
           {
             "en": "phase one / phase two",
             "zh": "一期 / 二期——分阶段落地容量或改造时的标准表述"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-03",
-    "generatedAt": "2026-10-03T23:17:29+08:00",
-    "cycleDay": 3,
-    "difficulty": "高级 Advanced",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "日常工作 · CRAH 季度保养：单机隔离期间的温升控制",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：周末值班，需要对 B 排 CRAH-B4 做季度滤网更换保养。单机隔离会让该排制冷能力降到 75%，必须先把温升监控和回滚判据确认清楚再动手。\n\n**对话：**\n- 小白（运维）：I'm taking CRAH-B4 offline for its quarterly filter change. The PM window is thirty minutes — anything I should watch while it's isolated?\n- 值班主管：Check the hot aisle first. With one unit down the row runs at about 75% capacity, so inlet at the far end can climb a couple of degrees.\n- 小白（运维）：I'll drop a portable logger at the last rack before I power it down. What's my rollback trigger?\n- 值班主管：If cold aisle inlet hits 25°C, or any rack intake passes 27°C, stop straight away and bring B4 back. Don't trade a PM task for an uptime event.\n- 小白（运维）：Understood. I'll also run the neighbouring units at 100% fan before isolation — that buys us margin without touching the chilled water setpoint.\n- 值班主管：Good. Log the delta-T across the coil before and after, then close the work order with the readings attached.\n\n**重点表达：**\n- `take ... offline for a PM` — 为执行预防性保养把设备停机隔离（PM = preventive maintenance）\n- `What's my rollback trigger?` — 我的回滚触发条件是什么？——变更/保养前必问的量化安全线\n- `trade a PM task for an uptime event` — 为做一次保养换来一次可用性事件——指因小失大、得不偿失",
-        "category": "日常工作",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "take ... offline for a PM",
-            "zh": "为执行预防性保养把设备停机隔离（PM = preventive maintenance）"
-          },
-          {
-            "en": "What's my rollback trigger?",
-            "zh": "我的回滚触发条件是什么？——变更/保养前必问的量化安全线"
-          },
-          {
-            "en": "trade a PM task for an uptime event",
-            "zh": "为做一次保养换来一次可用性事件——指因小失大、得不偿失"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "故障排查 · 冷机流量低误跳闸的 RCA 与信号去抖",
-        "subtitle": "高级 Advanced",
-        "content": "**情境**：凌晨 02:14 二号冷机报「冷凝水流量低」保护停机，备用机自动 failover 接管，但复盘发现流量其实一直正常——怀疑冷凝泵变频器的谐波干扰了流量变送器，做根因定位。\n\n**对话：**\n- 小白（运维）：We lost Chiller-2 at 02:14 on a low condenser-water flow trip. The standby picked up automatically, but the flow never actually dropped.\n- 自控同事：So the trip fired on a bad signal, not a real loss of flow. Did the differential pressure across the condenser hold?\n- 小白（运维）：It held at 62 kPa the whole time. My read is the VFD on the condenser pump is injecting harmonic noise into the 4–20 mA loop and the transmitter is drifting.\n- 自控同事：That matches the trend — the flow reading sawtooths whenever that pump runs above 45 Hz. What was the failover latency?\n- 小白（运维）：About ninety seconds from trip to standby online, and another four minutes before the loop came back to setpoint. Cold aisle peaked at 24.8°C, still under our 27°C limit.\n- 自控同事：Then the RCA lands on signal integrity, not cooling capacity. I'll add a damping filter and a five-second debounce on that trip, and we'll re-test in the next maintenance window.\n\n**重点表达：**\n- `failover latency` — 故障切换延迟——从主机跳停到备机真正接管带载的时间差\n- `the RCA lands on ...` — 根因最终定位在……（RCA = root cause analysis）\n- `debounce` — 去抖——给报警加一个延时确认，避免瞬时误报直接触发停机动作",
-        "category": "故障排查",
-        "difficulty": "高级 Advanced",
-        "expressions": [
-          {
-            "en": "failover latency",
-            "zh": "故障切换延迟——从主机跳停到备机真正接管带载的时间差"
-          },
-          {
-            "en": "the RCA lands on ...",
-            "zh": "根因最终定位在……（RCA = root cause analysis）"
-          },
-          {
-            "en": "debounce",
-            "zh": "去抖——给报警加一个延时确认，避免瞬时误报直接触发停机动作"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "供应商对接 · CRAH 年度维保合同续签与 SLA 谈判",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：CRAH 年度维保合同到期续签。现有 4 小时现场响应对制冷事件太慢，需要争取 2 小时响应、把滤网与皮带等耗材打包进合同，同时压住年度涨价。\n\n**对话：**\n- 小白（运维）：We're renewing the CRAH service contract for another year, but the current SLA doesn't work for us. A four-hour on-site response is too slow for a cooling event.\n- 维保供应商：We can commit to two hours for critical calls. That does move the price — the premium tier adds roughly 12% on the annual fee.\n- 小白（运维）：Twelve percent is hard to defend unless consumables are included. Right now filters and belts are billed separately on every PM visit.\n- 维保供应商：We could bundle filters and belts into the contract, but then the PM frequency has to stay quarterly. Semi-annual would void the bundle.\n- 小白（运维）：Quarterly works for us — we run hot-cold aisle containment, so filters load up faster than the standard interval anyway. One more thing: I want the response clock to start at ticket acceptance, not at engineer dispatch.\n- 维保供应商：Let me confirm that with our service manager and send a revised quote by Friday. If we sign before month-end I can hold last year's rate for the base tier.\n\n**重点表达：**\n- `on-site response` — 现场响应——维保 SLA 里指工程师实际到达机房的时间承诺\n- `bundle ... into the contract` — 把……打包进合同总价（不再按次另计费）\n- `hold last year's rate` — 维持去年的价格不涨价——续签谈判里争取价格锚点的常用说法",
-        "category": "供应商对接",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "on-site response",
-            "zh": "现场响应——维保 SLA 里指工程师实际到达机房的时间承诺"
-          },
-          {
-            "en": "bundle ... into the contract",
-            "zh": "把……打包进合同总价（不再按次另计费）"
-          },
-          {
-            "en": "hold last year's rate",
-            "zh": "维持去年的价格不涨价——续签谈判里争取价格锚点的常用说法"
           }
         ]
       }
