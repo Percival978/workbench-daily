@@ -1,5 +1,151 @@
 [
   {
+    "date": "2026-10-18",
+    "generatedAt": "2026-10-18T23:19:21+08:00",
+    "cycleDay": 2,
+    "difficulty": "进阶 Intermediate",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "运维沟通 · 供液温度设定值上调 5℃ 的变更评审：换免费制冷小时，还是换告警",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：入秋后室外湿球温度下来了，小白提了一份变更：把液冷二次侧供液温度设定值从 30℃ 上调到 35℃，换取更多免费制冷小时数、把冷机能耗压下来。评审要过三关——IT 侧进液温度仍在 ASHRAE A1 允许范围内并留出余量、供液温度必须高于机房露点防结露、告警阈值必须跟着设定值一起改，否则等于自己造告警。\n\n**对话：**\n- Priya: You put in a change request to raise the secondary supply setpoint from thirty to thirty-five degrees. Walk me through it.\n- 小白: It is an efficiency change, not a capacity change. At thirty we are running the chillers to make water colder than the weather will give us for free. At thirty-five we buy roughly six hundred more free-cooling hours a year and take about three to four hundredths off PUE.\n- Priya: Thirty-five sits near the top of the A1 allowable envelope. What is your margin?\n- 小白: Two guards. The IT inlet stays inside A1 with about four degrees of headroom, and I have that in writing from the server team, not a verbal yes. Second, we hold supply above the room dew point by a fixed margin; if the dew point climbs, the setpoint follows it up rather than the other way round.\n- Priya: And the alarms? That is where these changes usually go wrong.\n- 小白: Exactly. If I move the setpoint and leave the high-liquid-temperature threshold at thirty-two, I am just manufacturing alarms. I move the threshold with the setpoint and re-baseline the trend so the drift detection still means something. Rollback is one line: two racks above A1 at once, or the CDU loses failover for any reason, and we are back to thirty. It protects uptime because the rollback takes minutes, not hours.\n\n**重点表达：**\n- `It is an efficiency change, not a capacity change.` — 这是能效变更，不是容量变更——评审开场先定性，避免被当成扩容来审\n- `We are running the chillers to make water colder than the weather will give us for free.` — 我们在开冷机，把水制冷到比天气免费给的水还冷——一句话点出免费制冷被浪费\n- `We buy roughly six hundred more free-cooling hours a year.` — 每年多换来约 600 小时免费制冷——buy hours 是能效方案里的地道说法\n- `The IT inlet stays inside A1 with about four degrees of headroom.` — IT 进液仍在 A1 允许范围内，还有约 4 度余量——headroom 余量，是安全边界的高频词\n- `We hold supply above the room dew point by a fixed margin.` — 供液温度要高于机房露点并保留固定余量——防结露的技术底线\n- `If I move the setpoint and leave the threshold behind, I am just manufacturing alarms.` — 设定值改了而阈值不动，等于自己制造告警——manufacture alarms 非常地道\n- `I re-baseline the trend so the drift detection still means something.` — 我重设趋势基线，让漂移检测仍然有意义——变更后必做的一件事\n- `The rollback takes minutes, not hours.` — 回滚以分钟计，不是小时——变更评审里最有说服力的一句",
+        "category": "运维沟通",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "It is an efficiency change, not a capacity change.",
+            "zh": "这是能效变更，不是容量变更——评审开场先定性，避免被当成扩容来审"
+          },
+          {
+            "en": "We are running the chillers to make water colder than the weather will give us for free.",
+            "zh": "我们在开冷机，把水制冷到比天气免费给的水还冷——一句话点出免费制冷被浪费"
+          },
+          {
+            "en": "We buy roughly six hundred more free-cooling hours a year.",
+            "zh": "每年多换来约 600 小时免费制冷——buy hours 是能效方案里的地道说法"
+          },
+          {
+            "en": "The IT inlet stays inside A1 with about four degrees of headroom.",
+            "zh": "IT 进液仍在 A1 允许范围内，还有约 4 度余量——headroom 余量，是安全边界的高频词"
+          },
+          {
+            "en": "We hold supply above the room dew point by a fixed margin.",
+            "zh": "供液温度要高于机房露点并保留固定余量——防结露的技术底线"
+          },
+          {
+            "en": "If I move the setpoint and leave the threshold behind, I am just manufacturing alarms.",
+            "zh": "设定值改了而阈值不动，等于自己制造告警——manufacture alarms 非常地道"
+          },
+          {
+            "en": "I re-baseline the trend so the drift detection still means something.",
+            "zh": "我重设趋势基线，让漂移检测仍然有意义——变更后必做的一件事"
+          },
+          {
+            "en": "The rollback takes minutes, not hours.",
+            "zh": "回滚以分钟计，不是小时——变更评审里最有说服力的一句"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "跨团队协作 · 漏液检测联动处置矩阵：断不断电，归谁说了算",
+        "subtitle": "高级 Advanced",
+        "content": "**情境**：二期液冷区送电前，小白和电气团队定漏液联动的处置矩阵。电气侧本能反应是「水靠近带电设备就断电」，但二次侧是低电导率的缓蚀乙二醇溶液，先断电会让 CDU 泵停转、冷板不再带走热量，服务器反而先过热。双方按三级分级划界：单点渗漏不动电不停泵；manifold 级泄漏双条件确认才停泵隔离、IT 有序下电；介质进入母线槽或配电柜区域才归电气立即跳闸。还要加双区确认和 30 秒防抖，避免冷凝水导致误下电。\n\n**对话：**\n- Marcus: If the leak rope trips in the liquid-cooled zone, my guys kill the feeder. That is the standing rule for water near live gear.\n- 小白: I understand the instinct, but with this loop, killing power first makes the event bigger, not smaller. The fluid is inhibited glycol at low conductivity. If you de-energise, the CDU pumps stop, the cold plates stop moving heat, and the servers overheat before anyone can isolate a branch.\n- Marcus: So what do you want instead?\n- 小白: A graded response, written down before we energise phase two. Grade one is one rope zone and a small flow deviation on one branch: no power action, no pump stop. I close the branch isolation valve and raise a work order. Grade two is a manifold-level leak confirmed two ways, rope plus flow deviation plus floor drain level: pumps stop, CDU isolated, and IT runs an orderly shutdown on their own timeline.\n- Marcus: And grade three?\n- 小白: Grade three is fluid reaching the busway or a distribution board. That one is yours, and I want your team to trip without calling me first. Anything above the floor is mine; anything entering live electrical space is yours. The MOP says so in one line, so nobody is negotiating during an event.\n- Marcus: What about false trips? Condensation on the rope gave us two last month.\n- 小白: Two-zone confirmation and a thirty-second debounce before anything escalates. A wet rope from condensation is a maintenance ticket, not an incident. I would rather explain one missed escalation than explain to a customer why we dropped their rack and burned four hours of uptime over a puddle of condensate.\n\n**重点表达：**\n- `Killing power first makes the event bigger, not smaller.` — 先断电只会把事件扩大，而不是缩小——跨团队分歧的立论句\n- `The fluid is inhibited glycol at low conductivity.` — 介质是低电导率的缓蚀乙二醇溶液——用介质特性说明漏电风险可控\n- `The pumps stop and the cold plates stop moving heat.` — 泵一停，冷板就不再带走热量——说明断电的次生后果\n- `I want a graded response written down before we energise.` — 我要在送电前把分级处置落实成文——graded response 分级响应\n- `IT runs an orderly shutdown on their own timeline.` — IT 按自己的节奏做有序下电——orderly shutdown 区别于直接掉电\n- `Anything above the floor is mine; anything entering live electrical space is yours.` — 地面以上归我，进入带电电气空间的归你——划职责边界最干脆的一句\n- `Two-zone confirmation and a thirty-second debounce.` — 双区确认加 30 秒防抖——debounce 防抖，避免误报升级\n- `A wet rope from condensation is a maintenance ticket, not an incident.` — 冷凝水弄湿检测绳属于维护工单，不是事件——级别判定的关键区分\n- `I would rather explain one missed escalation than a dropped rack.` — 我宁愿解释一次漏升级，也不愿解释一次机柜掉电——风险取舍的高级表达",
+        "category": "跨团队协作",
+        "difficulty": "高级 Advanced",
+        "expressions": [
+          {
+            "en": "Killing power first makes the event bigger, not smaller.",
+            "zh": "先断电只会把事件扩大，而不是缩小——跨团队分歧的立论句"
+          },
+          {
+            "en": "The fluid is inhibited glycol at low conductivity.",
+            "zh": "介质是低电导率的缓蚀乙二醇溶液——用介质特性说明漏电风险可控"
+          },
+          {
+            "en": "The pumps stop and the cold plates stop moving heat.",
+            "zh": "泵一停，冷板就不再带走热量——说明断电的次生后果"
+          },
+          {
+            "en": "I want a graded response written down before we energise.",
+            "zh": "我要在送电前把分级处置落实成文——graded response 分级响应"
+          },
+          {
+            "en": "IT runs an orderly shutdown on their own timeline.",
+            "zh": "IT 按自己的节奏做有序下电——orderly shutdown 区别于直接掉电"
+          },
+          {
+            "en": "Anything above the floor is mine; anything entering live electrical space is yours.",
+            "zh": "地面以上归我，进入带电电气空间的归你——划职责边界最干脆的一句"
+          },
+          {
+            "en": "Two-zone confirmation and a thirty-second debounce.",
+            "zh": "双区确认加 30 秒防抖——debounce 防抖，避免误报升级"
+          },
+          {
+            "en": "A wet rope from condensation is a maintenance ticket, not an incident.",
+            "zh": "冷凝水弄湿检测绳属于维护工单，不是事件——级别判定的关键区分"
+          },
+          {
+            "en": "I would rather explain one missed escalation than a dropped rack.",
+            "zh": "我宁愿解释一次漏升级，也不愿解释一次机柜掉电——风险取舍的高级表达"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "容量规划 · 1MW 液冷二期：CDU 是 N+1 还是 2N，第四台现在买还是等",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：规划二期 40 台 25kW 冷板机柜，合计 1MW。讨论四个问题：需要几台 CDU、冗余做 N+1 还是 2N、四台是一次装齐还是分期、manifold 分支接口留多少余量。还要兼顾大厅里剩下的风冷机柜——它们仍走 CRAH 冷热通道布局，别让它们成为新的瓶颈。\n\n**对话：**\n- Elena: Forty racks at twenty-five kilowatts, a megawatt, landing in Q2. How many CDUs is that?\n- 小白: Four three-hundred-kilowatt units gives you three-plus-one, so a single CDU failure still leaves enough capacity to carry the full load. That is N+1 at CDU level, and it is what I would build.\n- Elena: Do we need 2N?\n- 小白: Not for this hall. 2N doubles your CDU count and your floor space for a failure mode that already has a manual workaround — the branch isolation valves let us move a rack onto the neighbouring CDU in under an hour. I would rather spend that money on spare quick-disconnects and a spare pump. But each CDU has to sit on a different primary loop, otherwise you have N+1 on paper and a shared single point of failure in the piping.\n- Elena: Do we buy all four now?\n- 小白: Buy the space and the piping for four, install three. The fourth carries a four-month lead time, so if we wait until the hall is eighty percent full we run hot with no failover for a quarter. But I would not energise it until the load arrives — an idle CDU is stranded capacity and it still shows up in PUE.\n- Elena: And the air-cooled racks we are leaving in the hall?\n- 小白: They stay on CRAH units in a contained hot-cold aisle. Keep those aisles sealed and the air-cooled side stops competing with the liquid loop for capacity; leave them open and the recirculation becomes the constraint long before the plant does.\n- Elena: Ports on the manifold?\n- 小白: Twenty percent spare ports on every manifold, capped and blanked. Every rack we add after this phase becomes a two-hour job instead of a shutdown. It is the cheapest capacity insurance in the whole build.\n\n**重点表达：**\n- `Four three-hundred-kilowatt units gives you three-plus-one.` — 四台 300kW 就是三用一备——容量换算的标准说法\n- `A single CDU failure still leaves enough capacity to carry the full load.` — 单台 CDU 故障仍能带满载——N+1 的定义式表达\n- `2N doubles your CDU count and your floor space for a failure mode that has a manual workaround.` — 2N 让设备数量和占地翻倍，换来的却是一个有人工兜底的故障模式\n- `You have N+1 on paper and a shared single point of failure in the piping.` — 纸面上是 N+1，管路里却藏着共用单点故障——on paper 的高级用法\n- `Buy the space and the piping for four, install three.` — 按四台预留空间和管路，先装三台——分期建设的经典表述\n- `An idle CDU is stranded capacity and it still shows up in PUE.` — 闲置的 CDU 是搁浅容量，而且照样计入 PUE——stranded capacity 高频术语\n- `They stay on CRAH units in a contained hot-cold aisle.` — 它们继续用 CRAH，走封闭冷热通道——风冷与液冷共存的交代\n- `Leave the aisles open and the recirculation becomes the constraint long before the plant does.` — 通道不封闭，回流会先于冷源成为瓶颈——constraint 瓶颈判定\n- `Twenty percent spare ports on every manifold, capped and blanked.` — 每个 manifold 留 20% 备用接口并封盖堵头\n- `It is the cheapest capacity insurance in the whole build.` — 这是整个建设里最便宜的容量保险——一句收尾，很有说服力",
+        "category": "容量规划",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "Four three-hundred-kilowatt units gives you three-plus-one.",
+            "zh": "四台 300kW 就是三用一备——容量换算的标准说法"
+          },
+          {
+            "en": "A single CDU failure still leaves enough capacity to carry the full load.",
+            "zh": "单台 CDU 故障仍能带满载——N+1 的定义式表达"
+          },
+          {
+            "en": "2N doubles your CDU count and your floor space for a failure mode that has a manual workaround.",
+            "zh": "2N 让设备数量和占地翻倍，换来的却是一个有人工兜底的故障模式"
+          },
+          {
+            "en": "You have N+1 on paper and a shared single point of failure in the piping.",
+            "zh": "纸面上是 N+1，管路里却藏着共用单点故障——on paper 的高级用法"
+          },
+          {
+            "en": "Buy the space and the piping for four, install three.",
+            "zh": "按四台预留空间和管路，先装三台——分期建设的经典表述"
+          },
+          {
+            "en": "An idle CDU is stranded capacity and it still shows up in PUE.",
+            "zh": "闲置的 CDU 是搁浅容量，而且照样计入 PUE——stranded capacity 高频术语"
+          },
+          {
+            "en": "They stay on CRAH units in a contained hot-cold aisle.",
+            "zh": "它们继续用 CRAH，走封闭冷热通道——风冷与液冷共存的交代"
+          },
+          {
+            "en": "Leave the aisles open and the recirculation becomes the constraint long before the plant does.",
+            "zh": "通道不封闭，回流会先于冷源成为瓶颈——constraint 瓶颈判定"
+          },
+          {
+            "en": "Twenty percent spare ports on every manifold, capped and blanked.",
+            "zh": "每个 manifold 留 20% 备用接口并封盖堵头"
+          },
+          {
+            "en": "It is the cheapest capacity insurance in the whole build.",
+            "zh": "这是整个建设里最便宜的容量保险——一句收尾，很有说服力"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-17",
     "generatedAt": "2026-10-17T23:18:09+08:00",
     "cycleDay": 1,
@@ -1220,80 +1366,6 @@
           {
             "en": "acceptance criteria",
             "zh": "验收标准——必须写进合同的可量化条款，是质保谈判的核心"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-04",
-    "generatedAt": "2026-10-04T23:18:05+08:00",
-    "cycleDay": 4,
-    "difficulty": "精通 Proficient",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "运维沟通 · 冷却塔冬季防冻与 free cooling 切换窗口",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：夜间最低气温降到 3℃，需要跟运维经理确认冷却塔防冻措施是否到位，并讨论明天白班能否切入 free cooling 模式、把冷机停掉省电。\n\n**对话：**\n- 小白（运维）：It's down to 3°C outside tonight. Before we talk about free cooling, I want to confirm the tower freeze protection is actually live.\n- 运维经理：Basin heaters are on the freeze stat, and the bypass valve is holding the basin at 12°C. Have you checked the fill deck for ice at the air inlet?\n- 小白（运维）：I walked the deck an hour ago — no ice build-up, and the fan is running in reverse at low speed to keep the airflow balanced.\n- 运维经理：Then let's look at the switch. What's the wet-bulb forecast for tomorrow afternoon?\n- 小白（运维）：Around 5°C. With an 3°C approach that puts us near 8°C condenser water, so we can hold 10°C chilled water supply without starting a chiller.\n- 运维经理：Good — run it in waterside economizer mode from 10:00, but keep Chiller-1 on hot standby. One PUE point isn't worth losing uptime if the wet-bulb climbs.\n\n**重点表达：**\n- `freeze protection is live` — 防冻保护已投入运行（live 强调「带电 / 生效中」，不是「已安装」）\n- `run it in waterside economizer mode` — 切到水侧自然冷却模式运行——用冷却塔直接供冷、冷机停机节能\n- `keep ... on hot standby` — 让……处于热备状态（随时可加载，但不承担负荷）",
-        "category": "运维沟通",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "freeze protection is live",
-            "zh": "防冻保护已投入运行（live 强调「带电 / 生效中」，不是「已安装」）"
-          },
-          {
-            "en": "run it in waterside economizer mode",
-            "zh": "切到水侧自然冷却模式运行——用冷却塔直接供冷、冷机停机节能"
-          },
-          {
-            "en": "keep ... on hot standby",
-            "zh": "让……处于热备状态（随时可加载，但不承担负荷）"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "跨团队协作 · OT 网络隔离：CRAH 群控接入 DCIM 的安全评审",
-        "subtitle": "精通 Proficient",
-        "content": "**情境**：要把 CRAH 与冷机群控的运行数据接入 DCIM 平台做能效分析，IT 安全团队担心 OT 网络被暴露。双方开会敲定隔离方案、数据方向与应急失效时的降级策略。\n\n**对话：**\n- 小白（运维）：We want CRAH and chiller telemetry in DCIM for PUE trending. The question is how we get it there without exposing the controls network.\n- IT 安全工程师：Acceptable, but the flow has to be one-way. We'll terminate the OT segment on a read-only gateway — a data diode — so nothing can write back to the group controller.\n- 小白（运维）：One-way works for trending. But our failover logic lives in the group controller, so if the gateway drops, we lose visibility, not control. Can you live with that?\n- IT 安全工程师：Yes, visibility loss is a monitoring issue, not an uptime one. I do need the polling interval capped at sixty seconds and no SNMP write community anywhere in the design.\n- 小白（运维）：Agreed on both. One caveat from our side: firmware patches on the group controller still need a maintenance window, because a reboot takes the whole row to local control.\n- IT 安全工程师：Then we'll document it as a shared-risk item — patching goes through change management, and we hold the OT VLAN segmented from the corporate network permanently.\n\n**重点表达：**\n- `the flow has to be one-way` — 数据流向必须是单向的——OT 安全评审里对跨网传输的核心要求\n- `we lose visibility, not control` — 我们丢的是可观测性，不是控制权——区分「看不见」与「控不了」，是跨团队沟通的关键切割\n- `document it as a shared-risk item` — 把它作为共担风险项记录在案——不消除风险，但双方书面确认接受",
-        "category": "跨团队协作",
-        "difficulty": "精通 Proficient",
-        "expressions": [
-          {
-            "en": "the flow has to be one-way",
-            "zh": "数据流向必须是单向的——OT 安全评审里对跨网传输的核心要求"
-          },
-          {
-            "en": "we lose visibility, not control",
-            "zh": "我们丢的是可观测性，不是控制权——区分「看不见」与「控不了」，是跨团队沟通的关键切割"
-          },
-          {
-            "en": "document it as a shared-risk item",
-            "zh": "把它作为共担风险项记录在案——不消除风险，但双方书面确认接受"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "容量规划 · 存量风冷区改冷板液冷的分阶段容量核算",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：IT 计划明年在存量风冷区部署 40kW/rack 的 GPU 机柜。需要一起核算：风冷还能吃多少、液冷什么时候必须上、以及电力与制冷的时序是否对得上。\n\n**对话：**\n- 小白（运维）：You're asking for forty kilowatts a rack in a hall that was designed for eight. Air cooling won't carry that, whatever we do with the aisles.\n- IT 容量同事：That's why we're looking at cold plates. The question is how far we can go before the liquid loop has to be in place.\n- 小白（运维）：With the hot-cold aisle containment you already have, roughly twelve kilowatts per rack is the ceiling. Beyond that we'd be fighting hot spots at the top of every rack.\n- IT 容量同事：So phase one is a handful of 12 kW racks on air, and phase two waits for the CDU. How much capacity does the loop give us?\n- 小白（运维）：Two CDUs at 500 kW each, running on 32°C supply water — that's free cooling for most of the year, and it drops our PUE by about 0.12 on those rows.\n- IT 容量同事：Then we'll hold the general compute on air and put only GPU nodes on the liquid loop. I'll rework the rack layout to keep the liquid rows together.\n\n**重点表达：**\n- `... is the ceiling` — ……就是上限了——容量规划里给「还能吃多少」下定量结论的常用说法\n- `we'd be fighting hot spots` — 我们就得一直跟热点作斗争——暗示风冷已到物理极限、局部过热无法根治\n- `phase one / phase two` — 一期 / 二期——分阶段落地容量或改造时的标准表述",
-        "category": "容量规划",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "... is the ceiling",
-            "zh": "……就是上限了——容量规划里给「还能吃多少」下定量结论的常用说法"
-          },
-          {
-            "en": "we'd be fighting hot spots",
-            "zh": "我们就得一直跟热点作斗争——暗示风冷已到物理极限、局部过热无法根治"
-          },
-          {
-            "en": "phase one / phase two",
-            "zh": "一期 / 二期——分阶段落地容量或改造时的标准表述"
           }
         ]
       }
