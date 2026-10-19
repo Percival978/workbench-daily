@@ -1,5 +1,167 @@
 [
   {
+    "date": "2026-10-19",
+    "generatedAt": "2026-10-19T23:19:51+08:00",
+    "cycleDay": 3,
+    "difficulty": "高级 Advanced",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "日常工作 · 6 台冷板机柜接入 CDU 后的投运点检与基线建档",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：本周有 6 台 30kW 冷板机柜接入 CDU-2。投运前要走一遍点检：环路冲洗与充注水质是否达标、快速接头两端型号是否一致并插合到位、manifold 高点排气是否排净、漏液检测绳每个分区是否真的报警并报到 DCIM 的正确点位。最后一步最关键——按统一方法录一套基线（支路流量、冷板压差、供回液温度），否则后面没法判断漂移。\n\n**对话：**\n- Owen: Six new cold-plate racks land on CDU-2 this week. Before you energise, walk me through the checklist.\n- 小白: It starts before any fluid moves. I confirm the loop is flushed and the fill water meets the spec on the COA, and I check every quick-disconnect: same part number on both halves, seated, locked, dust caps back on the spare ports. A mismatched half is how you get a weep at forty litres an hour.\n- Owen: And purging?\n- 小白: I purge at the rack manifold until I stop getting air at the high points, then I do it again after the first heat cycle, because dissolved air comes out of solution once the loop warms up. Only then do I record the baseline: flow per branch, differential pressure across the cold plate, supply and return temperature, all on a logged trend, not a handwritten sheet.\n- Owen: Why the trend? A numbers sheet is easier to hand over.\n- 小白: Because you cannot detect drift later without a baseline taken the same way. Six months from now, if branch flow is down twelve percent, that number only means something if today it was recorded at the same valve positions and the same pump speed.\n- Owen: Leak detection?\n- 小白: Every rope zone gets walked with a wet cloth before handover, so we know the alarm actually annunciates to DCIM and drops a pin on the right zone. Then I set thresholds off the baseline: a fifteen percent drop in branch flow or a twenty percent rise in differential pressure is a work order, not a phone call at two in the morning.\n\n**重点表达：**\n- `It starts before any fluid moves.` — 工作从介质流动之前就开始了——点检的起点在充注之前\n- `The fill water meets the spec on the COA.` — 充注水质符合分析报告上的规格——COA = certificate of analysis\n- `Same part number on both halves, seated and locked.` — 接头两端型号一致、插合并锁死——冷板快接的点检要点\n- `A mismatched half is how you get a weep at forty litres an hour.` — 型号不匹配就是每小时 40 升微渗的来源——weep 微渗，比 leak 更准\n- `I purge at the rack manifold until I stop getting air at the high points.` — 在机柜 manifold 排气，直到高点不再出气\n- `Dissolved air comes out of solution once the loop warms up.` — 环路升温后溶解空气会析出——所以要二次排气\n- `You cannot detect drift later without a baseline taken the same way.` — 没有用同一方法取的基线，后面判断不了漂移\n- `Every rope zone gets walked with a wet cloth before handover.` — 交付前每个检测绳分区都用湿布实测一遍\n- `That is a work order, not a phone call at two in the morning.` — 那是走工单，不是凌晨两点打电话——告警分级的直白说法",
+        "category": "日常工作",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "It starts before any fluid moves.",
+            "zh": "工作从介质流动之前就开始了——点检的起点在充注之前"
+          },
+          {
+            "en": "The fill water meets the spec on the COA.",
+            "zh": "充注水质符合分析报告上的规格——COA = certificate of analysis"
+          },
+          {
+            "en": "Same part number on both halves, seated and locked.",
+            "zh": "接头两端型号一致、插合并锁死——冷板快接的点检要点"
+          },
+          {
+            "en": "A mismatched half is how you get a weep at forty litres an hour.",
+            "zh": "型号不匹配就是每小时 40 升微渗的来源——weep 微渗，比 leak 更准"
+          },
+          {
+            "en": "I purge at the rack manifold until I stop getting air at the high points.",
+            "zh": "在机柜 manifold 排气，直到高点不再出气"
+          },
+          {
+            "en": "Dissolved air comes out of solution once the loop warms up.",
+            "zh": "环路升温后溶解空气会析出——所以要二次排气"
+          },
+          {
+            "en": "You cannot detect drift later without a baseline taken the same way.",
+            "zh": "没有用同一方法取的基线，后面判断不了漂移"
+          },
+          {
+            "en": "Every rope zone gets walked with a wet cloth before handover.",
+            "zh": "交付前每个检测绳分区都用湿布实测一遍"
+          },
+          {
+            "en": "That is a work order, not a phone call at two in the morning.",
+            "zh": "那是走工单，不是凌晨两点打电话——告警分级的直白说法"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "故障排查 · 机柜内冷板被接成串联：末端温升 8℃ 与整排流量被抢的 RCA",
+        "subtitle": "高级 Advanced",
+        "content": "**情境**：4 排两台新上的 GPU 机柜报后段板卡结温高，CDU 供液温度却稳稳卡在 30℃ 设定值上。查压差发现机柜压降 112kPa，设计值只有 45kPa；同排邻柜流量同时掉了约 10%，切备泵后更明显。RCA 最终落到接管拓扑——安装方把机柜内 4 块冷板接成了串联。\n\n**对话：**\n- Daniel: Two racks on row four are reporting high die temperature on the rear boards. The CDU says supply is at thirty degrees, exactly on setpoint.\n- 小白: Supply temperature is the right first check, but it tells us what we are delivering, not what the rack is getting. What is the differential pressure across the rack?\n- Daniel: One hundred and twelve kilopascals. The design says forty-five.\n- 小白: That is the real signal. The rack is not short of cold, it is short of flow. The pump is at a hundred percent and the loops next to it dropped about ten percent at the same time, so the pump is not weak, it is being pulled to the end of its curve by one high-resistance branch. One rack hogging the flow starves its neighbours.\n- Daniel: So what changed? These racks are new.\n- 小白: They are, and that is the point. The installer piped the four cold plates in series instead of parallel. Every plate sees the same flow but each one adds its pressure drop, and the last plate gets water that has already picked up heat from three others. That is your eight degree spread from front to rear.\n- Daniel: Why did it get worse when the CDU failed over to the standby pump?\n- 小白: Because we were already sitting near the end of the pump curve. Failover restored stable pressure in about forty seconds, and for those forty seconds the starved racks had no margin at all. The redundancy was fine; the headroom was gone. Failover protects you against losing a pump, not against running out of hydraulic margin.\n- Daniel: So this is not a CDU problem.\n- 小白: No. The RCA lands on the piping topology, not on the CDU. Fix is re-piping those two racks in parallel, then re-record the baseline with the same method so the drift detection still means something. And I want the as-built drawings corrected before the next rack lands, otherwise we are commissioning the same mistake one row at a time.\n\n**重点表达：**\n- `It tells us what we are delivering, not what the rack is getting.` — 它只说明我们送出去了什么，不说明机柜实际拿到了什么\n- `The rack is not short of cold, it is short of flow.` — 机柜缺的不是冷量，是流量——液冷排查的分水岭判断\n- `The pump is not weak, it is being pulled to the end of its curve.` — 泵没坏，是被高阻支路拉到了曲线末端\n- `One rack hogging the flow starves its neighbours.` — 一个机柜抢流量，同排邻柜就挨饿——hog / starve 很地道\n- `They piped the cold plates in series instead of parallel.` — 他们把冷板接成了串联而不是并联\n- `The last plate gets water that has already picked up heat from three others.` — 末端冷板拿到的是已被前三块加热过的水\n- `Failover restored stable pressure in about forty seconds.` — 切换后约 40 秒才恢复压力稳定——latency 的另一种说法\n- `The redundancy was fine; the headroom was gone.` — 冗余没坏，是余量没了——高级判断句\n- `Failover protects you against losing a pump, not against running out of hydraulic margin.` — 冗余切换能防丢泵，防不了水力余量耗尽\n- `The RCA lands on the piping topology, not on the CDU.` — 根因落在接管拓扑，不在 CDU\n- `I want the as-built drawings corrected before the next rack lands.` — 下一台机柜进场前必须更正竣工图",
+        "category": "故障排查",
+        "difficulty": "高级 Advanced",
+        "expressions": [
+          {
+            "en": "It tells us what we are delivering, not what the rack is getting.",
+            "zh": "它只说明我们送出去了什么，不说明机柜实际拿到了什么"
+          },
+          {
+            "en": "The rack is not short of cold, it is short of flow.",
+            "zh": "机柜缺的不是冷量，是流量——液冷排查的分水岭判断"
+          },
+          {
+            "en": "The pump is not weak, it is being pulled to the end of its curve.",
+            "zh": "泵没坏，是被高阻支路拉到了曲线末端"
+          },
+          {
+            "en": "One rack hogging the flow starves its neighbours.",
+            "zh": "一个机柜抢流量，同排邻柜就挨饿——hog / starve 很地道"
+          },
+          {
+            "en": "They piped the cold plates in series instead of parallel.",
+            "zh": "他们把冷板接成了串联而不是并联"
+          },
+          {
+            "en": "The last plate gets water that has already picked up heat from three others.",
+            "zh": "末端冷板拿到的是已被前三块加热过的水"
+          },
+          {
+            "en": "Failover restored stable pressure in about forty seconds.",
+            "zh": "切换后约 40 秒才恢复压力稳定——latency 的另一种说法"
+          },
+          {
+            "en": "The redundancy was fine; the headroom was gone.",
+            "zh": "冗余没坏，是余量没了——高级判断句"
+          },
+          {
+            "en": "Failover protects you against losing a pump, not against running out of hydraulic margin.",
+            "zh": "冗余切换能防丢泵，防不了水力余量耗尽"
+          },
+          {
+            "en": "The RCA lands on the piping topology, not on the CDU.",
+            "zh": "根因落在接管拓扑，不在 CDU"
+          },
+          {
+            "en": "I want the as-built drawings corrected before the next rack lands.",
+            "zh": "下一台机柜进场前必须更正竣工图"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "供应商对接 · 液冷年度维保合同谈判：响应时效、遥测边界、备件寄售与罚则",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：液冷区刚过质保期，谈年度维保。四个争点：到场时效（次工作日 vs 4 小时 7×24）、远程遥测接入边界（只读单向、不开放控制通道、数据归属）、关键备件的寄售模式与结算、罚则上限与免责。风冷侧（CRAH、冷机）冗余充分，不该和水侧同价。\n\n**对话：**\n- Nadia: Our standard service agreement is next-business-day response, eight to five, at a fixed annual fee.\n- 小白: Next business day is not a fit for a hall with a liquid loop. Two hours above the ASHRAE envelope across two thousand CPUs is a customer-visible event, and I cannot wait until Thursday for it. I need four-hour on-site response, twenty-four seven, on the CDU and the manifolds.\n- Nadia: Four-hour response roughly doubles the fee.\n- 小白: Then split it. Four-hour on the CDU and the pump skid, next-day on the air side. The CRAH units and the chillers already carry N+1, and I can hold them on a spare for a day. Price the urgent path where the redundancy is thin, not the whole plant.\n- Nadia: We would also want remote telemetry from the CDU controllers, so we can diagnose before we travel.\n- 小白: Read-only, one-way, and it stops at temperature, flow, pressure and alarm state. No control path, and no setpoint writes over the network. The data stays ours; you get it for diagnosis, not for a benchmark database. Put that in the agreement in writing, because verbal assurances do not survive a staff change.\n- Nadia: And spares?\n- 小白: Pump seals, a spare VFD, quick-disconnect sets and two differential pressure sensors stay on the shelf here, on consignment: we pay when we issue, you own the stock until then. Shelf life and calibration dates are yours to manage. If I reach for a seal and find it a year out of date, that is a service failure, not a purchasing problem.\n- Nadia: Last point. Our liability clause caps everything at the annual fee.\n- 小白: On missed response time, capped liquidated damages, fine, and waived if we block your site access, that is fair to both of us. What I will not accept is a cap that also covers a leak that damages IT equipment. Uptime is the product we sell; a clause that makes a coolant leak cheaper for you than preventing it is a clause that guarantees I will have one.\n\n**重点表达：**\n- `Next business day is not a fit for a hall with a liquid loop.` — 次工作日响应对液冷厅不合适——谈判开场定调\n- `Two hours above the ASHRAE envelope is a customer-visible event.` — 超出 ASHRAE 包络两小时就是客户看得见的事件——把技术参数翻译成业务影响\n- `Price the urgent path where the redundancy is thin, not the whole plant.` — 加急服务定价放在冗余薄弱的环节，而不是全厂——拆分报价的砍价技巧\n- `The CRAH units and the chillers already carry N+1.` — CRAH 和冷机已经有 N+1 冗余——用冗余度支撑分级定价\n- `Read-only, one-way, no control path.` — 只读、单向、不开放控制通道——遥测接入的三条底线\n- `No setpoint writes over the network.` — 不允许通过网络写设定值\n- `Verbal assurances do not survive a staff change.` — 口头承诺经不起人员变动——坚持写进合同的理由\n- `On consignment: we pay when we issue, you own the stock until then.` — 寄售模式：领用才付款，库存归你方\n- `If I reach for a seal and find it out of date, that is a service failure.` — 领用发现备件过期，属于服务失效，不是采购问题\n- `Capped liquidated damages, waived if we block your site access.` — 设上限的违约金，若我方阻拦进场则免责——双向公平的表述\n- `Uptime is the product we sell.` — 我们卖的产品就是可用时间——谈判收尾的重量级一句",
+        "category": "供应商对接",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "Next business day is not a fit for a hall with a liquid loop.",
+            "zh": "次工作日响应对液冷厅不合适——谈判开场定调"
+          },
+          {
+            "en": "Two hours above the ASHRAE envelope is a customer-visible event.",
+            "zh": "超出 ASHRAE 包络两小时就是客户看得见的事件——把技术参数翻译成业务影响"
+          },
+          {
+            "en": "Price the urgent path where the redundancy is thin, not the whole plant.",
+            "zh": "加急服务定价放在冗余薄弱的环节，而不是全厂——拆分报价的砍价技巧"
+          },
+          {
+            "en": "The CRAH units and the chillers already carry N+1.",
+            "zh": "CRAH 和冷机已经有 N+1 冗余——用冗余度支撑分级定价"
+          },
+          {
+            "en": "Read-only, one-way, no control path.",
+            "zh": "只读、单向、不开放控制通道——遥测接入的三条底线"
+          },
+          {
+            "en": "No setpoint writes over the network.",
+            "zh": "不允许通过网络写设定值"
+          },
+          {
+            "en": "Verbal assurances do not survive a staff change.",
+            "zh": "口头承诺经不起人员变动——坚持写进合同的理由"
+          },
+          {
+            "en": "On consignment: we pay when we issue, you own the stock until then.",
+            "zh": "寄售模式：领用才付款，库存归你方"
+          },
+          {
+            "en": "If I reach for a seal and find it out of date, that is a service failure.",
+            "zh": "领用发现备件过期，属于服务失效，不是采购问题"
+          },
+          {
+            "en": "Capped liquidated damages, waived if we block your site access.",
+            "zh": "设上限的违约金，若我方阻拦进场则免责——双向公平的表述"
+          },
+          {
+            "en": "Uptime is the product we sell.",
+            "zh": "我们卖的产品就是可用时间——谈判收尾的重量级一句"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-18",
     "generatedAt": "2026-10-18T23:19:21+08:00",
     "cycleDay": 2,
@@ -1292,80 +1454,6 @@
           {
             "en": "phase the build-out",
             "zh": "分期建设、分批投产——把一次性满载拆成多期，给制冷改造留出窗口"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-05",
-    "generatedAt": "2026-10-05T23:17:42+08:00",
-    "cycleDay": 1,
-    "difficulty": "基础 Basic",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "日常工作 · 白班接班抄表：冷冻水参数与冷却塔水质",
-        "subtitle": "基础 Basic",
-        "content": "**情境**：早上接班，先跟上一班核对夜间的冷冻水供回水参数和冷却塔补水电导率，确认有没有需要跟进的异常，再开始自己的机房巡检。\n\n**对话：**\n- 小白（运维）：Morning. Before I sign for the shift, let me go through the readings from last night.\n- 上一班值班同事：Sure. Chilled water supply held at 7.2°C all night, return came back at 12.1°C, so the delta-T is a little tight but stable.\n- 小白（运维）：I logged the tower readings too. Makeup water conductivity is up to 1,850 microsiemens, which puts us over four cycles of concentration.\n- 上一班值班同事：That matches what I saw before handover. I opened a ticket for extra blowdown, but the makeup valve is still on manual until Friday.\n- 小白（运维）：Got it. I will walk the floor, check the CRAH filters and the hot-cold aisle containment, and re-log conductivity before I hand over tonight.\n- 上一班值班同事：Sounds good. If conductivity keeps climbing, escalate it to the water treatment vendor rather than waiting for Friday.\n\n**重点表达：**\n- `sign for the shift` — 签字接班——交班时确认由自己承担本班责任的固定说法\n- `log the readings` — 抄表、记录运行读数（log 作动词，比 write down 更现场）\n- `cycles of concentration` — 浓缩倍数——冷却塔循环水含盐量相对补水的倍数，是排污与加药的核心依据",
-        "category": "日常工作",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "sign for the shift",
-            "zh": "签字接班——交班时确认由自己承担本班责任的固定说法"
-          },
-          {
-            "en": "log the readings",
-            "zh": "抄表、记录运行读数（log 作动词，比 write down 更现场）"
-          },
-          {
-            "en": "cycles of concentration",
-            "zh": "浓缩倍数——冷却塔循环水含盐量相对补水的倍数，是排污与加药的核心依据"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "故障排查 · 冷机满载压不住：冷凝器趋近温度恶化定位",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：冷冻水供水温度从 7℃ 慢慢爬到 9.4℃，两台冷机都已满载。群控已经 failover 到备用冷却塔，但温度没改善，需要跟主管一起定位真正的瓶颈。\n\n**对话：**\n- 小白（运维）：Chilled water supply has crept up to 9.4°C, and both chillers are at full load. The group controller already failed over to the standby tower, but nothing improved.\n- 值班主管：So the tower is not the constraint. What is the condenser water approach doing?\n- 小白（运维）：Approach is 5.8°C against a design of 3.0°C. Condenser water leaving the tower is 31°C with a 26°C wet-bulb outside.\n- 值班主管：That points to fouling, not a loss of capacity. Have you looked at the fill deck and the spray nozzles?\n- 小白（运维）：Yes. Nozzles on cell two are partially blocked, and the basin strainer is half covered with scale. Blowdown has been running low for a week, so we are scaling the fill.\n- 值班主管：Then raise blowdown to hold three cycles, and book a chemical clean for the next maintenance window. Keep one chiller in reserve until approach comes back under 3.5°C.\n- 小白（运维）：Understood. I will also put a hold on new rack deployments in that hall until we get the capacity back.\n\n**重点表达：**\n- `has crept up to ...` — 已经慢慢爬升到……——描述参数缓慢恶化的地道说法，比 rise 更强调「不知不觉」\n- `the tower is not the constraint` — 瓶颈不在冷却塔——RCA 里排除法下结论的高频句型（not the constraint / not the bottleneck）\n- `keep ... in reserve` — 把……留作备用/冗余不投入——与 hot standby 相近，但强调「先不用、留一手」",
-        "category": "故障排查",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "has crept up to ...",
-            "zh": "已经慢慢爬升到……——描述参数缓慢恶化的地道说法，比 rise 更强调「不知不觉」"
-          },
-          {
-            "en": "the tower is not the constraint",
-            "zh": "瓶颈不在冷却塔——RCA 里排除法下结论的高频句型（not the constraint / not the bottleneck）"
-          },
-          {
-            "en": "keep ... in reserve",
-            "zh": "把……留作备用/冗余不投入——与 hot standby 相近，但强调「先不用、留一手」"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "供应商对接 · 冷却塔填料更换：报价、施工窗口与验收标准",
-        "subtitle": "基础 Basic",
-        "content": "**情境**：二号塔的填料需要更换，跟供应商谈报价与交期，确认能否赶在 21 号计划停机窗口内完成，并把质保与验收标准写进合同。\n\n**对话：**\n- 小白（运维）：We need the fill media in cell two replaced. Can you quote the material and the labour separately?\n- 冷却塔供应商销售：Certainly. The replacement fill is high-temperature PVC, flame retardant to Class B1, and lead time is three weeks from order.\n- 小白（运维）：Three weeks is too long if the cell is down for a week. Can you stage two cells of material and install during our planned outage on the 21st?\n- 冷却塔供应商销售：We can stage the material, but the install window has to be 48 hours continuous. Do you have isolation and lockout ready on the condenser water side?\n- 小白（运维）：We do. The cell will be isolated and locked out, and the remaining cells will carry the load. What warranty and acceptance criteria do you offer?\n- 冷却塔供应商销售：Twelve months on the media. Acceptance is the approach temperature returning to within 0.5°C of design at full load and design wet-bulb.\n- 小白（运维）：Please put that in writing. Payment is released only after the acceptance test passes.\n\n**重点表达：**\n- `quote the material and the labour separately` — 材料与人工分开报价——采购谈判里便于比价和砍价的常规要求\n- `lead time` — 交货周期（从下单到到货），不是「交付时间」\n- `acceptance criteria` — 验收标准——必须写进合同的可量化条款，是质保谈判的核心",
-        "category": "供应商对接",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "quote the material and the labour separately",
-            "zh": "材料与人工分开报价——采购谈判里便于比价和砍价的常规要求"
-          },
-          {
-            "en": "lead time",
-            "zh": "交货周期（从下单到到货），不是「交付时间」"
-          },
-          {
-            "en": "acceptance criteria",
-            "zh": "验收标准——必须写进合同的可量化条款，是质保谈判的核心"
           }
         ]
       }
