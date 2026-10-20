@@ -1,5 +1,199 @@
 [
   {
+    "date": "2026-10-20",
+    "generatedAt": "2026-10-20T23:21:20+08:00",
+    "cycleDay": 4,
+    "difficulty": "精通 Proficient",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "运维沟通 · 冷冻水一次侧变流量改造的变更评审",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：一次泵目前是定流量运行，多余的水走旁通管白流。改造方案是改成一次侧变流量（variable primary flow），让泵跟随实际负荷，一年大约能省 11 万度电、约 0.1 个 PUE。但冷机蒸发器有最小流量限制，旁通阀也要从泄压通路改成真正的控制元件。变更评审会上，你要说清收益、风险与中止判据。\n\n**对话：**\n- Elena: The variable primary flow retrofit is on the change board tomorrow. Give me the one-minute version. What are we buying?\n- 小白: We are buying pump horsepower, and only that. Today the primary loop runs constant flow with a bypass that dumps the surplus straight back to the return. Variable primary lets the pumps follow the actual load, so at forty percent we stop pushing water through a bypass for no reason. On our load profile that is roughly a hundred and ten thousand kilowatt-hours a year, about a tenth of a PUE point.\n- Elena: And what can go wrong?\n- 小白: Two things, both on the chiller side. Every evaporator has a minimum flow. Starve it and you trip on low refrigerant temperature, or you start tube fouling that nobody sees for a year. Second, the bypass valve changes character: it stops being a relief path and becomes a control device. Its deadband and its failure position have to be written into the sequence, not left to the default.\n- Elena: Failure position? That sounds like a detail.\n- 小白: It decides which way the project fails. If the valve fails open we are back to constant flow and we lose the savings, which is embarrassing but safe. If it fails closed we are one bad differential pressure sensor away from a low-flow trip on a plant that is carrying the whole hall. I want it to fail open, and I want that written into the MOP, not the vendor's generic sequence.\n- Elena: Give me an abort criterion.\n- 小白: Any chiller that trips on low evaporator flow, or supply temperature that moves more than one degree in five minutes after a stage change. Either one reverts us to constant flow and stops the test. And I want it done one plant at a time with the other plant carrying the load, so we never test two unknowns at once.\n- Elena: How long before you call it a success?\n- 小白: Two weeks of trending at the new setpoints, and I want a hot afternoon in that window. A saving that only shows up on a mild morning is not a saving, it is a measurement artefact.\n\n**重点表达：**\n- `We are buying pump horsepower, and only that.` — 我们买到的只有泵功率这一项——开场就把收益边界说清\n- `Variable primary lets the pumps follow the actual load.` — 一次侧变流量让泵跟随实际负荷\n- `The bypass dumps the surplus straight back to the return.` — 旁通把多余流量直接放回回水\n- `Every evaporator has a minimum flow.` — 每台蒸发器都有最小流量限制\n- `It stops being a relief path and becomes a control device.` — 它从泄压通路变成了控制元件\n- `Its deadband and its failure position have to be written into the sequence.` — 死区与故障位必须写进控制时序\n- `We are one bad sensor away from a low-flow trip.` — 离低流量跳闸只差一个坏传感器\n- `I want it to fail open, and I want that written into the MOP.` — 我要它故障开，而且写进 MOP\n- `Any chiller that trips on low evaporator flow.` — 任一冷机因蒸发器低流量跳闸——中止判据\n- `One plant at a time, with the other plant carrying the load.` — 一次只改一套，另一套承担负荷\n- `We never test two unknowns at once.` — 绝不同时验证两个未知量\n- `A saving that only shows up on a mild morning is a measurement artefact.` — 只在温和早晨出现的节能只是测量假象",
+        "category": "运维沟通",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "We are buying pump horsepower, and only that.",
+            "zh": "我们买到的只有泵功率这一项——开场就把收益边界说清"
+          },
+          {
+            "en": "Variable primary lets the pumps follow the actual load.",
+            "zh": "一次侧变流量让泵跟随实际负荷"
+          },
+          {
+            "en": "The bypass dumps the surplus straight back to the return.",
+            "zh": "旁通把多余流量直接放回回水"
+          },
+          {
+            "en": "Every evaporator has a minimum flow.",
+            "zh": "每台蒸发器都有最小流量限制"
+          },
+          {
+            "en": "It stops being a relief path and becomes a control device.",
+            "zh": "它从泄压通路变成了控制元件"
+          },
+          {
+            "en": "Its deadband and its failure position have to be written into the sequence.",
+            "zh": "死区与故障位必须写进控制时序"
+          },
+          {
+            "en": "We are one bad sensor away from a low-flow trip.",
+            "zh": "离低流量跳闸只差一个坏传感器"
+          },
+          {
+            "en": "I want it to fail open, and I want that written into the MOP.",
+            "zh": "我要它故障开，而且写进 MOP"
+          },
+          {
+            "en": "Any chiller that trips on low evaporator flow.",
+            "zh": "任一冷机因蒸发器低流量跳闸——中止判据"
+          },
+          {
+            "en": "One plant at a time, with the other plant carrying the load.",
+            "zh": "一次只改一套，另一套承担负荷"
+          },
+          {
+            "en": "We never test two unknowns at once.",
+            "zh": "绝不同时验证两个未知量"
+          },
+          {
+            "en": "A saving that only shows up on a mild morning is a measurement artefact.",
+            "zh": "只在温和早晨出现的节能只是测量假象"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "跨团队协作 · 液冷模组 CDU 供电与控制拓扑的共因故障评审",
+        "subtitle": "精通 Proficient",
+        "content": "**情境**：二期液冷模组上了 6 台 CDU，图纸上每台都是 A/B 双路供电，看起来满足可同时维护性。但你核对配电柜清单后发现：其中 4 台的 A、B 两路其实源自同一面子柜、共用一只母联开关；而且每台 CDU 的 24V 控制电源取自本柜。这意味着丢一路电时，负责切换的控制器也一起失电——冗余形同虚设。\n\n**对话：**\n- Marcus: Six CDUs on the new module, A and B feeders to each one. On paper you have concurrent maintainability.\n- 小白: On paper. I pulled the panel schedules and on four of the six, A and B both originate from the same sub-board, downstream of one tie breaker. Kill that breaker for maintenance and I lose both feeds on four CDUs at once. That is not redundancy, that is a single point of failure wearing a label.\n- Marcus: That is a construction issue. What is yours?\n- 小白: The control power, and it is worse. Each CDU takes its twenty-four volt control supply from its own panel, so a feeder failure also takes out the controller that would have ordered the transfer. The standby pump never starts because the brain that tells it to start is sitting on the feed that just died. Common-cause failure, and it hides inside a cabinet, so no walkthrough is ever going to catch it.\n- Marcus: That is fair. How do you want it fixed?\n- 小白: Two changes. Control power from a dedicated UPS-fed source that is independent of the power feeds, so the controller survives the loss it is supposed to react to. And a physical split: CDUs one, three and five on the A board, two, four and six on the B board. Then a single loss costs me at most half the module, and the surviving units still have the hydraulic headroom to carry it.\n- Marcus: Headroom you have actually measured, or headroom you assume?\n- 小白: Measured, which is the next item. I want a live test: drop a feeder under load, not on a cold Sunday morning, and record the failover latency and the rack inlet temperature through the transfer. A failover test at ten percent load tells you the contactor pulls in. It tells you nothing about whether the loop holds pressure while the standby pump comes up to speed.\n- Marcus: You want to drop a feeder during production hours.\n- 小白: Yes, and that is the entire point. If we only ever test it cold, the first real test is the one a customer pays for, and it will happen during a training run at full density when there is no margin anywhere in the building. I would rather burn an afternoon now with a rollback ready than find out at two in the morning.\n- Marcus: And if the test goes badly?\n- 小白: Then the abort criterion is temperature, not the clock. If rack inlet crosses thirty-two degrees for more than ninety seconds, we restore the feed and reopen the finding. Uptime is not a document review; it is what happens when the plant is hot and nobody is expecting it.\n\n**重点表达：**\n- `On paper you have concurrent maintainability.` — 纸面上你具备可同时维护性——先肯定，再翻案\n- `A and B both originate from the same sub-board, downstream of one tie breaker.` — A、B 两路都源自同一面子柜，在同一只母联开关下游\n- `That is not redundancy, that is a single point of failure wearing a label.` — 那不是冗余，是挂着标签的单点故障\n- `The brain that tells it to start is sitting on the feed that just died.` — 下达启动指令的控制器就在刚失电的那条路上\n- `Common-cause failure, and it hides inside a cabinet.` — 共因故障，而且藏在柜子里\n- `So the controller survives the loss it is supposed to react to.` — 让控制器能在它本该响应的失电中存活\n- `A single loss costs me at most half the module.` — 一次失电最多损失半个模组\n- `The surviving units still have the hydraulic headroom to carry it.` — 存活机组仍要有水力余量顶住\n- `Drop a feeder under load, not on a cold Sunday morning.` — 带载掉电测试，别挑冷清的周日早上\n- `A failover test at ten percent load tells you the contactor pulls in.` — 10% 负载的切换测试只证明接触器吸合\n- `The first real test is the one a customer pays for.` — 第一次真正的检验是客户买单的那次\n- `The abort criterion is temperature, not the clock.` — 中止判据是温度，不是时间\n- `Uptime is not a document review.` — 可用时间不是文件审出来的",
+        "category": "跨团队协作",
+        "difficulty": "精通 Proficient",
+        "expressions": [
+          {
+            "en": "On paper you have concurrent maintainability.",
+            "zh": "纸面上你具备可同时维护性——先肯定，再翻案"
+          },
+          {
+            "en": "A and B both originate from the same sub-board, downstream of one tie breaker.",
+            "zh": "A、B 两路都源自同一面子柜，在同一只母联开关下游"
+          },
+          {
+            "en": "That is not redundancy, that is a single point of failure wearing a label.",
+            "zh": "那不是冗余，是挂着标签的单点故障"
+          },
+          {
+            "en": "The brain that tells it to start is sitting on the feed that just died.",
+            "zh": "下达启动指令的控制器就在刚失电的那条路上"
+          },
+          {
+            "en": "Common-cause failure, and it hides inside a cabinet.",
+            "zh": "共因故障，而且藏在柜子里"
+          },
+          {
+            "en": "So the controller survives the loss it is supposed to react to.",
+            "zh": "让控制器能在它本该响应的失电中存活"
+          },
+          {
+            "en": "A single loss costs me at most half the module.",
+            "zh": "一次失电最多损失半个模组"
+          },
+          {
+            "en": "The surviving units still have the hydraulic headroom to carry it.",
+            "zh": "存活机组仍要有水力余量顶住"
+          },
+          {
+            "en": "Drop a feeder under load, not on a cold Sunday morning.",
+            "zh": "带载掉电测试，别挑冷清的周日早上"
+          },
+          {
+            "en": "A failover test at ten percent load tells you the contactor pulls in.",
+            "zh": "10% 负载的切换测试只证明接触器吸合"
+          },
+          {
+            "en": "The first real test is the one a customer pays for.",
+            "zh": "第一次真正的检验是客户买单的那次"
+          },
+          {
+            "en": "The abort criterion is temperature, not the clock.",
+            "zh": "中止判据是温度，不是时间"
+          },
+          {
+            "en": "Uptime is not a document review.",
+            "zh": "可用时间不是文件审出来的"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "容量规划 · 单机柜 30kW 提到 60kW：manifold 与 CDU 的余量与调节比",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：客户明年要上新一代 GPU，单机柜密度从 30kW 提到 60kW。现有 CDU 铭牌换热量 350kW，二次泵调节比约 4:1，manifold 按 30kW、15℃ 温升选型。要判断三件事：名义换热量在高温季还剩多少、管道够不够、以及客户上架很慢时低负荷端会不会失稳。\n\n**对话：**\n- Priya: The customer wants sixty-kilowatt racks next year. The CDU nameplate says three hundred and fifty kilowatts. Is that twelve racks or six?\n- 小白: Neither, not until we decide what the number means. That duty is quoted at a five degree approach on the primary side. If the facility water runs warmer in July, the duty drops before you have moved a single kilowatt of IT load. The honest answer is eight racks per CDU in July and ten in January, and I would rather sell it as eight.\n- Priya: Eight it is. What about the piping?\n- 小白: The manifold is the part you cannot fix later, so that is where I want the money. It was sized for thirty kilowatt racks at a fifteen degree rise. The same pipe carries sixty kilowatts only if we let the return run hotter or we push more flow, and more flow means higher velocity, higher pressure drop, and erosion at elbows nobody budgeted to replace.\n- Priya: So oversize the pipe.\n- 小白: Oversize the distribution, right-size the CDUs in stages. Pipe is cheap in year one and impossible in year three. Capacity in the plant is the opposite: you can always add a CDU, and adding one later costs you a weekend instead of a shutdown and a weld permit.\n- Priya: What if they only fill half the racks at first? New GPU clusters roll out slowly.\n- 小白: That is the turndown question, and it is where these projects actually break. Our pumps are good for about four to one. Below that the control valve hunts and the differential pressure sensor loses resolution, so the loop starts chasing itself. If we buy one large CDU for the whole module and they populate it over eighteen months, we spend that whole time fighting instability instead of selling capacity.\n- Priya: So two smaller units.\n- 小白: Two smaller units, second one landed on a spare breaker and a capped manifold branch. It costs a little more up front and behaves far better at the low end. Capacity you can add in a weekend is capacity you can sell. Capacity that needs an outage and a hot-work permit is stranded capacity, and it will sit there empty for years, because nobody wants to be the person who books the shutdown.\n\n**重点表达：**\n- `Neither, not until we decide what the number means.` — 两个都不是——先说清这个数字指什么\n- `The duty is quoted at a five degree approach.` — 换热量是在 5 度趋近温度下给出的——口径要点\n- `The duty drops before you have moved a single kilowatt of IT load.` — IT 负荷一瓦没加，换热量先掉了\n- `Eight racks per CDU in July and ten in January.` — 7 月每台 CDU 带 8 柜，1 月带 10 柜——随季节给数\n- `The manifold is the part you cannot fix later.` — manifold 是后面补不回来的部分\n- `More flow means higher velocity, higher pressure drop, and erosion at the elbows.` — 流量加大意味着流速、压降上升和弯头冲蚀\n- `Oversize the distribution, right-size the CDUs in stages.` — 管路放大，CDU 分期按需配置\n- `Pipe is cheap in year one and impossible in year three.` — 管路第一年便宜，第三年改不动\n- `That is the turndown question, and it is where these projects break.` — 这是调节比问题，也是项目翻车的地方\n- `The pumps are good for about four to one.` — 泵调节比约 4:1\n- `Below that the control valve hunts and the loop chases itself.` — 低于该比值调节阀震荡，环路自己追自己\n- `They populate it over eighteen months.` — 他们用 18 个月慢慢上架\n- `Capacity you can add in a weekend is capacity you can sell.` — 一个周末能加上的容量才是能卖的容量\n- `Stranded capacity sits empty because nobody wants to book the shutdown.` — 搁浅容量一直空着，因为没人愿意排停机窗口",
+        "category": "容量规划",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "Neither, not until we decide what the number means.",
+            "zh": "两个都不是——先说清这个数字指什么"
+          },
+          {
+            "en": "The duty is quoted at a five degree approach.",
+            "zh": "换热量是在 5 度趋近温度下给出的——口径要点"
+          },
+          {
+            "en": "The duty drops before you have moved a single kilowatt of IT load.",
+            "zh": "IT 负荷一瓦没加，换热量先掉了"
+          },
+          {
+            "en": "Eight racks per CDU in July and ten in January.",
+            "zh": "7 月每台 CDU 带 8 柜，1 月带 10 柜——随季节给数"
+          },
+          {
+            "en": "The manifold is the part you cannot fix later.",
+            "zh": "manifold 是后面补不回来的部分"
+          },
+          {
+            "en": "More flow means higher velocity, higher pressure drop, and erosion at the elbows.",
+            "zh": "流量加大意味着流速、压降上升和弯头冲蚀"
+          },
+          {
+            "en": "Oversize the distribution, right-size the CDUs in stages.",
+            "zh": "管路放大，CDU 分期按需配置"
+          },
+          {
+            "en": "Pipe is cheap in year one and impossible in year three.",
+            "zh": "管路第一年便宜，第三年改不动"
+          },
+          {
+            "en": "That is the turndown question, and it is where these projects break.",
+            "zh": "这是调节比问题，也是项目翻车的地方"
+          },
+          {
+            "en": "The pumps are good for about four to one.",
+            "zh": "泵调节比约 4:1"
+          },
+          {
+            "en": "Below that the control valve hunts and the loop chases itself.",
+            "zh": "低于该比值调节阀震荡，环路自己追自己"
+          },
+          {
+            "en": "They populate it over eighteen months.",
+            "zh": "他们用 18 个月慢慢上架"
+          },
+          {
+            "en": "Capacity you can add in a weekend is capacity you can sell.",
+            "zh": "一个周末能加上的容量才是能卖的容量"
+          },
+          {
+            "en": "Stranded capacity sits empty because nobody wants to book the shutdown.",
+            "zh": "搁浅容量一直空着，因为没人愿意排停机窗口"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-19",
     "generatedAt": "2026-10-19T23:19:51+08:00",
     "cycleDay": 3,
@@ -1380,80 +1574,6 @@
           {
             "en": "I want it in writing.",
             "zh": "这条我要落到纸面上——口头承诺不生效，合同条款谈判里的硬句"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-06",
-    "generatedAt": "2026-10-06T23:19:31+08:00",
-    "cycleDay": 2,
-    "difficulty": "进阶 Intermediate",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "运维沟通 · 告警疲劳治理：进风温度告警阈值改两级",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：B 区机房昨夜报了 47 次进风高温告警，其中 41 次两分钟内自动恢复，全是 CRAH 化霜引起的误报。跟主管商量把硬阈值改成两级告警并加抑制规则。\n\n**对话：**\n- 小白（运维）：We had forty-seven high inlet temperature alarms in hall B last night, and forty-one of them cleared within two minutes. That is classic alert fatigue.\n- 值班主管：Agreed. The threshold is a hard 27 degrees with no dampening, so every CRAH defrost cycle trips it. What do you propose?\n- 小白（运维）：Two-tier: a warning at 26 degrees averaged over five minutes, and a critical at 27.5 sustained for three minutes. Critical still pages the on-call.\n- 值班主管：And the warning goes where?\n- 小白（运维）：Dashboard only. I also want a suppression rule tied to CRAH maintenance mode, so planned work stops paging the on-call.\n- 值班主管：Fine. Raise it as a change request, attach last week's alarm log, and we will review it at Thursday's ops meeting.\n\n**重点表达：**\n- `That is classic alert fatigue.` — 这是典型的告警疲劳——误报太多导致值班人员对告警麻木，是运维沟通里的高频判断句\n- `averaged over five minutes` — 按五分钟取平均（移动平均）——用时间窗抑制瞬时尖峰，比单纯提阈值更专业\n- `Raise it as a change request.` — 走变更申请流程提交——任何阈值/逻辑改动都要挂 change request，不能直接改",
-        "category": "运维沟通",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "That is classic alert fatigue.",
-            "zh": "这是典型的告警疲劳——误报太多导致值班人员对告警麻木，是运维沟通里的高频判断句"
-          },
-          {
-            "en": "averaged over five minutes",
-            "zh": "按五分钟取平均（移动平均）——用时间窗抑制瞬时尖峰，比单纯提阈值更专业"
-          },
-          {
-            "en": "Raise it as a change request.",
-            "zh": "走变更申请流程提交——任何阈值/逻辑改动都要挂 change request，不能直接改"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "跨团队协作 · 气体灭火钢瓶更换：停用窗口与误喷风险",
-        "subtitle": "高级 Advanced",
-        "content": "**情境**：B 区 FM-200 钢瓶下月到期需送检，作业期间机房将失去气体灭火保护。需要与安全消防、网络团队一起敲定停用窗口、误喷防护与兜底措施。\n\n**对话：**\n- 小白（运维）：The FM-200 cylinders in hall B are due for hydrostatic testing next month. While they are out, the room has no clean agent suppression.\n- 消防与网络协调人：Then we run under an impairment permit. How long is the cylinder swap?\n- 小白（运维）：Two days if we pull all four. During that window I want the discharge circuit locked out and the abort switch held in, so an accidental discharge cannot take the room down.\n- 消防与网络协调人：Understood. The network team will fail over the critical workloads out of hall B the night before, so a discharge is an availability event, not an outage. What is the fallback if we do get a fire?\n- 小白（运维）：Manual hose reels and a fire watch on site around the clock. We keep the pre-action sprinkler charged but in single interlock, so it only floods on a confirmed second alarm.\n- 消防与网络协调人：Good. Put the impairment window, the fire watch roster and the abort criteria in the MOP, and get safety sign-off before we start.\n\n**重点表达：**\n- `run under an impairment permit` — 在消防设施停用许可下运行——灭火系统退出服役期间的正式合规说法，必须走书面许可\n- `an accidental discharge cannot take the room down` — 误喷不能把整个机房打掉——take ... down 指系统/机房整体失效，跨团队风险沟通的核心句\n- `single interlock` — 单联锁（预作用系统）——需两个独立探测信号才放水，避免误喷淹机房",
-        "category": "跨团队协作",
-        "difficulty": "高级 Advanced",
-        "expressions": [
-          {
-            "en": "run under an impairment permit",
-            "zh": "在消防设施停用许可下运行——灭火系统退出服役期间的正式合规说法，必须走书面许可"
-          },
-          {
-            "en": "an accidental discharge cannot take the room down",
-            "zh": "误喷不能把整个机房打掉——take ... down 指系统/机房整体失效，跨团队风险沟通的核心句"
-          },
-          {
-            "en": "single interlock",
-            "zh": "单联锁（预作用系统）——需两个独立探测信号才放水，避免误喷淹机房"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "容量规划 · 20kW 高密 GPU 机柜落位：电力/制冷/承重三方核算",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：业务方申请在 C 区落 8 个 20kW 的 GPU 机柜。需要同时核对 PDU 备用回路、CRAH 显冷余量、以及高架地板承重，再决定是整批上还是分期上。\n\n**对话：**\n- 小白（运维）：We have a request for eight racks at twenty kilowatts each in hall C. Before I reserve the space, I want to check power, cooling and floor loading together.\n- IT 容量规划同事：Power is fine at the panel, but each rack needs two sixty-three amp feeds and we only have ten spare ways in that PDU.\n- 小白（运维）：Cooling is the tighter limit. The hall has about one hundred and eighty kilowatts of usable sensible capacity left, so eight racks eats most of the cooling headroom in one go.\n- IT 容量规划同事：What about the floor? These are fully populated GPU racks, around thirteen hundred kilos each.\n- 小白（运维）：The raised floor is rated for twelve hundred kilos per rack, so we land them on the slab or add stringers. My suggestion is to phase the build-out: four racks now, four when the CRAH upgrade lands in Q1.\n- IT 容量规划同事：If we only take four now, we strand half the reserved space and pay for cooling we are not using.\n- 小白（运维）：Better stranded capacity than a hot aisle we cannot cool. I will model both cases and bring the numbers to the capacity review.\n\n**重点表达：**\n- `usable sensible capacity` — 可用显冷量——机房真正能吃掉的显热余量，容量核算时比名义制冷量更有意义\n- `stranded capacity` — 已预留但未投产的搁浅容量——容量规划经典概念，指占了空间/电力却没产生算力\n- `phase the build-out` — 分期建设、分批投产——把一次性满载拆成多期，给制冷改造留出窗口",
-        "category": "容量规划",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "usable sensible capacity",
-            "zh": "可用显冷量——机房真正能吃掉的显热余量，容量核算时比名义制冷量更有意义"
-          },
-          {
-            "en": "stranded capacity",
-            "zh": "已预留但未投产的搁浅容量——容量规划经典概念，指占了空间/电力却没产生算力"
-          },
-          {
-            "en": "phase the build-out",
-            "zh": "分期建设、分批投产——把一次性满载拆成多期，给制冷改造留出窗口"
           }
         ]
       }
