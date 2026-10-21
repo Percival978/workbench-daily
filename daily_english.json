@@ -1,5 +1,179 @@
 [
   {
+    "date": "2026-10-21",
+    "generatedAt": "2026-10-21T23:17:38+08:00",
+    "cycleDay": 1,
+    "difficulty": "基础 Basic",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "日常工作 · 早班巡检发现 CDU 二次侧膨胀罐液位持续下降",
+        "subtitle": "基础 Basic",
+        "content": "**情境**：早班接班抄表，你发现 3 号 CDU 二次侧膨胀罐液位三天里掉了 5%，补液泵启停次数明显变多，但机房地面和漏液检测绳都没有报警。你要判断：这是管路里残余气体还在慢慢排完的正常现象，还是有一处极其缓慢的微渗。\n\n**对话：**\n- Dave: Morning. Three CDUs running, no alarms overnight. The only thing I would flag is the expansion tank on unit three.\n- 小白: How much has it moved?\n- Dave: Down about five percent over three days, and the make-up pump is cycling maybe four times a shift. Nothing on the leak detection rope, nothing on the floor.\n- 小白: Let us not call it a leak yet. We refilled that loop nine days ago, and a secondary side this size can hold air for a week or more. Trapped gas works its way to the high points, the level drops, and it looks exactly like a slow loss. What I want is the trend, not the snapshot.\n- Dave: So what do you want to log?\n- 小白: Level, make-up count, and secondary supply pressure, same time every shift, for three days. If it is residual air, the loss rate flattens and then stops. If it is a weep somewhere, the rate holds steady or gets worse, and pressure will start to sag between make-up cycles.\n- Dave: And if it is a weep?\n- 小白: Then we find it before it announces itself. A seep at a fitting under insulation stays invisible for months, and the first sign is usually corrosion on a rack base or a CDU that trips on low level during a weekend. I would rather spend an afternoon with a torch and a mirror.\n- Dave: Fair. I will leave the numbers on the board.\n- 小白: Log it as an observation for now, not a defect. If the trend does not flatten by Thursday I will raise a corrective work order and get the vendor out with the loop under pressure.\n\n**重点表达：**\n- `Let us not call it a leak yet.` — 先别急着定性为泄漏——巡检判断的开场\n- `A secondary side this size can hold air for a week or more.` — 这么大的二次侧系统，气体可以滞留一周以上\n- `Trapped gas works its way to the high points.` — 滞留气体会慢慢汇集到系统高点\n- `What I want is the trend, not the snapshot.` — 我要看的是趋势，不是某个瞬时值\n- `If it is residual air, the loss rate flattens and then stops.` — 若是残余气体，泄漏速率会趋平后停止\n- `Pressure will start to sag between make-up cycles.` — 补液间隔之间压力会开始往下掉\n- `A seep under insulation stays invisible for months.` — 保温层下的微渗可以隐身好几个月\n- `Log it as an observation for now, not a defect.` — 先记为观察项，不要记成缺陷\n- `I will raise a corrective work order.` — 我会开一张整改工单\n- `Get the vendor out with the loop under pressure.` — 让供应商带压状态下到场检查",
+        "category": "日常工作",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "Let us not call it a leak yet.",
+            "zh": "先别急着定性为泄漏——巡检判断的开场"
+          },
+          {
+            "en": "A secondary side this size can hold air for a week or more.",
+            "zh": "这么大的二次侧系统，气体可以滞留一周以上"
+          },
+          {
+            "en": "Trapped gas works its way to the high points.",
+            "zh": "滞留气体会慢慢汇集到系统高点"
+          },
+          {
+            "en": "What I want is the trend, not the snapshot.",
+            "zh": "我要看的是趋势，不是某个瞬时值"
+          },
+          {
+            "en": "If it is residual air, the loss rate flattens and then stops.",
+            "zh": "若是残余气体，泄漏速率会趋平后停止"
+          },
+          {
+            "en": "Pressure will start to sag between make-up cycles.",
+            "zh": "补液间隔之间压力会开始往下掉"
+          },
+          {
+            "en": "A seep under insulation stays invisible for months.",
+            "zh": "保温层下的微渗可以隐身好几个月"
+          },
+          {
+            "en": "Log it as an observation for now, not a defect.",
+            "zh": "先记为观察项，不要记成缺陷"
+          },
+          {
+            "en": "I will raise a corrective work order.",
+            "zh": "我会开一张整改工单"
+          },
+          {
+            "en": "Get the vendor out with the loop under pressure.",
+            "zh": "让供应商带压状态下到场检查"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "故障排查 · 同排单机柜 CPU 温度高出 12℃：流量正常，问题在接触面",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：机房 B 排 7 号机柜的 CPU 温度比同排其他机柜高 12℃，GPU 已经开始降频，训练任务时延明显拉长。但 CDU 显示该支路流量、供液温度都正常，泵组 failover 测试上周也通过了。你要在不宕机的前提下，把问题定位到冷板与芯片之间的那层接触界面。\n\n**对话：**\n- Sarah: Rack B7 is running twelve degrees hotter than its neighbours. Same CDU, same loop, same setpoint. The GPUs have started throttling and job latency is up about thirty percent.\n- 小白: Is the branch flow holding?\n- Sarah: Yes. Flow is on setpoint, supply temperature is on setpoint, and the pump failover test passed last week. That is why it is on your desk and not the network team's.\n- 小白: Then we are not short of cold, we are short of contact. The loop is doing its job and the heat is still sitting on the die. If flow and supply are both correct and the chip is hot, the resistance is between the die and the coolant, and that means the cold plate mount or the interface layer.\n- Sarah: You think it is the thermal paste?\n- 小白: I think it is the bond line, which is not the same thing. Too much material, uneven torque, or a plate that is sitting slightly proud on one corner all leave a gap that no amount of extra flow will close. And it will not show up as an alarm, because every sensor upstream of the die is reading happy.\n- Sarah: So how do we prove it without taking the rack down?\n- 小白: Compare like with like. Pull the inlet and outlet temperatures on B7 and on B6 next to it, at the same load, and work out the rise across each cold plate. If B7 is moving less heat with the same flow, its rise is lower and the die is hotter. That gap is the bond line talking.\n- Sarah: And then?\n- 小白: Then it is a scheduled intervention, not an emergency. We drain that branch, pull the plate, check the torque sequence against the manual, and re-do the interface. I would rather book it in a maintenance window than let a throttled GPU turn into a killed job in the middle of a training run.\n- Sarah: How long can it run like this?\n- 小白: It is degraded, not dangerous. Uptime is not at risk yet, but we are spending capacity we already paid for: the plant has the cooling, the CDU has the flow, and we are still losing compute to a two-millimetre gap. Book it this week.\n\n**重点表达：**\n- `Rack B7 is running twelve degrees hotter than its neighbours.` — B7 机柜比同排高 12 度——用对比句描述异常\n- `The branch flow is holding.` — 支路流量保持稳定\n- `We are not short of cold, we are short of contact.` — 我们不缺冷量，缺的是接触\n- `The heat is still sitting on the die.` — 热量还压在芯片上没能带走\n- `The resistance is between the die and the coolant.` — 热阻出现在芯片到冷却液之间\n- `It is the bond line, which is not the same thing.` — 问题是界面层厚度，这跟导热硅脂不是一回事\n- `A plate sitting slightly proud on one corner.` — 冷板某一角略微翘起没压平\n- `No amount of extra flow will close that gap.` — 再加多少流量也补不上这个间隙\n- `Work out the rise across each cold plate.` — 算出每块冷板的温升\n- `It is a scheduled intervention, not an emergency.` — 这是计划性检修，不是紧急抢修\n- `It is degraded, not dangerous.` — 属于性能劣化，还没到危险程度\n- `We are losing compute to a two-millimetre gap.` — 我们正为两毫米的间隙丢算力",
+        "category": "故障排查",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "Rack B7 is running twelve degrees hotter than its neighbours.",
+            "zh": "B7 机柜比同排高 12 度——用对比句描述异常"
+          },
+          {
+            "en": "The branch flow is holding.",
+            "zh": "支路流量保持稳定"
+          },
+          {
+            "en": "We are not short of cold, we are short of contact.",
+            "zh": "我们不缺冷量，缺的是接触"
+          },
+          {
+            "en": "The heat is still sitting on the die.",
+            "zh": "热量还压在芯片上没能带走"
+          },
+          {
+            "en": "The resistance is between the die and the coolant.",
+            "zh": "热阻出现在芯片到冷却液之间"
+          },
+          {
+            "en": "It is the bond line, which is not the same thing.",
+            "zh": "问题是界面层厚度，这跟导热硅脂不是一回事"
+          },
+          {
+            "en": "A plate sitting slightly proud on one corner.",
+            "zh": "冷板某一角略微翘起没压平"
+          },
+          {
+            "en": "No amount of extra flow will close that gap.",
+            "zh": "再加多少流量也补不上这个间隙"
+          },
+          {
+            "en": "Work out the rise across each cold plate.",
+            "zh": "算出每块冷板的温升"
+          },
+          {
+            "en": "It is a scheduled intervention, not an emergency.",
+            "zh": "这是计划性检修，不是紧急抢修"
+          },
+          {
+            "en": "It is degraded, not dangerous.",
+            "zh": "属于性能劣化，还没到危险程度"
+          },
+          {
+            "en": "We are losing compute to a two-millimetre gap.",
+            "zh": "我们正为两毫米的间隙丢算力"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "供应商对接 · UQD 快接头采购：样品、插拔寿命、压降与阶梯价",
+        "subtitle": "基础 Basic",
+        "content": "**情境**：二期液冷模组要补一批 UQD 快接头（drip-less quick-disconnect），用于冷板支路与 manifold 的连接。你手上只有单价和交期，还缺三样东西：样品实测的压降、断路插拔寿命与质保口径、以及批量阶梯价和质保起算点。你要在一通电话里把这些谈清楚。\n\n**对话：**\n- Kevin: Thanks for coming back to me. I can hold the quoted price for thirty days and standard lead time is eight weeks.\n- 小白: Eight weeks is the part I am stuck on. Before I take a price to my manager, I need three things in writing: a sample set I can test, the rated mating cycles, and the pressure drop at our design flow.\n- Kevin: Mating cycles are five hundred, and I can send samples this week. Pressure drop is in the datasheet, figure three.\n- 小白: Figure three is at a flow rate that is not mine. I want the curve at our design flow, which is roughly forty percent lower, and I want it measured with our fluid, not water. Glycol at twenty-five percent moves very differently through a restriction, and a number taken with water in a lab will not survive my first winter.\n- Kevin: Understood, I will get the curve redrawn. What about the warranty?\n- 小白: That is the part that decides the order. Warranty starts from site acceptance, not from shipment, and it has to cover loss of coolant from a failed seal, not just the two dollars of machined brass. If a coupler weeps and it takes out a rack, the part is the cheapest thing in the room.\n- Kevin: I will need to confirm that with our legal team. Anything else?\n- 小白: Price breaks. Give me three tiers, at twenty-five, fifty and one hundred units, and hold the top tier for the full project. And I want the samples on the same part number and the same production line as the bulk order. A golden sample that came off a different tool tells me nothing.\n- Kevin: That is reasonable. I will send the revised quotation by Friday.\n- 小白: Send it with the test curve and the warranty wording, and I will sign it next week. Without those two attachments it is just a price list, and I cannot take a price list to a change board.\n\n**重点表达：**\n- `I can hold the quoted price for thirty days.` — 报价可保留 30 天\n- `Standard lead time is eight weeks.` — 标准交期 8 周\n- `I need three things in writing.` — 我需要三样东西落实在书面\n- `Rated mating cycles are five hundred.` — 额定插拔寿命 500 次\n- `Figure three is at a flow rate that is not mine.` — 图表三用的是跟我不同的流量工况\n- `Measured with our fluid, not water.` — 要用我们的介质实测，而不是水\n- `A number taken with water in a lab will not survive my first winter.` — 实验室用水测出的数字撑不过我的第一个冬天\n- `Warranty starts from site acceptance, not from shipment.` — 质保从现场验收起算，不是发货\n- `It has to cover loss of coolant from a failed seal.` — 质保要覆盖密封失效导致的冷却液损失\n- `The part is the cheapest thing in the room.` — 零件是整个房间里最便宜的东西——谈责任的常用句\n- `Give me three tiers, at twenty-five, fifty and one hundred units.` — 给我三档阶梯价：25/50/100 件\n- `A golden sample off a different tool tells me nothing.` — 换了产线做出来的完美样品毫无意义",
+        "category": "供应商对接",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "I can hold the quoted price for thirty days.",
+            "zh": "报价可保留 30 天"
+          },
+          {
+            "en": "Standard lead time is eight weeks.",
+            "zh": "标准交期 8 周"
+          },
+          {
+            "en": "I need three things in writing.",
+            "zh": "我需要三样东西落实在书面"
+          },
+          {
+            "en": "Rated mating cycles are five hundred.",
+            "zh": "额定插拔寿命 500 次"
+          },
+          {
+            "en": "Figure three is at a flow rate that is not mine.",
+            "zh": "图表三用的是跟我不同的流量工况"
+          },
+          {
+            "en": "Measured with our fluid, not water.",
+            "zh": "要用我们的介质实测，而不是水"
+          },
+          {
+            "en": "A number taken with water in a lab will not survive my first winter.",
+            "zh": "实验室用水测出的数字撑不过我的第一个冬天"
+          },
+          {
+            "en": "Warranty starts from site acceptance, not from shipment.",
+            "zh": "质保从现场验收起算，不是发货"
+          },
+          {
+            "en": "It has to cover loss of coolant from a failed seal.",
+            "zh": "质保要覆盖密封失效导致的冷却液损失"
+          },
+          {
+            "en": "The part is the cheapest thing in the room.",
+            "zh": "零件是整个房间里最便宜的东西——谈责任的常用句"
+          },
+          {
+            "en": "Give me three tiers, at twenty-five, fifty and one hundred units.",
+            "zh": "给我三档阶梯价：25/50/100 件"
+          },
+          {
+            "en": "A golden sample off a different tool tells me nothing.",
+            "zh": "换了产线做出来的完美样品毫无意义"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-20",
     "generatedAt": "2026-10-20T23:21:20+08:00",
     "cycleDay": 4,
@@ -1500,80 +1674,6 @@
           {
             "en": "I would rather phase it.",
             "zh": "我倾向分期实施——phase 作动词指分阶段落地；给 IT 排期时比 we can not do it all 更好接受"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-07",
-    "generatedAt": "2026-10-07T23:20:00+08:00",
-    "cycleDay": 3,
-    "difficulty": "高级 Advanced",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "日常工作 · 上架前场地核对：Row 12 新增四个机柜",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：IT 明天要在 Row 12 落四个新机柜，落位前需要暖通到现场核对机位、供电与冷量余量、冷热通道完整性，并在 checklist 上签字放行。\n\n**对话：**\n- Dan: We are dropping four new racks in Row 12 tomorrow. Can you walk the floor with me and sign off on the slots?\n- 小白: Sure. Let me pull the capacity sheet first. What is the per-rack draw on those?\n- Dan: Around eight kilowatts each, and they will be face-to-face inside the hot aisle containment.\n- 小白: Then we are fine on cooling. Row 12 still has headroom. But I need a blanking panel in every empty U before you energise. Open slots kill the hot and cold aisle separation.\n- Dan: Understood. Anything else on your checklist?\n- 小白: Yes. Confirm the floor tiles in front of each rack are perforated, not solid, and that the front and rear labels match the asset tags on the work order.\n\n**重点表达：**\n- `walk the floor` — 到机房现场走一圈实地核对——不是看图纸，是到现场逐项确认，验收前的标准动作\n- `Row 12 still has headroom.` — Row 12 还有余量——headroom 专指系统剩余可用余量，比 we have enough 更地道\n- `sign off on the slots` — 在机位上签字放行——sign off on 表示验收确认并承担责任，改动/交付场景高频",
-        "category": "日常工作",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "walk the floor",
-            "zh": "到机房现场走一圈实地核对——不是看图纸，是到现场逐项确认，验收前的标准动作"
-          },
-          {
-            "en": "Row 12 still has headroom.",
-            "zh": "Row 12 还有余量——headroom 专指系统剩余可用余量，比 we have enough 更地道"
-          },
-          {
-            "en": "sign off on the slots",
-            "zh": "在机位上签字放行——sign off on 表示验收确认并承担责任，改动/交付场景高频"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "故障排查 · 冷机群控加卸载震荡：供水温度来回摆动",
-        "subtitle": "高级 Advanced",
-        "content": "**情境**：冷冻水供水温度整个下午在 7.5 到 10 摄氏度之间来回摆动，两台冷机反复加载卸载，已经有一次波动触发了 CRAH 高温告警，需要定位根因并安排整改。\n\n**对话：**\n- 小白: Kate, chilled water supply has been swinging between seven point five and ten degrees all afternoon.\n- Kate: So the chillers are staging in and out again.\n- 小白: Right. The sequencer loads the second chiller, the loop over-cools, it unloads, and the whole cycle repeats every twelve minutes. Two CRAHs tripped a high inlet alarm during the last swing.\n- Kate: Classic hunting. Where does the RCA land?\n- 小白: On the staging setpoints. The load and unload thresholds sit only zero point three degrees apart, so there is effectively no deadband. I will widen it and extend the minimum run timer.\n- Kate: Do it inside the change window, and put the failover plan in the ticket first. One more swing like that and we are risking uptime.\n\n**重点表达：**\n- `The chillers are staging in and out.` — 冷机在反复加载卸载——stage 作动词指群控按负荷逐台投入/退出，比 start and stop 专业得多\n- `Where does the RCA land?` — 根因定位到哪儿了？——RCA = root cause analysis；land on 表示结论最终落在某个点上，汇报时的常用问法\n- `there is effectively no deadband` — 实际上等于没有回差/死区——deadband 指动作阈值之间的缓冲带，控制类故障排查的核心词",
-        "category": "故障排查",
-        "difficulty": "高级 Advanced",
-        "expressions": [
-          {
-            "en": "The chillers are staging in and out.",
-            "zh": "冷机在反复加载卸载——stage 作动词指群控按负荷逐台投入/退出，比 start and stop 专业得多"
-          },
-          {
-            "en": "Where does the RCA land?",
-            "zh": "根因定位到哪儿了？——RCA = root cause analysis；land on 表示结论最终落在某个点上，汇报时的常用问法"
-          },
-          {
-            "en": "there is effectively no deadband",
-            "zh": "实际上等于没有回差/死区——deadband 指动作阈值之间的缓冲带，控制类故障排查的核心词"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "供应商对接 · 开机调试与质保起算：变更前的尾项清单",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：新冷机安装进入收尾，厂商想尽快安排开机调试（commissioning）并起算质保期，需先关闭尾项清单，并谈清质保期内更换件的保修延展与缺失部件的到货周期。\n\n**对话：**\n- 小白: Before we lock in the commissioning date, I need the punch list from the install closed out.\n- Marco: Two items are still open. The flow meter and the BMS point mapping.\n- 小白: Then let us hold the witness test. I would rather start the warranty clock after those are cleared.\n- Marco: Fair. Once the TAB report is signed, the twelve-month warranty starts.\n- 小白: And I want it in writing that any replacement part shipped under warranty carries a fresh twelve months. We had a control board fail in month eleven last year.\n- Marco: Noted. I will send the revised terms along with the lead time for the flow meter. It is three weeks.\n\n**重点表达：**\n- `the punch list from the install` — 安装遗留的尾项清单——punch list 是工程收尾的待整改项清单，不闭环就不该进调试\n- `start the warranty clock` — 质保期开始计时——把「起算」说成 clock 很地道，谈判里要争的就是这个起算节点\n- `I want it in writing.` — 这条我要落到纸面上——口头承诺不生效，合同条款谈判里的硬句",
-        "category": "供应商对接",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "the punch list from the install",
-            "zh": "安装遗留的尾项清单——punch list 是工程收尾的待整改项清单，不闭环就不该进调试"
-          },
-          {
-            "en": "start the warranty clock",
-            "zh": "质保期开始计时——把「起算」说成 clock 很地道，谈判里要争的就是这个起算节点"
-          },
-          {
-            "en": "I want it in writing.",
-            "zh": "这条我要落到纸面上——口头承诺不生效，合同条款谈判里的硬句"
           }
         ]
       }
