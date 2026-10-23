@@ -1,5 +1,187 @@
 [
   {
+    "date": "2026-10-23",
+    "generatedAt": "2026-10-23T23:17:27+08:00",
+    "cycleDay": 3,
+    "difficulty": "高级 Advanced",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "日常工作 · 红外巡检发现冷板进出液接反：流量正常，温度符号却是反的",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：液冷区月度红外巡检，你照例拿着红外枪沿 C 排走一遍。走到 C7 机柜时读数不对劲：本该更凉的供液支管，测出来比回液支管还热了两度多。DCIM 上这台机柜一切正常——支路流量在设定值、CDU 无告警。你要向值班主管说明这是冷板进出液在 manifold 处接反了，并推动同批次机柜全量排查。\n\n**对话：**\n- Dan: Anything worth writing up from the walk-down?\n- 小白: One, and the dashboard would never have caught it. On rack C7 the supply branch is reading warmer than the return by about two degrees.\n- Dan: Swap the probes?\n- 小白: No, I checked with the gun twice and against the neighbouring rack. The sign is flipped. Cold plates are directional — flow enters at the inlet port and picks up heat on the way out. Piped backwards, the plate still passes its full flow, so branch flow sits right on setpoint and the CDU sees nothing wrong. It just stops moving heat the way the datasheet promised.\n- Dan: So the cabinet is being cooled, just badly.\n- 小白: Degraded quietly instead of tripping, which is worse for us. The GPU inlet is running eight degrees hotter than its neighbours at the same load, and it will throttle on the next training run. Nothing in our alarming would have told you, because we alarm on flow and on supply temperature, not on the sign of the delta across a single cold plate.\n- Dan: Fix it now or at the next window?\n- 小白: Now, but properly. Lock out and isolate the branch, break the two couplings, swap them, then re-verify with the gun before I walk away — same load point, five minutes apart, and I want to see the sign flip back. If I just swap and leave, I have traded one assumption for another.\n- Dan: And the rest of the row?\n- 小白: Every cabinet in that batch, all twenty-four. Whatever let this one go backwards at the manifold is mechanical, not bad luck: either the couplings are not keyed and someone crossed them, or the whole batch was piped from the same drawing error. I am not closing this work order until I have twenty-four readings in the log.\n- Dan: Get photos.\n- 小白: Already on it — before, during and after, tagged against the work order number. The lesson for the team is simple: walk the row with the gun, not with the dashboard. A control screen will happily show you a healthy loop that is running backwards.\n\n**重点表达：**\n- `The supply branch is reading warmer than the return.` — 供液支管测出来比回液支管还热\n- `The sign is flipped.` — 符号反了——指温差正负号\n- `Cold plates are directional.` — 冷板是有方向性的\n- `Branch flow sits right on setpoint.` — 支路流量稳稳落在设定值上\n- `The CDU sees nothing wrong.` — CDU 看不出任何异常\n- `It degrades quietly instead of tripping.` — 它是悄悄劣化，而不是直接跳机告警\n- `We alarm on flow, not on the sign of the delta.` — 我们告的是流量，不是温差的正负号\n- `Lock out and isolate the branch.` — 上锁并隔离该支路\n- `Re-verify with the gun before I walk away.` — 走人之前再用红外枪复核一遍\n- `Same load point, five minutes apart.` — 同一负荷点，间隔五分钟再测一次\n- `Tagged against the work order number.` — 按工单号做好标记记录\n- `Walk the row with the gun, not with the dashboard.` — 拿着红外枪巡一遍，而不是盯着仪表盘",
+        "category": "日常工作",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "The supply branch is reading warmer than the return.",
+            "zh": "供液支管测出来比回液支管还热"
+          },
+          {
+            "en": "The sign is flipped.",
+            "zh": "符号反了——指温差正负号"
+          },
+          {
+            "en": "Cold plates are directional.",
+            "zh": "冷板是有方向性的"
+          },
+          {
+            "en": "Branch flow sits right on setpoint.",
+            "zh": "支路流量稳稳落在设定值上"
+          },
+          {
+            "en": "The CDU sees nothing wrong.",
+            "zh": "CDU 看不出任何异常"
+          },
+          {
+            "en": "It degrades quietly instead of tripping.",
+            "zh": "它是悄悄劣化，而不是直接跳机告警"
+          },
+          {
+            "en": "We alarm on flow, not on the sign of the delta.",
+            "zh": "我们告的是流量，不是温差的正负号"
+          },
+          {
+            "en": "Lock out and isolate the branch.",
+            "zh": "上锁并隔离该支路"
+          },
+          {
+            "en": "Re-verify with the gun before I walk away.",
+            "zh": "走人之前再用红外枪复核一遍"
+          },
+          {
+            "en": "Same load point, five minutes apart.",
+            "zh": "同一负荷点，间隔五分钟再测一次"
+          },
+          {
+            "en": "Tagged against the work order number.",
+            "zh": "按工单号做好标记记录"
+          },
+          {
+            "en": "Walk the row with the gun, not with the dashboard.",
+            "zh": "拿着红外枪巡一遍，而不是盯着仪表盘"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "故障排查 · 趋势图风平浪静，GPU 却周期性降频：采样率把振荡抹平了",
+        "subtitle": "高级 Advanced",
+        "content": "**情境**：C 排 GPU 节点连续三晚出现 inlet 高温降频，但 DCIM 上二次侧供液温度一周都是一条 30℃ 的直线。你怀疑真正的振荡被趋势的平均算法抹掉了，于是拉了一秒级原始数据和监控负责人一起做 RCA：CDU 三通阀 hunting、温度探头位置离板换太近，而前阵子那次漂亮的冗余切换反而把根因藏了起来。\n\n**对话：**\n- Sarah: Nodes in row C have throttled three nights running, but the coolant trend has been flat at thirty all week. What am I missing?\n- 小白: Nothing in the data — a problem in how we store it. That trend is a five-minute mean. The oscillation has a period of about forty seconds, so a five-minute average turns a two-and-a-half Kelvin sawtooth into a perfectly straight line.\n- Sarah: Two and a half Kelvin swing? That would show up somewhere.\n- 小白: It shows up in the raw one-second points I pulled off the controller, and it shows up as throttling on the nodes — which is exactly what we have been treating as an IT problem. You are not missing data, Sarah. You are looking at a smoothed version of it.\n- Sarah: What is driving it?\n- 小白: CDU two's three-way valve is hunting. The temperature probe sits too close to the plate exchanger, so it reads the mixed stream before the loop actually responds. The controller sees a lag, opens the valve, overshoots, corrects, and the amplitude grows as load drops — classic loop oscillation, not a capacity problem.\n- Sarah: Why now, though? Nothing changed on the plant side.\n- 小白: Two things moved at once. We lowered secondary supply from thirty-two to thirty, which pushed the valve into a narrower, far more sensitive band of its stroke. And last week's pump failover landed right in the middle of the first swing, so everyone wrote the incident off as a changeover transient.\n- Sarah: The failover was clean.\n- 小白: Textbook — four seconds latency, no node dropped, nothing to report. And that is exactly how it cost us two weeks. The redundancy did its job and hid the root cause. A clean failover tells you the backup works; it does not tell you why the primary was unhappy. We closed the incident on the wrong question.\n- Sarah: So what do we change?\n- 小白: Three fixes. Move the probe downstream so the controller sees what the racks see. Retune the loop with a wider deadband and a slower integral action. And change the trend server to store one-second data for that point with min and max, not just average — if we only keep means, we will keep missing every oscillation we have not thought to look for. Then we re-run a load step from thirty to seventy percent and watch it on the one-second trace.\n\n**重点表达：**\n- `The trend is a five-minute mean.` — 这条趋势是五分钟均值\n- `A five-minute average turns the sawtooth into a straight line.` — 五分钟平均把锯齿波抹成了一条直线\n- `You are not missing data; you are looking at a smoothed version of it.` — 你不是缺数据，你看的是被平滑过的版本\n- `The three-way valve is hunting.` — 三通阀在反复调节振荡\n- `It reads the mixed stream before the loop responds.` — 它在回路真正响应前读到的是混合后的流体\n- `It opens, overshoots, corrects.` — 开大、超调、再回调\n- `The amplitude grows as load drops.` — 负荷越低，振幅越大\n- `A narrower, far more sensitive band of its stroke.` — 行程中更窄也更敏感的一段\n- `Everyone wrote the incident off as a changeover transient.` — 大家都把它当作切换扰动一笔带过\n- `The redundancy did its job and hid the root cause.` — 冗余起作用了，却把根因藏了起来\n- `Failover latency was four seconds, textbook.` — 切换时延四秒，教科书级别\n- `Store one-second data with min and max, not just average.` — 存一秒级数据并保留最小最大值，不能只存均值",
+        "category": "故障排查",
+        "difficulty": "高级 Advanced",
+        "expressions": [
+          {
+            "en": "The trend is a five-minute mean.",
+            "zh": "这条趋势是五分钟均值"
+          },
+          {
+            "en": "A five-minute average turns the sawtooth into a straight line.",
+            "zh": "五分钟平均把锯齿波抹成了一条直线"
+          },
+          {
+            "en": "You are not missing data; you are looking at a smoothed version of it.",
+            "zh": "你不是缺数据，你看的是被平滑过的版本"
+          },
+          {
+            "en": "The three-way valve is hunting.",
+            "zh": "三通阀在反复调节振荡"
+          },
+          {
+            "en": "It reads the mixed stream before the loop responds.",
+            "zh": "它在回路真正响应前读到的是混合后的流体"
+          },
+          {
+            "en": "It opens, overshoots, corrects.",
+            "zh": "开大、超调、再回调"
+          },
+          {
+            "en": "The amplitude grows as load drops.",
+            "zh": "负荷越低，振幅越大"
+          },
+          {
+            "en": "A narrower, far more sensitive band of its stroke.",
+            "zh": "行程中更窄也更敏感的一段"
+          },
+          {
+            "en": "Everyone wrote the incident off as a changeover transient.",
+            "zh": "大家都把它当作切换扰动一笔带过"
+          },
+          {
+            "en": "The redundancy did its job and hid the root cause.",
+            "zh": "冗余起作用了，却把根因藏了起来"
+          },
+          {
+            "en": "Failover latency was four seconds, textbook.",
+            "zh": "切换时延四秒，教科书级别"
+          },
+          {
+            "en": "Store one-second data with min and max, not just average.",
+            "zh": "存一秒级数据并保留最小最大值，不能只存均值"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "供应商对接 · CDU 现场验收测试谈判：把 30% 部分负荷和掉电工况写进测试矩阵",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：二期两台 CDU 到货，供应商的标准 SAT 方案只有一条：满载连续运行 4 小时，签字后质保起算。你要把 30% 部分负荷、泵 failover 计时、带载掉电恢复和漏液检测联动写进测试矩阵，并把尾项整改时限、10% 尾款释放节点和质保范围谈清楚。\n\n**对话：**\n- Weber: Our standard SAT is four hours at full load. We sign the sheet and the warranty clock starts.\n- 小白: We do not run at full load on day one. This zone fills over three quarters, so what I need proven is thirty percent, not one hundred.\n- Weber: Thirty percent is where every unit looks good.\n- 小白: Thirty percent is where every unit gets sloppy. That is where the three-way valve sits at the sensitive end of its stroke and the pumps ride the left side of their curve. Hold secondary supply within plus or minus half a Kelvin at thirty percent for two hours, and I will believe the rest of the range without testing every point on it.\n- Weber: And the power-failure test? That is not in scope.\n- 小白: It is now. I want a loaded dropout: pumps and controls on UPS, three minutes down, then restore — and I want to see the loop come back without a manual reset and without a single node seeing an inlet spike. I also want a pump failover with a stopwatch on it. Your spec says ten seconds; I want the number on the sheet, not the number in the brochure.\n- Weber: All of that moves the schedule by a week.\n- 小白: Then we move it. Here is the trade: you keep your four-hour full-load run, and we add partial load, failover and dropout tests around it. In exchange, punch list items get a ten-working-day close-out, and anything that touches cooling capacity gets fixed before we sign, not after. Final ten percent of payment releases on SAT sign-off, not on delivery.\n- Weber: Warranty starts at sign-off, then?\n- 小白: Warranty starts at SAT sign-off — and it covers the leak-detection interlock and the control logic, not just the steel and the plate pack. If we find a control bug in month thirteen, I do not want to be arguing about whether software is hardware.\n- Weber: Our legal team will push back on control logic.\n- 小白: Mine will push back on a unit that passed a four-hour test and then could not hold temperature at part load. We are not asking for more than the machine claims to do. We are asking you to demonstrate it on our load profile, on our clock, with a witness from our side and a copy of the raw data — not a summary report written after the fact.\n\n**重点表达：**\n- `Our standard SAT is four hours at full load.` — 我们的标准 SAT 是满载四小时\n- `The warranty clock starts at sign-off.` — 质保期从验收签字起算\n- `Thirty percent is where every unit gets sloppy.` — 30% 负荷才是各台机组露馅的地方\n- `The sensitive end of its stroke.` — 行程中最敏感的一端\n- `The pumps ride the left side of their curve.` — 水泵工作在曲线的左端\n- `Within plus or minus half a Kelvin.` — 控制在正负 0.5K 以内\n- `A loaded dropout test.` — 带载掉电测试\n- `Come back without a manual reset.` — 无需人工复位即可自行恢复\n- `I want the number on the sheet, not the number in the brochure.` — 我要的是记录表上的数字，不是样本册上的数字\n- `Punch list items get a ten-working-day close-out.` — 尾项清单十个工作日内关闭\n- `Anything that touches cooling capacity gets fixed before we sign.` — 凡涉及制冷能力的，签字前必须整改完\n- `Final ten percent releases on SAT sign-off, not on delivery.` — 最后 10% 尾款在 SAT 签字后释放，不是到货即付",
+        "category": "供应商对接",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "Our standard SAT is four hours at full load.",
+            "zh": "我们的标准 SAT 是满载四小时"
+          },
+          {
+            "en": "The warranty clock starts at sign-off.",
+            "zh": "质保期从验收签字起算"
+          },
+          {
+            "en": "Thirty percent is where every unit gets sloppy.",
+            "zh": "30% 负荷才是各台机组露馅的地方"
+          },
+          {
+            "en": "The sensitive end of its stroke.",
+            "zh": "行程中最敏感的一端"
+          },
+          {
+            "en": "The pumps ride the left side of their curve.",
+            "zh": "水泵工作在曲线的左端"
+          },
+          {
+            "en": "Within plus or minus half a Kelvin.",
+            "zh": "控制在正负 0.5K 以内"
+          },
+          {
+            "en": "A loaded dropout test.",
+            "zh": "带载掉电测试"
+          },
+          {
+            "en": "Come back without a manual reset.",
+            "zh": "无需人工复位即可自行恢复"
+          },
+          {
+            "en": "I want the number on the sheet, not the number in the brochure.",
+            "zh": "我要的是记录表上的数字，不是样本册上的数字"
+          },
+          {
+            "en": "Punch list items get a ten-working-day close-out.",
+            "zh": "尾项清单十个工作日内关闭"
+          },
+          {
+            "en": "Anything that touches cooling capacity gets fixed before we sign.",
+            "zh": "凡涉及制冷能力的，签字前必须整改完"
+          },
+          {
+            "en": "Final ten percent releases on SAT sign-off, not on delivery.",
+            "zh": "最后 10% 尾款在 SAT 签字后释放，不是到货即付"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-22",
     "generatedAt": "2026-10-22T23:20:24+08:00",
     "cycleDay": 2,
@@ -1708,80 +1890,6 @@
           {
             "en": "Make containment a prerequisite in the rack request.",
             "zh": "把通道封闭写进机柜申请的前置条件——prerequisite 比 requirement 更强调「先做完这个才受理」"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-09",
-    "generatedAt": "2026-10-09T23:20:00+08:00",
-    "cycleDay": 1,
-    "difficulty": "基础 Basic",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "日常工作 · 巡检发现冷通道顶部串风：临时挡风与整改工单",
-        "subtitle": "基础 Basic",
-        "content": "**情境**：早班巡检走到 B 区 Row 14，红外测温枪显示机柜顶部进风 29℃、底部 22℃，同一列差 7 度；CRAH 出风 18℃ 且远未满载，判断不是制冷量不够，而是热通道气流从机柜顶部短路回流，需要当天做临时封堵并开整改工单闭环。\n\n**对话：**\n- 小白: Leo, I did the morning walk-through in Zone B. Row fourteen has warm air spilling over the top of the racks. Top inlet reads twenty-nine degrees, bottom reads twenty-two.\n- Leo: Is the CRAH struggling, or is it an airflow problem?\n- 小白: It is bypass air, not a capacity problem. Supply air is eighteen degrees and the unit is nowhere near full load. The hot aisle is short-circuiting back over the cabinets because the row ends are not capped and there is a two-U gap above the patch panel.\n- Leo: Can you fix it today, or do we need parts?\n- 小白: I can fix it today. I will fit blanking panels and a brush strip, then re-shoot the rack inlet with the IR gun and log the readings in the work order.\n- Leo: Good. Raise a corrective work order for the row-end doors too, so this does not come back on the next audit.\n\n**重点表达：**\n- `The hot aisle is short-circuiting back over the cabinets.` — 热通道的气流从机柜上方短路回流了——short-circuit 在气流里指「短路/串风」，比 hot air comes back 更专业\n- `It is bypass air, not a capacity problem.` — 这是旁通串风，不是制冷量不够——先定性是 airflow 还是 capacity，是巡检汇报的第一句话\n- `Raise a corrective work order.` — 开一张整改工单——raise 比 create 更地道；corrective 强调「纠正/根治」，区别于 routine 例行工单",
-        "category": "日常工作",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "The hot aisle is short-circuiting back over the cabinets.",
-            "zh": "热通道的气流从机柜上方短路回流了——short-circuit 在气流里指「短路/串风」，比 hot air comes back 更专业"
-          },
-          {
-            "en": "It is bypass air, not a capacity problem.",
-            "zh": "这是旁通串风，不是制冷量不够——先定性是 airflow 还是 capacity，是巡检汇报的第一句话"
-          },
-          {
-            "en": "Raise a corrective work order.",
-            "zh": "开一张整改工单——raise 比 create 更地道；corrective 强调「纠正/根治」，区别于 routine 例行工单"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "故障排查 · CRAH 温度传感器漂移引发群控抢风：RCA 定位",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：Row 9 末端热点连续三周复现，同一冷通道两台 CRAH 一台卸载、一台满载，进风温度却只差 2 度；怀疑其中一台温度传感器漂移导致群控误判，需要用标定探头比对取证，并给出根因与整改动作。\n\n**对话：**\n- 小白: Sofia, we have a recurring hot spot at the far end of Row nine. Two CRAHs there are fighting each other.\n- Sofia: Fighting how? Same setpoint, opposite action?\n- 小白: Exactly. Unit nine-A reads nineteen and throttles back, while nine-B reads twenty-four and runs flat out. Same aisle, only two degrees apart at rack inlet. I think the sensor on nine-A has drifted.\n- Sofia: If it is reading low, the group controller will unload the healthy unit and let the real temperature climb. Have you checked it against a calibrated probe?\n- 小白: Yes. Against the calibrated probe, nine-A is off by three point two degrees. When I pulled the sensor last night it failed over to local setpoint, and the hot spot cleared within ten minutes.\n- Sofia: Then the RCA lands on calibration drift, not on the control logic. Replace the sensor, add it to the quarterly calibration list, and I will widen the group deadband so one bad sensor cannot unload the whole row.\n\n**重点表达：**\n- `Two CRAHs are fighting each other.` — 两台 CRAH 在互相打架/抢风——fight 是暖通口语里描述执行器反向动作的常用说法，正式报告可写 conflicting control action\n- `the RCA lands on calibration drift` — 根因落在标定漂移上——lands on 表示结论最终指向某处，是 RCA 汇报里的固定搭配\n- `it failed over to local setpoint` — 它回退到了就地设定值运行——failover 不只是冗余切换，也用于控制模式降级回退；local setpoint = 就地设定值",
-        "category": "故障排查",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "Two CRAHs are fighting each other.",
-            "zh": "两台 CRAH 在互相打架/抢风——fight 是暖通口语里描述执行器反向动作的常用说法，正式报告可写 conflicting control action"
-          },
-          {
-            "en": "the RCA lands on calibration drift",
-            "zh": "根因落在标定漂移上——lands on 表示结论最终指向某处，是 RCA 汇报里的固定搭配"
-          },
-          {
-            "en": "it failed over to local setpoint",
-            "zh": "它回退到了就地设定值运行——failover 不只是冗余切换，也用于控制模式降级回退；local setpoint = 就地设定值"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "供应商对接 · 冷却水泵机械密封询价：替代件与质保起算",
-        "subtitle": "基础 Basic",
-        "content": "**情境**：2 号冷却水循环泵的机械密封出现渗漏，需要紧急询价。原厂件交期 6 周太长，供应商推荐库存替代件，需要确认材质证书、耐温等级与质保起算点，并决定备货数量。\n\n**对话：**\n- 小白: Ryan, I need a mechanical seal for the number two condenser water pump. Can you quote it, and tell me what you actually have on the shelf?\n- Ryan: The OEM seal is four thousand two hundred, with a six-week lead time. We do have an equivalent in stock that cross-references to the same part number.\n- 小白: Equivalent is fine only if it is the same face materials and the same temperature rating. Our loop runs at thirty-five degrees. And the warranty has to start from commissioning, not from the date it ships.\n- Ryan: Understood. I can hold the warranty to commissioning, and I will send the material certificate with the quote.\n- 小白: Send both by tomorrow. If the certificate checks out, I will take two so we keep one on the shelf. Six weeks is too long to gamble on a single pump.\n\n**重点表达：**\n- `What do you have on the shelf?` — 你们现货有什么——on the shelf 指仓库里现成的库存，和 in stock 同义但更口语\n- `It cross-references to the same part number.` — 它可以对照到同一个件号——替代件谈判必问句，cross-reference 指型号互换对照\n- `The warranty has to start from commissioning, not from the date it ships.` — 质保要从调试合格起算，不能从发货日起算——备件合同最容易被忽略的一条",
-        "category": "供应商对接",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "What do you have on the shelf?",
-            "zh": "你们现货有什么——on the shelf 指仓库里现成的库存，和 in stock 同义但更口语"
-          },
-          {
-            "en": "It cross-references to the same part number.",
-            "zh": "它可以对照到同一个件号——替代件谈判必问句，cross-reference 指型号互换对照"
-          },
-          {
-            "en": "The warranty has to start from commissioning, not from the date it ships.",
-            "zh": "质保要从调试合格起算，不能从发货日起算——备件合同最容易被忽略的一条"
           }
         ]
       }
