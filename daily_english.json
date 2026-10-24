@@ -1,5 +1,187 @@
 [
   {
+    "date": "2026-10-24",
+    "generatedAt": "2026-10-24T23:18:38+08:00",
+    "cycleDay": 4,
+    "difficulty": "精通 Proficient",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "运维沟通 · CDU 二次侧定流量改变频：省下的泵功不能拿最小流速去换",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：液冷区投运大半年，二次侧泵从第一天起就定频运行。你翻了三个月的运行数据：负荷长期在 30%–45%，但泵始终满速，泵功在部分负荷时占液冷总能耗接近一成。你想申请给泵加变频，改成按最不利支路压差控制，并把最小频率、低流量告警和回退方案一并谈清楚。\n\n**对话：**\n- Karen: You asked for fifteen minutes on the secondary loop. What is on your mind?\n- 小白: The pumps. They have run at constant speed since day one, and at thirty to forty-five percent load we are paying full pumping power to move half the water we actually need.\n- Karen: And you want drives on them.\n- 小白: Variable speed, controlled on differential pressure at the worst branch — not on flow, and not on a timer. The index circuit is the far end of row D, and I want the sensor there, not on the pump discharge.\n- Karen: Why not at the discharge?\n- 小白: Because a discharge sensor controls the pump, not the load. It holds pressure where pressure is easy to hold and lets the far end starve the moment valves open up. That is the same mistake we made on the primary side two years ago, and it cost us a low delta-T we spent a quarter chasing.\n- Karen: What stops you from starving it here?\n- 小白: A floor on the drive: thirty-five hertz minimum, which keeps every cold plate above its minimum velocity, plus a low-flow alarm on each branch. If the far end cannot hold its differential, the drive ramps back to full speed and stays there. It fails safe, and more importantly it tells us the loop is out of range instead of quietly running a plate dry.\n- Karen: Give me the energy case.\n- 小白: Pumping is about nine percent of the liquid-cooling load at part load today, and the fans and chillers do not move at all. I model roughly four points off that — but measured, not modelled, is the part I care about. Two weeks of baseline with the drives in hand, then two weeks automated, same load bands, and we compare kilowatt-hours against heat actually moved.\n- Karen: Risk to the IT load?\n- 小白: One CDU at a time, never both trains. Window has the manufacturer commissioning engineer on site plus our own witness, and rollback is fifty seconds — put the drive in bypass and we are exactly where we started. I am not asking for a new loop, Karen. I am asking to stop paying for head we do not need.\n\n**重点表达：**\n- `We are paying full pumping power to move half the water.` — 我们花着满额泵功，只送了一半的水量\n- `Controlled on differential pressure at the worst branch.` — 按最不利支路压差控制\n- `The index circuit is the far end of row D.` — 最不利回路在 D 排末端\n- `A discharge sensor controls the pump, not the load.` — 装在泵出口的传感器控的是泵，不是负荷\n- `It lets the far end starve the moment valves open up.` — 阀门一开，末端就会缺流量\n- `A floor on the drive: thirty-five hertz minimum.` — 给变频器设下限：最低 35Hz\n- `It keeps every cold plate above its minimum velocity.` — 保证每块冷板都高于最小流速\n- `It fails safe.` — 它失效时导向安全侧\n- `Measured, not modelled, is the part I care about.` — 我在意的是实测值，不是模型值\n- `Two weeks of baseline, then two weeks automated.` — 先两周基线，再两周投自动\n- `Kilowatt-hours against heat actually moved.` — 每移走单位热量所耗的千瓦时\n- `I am asking to stop paying for head we do not need.` — 我只是想不再为我们用不上的扬程付钱",
+        "category": "运维沟通",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "We are paying full pumping power to move half the water.",
+            "zh": "我们花着满额泵功，只送了一半的水量"
+          },
+          {
+            "en": "Controlled on differential pressure at the worst branch.",
+            "zh": "按最不利支路压差控制"
+          },
+          {
+            "en": "The index circuit is the far end of row D.",
+            "zh": "最不利回路在 D 排末端"
+          },
+          {
+            "en": "A discharge sensor controls the pump, not the load.",
+            "zh": "装在泵出口的传感器控的是泵，不是负荷"
+          },
+          {
+            "en": "It lets the far end starve the moment valves open up.",
+            "zh": "阀门一开，末端就会缺流量"
+          },
+          {
+            "en": "A floor on the drive: thirty-five hertz minimum.",
+            "zh": "给变频器设下限：最低 35Hz"
+          },
+          {
+            "en": "It keeps every cold plate above its minimum velocity.",
+            "zh": "保证每块冷板都高于最小流速"
+          },
+          {
+            "en": "It fails safe.",
+            "zh": "它失效时导向安全侧"
+          },
+          {
+            "en": "Measured, not modelled, is the part I care about.",
+            "zh": "我在意的是实测值，不是模型值"
+          },
+          {
+            "en": "Two weeks of baseline, then two weeks automated.",
+            "zh": "先两周基线，再两周投自动"
+          },
+          {
+            "en": "Kilowatt-hours against heat actually moved.",
+            "zh": "每移走单位热量所耗的千瓦时"
+          },
+          {
+            "en": "I am asking to stop paying for head we do not need.",
+            "zh": "我只是想不再为我们用不上的扬程付钱"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "跨团队协作 · 全站失电演练评审：液冷区没有风冷区那份蓄冷缓冲",
+        "subtitle": "精通 Proficient",
+        "content": "**情境**：年度全站失电（black start）演练前的联合评审会。你坚持 CDU 泵必须排进柴发带载序列的第一批，并且要求泵和控制一起接 UPS。电气和 IT 两边都有意见：电气嫌电池容量不够，IT 嫌分批上电中的 hold point 影响业务。你要把液冷与风冷在热惯性上的本质差别讲透，并把三个可量化的 abort criterion 写进 runbook。\n\n**对话：**\n- Miguel: Your CDU pumps want to be first in the generator start sequence. That puts them ahead of two IT pods.\n- 小白: They have to be. When the mains drop, the air-cooled halls coast for minutes — the slab, the rack frames, the CRAH casings, all of that is thermal mass. The liquid loop has none of it. It has the coolant in the pipe and maybe thirty seconds before GPU inlet starts climbing.\n- Miguel: Thirty seconds is not in our sequence. ATS transfer, generator start, first block on the bus — best case is ninety.\n- 小白: Then we own the gap: thirty seconds of loop, ninety seconds of generator, and the difference has to come from somewhere. It comes from UPS on the pumps. We ride through on battery instead of restarting cold. That is the ask — pumps and controls on UPS, not the pumps alone.\n- Miguel: Controls too? That is a lot more battery.\n- 小白: Because pumps without controls are just circulation. If the controller reboots, it comes back with the valve at its failsafe position, and I get no flow to the plates for the ninety seconds it takes to re-establish. I want the valve to hold last position through the transfer. Pumps spinning against a closed valve buys me nothing.\n- Miguel: And once the generators are on?\n- 小白: Staged restart, and that is where we clash with IT. I cannot bring four hundred kilowatts of cold plates back to full flow in one step — the chillers have to re-establish the primary loop first, and if I open everything at once I pull secondary supply down and trip on low temperature. So: pumps first, primary loop stable, then IT load in blocks with a hold point between each one.\n- Miguel: IT will call the hold points lost revenue.\n- 小白: And I will call an unplanned load shed more expensive than the ninety seconds they planned for. Blast radius, Miguel — if we open the loop too fast, it is not one pod that drops, it is every rack on that CDU. Their pod-level restart assumes the cooling underneath is already stable. It is not. That assumption is the single point of failure in this plan, and right now it is wearing an electrical label.\n- Miguel: What goes in the runbook, then?\n- 小白: Three abort criteria, written with numbers: secondary supply above thirty-eight for more than ten seconds, branch flow below eighty percent for more than thirty seconds, or generator frequency outside band. Any one of them and we stop the sequence, hold, and re-assess — nobody pushes on. And we walk it in stages before the real drill: pumps only, then pumps plus one pod, then the full sequence. This plant has never been through a black start with the liquid loop loaded, and I am not going to discover the timing during the drill itself.\n\n**重点表达：**\n- `The liquid loop has none of that thermal mass.` — 液冷回路没有那份热惯性\n- `It has maybe thirty seconds before inlet starts climbing.` — 大约三十秒后进液温度就要往上走\n- `We ride through on battery instead of restarting cold.` — 我们用电池扛过去，而不是冷态重启\n- `Pumps without controls are just circulation.` — 没有控制的泵只是让水转起来而已\n- `The valve comes back at its failsafe position.` — 阀门复位到故障安全位\n- `I want the valve to hold last position through the transfer.` — 我要阀门在切换过程中保持最後位置\n- `Pumps spinning against a closed valve buys me nothing.` — 泵对着关死的阀门空转毫无意义\n- `Staged restart, with a hold point between blocks.` — 分批恢复，每批之间设暂停点\n- `It is not one pod that drops, it is every rack on that CDU.` — 掉的不是单个 pod，是那台 CDU 下所有机柜\n- `That assumption is the single point of failure.` — 那个假设本身就是单点故障\n- `It is wearing an electrical label.` — 它现在顶着电气的名义\n- `Three abort criteria, written with numbers.` — 三条带数字的中断判据",
+        "category": "跨团队协作",
+        "difficulty": "精通 Proficient",
+        "expressions": [
+          {
+            "en": "The liquid loop has none of that thermal mass.",
+            "zh": "液冷回路没有那份热惯性"
+          },
+          {
+            "en": "It has maybe thirty seconds before inlet starts climbing.",
+            "zh": "大约三十秒后进液温度就要往上走"
+          },
+          {
+            "en": "We ride through on battery instead of restarting cold.",
+            "zh": "我们用电池扛过去，而不是冷态重启"
+          },
+          {
+            "en": "Pumps without controls are just circulation.",
+            "zh": "没有控制的泵只是让水转起来而已"
+          },
+          {
+            "en": "The valve comes back at its failsafe position.",
+            "zh": "阀门复位到故障安全位"
+          },
+          {
+            "en": "I want the valve to hold last position through the transfer.",
+            "zh": "我要阀门在切换过程中保持最後位置"
+          },
+          {
+            "en": "Pumps spinning against a closed valve buys me nothing.",
+            "zh": "泵对着关死的阀门空转毫无意义"
+          },
+          {
+            "en": "Staged restart, with a hold point between blocks.",
+            "zh": "分批恢复，每批之间设暂停点"
+          },
+          {
+            "en": "It is not one pod that drops, it is every rack on that CDU.",
+            "zh": "掉的不是单个 pod，是那台 CDU 下所有机柜"
+          },
+          {
+            "en": "That assumption is the single point of failure.",
+            "zh": "那个假设本身就是单点故障"
+          },
+          {
+            "en": "It is wearing an electrical label.",
+            "zh": "它现在顶着电气的名义"
+          },
+          {
+            "en": "Three abort criteria, written with numbers.",
+            "zh": "三条带数字的中断判据"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "容量规划 · 二期 1.5MW 扩容：瓶颈先出现在一次侧干管，不在 CDU",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：二期液冷扩容评审。规划侧的建议很直接：机位够放六台 CDU，那就一次买齐。你算完一轮后认为真正的瓶颈不在二次侧，而在一次侧冷冻水干管与冷机出力；你提出先提一次侧供水温度、二次侧放宽到 35℃，CDU 分 4+2 两期上，避免两年闲置容量。\n\n**对话：**\n- Priya: We have room for another six CDUs in the gallery. Is that enough for one point five megawatts?\n- 小白: Not with the primary side as it stands. The CDUs are not the constraint — the chilled water header is. At one point two megawatts the DN250 main is already at its practical velocity, and the plant pumps are near the end of their curve.\n- Priya: Then we upsize the header.\n- 小白: That is a shutdown and a hot tap, and it puts the whole liquid zone on one train for a day. Let me offer a cheaper order of work: raise primary supply from seven to twelve degrees first. Every degree up buys chiller capacity and free-cooling hours, and it takes load off the compressor without touching a single pipe.\n- Priya: Twelve degrees on the primary. What does that do to the CDUs?\n- 小白: Their approach is one and a half Kelvin, so I lose roughly five degrees of secondary range before I have to move anything. Secondary can sit at thirty-five comfortably — the cold plates are rated for forty-five on the coolant side. That is the part people get wrong: we are not short of cold water, we are short of temperature difference.\n- Priya: Walk me through six CDUs, then.\n- 小白: Six gives one point eight megawatts of nameplate on a three-plus-one arrangement, but nameplate is not capacity. Run them at eighty percent each and you get one point four four with a train in reserve. Right-size in stages — four now, two when the load actually shows up. Buy all six on day one and we pay for two years of stranded capacity, and the last two units run past their warranty clock before they ever carry load.\n- Priya: And if the load arrives faster than we stage it?\n- 小白: Then the bottleneck moves back to the header, and we do the hot tap with two years of trend data behind us — and with the second gallery already piped, so it is a day of work, not a week. Phasing is not caution, Priya. It is buying information with money we have not spent yet.\n\n**重点表达：**\n- `The CDUs are not the constraint.` — 瓶颈不在 CDU\n- `The header is already at its practical velocity.` — 干管流速已经到实用上限\n- `The plant pumps are near the end of their curve.` — 冷机房水泵已接近曲线末端\n- `That is a shutdown and a hot tap.` — 那意味着停机加开孔接支管\n- `Every degree up buys chiller capacity and free-cooling hours.` — 每提高一度都在换冷机出力和免费供冷小时数\n- `Their approach is one and a half Kelvin.` — 板换趋近温度是 1.5K\n- `We are not short of cold water, we are short of temperature difference.` — 我们缺的不是冷水量，是可用温差\n- `Nameplate is not capacity.` — 铭牌容量不等于可用容量\n- `Right-size in stages.` — 分期按需配置\n- `Two years of stranded capacity.` — 两年的闲置容量\n- `The units run past their warranty clock before they carry load.` — 机组还没带载就已经过了质保期\n- `Phasing is buying information with money we have not spent yet.` — 分期是用还没花出去的钱买信息",
+        "category": "容量规划",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "The CDUs are not the constraint.",
+            "zh": "瓶颈不在 CDU"
+          },
+          {
+            "en": "The header is already at its practical velocity.",
+            "zh": "干管流速已经到实用上限"
+          },
+          {
+            "en": "The plant pumps are near the end of their curve.",
+            "zh": "冷机房水泵已接近曲线末端"
+          },
+          {
+            "en": "That is a shutdown and a hot tap.",
+            "zh": "那意味着停机加开孔接支管"
+          },
+          {
+            "en": "Every degree up buys chiller capacity and free-cooling hours.",
+            "zh": "每提高一度都在换冷机出力和免费供冷小时数"
+          },
+          {
+            "en": "Their approach is one and a half Kelvin.",
+            "zh": "板换趋近温度是 1.5K"
+          },
+          {
+            "en": "We are not short of cold water, we are short of temperature difference.",
+            "zh": "我们缺的不是冷水量，是可用温差"
+          },
+          {
+            "en": "Nameplate is not capacity.",
+            "zh": "铭牌容量不等于可用容量"
+          },
+          {
+            "en": "Right-size in stages.",
+            "zh": "分期按需配置"
+          },
+          {
+            "en": "Two years of stranded capacity.",
+            "zh": "两年的闲置容量"
+          },
+          {
+            "en": "The units run past their warranty clock before they carry load.",
+            "zh": "机组还没带载就已经过了质保期"
+          },
+          {
+            "en": "Phasing is buying information with money we have not spent yet.",
+            "zh": "分期是用还没花出去的钱买信息"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-23",
     "generatedAt": "2026-10-23T23:17:27+08:00",
     "cycleDay": 3,
@@ -1804,92 +1986,6 @@
           {
             "en": "Ship one drum from your regional stock now, the balance later.",
             "zh": "先从你们区域库发一桶，尾货后补——partial shipment / balance 是拖车物流谈判的高频搭配"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-10",
-    "generatedAt": "2026-10-10T23:16:00+08:00",
-    "cycleDay": 2,
-    "difficulty": "进阶 Intermediate",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "运维沟通 · 冷却水电导率持续爬升：浓缩倍数与排污方式变更评审",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：冷却水系统电导率连续三周爬升到 2100 µS/cm，逼近排污阈值；目前排污阀按定时器运行，导致补水量和加药量都偏高。在变更评审会上，需要提出把浓缩倍数设定值从 4 提到 5、并把排污由定时改为按电导率控制，同时说明结垢风险与监控手段。\n\n**对话：**\n- 小白: Marcus, the cooling tower loop has been creeping up again. Conductivity is at twenty-one hundred microsiemens, and we have been blowing down on a timer for three weeks.\n- Marcus: How much water are we burning through?\n- 小白: About sixty cubic metres a day, and the chemical dosing follows it. I want to raise the cycles of concentration from four to five and switch the bleed valve from a timer to conductivity control.\n- Marcus: That saves water, but it pushes the loop closer to scaling. What is the risk to the chillers?\n- 小白: That is the trade-off. I will hold the LSI in the slightly scaling band, pull the corrosion coupons monthly, and put a hard conductivity cap on the bleed valve so it cannot run away.\n- Marcus: Fine. Put it through change control with a two-week review, and bring me the water and chemical numbers.\n- 小白: Will do. One note though — it moves WUE more than PUE, so I will report it under water usage at the next efficiency review.\n\n**重点表达：**\n- `Conductivity has been creeping up for three weeks.` — 电导率已经连续三周缓慢爬升——creep up 专指指标缓慢恶化，比 go up 准确得多\n- `Switch the bleed valve from a timer to conductivity control.` — 把排污阀从定时控制改成按电导率控制——switch A from X to Y 是变更评审里说明改造方案的标准句式\n- `That is the trade-off.` — 这就是取舍所在——对方指出风险时，先承认 trade-off 再给监控措施，是高级沟通里最有说服力的节奏\n- `Put it through change control.` — 这个要走变更管控流程——暖通侧任何设定值改动都要先说这句话，不能直接动手改",
-        "category": "运维沟通",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "Conductivity has been creeping up for three weeks.",
-            "zh": "电导率已经连续三周缓慢爬升——creep up 专指指标缓慢恶化，比 go up 准确得多"
-          },
-          {
-            "en": "Switch the bleed valve from a timer to conductivity control.",
-            "zh": "把排污阀从定时控制改成按电导率控制——switch A from X to Y 是变更评审里说明改造方案的标准句式"
-          },
-          {
-            "en": "That is the trade-off.",
-            "zh": "这就是取舍所在——对方指出风险时，先承认 trade-off 再给监控措施，是高级沟通里最有说服力的节奏"
-          },
-          {
-            "en": "Put it through change control.",
-            "zh": "这个要走变更管控流程——暖通侧任何设定值改动都要先说这句话，不能直接动手改"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "跨团队协作 · 柴发带载测试窗口：UPS 续航与冷机重启时序对齐",
-        "subtitle": "高级 Advanced",
-        "content": "**情境**：下月要做柴油发电机带载测试，需要电气、暖通、网络三方排同一个窗口。柴发带载期间 CRAH 由 UPS 支撑，电池续航与冷机重启时序必须对齐；还要约定硬性中止判据，并确认测试不影响 Tier III 的并发可维护性与 uptime 承诺。\n\n**对话：**\n- 小白: Priya, before we lock the load bank test, I need the UPS runtime and the chiller restart sequence on the same page.\n- Priya: You have eleven minutes of battery at current load. The generators pick up in eight to ten seconds, so on paper you are fine.\n- 小白: On paper, yes. But the CRAHs do not come back the instant the transfer switch flips. Compressor restart delay plus the chillers coming back on-line is roughly four to six minutes. In that window the only thing holding the room is the thermal mass of the air in the cold aisle.\n- Priya: So the constraint is not the battery, it is the inlet temperature ramp during those six minutes.\n- 小白: Correct. We modelled about a five-degree rise in the hot aisle if all twelve CRAHs restart together. I want them staggered, and I want a hard abort criterion: if rack inlet hits thirty-two degrees, we stop the test and return to utility.\n- Priya: Agreed, and same on our side — if the transfer back to utility takes more than fifteen minutes, we abort. This stays within concurrent maintainability, so the uptime commitment is not affected. We will run it as a scheduled maintenance window, not an outage.\n- 小白: Then I am comfortable. I will write the staggered restart and the abort criterion into the MOP so everyone signs the same sheet.\n\n**重点表达：**\n- `I need the UPS runtime and the chiller restart sequence on the same page.` — 我需要把 UPS 续航和冷机重启时序对齐——on the same page 指多方对同一份计划口径一致，跨团队开会高频句\n- `The constraint is not the battery, it is the inlet temperature ramp.` — 瓶颈不在电池，而在进风温度的爬升速率——the constraint is not X, it is Y 用来纠正对方的判断焦点，语气专业且不冒犯\n- `A hard abort criterion.` — 硬性中止判据——演练/变更方案里必须有的一条；hard 强调不可协商，区别于 guideline 建议值\n- `This stays within concurrent maintainability.` — 这仍在并发可维护范围内——Tier III 的核心概念：任一设备离场检修时负载仍有冗余路径，uptime 承诺不受影响",
-        "category": "跨团队协作",
-        "difficulty": "高级 Advanced",
-        "expressions": [
-          {
-            "en": "I need the UPS runtime and the chiller restart sequence on the same page.",
-            "zh": "我需要把 UPS 续航和冷机重启时序对齐——on the same page 指多方对同一份计划口径一致，跨团队开会高频句"
-          },
-          {
-            "en": "The constraint is not the battery, it is the inlet temperature ramp.",
-            "zh": "瓶颈不在电池，而在进风温度的爬升速率——the constraint is not X, it is Y 用来纠正对方的判断焦点，语气专业且不冒犯"
-          },
-          {
-            "en": "A hard abort criterion.",
-            "zh": "硬性中止判据——演练/变更方案里必须有的一条；hard 强调不可协商，区别于 guideline 建议值"
-          },
-          {
-            "en": "This stays within concurrent maintainability.",
-            "zh": "这仍在并发可维护范围内——Tier III 的核心概念：任一设备离场检修时负载仍有冗余路径，uptime 承诺不受影响"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "容量规划 · 冷通道封闭改造后的制冷余量释放：新增 10 个 8kW 机柜核算",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：C 区做完冷通道封闭改造后，送风温度设定值可从 18℃ 提到 22℃，冷机效率提升并释放冷量；业务方想再落 10 个 8kW 机柜，需要核算释放出的制冷余量是否够用，并说明封闭的前提条件与对 PUE 的影响。\n\n**对话：**\n- 小白: Tom, once we close up the cold aisles in Zone C, I can raise the supply air setpoint from eighteen to twenty-two degrees.\n- Tom: Does that not mean less cooling?\n- 小白: It means less cooling at the CRAH, but more of it reaching the servers. Right now about thirty percent of the supply air bypasses the rack inlets entirely. With containment we cut that, raise the delta-T across the CRAH, and the chillers run at a higher evaporator temperature.\n- Tom: So how much capacity does that actually free up?\n- 小白: Roughly three hundred kilowatts of cooling headroom at plant level, which covers your ten racks at eight kilowatts. But the racks have to be filled front-to-back with blanking panels and the row ends need doors. If someone leaves a two-U gap, we are back to square one.\n- Tom: Understood. I will make containment a prerequisite in the rack request. Any impact on PUE?\n- 小白: It should pull PUE down by about four hundredths, mostly from chiller efficiency and fewer CRAH fan hours. I will confirm with a before-and-after trend once the doors are on.\n\n**重点表达：**\n- `About thirty percent of the supply air bypasses the rack inlets.` — 大约三成送风根本没经过机柜进风口——bypass 是气流管理的关键词，也是说服业务方做封闭改造最有力的一句话\n- `That frees up about three hundred kilowatts of cooling headroom.` — 这释放了大约 300kW 的制冷余量——headroom 指「还能往上加多少」的余量，容量规划必用\n- `If someone leaves a two-U gap, we are back to square one.` — 只要有人留个 2U 的空档，我们就回到原点——back to square one 形容整改成果归零，很地道\n- `Make containment a prerequisite in the rack request.` — 把通道封闭写进机柜申请的前置条件——prerequisite 比 requirement 更强调「先做完这个才受理」",
-        "category": "容量规划",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "About thirty percent of the supply air bypasses the rack inlets.",
-            "zh": "大约三成送风根本没经过机柜进风口——bypass 是气流管理的关键词，也是说服业务方做封闭改造最有力的一句话"
-          },
-          {
-            "en": "That frees up about three hundred kilowatts of cooling headroom.",
-            "zh": "这释放了大约 300kW 的制冷余量——headroom 指「还能往上加多少」的余量，容量规划必用"
-          },
-          {
-            "en": "If someone leaves a two-U gap, we are back to square one.",
-            "zh": "只要有人留个 2U 的空档，我们就回到原点——back to square one 形容整改成果归零，很地道"
-          },
-          {
-            "en": "Make containment a prerequisite in the rack request.",
-            "zh": "把通道封闭写进机柜申请的前置条件——prerequisite 比 requirement 更强调「先做完这个才受理」"
           }
         ]
       }
