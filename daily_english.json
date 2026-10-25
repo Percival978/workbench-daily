@@ -1,5 +1,219 @@
 [
   {
+    "date": "2026-10-25",
+    "generatedAt": "2026-10-25T23:18:31+08:00",
+    "cycleDay": 1,
+    "difficulty": "基础 Basic",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "日常工作 · 一次侧干管结露：是冷凝水，不是漏",
+        "subtitle": "基础 Basic",
+        "content": "**情境**：早班接班前的冷机房与液冷区巡检。CDU 二次侧运行平稳，但你走到一次侧冷冻水供液干管时发现 C 柱附近的保温层裂开约半米，正下方地面积了一摊水。你要先判断这是漏液还是结露，再决定是记一笔卫生整改还是开工单当天处理。\n\n**对话：**\n- Dave: Morning. The liquid loop is steady overnight - two CDUs in lead, one on standby, secondary supply thirty-four point eight.\n- 小白: On the primary side, I found a wet patch under the supply header near column C. The insulation is split open for about half a metre, right where the header crosses over the hot aisle return.\n- Dave: Is it leaking? I walked that aisle twice and the floor was dry at four in the morning.\n- 小白: It is condensation, not a leak. The vapour barrier is torn, so seven-degree water is sweating straight through the insulation. Feel it - the water is cold and clean, and the make-up meter has not moved since yesterday. A real leak would show on the make-up first, and the drip pan alarm would have caught it long before it reached the floor.\n- Dave: So we log it as a housekeeping item?\n- 小白: No. It goes on a corrective work order today, not next week. Wet insulation stops insulating, and once it is soaked through it starts rotting the pipe underneath. I will tape it as a temporary stop, re-insulate with a proper vapour-sealed section, and leave a drip tray under it until the work order is signed off.\n- Dave: Anything else before I go home?\n- 小白: One thing. Check the condensate trays in the CRAH units on the same row. If the room dew point has crept up, this will not be the only wet spot we find this week. Log the reading and I will compare it against last week's before I decide whether it is one bad section or a humidity problem.\n\n**重点表达：**\n- `It is condensation, not a leak.` — 这是结露，不是漏液\n- `The vapour barrier is torn.` — 防潮层/隔汽层破了\n- `Seven-degree water is sweating through the insulation.` — 7℃冷冻水正透过保温层出汗结露\n- `The make-up meter has not moved since yesterday.` — 补液表从昨天起就没动过\n- `A real leak would show on the make-up first.` — 真漏的话补水量会先有反应\n- `Log it as a housekeeping item.` — 记成一条卫生整改项\n- `It goes on a corrective work order today.` — 今天就要开 corrective 工单\n- `Wet insulation stops insulating.` — 保温层吸水后就不再保温\n- `Tape it as a temporary stop.` — 先用胶带做临时封堵\n- `Re-insulate with a vapour-sealed section.` — 换成带完整隔汽层的保温管壳重做\n- `Check the condensate trays in the CRAH units.` — 去查一下 CRAH 的冷凝水盘\n- `The room dew point has crept up.` — 机房露点慢慢爬上来了\n- `Compare it against last week's reading.` — 拿它跟上周的读数对比",
+        "category": "日常工作",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "It is condensation, not a leak.",
+            "zh": "这是结露，不是漏液"
+          },
+          {
+            "en": "The vapour barrier is torn.",
+            "zh": "防潮层/隔汽层破了"
+          },
+          {
+            "en": "Seven-degree water is sweating through the insulation.",
+            "zh": "7℃冷冻水正透过保温层出汗结露"
+          },
+          {
+            "en": "The make-up meter has not moved since yesterday.",
+            "zh": "补液表从昨天起就没动过"
+          },
+          {
+            "en": "A real leak would show on the make-up first.",
+            "zh": "真漏的话补水量会先有反应"
+          },
+          {
+            "en": "Log it as a housekeeping item.",
+            "zh": "记成一条卫生整改项"
+          },
+          {
+            "en": "It goes on a corrective work order today.",
+            "zh": "今天就要开 corrective 工单"
+          },
+          {
+            "en": "Wet insulation stops insulating.",
+            "zh": "保温层吸水后就不再保温"
+          },
+          {
+            "en": "Tape it as a temporary stop.",
+            "zh": "先用胶带做临时封堵"
+          },
+          {
+            "en": "Re-insulate with a vapour-sealed section.",
+            "zh": "换成带完整隔汽层的保温管壳重做"
+          },
+          {
+            "en": "Check the condensate trays in the CRAH units.",
+            "zh": "去查一下 CRAH 的冷凝水盘"
+          },
+          {
+            "en": "The room dew point has crept up.",
+            "zh": "机房露点慢慢爬上来了"
+          },
+          {
+            "en": "Compare it against last week's reading.",
+            "zh": "拿它跟上周的读数对比"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "故障排查 · 板换内漏：水在往里进，不是往外漏",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：月度水质台账复盘。二次侧膨胀罐补液频次本月涨到三倍，乙二醇浓度从 25% 掉到 21%，电导率同步上升。所有支路流量正常、接水盘干燥，你怀疑是一次侧冷冻水通过 CDU 板换的微孔渗进了二次侧，需要在不停机的前提下确认，并给出临时控制与验证方案。\n\n**对话：**\n- Nina: Your make-up rate on the secondary loop is up threefold this month, and glycol has dropped from twenty-five to twenty-one percent. Something is either leaking out or diluting in.\n- 小白: Diluting in. We have no visible loss, the drip trays are dry, and every branch flow meter reads where it did last month. If we were losing coolant we would see it in the pit or on a tray long before the tank noticed.\n- Nina: Then it is the plate heat exchanger. Primary into secondary through a pinhole.\n- 小白: That is my read. Secondary conductivity is climbing and the pH is drifting toward the primary side - the water is coming in, not going out. The question is how we prove it without pulling the plant down.\n- Nina: Pressure test. Isolate the primary, drain it, and watch the secondary side.\n- 小白: Standard way, yes, but that takes a CDU out of service and puts the row on one train. Cheaper first step: close the primary isolation valves, leave the secondary pumps running, and watch the expansion tank level and the conductivity for an hour. If the level keeps rising with the primary side isolated and depressurised, the leak is in the pack, not in a fitting.\n- Nina: And if the level holds?\n- 小白: Then it is not the plates - it is make-up water on our own side, and I have been chasing the wrong thing for a week. But if it rises, we open the pack. Until then, compensating control: set the make-up to manual, hold concentration at twenty-two percent minimum so we keep freeze protection, and log conductivity twice a shift. Failover to the standby CDU tested clean yesterday, latency was under a second and inlet never moved - so redundancy is fine. Headroom is what I am protecting now, not uptime.\n- Nina: How long before you open it?\n- 小白: Two days for the gasket set and the plate pack spare, and I want the manufacturer commissioning engineer here for the re-torque. Torquing a plate pack is not a spanner job - the sequence and the final dimension are both specified, and if we get it wrong we crack a plate and the leak gets worse instead of better.\n\n**重点表达：**\n- `Something is either leaking out or diluting in.` — 要么是在往外漏，要么是被稀释\n- `The water is coming in, not going out.` — 水是往里进，不是往外漏\n- `Primary into secondary through a pinhole.` — 一次侧经微孔渗进二次侧\n- `How do we prove it without pulling the plant down.` — 不停机怎么验证\n- `It puts the row on one train.` — 这会让整排只剩一套在跑\n- `Close the primary isolation valves.` — 关掉一次侧隔离阀\n- `The level keeps rising with the primary side isolated.` — 一次侧隔离后液位还在涨\n- `The leak is in the pack, not in a fitting.` — 漏点在板片组，不在管件\n- `Set the make-up to manual.` — 把补水切到手动\n- `Compensating control.` — 临时补偿性控制措施\n- `Hold concentration at twenty-two percent minimum.` — 浓度最低保持在 22%\n- `We keep freeze protection.` — 保住防冻能力\n- `Headroom is what I am protecting, not uptime.` — 我现在护的是余量，不是可用性\n- `Failover to the standby CDU tested clean.` — 切备用 CDU 测试正常\n- `Torquing a plate pack is not a spanner job.` — 板换压紧不是拿扳手拧紧就行\n- `The sequence and the final dimension are both specified.` — 拧紧顺序和最终压紧尺寸都是有规定的",
+        "category": "故障排查",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "Something is either leaking out or diluting in.",
+            "zh": "要么是在往外漏，要么是被稀释"
+          },
+          {
+            "en": "The water is coming in, not going out.",
+            "zh": "水是往里进，不是往外漏"
+          },
+          {
+            "en": "Primary into secondary through a pinhole.",
+            "zh": "一次侧经微孔渗进二次侧"
+          },
+          {
+            "en": "How do we prove it without pulling the plant down.",
+            "zh": "不停机怎么验证"
+          },
+          {
+            "en": "It puts the row on one train.",
+            "zh": "这会让整排只剩一套在跑"
+          },
+          {
+            "en": "Close the primary isolation valves.",
+            "zh": "关掉一次侧隔离阀"
+          },
+          {
+            "en": "The level keeps rising with the primary side isolated.",
+            "zh": "一次侧隔离后液位还在涨"
+          },
+          {
+            "en": "The leak is in the pack, not in a fitting.",
+            "zh": "漏点在板片组，不在管件"
+          },
+          {
+            "en": "Set the make-up to manual.",
+            "zh": "把补水切到手动"
+          },
+          {
+            "en": "Compensating control.",
+            "zh": "临时补偿性控制措施"
+          },
+          {
+            "en": "Hold concentration at twenty-two percent minimum.",
+            "zh": "浓度最低保持在 22%"
+          },
+          {
+            "en": "We keep freeze protection.",
+            "zh": "保住防冻能力"
+          },
+          {
+            "en": "Headroom is what I am protecting, not uptime.",
+            "zh": "我现在护的是余量，不是可用性"
+          },
+          {
+            "en": "Failover to the standby CDU tested clean.",
+            "zh": "切备用 CDU 测试正常"
+          },
+          {
+            "en": "Torquing a plate pack is not a spanner job.",
+            "zh": "板换压紧不是拿扳手拧紧就行"
+          },
+          {
+            "en": "The sequence and the final dimension are both specified.",
+            "zh": "拧紧顺序和最终压紧尺寸都是有规定的"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "供应商对接 · 冷板到货验收：先开箱，再签字",
+        "subtitle": "基础 Basic",
+        "content": "**情境**：新一批 60 块冷板到货。供应商希望你先在送货单上签字，你坚持先开箱核对。核对中发现外包装标注的螺纹规格与订单不符，另有两块冷板磕碰变形，你要开 NCR 并要求换货而不是打折，同时把随货证书清单一次讲清。\n\n**对话：**\n- Leo: Sixty cold plates, all crated. Do you want to sign the delivery note now, or after you open them?\n- 小白: After. I am not signing for sixty plates I have not looked at. Let me match the packing list against the purchase order first - model, port size, and thread.\n- Leo: Everything is per the order. I checked before dispatch.\n- 小白: The thread is the part that catches people out. The order says G half, not NPT half. They look nearly identical on the bench and they will not seal against each other. Two of these crates are labelled NPT on the outside, and I am not finding that out on the rack at eleven at night.\n- Leo: Let me check with the factory.\n- 小白: While you do: two plates in crate four have dented corners and one has a bent mounting ear. Deformed is not cosmetic here - the mounting ear carries the torque that holds the plate against the chip. I am putting both on an NCR with photos, and I want replacements, not credit on the next invoice.\n- Leo: We could offer a discount on those two.\n- 小白: I do not want a discount on a part I cannot mount. And I still need your paperwork before anything goes on a rack: the hydrostatic test certificate per plate, the cleanliness report with particle count and residual moisture, and the certificate of conformance with heat numbers traceable to the batch. Without those I cannot close the work order, and the warranty clock has not started.\n- Leo: Understood. I will get the NCR raised today.\n- 小白: One more thing - lead time on the two replacements, in writing, and crated separately so they do not disappear into the next shipment. We have an install window in three weeks and I am not holding a rack open because two plates went back.\n\n**重点表达：**\n- `I am not signing for sixty plates I have not looked at.` — 没开箱验过的货我不签\n- `Match the packing list against the purchase order.` — 把装箱单和采购订单逐项核对\n- `The thread is the part that catches people out.` — 最容易踩坑的就是螺纹规格\n- `G half, not NPT half.` — 要 G 半寸，不是 NPT 半寸\n- `They will not seal against each other.` — 这两种螺纹互相密封不上\n- `Deformed is not cosmetic here.` — 变形在这里不是外观问题\n- `The mounting ear carries the torque.` — 安装耳承受压紧扭矩\n- `Put it on an NCR with photos.` — 开不合格报告并附照片\n- `Replacements, not credit on the next invoice.` — 要换货，不是下张发票抵账\n- `Hydrostatic test certificate per plate.` — 每块板的水压试验报告\n- `Cleanliness report with particle count and residual moisture.` — 含颗粒度和残留水分的清洁度报告\n- `Certificate of conformance, traceable to the batch.` — 可追溯到批次的合格证明\n- `The warranty clock has not started.` — 质保期还没开始起算\n- `Lead time in writing, crated separately.` — 货期要书面确认，并且单独装箱\n- `I am not holding a rack open because two plates went back.` — 我不会为了退回两块板而一直空着一个机位",
+        "category": "供应商对接",
+        "difficulty": "基础 Basic",
+        "expressions": [
+          {
+            "en": "I am not signing for sixty plates I have not looked at.",
+            "zh": "没开箱验过的货我不签"
+          },
+          {
+            "en": "Match the packing list against the purchase order.",
+            "zh": "把装箱单和采购订单逐项核对"
+          },
+          {
+            "en": "The thread is the part that catches people out.",
+            "zh": "最容易踩坑的就是螺纹规格"
+          },
+          {
+            "en": "G half, not NPT half.",
+            "zh": "要 G 半寸，不是 NPT 半寸"
+          },
+          {
+            "en": "They will not seal against each other.",
+            "zh": "这两种螺纹互相密封不上"
+          },
+          {
+            "en": "Deformed is not cosmetic here.",
+            "zh": "变形在这里不是外观问题"
+          },
+          {
+            "en": "The mounting ear carries the torque.",
+            "zh": "安装耳承受压紧扭矩"
+          },
+          {
+            "en": "Put it on an NCR with photos.",
+            "zh": "开不合格报告并附照片"
+          },
+          {
+            "en": "Replacements, not credit on the next invoice.",
+            "zh": "要换货，不是下张发票抵账"
+          },
+          {
+            "en": "Hydrostatic test certificate per plate.",
+            "zh": "每块板的水压试验报告"
+          },
+          {
+            "en": "Cleanliness report with particle count and residual moisture.",
+            "zh": "含颗粒度和残留水分的清洁度报告"
+          },
+          {
+            "en": "Certificate of conformance, traceable to the batch.",
+            "zh": "可追溯到批次的合格证明"
+          },
+          {
+            "en": "The warranty clock has not started.",
+            "zh": "质保期还没开始起算"
+          },
+          {
+            "en": "Lead time in writing, crated separately.",
+            "zh": "货期要书面确认，并且单独装箱"
+          },
+          {
+            "en": "I am not holding a rack open because two plates went back.",
+            "zh": "我不会为了退回两块板而一直空着一个机位"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-24",
     "generatedAt": "2026-10-24T23:18:38+08:00",
     "cycleDay": 4,
@@ -1900,92 +2114,6 @@
           {
             "en": "It becomes a capacity project, not a booking.",
             "zh": "那就成了扩容项目，不是下单占容量——把「走流程」和「走项目」分开，是不背锅的关键一句"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-11",
-    "generatedAt": "2026-10-11T23:20:51+08:00",
-    "cycleDay": 3,
-    "difficulty": "高级 Advanced",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "日常工作 · CRAH 冷凝水盘与漏水检测绳的季度功能测试",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：季度例行保养工单：检查 CRAH 冷凝水盘与冷凝水管、做浮球高水位报警测试，并逐段触发冷通道漏水检测绳，确认 BMS 上报的报警点位与实际房间、 Zone 编号一致。小白需要先和值班同事确认影响范围，避免动阀影响到正在运行的机柜。\n\n**对话：**\n- 小白: Daniel, this is the quarterly PM on the CRAH condensate pans. Before I start, is any rack in Row 14 running a job we cannot disturb?\n- Daniel: Row 14 is clear. But two customers in Zone B asked for a heads-up before any work involving water. How close are you getting to the racks?\n- 小白: Only the leak detection rope along the cold aisle in Zone B. I am not touching any valve — I just need to trigger each zone and confirm the right alarm pops on the BMS. With dozens of metres of rope daisy-chained, the point mapping is often wrong.\n- Daniel: What happens if the mapping is off?\n- 小白: Then the interlock trips the wrong isolation valve. We lose capacity in a room that is completely dry, while the room that is actually taking water keeps running. Operator response goes the wrong way, and uptime is exactly what we are betting on here.\n- Daniel: Map it zone by zone then. Anything that does not line up, I will raise as a corrective work order.\n\n**重点表达：**\n- `I am not touching any valve — I just need to trigger each zone and confirm the right alarm pops on the BMS.` — 我不动阀，只需要逐段触发、确认对应报警在 BMS 上弹出来——作业前先划清动作边界，是避免对方担心的最好句式\n- `Then the interlock trips the wrong isolation valve.` — 联锁就会跳错隔离阀——interlock / isolation valve 是水系统保护的核心词\n- `We lose capacity in a room that is completely dry.` — 干区反倒丢了制冷能力——capacity 在运维口语里默认指「当前可用的制冷/供电能力」\n- `I will raise it as a corrective work order.` — 我会把它开成一张消缺工单——corrective（缺陷整改）与 preventive（预防性保养）必须分清，走错工单类型会影响 PUE 之外的运维考核口径",
-        "category": "日常工作",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "I am not touching any valve — I just need to trigger each zone and confirm the right alarm pops on the BMS.",
-            "zh": "我不动阀，只需要逐段触发、确认对应报警在 BMS 上弹出来——作业前先划清动作边界，是避免对方担心的最好句式"
-          },
-          {
-            "en": "Then the interlock trips the wrong isolation valve.",
-            "zh": "联锁就会跳错隔离阀——interlock / isolation valve 是水系统保护的核心词"
-          },
-          {
-            "en": "We lose capacity in a room that is completely dry.",
-            "zh": "干区反倒丢了制冷能力——capacity 在运维口语里默认指「当前可用的制冷/供电能力」"
-          },
-          {
-            "en": "I will raise it as a corrective work order.",
-            "zh": "我会把它开成一张消缺工单——corrective（缺陷整改）与 preventive（预防性保养）必须分清，走错工单类型会影响 PUE 之外的运维考核口径"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "故障排查 · 冷冻水管网气堵致末端换热不足：锁定立管排气失效",
-        "subtitle": "高级 Advanced",
-        "content": "**情境**：三台 CRAH 水阀已开到 100%、冷冻水供水温度正常，但盘管 delta-T 接近 9℃ 且末端房间温度缓慢爬升。经摸管判断为末端换热器气堵（air binding）。RCA 会上需讲清定位过程、根因（立管自动排气阀失效 + 周末换泵后补水过快、真空脱气罐来不及脱出夹带空气）、以及备用泵 failover 的延迟。\n\n**对话：**\n- 小白: Nadia, let me walk you through how we landed on it. The valve on CRAH-07 was wide open, supply water sat at seven degrees as normal, but the delta-T across the coil was almost nine — far too high for that load.\n- Nadia: High delta-T usually means too little flow through the coil, not too little capacity at the plant. Did you check the strainer?\n- 小白: We did, clean. Then we felt the coil — cool at the top, warm at the bottom. That is the classic air binding signature: the pocket sits at the high point of the return header and throttles the water film inside the tubes.\n- Nadia: So where did the air come from?\n- 小白: Two contributors. Three out of five automatic air vents on the risers are stuck shut. And after the weekend pump changeover, the loop was refilled faster than the vacuum degasser could pull the entrained air out. The RCA lands on a maintenance gap, not on the equipment itself.\n- Nadia: What was the real customer impact?\n- 小白: Rack inlet temperature in Row 9 touched twenty-nine degrees for about eleven minutes before the lead-lag logic brought the standby pump on-line. The failover itself worked, but the latency was around forty seconds — long enough for the inlet alarm to reach the customer portal.\n- Nadia: Fine. Vents first, then a controlled refill procedure with the degasser in the loop. I want both as dated action items.\n\n**重点表达：**\n- `Let me walk you through how we landed on it.` — 我带你捋一遍我们是怎么定位到这个点的——RCA 开场句，比直接甩结论专业得多\n- `That is the classic air binding signature.` — 这是典型的气堵特征——signature 指「故障指纹」，用来把现场手感上升成可复述的判断依据\n- `The RCA lands on a maintenance gap, not on the equipment itself.` — 根因落在维护缺位，而不是设备本身——lands on 是 RCA 里指定根因的常用搭配\n- `The failover itself worked, but the latency was around forty seconds.` — 切换本身成功，但延迟约 40 秒——failover 回答「能不能切」，latency 回答「切了多久」，两件事不能混着说",
-        "category": "故障排查",
-        "difficulty": "高级 Advanced",
-        "expressions": [
-          {
-            "en": "Let me walk you through how we landed on it.",
-            "zh": "我带你捋一遍我们是怎么定位到这个点的——RCA 开场句，比直接甩结论专业得多"
-          },
-          {
-            "en": "That is the classic air binding signature.",
-            "zh": "这是典型的气堵特征——signature 指「故障指纹」，用来把现场手感上升成可复述的判断依据"
-          },
-          {
-            "en": "The RCA lands on a maintenance gap, not on the equipment itself.",
-            "zh": "根因落在维护缺位，而不是设备本身——lands on 是 RCA 里指定根因的常用搭配"
-          },
-          {
-            "en": "The failover itself worked, but the latency was around forty seconds.",
-            "zh": "切换本身成功，但延迟约 40 秒——failover 回答「能不能切」，latency 回答「切了多久」，两件事不能混着说"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "供应商对接 · CDU 二次侧乙二醇溶液：取样超标后的补液与兼容谈判",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：CDU 二次侧冷却液年度取样，乙二醇浓度从规格 25% 掉到 19%，缓蚀剂储备碱度也偏低。需要与供应商谈补浓方案：书面确认配伍兼容性、出具新批次 COA、确认不影响冷板质保，并把 2 周交期压成分批到货，同时争取把现场复检折进本次费用。\n\n**对话：**\n- 小白: Hana, the annual sample on the CDU secondary loop came back at nineteen percent glycol. Spec is twenty-five, and the reserve alkalinity is down as well.\n- Hana: Nineteen still gives you freeze protection in most climates, but I agree it is below your operating spec. A top-up with concentrate normally sorts that out.\n- 小白: Top-up is my preference too, but I need three things before I sign anything: written confirmation that your concentrate is compatible with the existing formulation, a fresh COA, and confirmation that topping up does not void the warranty on the cold plates.\n- Hana: Compatibility we can confirm — you are already on our product line. And the warranty holds as long as the inhibitor level is maintained. That actually argues for topping up rather than dumping the whole loop.\n- 小白: Then let us talk timeline. Two weeks of lead time is too long to sit at nineteen percent. Can you ship one drum from your regional stock now and the balance later?\n- Hana: Yes. One drum tomorrow, balance in twelve working days. And since this is a top-up on our own product, I will include the on-site refractometer check at commissioning, no charge.\n- 小白: That works. Once the loop is back above twenty-five and we re-sample at thirty days, I sign it off.\n\n**重点表达：**\n- `The annual sample came back at nineteen percent glycol.` — 年度取样结果出来乙二醇只有 19%——came back at 专指化验/检测结果，比 is 地道\n- `I need written confirmation that your concentrate is compatible with the existing formulation.` — 我需要书面确认你们的浓缩液与现役配方兼容——compatibility 是液体化学品谈判的第一道关口\n- `Two weeks of lead time is too long to sit at nineteen percent.` — 两周交期太久，我们没法按 19% 一直挂着——把技术状态说成不可接受的等待，是压交期最自然的方式\n- `Ship one drum from your regional stock now, the balance later.` — 先从你们区域库发一桶，尾货后补——partial shipment / balance 是拖车物流谈判的高频搭配",
-        "category": "供应商对接",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "The annual sample came back at nineteen percent glycol.",
-            "zh": "年度取样结果出来乙二醇只有 19%——came back at 专指化验/检测结果，比 is 地道"
-          },
-          {
-            "en": "I need written confirmation that your concentrate is compatible with the existing formulation.",
-            "zh": "我需要书面确认你们的浓缩液与现役配方兼容——compatibility 是液体化学品谈判的第一道关口"
-          },
-          {
-            "en": "Two weeks of lead time is too long to sit at nineteen percent.",
-            "zh": "两周交期太久，我们没法按 19% 一直挂着——把技术状态说成不可接受的等待，是压交期最自然的方式"
-          },
-          {
-            "en": "Ship one drum from your regional stock now, the balance later.",
-            "zh": "先从你们区域库发一桶，尾货后补——partial shipment / balance 是拖车物流谈判的高频搭配"
           }
         ]
       }
