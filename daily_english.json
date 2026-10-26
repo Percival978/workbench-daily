@@ -1,5 +1,247 @@
 [
   {
+    "date": "2026-10-26",
+    "generatedAt": "2026-10-26T23:18:05+08:00",
+    "cycleDay": 2,
+    "difficulty": "进阶 Intermediate",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "运维沟通 · CDU 群控从均分改为按需投运",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：月度能效复盘。四台 CDU 全部在线均分负载，单机负载率只有 30%，泵与风机都跑在曲线低端。你提出把群控改为「三用一备 + 每周轮值」，需要讲清节能测算、对 PUE 的影响，以及切换时的 failover latency 与热冲击风险，并给出写进 MOP 的 abort criterion 与回退方向。\n\n**对话：**\n- Sarah: Energy review. Four CDUs online, load split evenly, every unit around thirty percent. Where is the PUE this month?\n- 小白: One point two eight, flat against last month. And that is exactly the problem - the plant has not moved while the IT load is down eight percent. Four units at thirty percent means every pump and every fan is sitting at the bottom of its curve. We are paying for capacity we are not using.\n- Sarah: So you want to take one out.\n- 小白: I want to change the control, not just the count. Staging by demand: three in lead, one warm on standby, and rotate the standby weekly so the hours stay even. At thirty percent each we have four machines doing the work of two; at forty each we move every unit closer to its best efficiency point. My estimate is about eleven percent off CDU pump and fan energy, roughly two points of PUE at today's load.\n- Sarah: What is the risk?\n- 小白: Two. First, failover latency. With one unit warm on standby the switch has to be real, not assumed - last drill was under ten seconds and inlet moved less than a degree, because the loop has thermal mass. Second, thermal shock. If a unit starts and stops every time the load crosses a threshold, the group control will hunt. So I want a deadband of plus or minus four percent and a fifteen minute minimum run time before any unit is allowed to drop out.\n- Sarah: And if it goes wrong?\n- 小白: The abort criterion goes into the MOP as a number, not a feeling: any rack inlet above twenty-seven degrees for more than sixty seconds, or manifold differential pressure below one point two bar, and we revert to all-online immediately. Reverting is the safe direction - it costs efficiency, not uptime. I also want to keep the chiller plant out of this. This is a distribution-side change; the chilled water setpoint stays at seven degrees so we are not moving two variables at once and blaming the wrong one.\n- Sarah: Fine. Take it to the change board with the numbers and the abort criteria.\n- 小白: Will do. One thing I want on the record: I am not claiming this makes the room safer. It makes it cheaper, and it makes the redundancy easier to test. Those are two different wins and I do not want them sold as one.\n\n**重点表达：**\n- `The plant has not moved while the IT load is down eight percent.` — IT 负载降了 8%，冷源侧却纹丝不动\n- `Every unit is sitting at the bottom of its curve.` — 每台机组都跑在效率曲线的最低端\n- `We are paying for capacity we are not using.` — 我们在为没用上的容量付钱\n- `Staging by demand.` — 按负载需求投运台数\n- `Three in lead, one warm on standby.` — 三台主用、一台热备\n- `Rotate the standby weekly so the hours stay even.` — 备用机每周轮值，让运行小时数均衡\n- `It moves every unit closer to its best efficiency point.` — 让每台机更靠近最佳效率点\n- `Failover latency.` — 故障切换时延\n- `The group control will hunt.` — 群控会来回震荡\n- `A deadband of plus or minus four percent.` — ±4% 的死区\n- `A fifteen minute minimum run time.` — 15 分钟最小运行时间\n- `The abort criterion goes into the MOP as a number.` — 中止判据要以数字写进 MOP\n- `Reverting is the safe direction.` — 回退是安全方向\n- `It costs efficiency, not uptime.` — 代价是能效，不是可用性\n- `Keep the chiller plant out of this.` — 这次不要动冷机侧\n- `Do not move two variables at once.` — 不要一次动两个变量",
+        "category": "运维沟通",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "The plant has not moved while the IT load is down eight percent.",
+            "zh": "IT 负载降了 8%，冷源侧却纹丝不动"
+          },
+          {
+            "en": "Every unit is sitting at the bottom of its curve.",
+            "zh": "每台机组都跑在效率曲线的最低端"
+          },
+          {
+            "en": "We are paying for capacity we are not using.",
+            "zh": "我们在为没用上的容量付钱"
+          },
+          {
+            "en": "Staging by demand.",
+            "zh": "按负载需求投运台数"
+          },
+          {
+            "en": "Three in lead, one warm on standby.",
+            "zh": "三台主用、一台热备"
+          },
+          {
+            "en": "Rotate the standby weekly so the hours stay even.",
+            "zh": "备用机每周轮值，让运行小时数均衡"
+          },
+          {
+            "en": "It moves every unit closer to its best efficiency point.",
+            "zh": "让每台机更靠近最佳效率点"
+          },
+          {
+            "en": "Failover latency.",
+            "zh": "故障切换时延"
+          },
+          {
+            "en": "The group control will hunt.",
+            "zh": "群控会来回震荡"
+          },
+          {
+            "en": "A deadband of plus or minus four percent.",
+            "zh": "±4% 的死区"
+          },
+          {
+            "en": "A fifteen minute minimum run time.",
+            "zh": "15 分钟最小运行时间"
+          },
+          {
+            "en": "The abort criterion goes into the MOP as a number.",
+            "zh": "中止判据要以数字写进 MOP"
+          },
+          {
+            "en": "Reverting is the safe direction.",
+            "zh": "回退是安全方向"
+          },
+          {
+            "en": "It costs efficiency, not uptime.",
+            "zh": "代价是能效，不是可用性"
+          },
+          {
+            "en": "Keep the chiller plant out of this.",
+            "zh": "这次不要动冷机侧"
+          },
+          {
+            "en": "Do not move two variables at once.",
+            "zh": "不要一次动两个变量"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "跨团队协作 · 液冷环路年检：排液窗口怎么谈",
+        "subtitle": "高级 Advanced",
+        "content": "**情境**：液冷二次侧环路年度排液冲洗。作业牵扯四方：IT 迁移 GPU 节点、电气做 CDU 与泵柜 LOTO、EHS 处理乙二醇废液、设施负责排液冲洗复装。你要把真实停机时长、逐支路推进方式、三个 hold point 与验收标准讲清楚，并说明为什么不能顺手把风侧关小。\n\n**对话：**\n- Marcus: Twelve racks down for a loop flush. Give me the real number, not the optimistic one.\n- 小白: Four hours of drain, flush, refill and vent, plus two hours of stabilisation before I hand the loop back. So the zone is unavailable for six hours. But you do not need twelve racks dark for six hours. I need each rack evacuated only for the hour its own branch is open. We go branch by branch - four branches - and the other eight racks keep running on the rest of the manifold.\n- Marcus: And the four that are down lose redundancy as well as compute.\n- 小白: They do, and I am not going to pretend otherwise. That is why this sits in a planned maintenance window with change board sign-off instead of being squeezed into a Friday afternoon. The failover path is still live - if a running CDU trips, the standby picks up in under ten seconds - but while a branch is open, that segment is on one train. Say it out loud in the meeting so nobody is surprised later.\n- Marcus: What makes you stop?\n- 小白: Three hold points, any one of them stops the job. One: if the electrical team has not confirmed LOTO on the CDU and the pump cabinet, we do not open a single fitting. Two: if EHS does not have the glycol waste drums in place and the manifest signed, we do not drain. Three: after refill, if the loop does not hold pressure for thirty minutes and the conductivity is not back inside spec, we do not hand back - and you do not start the nodes.\n- Marcus: Venting is what bit us last time. We came back with air in the cold plates and two racks ran hot for a week.\n- 小白: That is why refill and vent is a separate step with its own acceptance test, not the tail end of the drain. Fill slow from the low point, vent at the high points, run the pumps on low speed for an hour, then check every rack inlet against the pre-job baseline. Anything more than one degree off its baseline does not go back into service. And one thing for your side: do not let anyone turn the air side down because twelve racks of liquid load are coming off the room. The CRAH units stay in normal control and the hot-cold aisle containment stays exactly as it is - the top-of-rack switches and the power shelves are still air-cooled, and the day somebody trims the air side is the day the switchgear cooks.\n\n**重点表达：**\n- `Give me the real number, not the optimistic one.` — 给我真实时长，别给乐观估计\n- `Drain, flush, refill and vent.` — 排液、冲洗、复装、排气\n- `Two hours of stabilisation before I hand the loop back.` — 交还环路前要两小时稳定观察\n- `Each rack is evacuated only for the hour its branch is open.` — 每个机柜只在自己支路断开的那一小时下线\n- `We go branch by branch.` — 我们逐支路推进\n- `The other eight racks keep running on the rest of the manifold.` — 其余八个机柜仍由 manifold 其他部分供液\n- `They lose redundancy as well as compute.` — 它们丢的不只是算力，还有冗余\n- `I am not going to pretend otherwise.` — 这一点我不打算含糊过去\n- `That segment is on one train.` — 这一段现在是单套运行\n- `Say it out loud in the meeting.` — 在会上就把话说明白\n- `Any one of them stops the job.` — 任何一个不满足就停止作业\n- `If EHS does not have the drums in place and the manifest signed.` — 若 EHS 没把废液桶就位、联单没签\n- `We do not hand back - and you do not start the nodes.` — 我们不交还，你们也不要起节点\n- `Refill and vent is a separate step with its own acceptance test.` — 复装排气是独立工序，有独立验收\n- `Check every rack inlet against the pre-job baseline.` — 拿每个机柜进液温度和作业前基线比对\n- `Do not let anyone turn the air side down.` — 别让任何人把风侧关小\n- `The day somebody trims the air side is the day the switchgear cooks.` — 谁动风侧，哪天交换机就烤熟",
+        "category": "跨团队协作",
+        "difficulty": "高级 Advanced",
+        "expressions": [
+          {
+            "en": "Give me the real number, not the optimistic one.",
+            "zh": "给我真实时长，别给乐观估计"
+          },
+          {
+            "en": "Drain, flush, refill and vent.",
+            "zh": "排液、冲洗、复装、排气"
+          },
+          {
+            "en": "Two hours of stabilisation before I hand the loop back.",
+            "zh": "交还环路前要两小时稳定观察"
+          },
+          {
+            "en": "Each rack is evacuated only for the hour its branch is open.",
+            "zh": "每个机柜只在自己支路断开的那一小时下线"
+          },
+          {
+            "en": "We go branch by branch.",
+            "zh": "我们逐支路推进"
+          },
+          {
+            "en": "The other eight racks keep running on the rest of the manifold.",
+            "zh": "其余八个机柜仍由 manifold 其他部分供液"
+          },
+          {
+            "en": "They lose redundancy as well as compute.",
+            "zh": "它们丢的不只是算力，还有冗余"
+          },
+          {
+            "en": "I am not going to pretend otherwise.",
+            "zh": "这一点我不打算含糊过去"
+          },
+          {
+            "en": "That segment is on one train.",
+            "zh": "这一段现在是单套运行"
+          },
+          {
+            "en": "Say it out loud in the meeting.",
+            "zh": "在会上就把话说明白"
+          },
+          {
+            "en": "Any one of them stops the job.",
+            "zh": "任何一个不满足就停止作业"
+          },
+          {
+            "en": "If EHS does not have the drums in place and the manifest signed.",
+            "zh": "若 EHS 没把废液桶就位、联单没签"
+          },
+          {
+            "en": "We do not hand back - and you do not start the nodes.",
+            "zh": "我们不交还，你们也不要起节点"
+          },
+          {
+            "en": "Refill and vent is a separate step with its own acceptance test.",
+            "zh": "复装排气是独立工序，有独立验收"
+          },
+          {
+            "en": "Check every rack inlet against the pre-job baseline.",
+            "zh": "拿每个机柜进液温度和作业前基线比对"
+          },
+          {
+            "en": "Do not let anyone turn the air side down.",
+            "zh": "别让任何人把风侧关小"
+          },
+          {
+            "en": "The day somebody trims the air side is the day the switchgear cooks.",
+            "zh": "谁动风侧，哪天交换机就烤熟"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "容量规划 · 机柜密度翻番：先卡住的是管径",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：IT 计划明年把 A 区液冷机柜从 40kW 提到 80kW，机位不变。你复核后发现瓶颈不在 CDU 冷量而在二次侧支管流速与 manifold 压降，于是给出「一期 60kW、manifold 预留口与盲板三通先上、二期再补 CDU」的分期方案，并说明风侧为什么一台都不能撤。\n\n**对话：**\n- Priya: Eighty kilowatts a rack in zone A next year. Same footprint, double the density. How much cooling do we have?\n- 小白: Enough cold, not enough pipe. The CDUs have the capacity - four units at three hundred kilowatts each, so at plant level there is headroom. The constraint is the branch piping. At forty kilowatts a rack the DN fifty branch runs about one point two metres per second. At eighty it is two point four, and that is past the erosion limit I am willing to sign for on a loop that has to last twenty years.\n- Priya: So we upsize the pipe.\n- 小白: You can, but that is a re-weld on every branch and a week of dark zone. Cheaper path: phase it. Take zone A to sixty kilowatts now - one point eight metres per second, still inside the limit - and build the manifold with spare ports and blanked tees for the second wave. When eighty becomes real rather than planned, we add CDU capacity and re-pipe only the branches that need it, rack by rack, with the zone still live.\n- Priya: And the air side? At eighty kilowatts surely the room does not need the CRAH units any more.\n- 小白: It does. At sixty to eighty kilowatts liquid, roughly eighty-five percent of the heat leaves through the loop, but the top-of-rack switches, the power shelves and whatever stays air-cooled still dump into the hot aisle. The CRAH units stay online and the hot-cold aisle containment stays exactly as it is. Liquid cooling does not mean you can switch the air side off - that is the most expensive mistake in this business, and it is always made by someone who only looked at the rack number.\n- Priya: What is the ceiling on this design?\n- 小白: About ninety kilowatts a rack before branch velocity and manifold pressure drop both say no. Past that it is a new distribution design, not a capacity upgrade - different conversation, different money. And one caution on your procurement plan: do not buy four more CDUs on day one. Buy the manifold and the spare ports, which are cheap, and add machines when the load is actually installed. Otherwise you own four units sitting at twenty percent, and that is stranded capacity you will see in the PUE every single month.\n\n**重点表达：**\n- `Same footprint, double the density.` — 机位不变，密度翻倍\n- `Enough cold, not enough pipe.` — 冷量够，管径不够\n- `At plant level there is headroom.` — 冷源侧还有余量\n- `The constraint is the branch piping.` — 瓶颈在支路管道\n- `It runs about one point two metres per second.` — 流速大约 1.2 m/s\n- `That is past the erosion limit.` — 这已经超出冲蚀限值\n- `A loop that has to last twenty years.` — 要用二十年的环路\n- `That is a re-weld on every branch and a week of dark zone.` — 那要每条支路重新焊接，整个区停一周\n- `Phase it.` — 分期做\n- `Build the manifold with spare ports and blanked tees.` — manifold 预留接口和盲板三通\n- `Re-pipe only the branches that need it.` — 只改需要改的那几条支路\n- `With the zone still live.` — 整个区不停机\n- `The heat leaves through the loop.` — 热量经环路带走\n- `It still dumps into the hot aisle.` — 它仍然排进热通道\n- `That is the most expensive mistake in this business.` — 这是这行里最贵的错误\n- `Before branch velocity and manifold pressure drop both say no.` — 在支管流速和 manifold 压降双双触顶之前\n- `Do not buy four more CDUs on day one.` — 第一天别急着再买四台 CDU\n- `That is stranded capacity.` — 那就是被搁死的容量",
+        "category": "容量规划",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "Same footprint, double the density.",
+            "zh": "机位不变，密度翻倍"
+          },
+          {
+            "en": "Enough cold, not enough pipe.",
+            "zh": "冷量够，管径不够"
+          },
+          {
+            "en": "At plant level there is headroom.",
+            "zh": "冷源侧还有余量"
+          },
+          {
+            "en": "The constraint is the branch piping.",
+            "zh": "瓶颈在支路管道"
+          },
+          {
+            "en": "It runs about one point two metres per second.",
+            "zh": "流速大约 1.2 m/s"
+          },
+          {
+            "en": "That is past the erosion limit.",
+            "zh": "这已经超出冲蚀限值"
+          },
+          {
+            "en": "A loop that has to last twenty years.",
+            "zh": "要用二十年的环路"
+          },
+          {
+            "en": "That is a re-weld on every branch and a week of dark zone.",
+            "zh": "那要每条支路重新焊接，整个区停一周"
+          },
+          {
+            "en": "Phase it.",
+            "zh": "分期做"
+          },
+          {
+            "en": "Build the manifold with spare ports and blanked tees.",
+            "zh": "manifold 预留接口和盲板三通"
+          },
+          {
+            "en": "Re-pipe only the branches that need it.",
+            "zh": "只改需要改的那几条支路"
+          },
+          {
+            "en": "With the zone still live.",
+            "zh": "整个区不停机"
+          },
+          {
+            "en": "The heat leaves through the loop.",
+            "zh": "热量经环路带走"
+          },
+          {
+            "en": "It still dumps into the hot aisle.",
+            "zh": "它仍然排进热通道"
+          },
+          {
+            "en": "That is the most expensive mistake in this business.",
+            "zh": "这是这行里最贵的错误"
+          },
+          {
+            "en": "Before branch velocity and manifold pressure drop both say no.",
+            "zh": "在支管流速和 manifold 压降双双触顶之前"
+          },
+          {
+            "en": "Do not buy four more CDUs on day one.",
+            "zh": "第一天别急着再买四台 CDU"
+          },
+          {
+            "en": "That is stranded capacity.",
+            "zh": "那就是被搁死的容量"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-25",
     "generatedAt": "2026-10-25T23:18:31+08:00",
     "cycleDay": 1,
@@ -2016,104 +2258,6 @@
           {
             "en": "That is yours to fix, not ours.",
             "zh": "那是你们要修的，不是我们——划责任边界的短句，语气平静但立场很硬"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-12",
-    "generatedAt": "2026-10-12T23:20:20+08:00",
-    "cycleDay": 4,
-    "difficulty": "精通 Proficient",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "运维沟通 · 预防性保养延期：风险分级与补偿性控制",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：三季度收尾，11 项预防性保养因备件未到或窗口未批而超期。小白需要在运维周会上按风险分级说清哪些能延、哪些本周必须做，并提出补偿性控制措施（加密巡检、趋势复核提前、临时监测），把超 90 天的项目上报业主签批。\n\n**对话：**\n- 小白: Marcus, we have eleven PM items past their due date. I would rather put them on the table now than explain them after something trips.\n- Marcus: Eleven is a lot. Which ones actually carry cooling risk, and which ones are just paperwork slipping?\n- 小白: Two I would not defer: the tower basin cleaning on loop B and the CRAH belt inspection in Row 11. The rest are filter changes and visual rounds we can hold for two more weeks.\n- Marcus: If you defer the basin cleaning, what keeps us safe in the meantime?\n- 小白: Compensating controls. I bump the patrol on that loop to twice a shift, trend the condenser approach weekly instead of monthly, and log the deferral in the risk register with an owner and a firm date. If the approach drifts more than one degree off baseline, that item goes straight back to the top of the queue.\n- Marcus: Anything past ninety days?\n- 小白: One. The makeup water valve rebuild, sitting at one hundred and four days. That needs the customer sign-off, not just mine.\n\n**重点表达：**\n- `We have eleven PM items past their due date.` — 我们有 11 项预防性保养已经超期——past due / overdue 是台账类汇报的起手式，比 late 专业\n- `Which ones carry cooling risk, and which ones are just paperwork slipping?` — 哪些是真有制冷风险，哪些只是单据拖了——把延期项按风险分层，是避免被一锅端问责的关键问法\n- `Compensating controls.` — 补偿性控制——指原本的防护措施暂时失效时，用临时手段兜住风险（加密巡检、提前趋势复核、临时监测），是变更与延期评审的高频词\n- `Log the deferral in the risk register with an owner and a firm date.` — 把延期项记进风险台账，附责任人和确定日期——没有 owner 和 date 的延期等于没管\n- `That needs the customer sign-off, not just mine.` — 这项要客户签字放行，光我批不够——sign-off 指书面签批确认，是责任边界的分水岭",
-        "category": "运维沟通",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "We have eleven PM items past their due date.",
-            "zh": "我们有 11 项预防性保养已经超期——past due / overdue 是台账类汇报的起手式，比 late 专业"
-          },
-          {
-            "en": "Which ones carry cooling risk, and which ones are just paperwork slipping?",
-            "zh": "哪些是真有制冷风险，哪些只是单据拖了——把延期项按风险分层，是避免被一锅端问责的关键问法"
-          },
-          {
-            "en": "Compensating controls.",
-            "zh": "补偿性控制——指原本的防护措施暂时失效时，用临时手段兜住风险（加密巡检、提前趋势复核、临时监测），是变更与延期评审的高频词"
-          },
-          {
-            "en": "Log the deferral in the risk register with an owner and a firm date.",
-            "zh": "把延期项记进风险台账，附责任人和确定日期——没有 owner 和 date 的延期等于没管"
-          },
-          {
-            "en": "That needs the customer sign-off, not just mine.",
-            "zh": "这项要客户签字放行，光我批不够——sign-off 指书面签批确认，是责任边界的分水岭"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "跨团队协作 · 交换机风道与冷热通道相反：热风回流致进风超温",
-        "subtitle": "精通 Proficient",
-        "content": "**情境**：C 区新上线的一批叶交换机频繁报进风温度告警，实测 44℃，周末有两台热关机。现场核对发现这批设备是端口侧出风（port-side exhaust），风道方向与机柜前进后出相反，交换机进风口实际从热通道取风。小白要向网络团队讲清机理、给出纠正方案，并把 port-side intake 写进后续采购规范，存量无法改造的走例外审批加密验证。\n\n**对话：**\n- Priya: We are seeing inlet temperature alarms on ten leaf switches in Zone C. Forty-four degrees, and two of them thermally shut down over the weekend.\n- 小白: That is not a cooling failure, it is an airflow direction problem. That batch is port-side exhaust: the fans pull air in at the port side, so with the way they are racked, the intake is drawing straight from the hot aisle.\n- Priya: So we are feeding our own exhaust back into the switch.\n- 小白: Exactly. Front-to-back cooling only works if every box in the rack breathes the same way. One reversed box turns the cold aisle into a recirculation path, and we eat into our thermal margin for no reason.\n- Priya: What are my options? I cannot pull ten switches out of service during peak hours.\n- 小白: Two levels of fix. Fast: reverse the fan trays and the power supply airflow so they run front-to-back. Ten minutes a box, one at a time, no downtime. Structural: make port-side intake a line item in the procurement spec, so the next batch cannot land like this.\n- Priya: And the boxes we cannot re-orient?\n- 小白: We carve them out as a documented exception. Extended burn-in at forty degrees inlet, weekly thermal check, and a hard date to swap them at the next maintenance window. I want that in the joint runbook, not sitting in someone inbox.\n- Priya: Agreed. I will raise the spec change with procurement today and send you the serial numbers we cannot flip.\n\n**重点表达：**\n- `That is not a cooling failure, it is an airflow direction problem.` — 这不是制冷故障，是风向问题——先把事件定性，避免自家机房被扣上一顶温度事故的帽子\n- `Front-to-back cooling only works if every box in the rack breathes the same way.` — 前进后出只有在机柜内所有设备风向一致时才成立——breathes the same way 是很地道的口语说法，比 airflow consistent 更自然\n- `We eat into our thermal margin for no reason.` — 我们在平白透支热裕度——eat into ... margin 指一点点吃掉余量，比 reduce 更形象\n- `Make it a line item in the procurement spec.` — 把它写成采购规范里的一条硬性条款——line item 是合同/规范里的具体条目，写进去才追得到责\n- `I want that in the joint runbook, not sitting in someone inbox.` — 要写进联合处置手册，而不是躺在谁的收件箱里——跨团队最怕口头约定，这句话直接把责任落到文件上",
-        "category": "跨团队协作",
-        "difficulty": "精通 Proficient",
-        "expressions": [
-          {
-            "en": "That is not a cooling failure, it is an airflow direction problem.",
-            "zh": "这不是制冷故障，是风向问题——先把事件定性，避免自家机房被扣上一顶温度事故的帽子"
-          },
-          {
-            "en": "Front-to-back cooling only works if every box in the rack breathes the same way.",
-            "zh": "前进后出只有在机柜内所有设备风向一致时才成立——breathes the same way 是很地道的口语说法，比 airflow consistent 更自然"
-          },
-          {
-            "en": "We eat into our thermal margin for no reason.",
-            "zh": "我们在平白透支热裕度——eat into ... margin 指一点点吃掉余量，比 reduce 更形象"
-          },
-          {
-            "en": "Make it a line item in the procurement spec.",
-            "zh": "把它写成采购规范里的一条硬性条款——line item 是合同/规范里的具体条目，写进去才追得到责"
-          },
-          {
-            "en": "I want that in the joint runbook, not sitting in someone inbox.",
-            "zh": "要写进联合处置手册，而不是躺在谁的收件箱里——跨团队最怕口头约定，这句话直接把责任落到文件上"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "容量规划 · 还能再接多少：铭牌容量、同时系数与 N+1 之后的真实余量",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：销售侧问二区本季度还能接多少机柜，IT 同事手上压着 400kW 的意向。小白要先把口径对齐：按铭牌 IT 容量、合同负载还是实测电流算；套 diversity factor；扣掉 N+1 冗余后制冷侧还剩多少 headroom；结论是可落 400kW，但要分两期并锁定时间窗，避免 stranded capacity。\n\n**对话：**\n- Owen: Sales is asking how much we can commit in Hall 2 this quarter. I have four hundred kilowatts in the pipeline. Is that a yes?\n- 小白: Not on nameplate, no. Our nameplate IT capacity says nine hundred, but the contracted load is six-twenty and the actual draw has never passed four-eighty. If we size the plant off nameplate, we pay for capacity nobody plugs in.\n- Owen: So what is the honest number?\n- 小白: Apply a diversity factor of zero point eight to the contracted load, then check what is left after N plus one. On the power side we have room. On the cooling side, with both chillers running and the current aisle containment, I would call it four hundred kilowatts of real headroom, and that is before the summer peak.\n- Owen: Four hundred is exactly what I have. Can I book it all now?\n- 小白: Take it in two phases. Book two hundred for next month, hold the rest until the second chiller is back from overhaul and we re-baseline. If you reserve all four hundred and the customer ramps slowly, we strand cooling capacity in a room we could have sold twice.\n- Owen: Fair. And if they need it all at once?\n- 小白: Then it becomes a capacity project, not a booking. New lead time, new money, and I need it in writing before I promise a date.\n\n**重点表达：**\n- `Nameplate IT capacity says nine hundred, but the actual draw has never passed four-eighty.` — 铭牌 900，实测从没超过 480——nameplate 与 actual draw 是容量对账的第一组反义词，开口就必须分清\n- `Apply a diversity factor of zero point eight to the contracted load.` — 对合同负载套 0.8 的同时系数——diversity factor 是容量口径谈判的核心词，不说它就没法谈余量\n- `I would call it four hundred kilowatts of real headroom.` — 我给的口径是 400kW 的真实余量——headroom 前加 real，是在提醒对方别拿理论值当可用值\n- `We strand cooling capacity in a room we could have sold twice.` — 我们会把制冷能力闲置在一间本可以卖两遍的机房里——stranded capacity 指被结构或节奏卡住、卖不出去的容量\n- `It becomes a capacity project, not a booking.` — 那就成了扩容项目，不是下单占容量——把「走流程」和「走项目」分开，是不背锅的关键一句",
-        "category": "容量规划",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "Nameplate IT capacity says nine hundred, but the actual draw has never passed four-eighty.",
-            "zh": "铭牌 900，实测从没超过 480——nameplate 与 actual draw 是容量对账的第一组反义词，开口就必须分清"
-          },
-          {
-            "en": "Apply a diversity factor of zero point eight to the contracted load.",
-            "zh": "对合同负载套 0.8 的同时系数——diversity factor 是容量口径谈判的核心词，不说它就没法谈余量"
-          },
-          {
-            "en": "I would call it four hundred kilowatts of real headroom.",
-            "zh": "我给的口径是 400kW 的真实余量——headroom 前加 real，是在提醒对方别拿理论值当可用值"
-          },
-          {
-            "en": "We strand cooling capacity in a room we could have sold twice.",
-            "zh": "我们会把制冷能力闲置在一间本可以卖两遍的机房里——stranded capacity 指被结构或节奏卡住、卖不出去的容量"
-          },
-          {
-            "en": "It becomes a capacity project, not a booking.",
-            "zh": "那就成了扩容项目，不是下单占容量——把「走流程」和「走项目」分开，是不背锅的关键一句"
           }
         ]
       }
