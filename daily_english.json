@@ -1,5 +1,251 @@
 [
   {
+    "date": "2026-10-27",
+    "generatedAt": "2026-10-27T23:18:54+08:00",
+    "cycleDay": 3,
+    "difficulty": "高级 Advanced",
+    "cards": [
+      {
+        "id": "en-1",
+        "title": "日常工作 · 液冷巡检交班：把「趋势变了」说清楚",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：早班巡检。你核对 A/B 两排共 8 台 CDU 的一次侧与二次侧参数、膨胀罐液位、过滤器压差和漏液检测回路，发现 B 排一次侧回水温度比 A 排低 3K，二次侧自动补液泵本周启动次数从 2 次升到 11 次，而 DCIM 上一个告警都没有。你要在交班时把这件事讲成「趋势变化」而不是「设备故障」，开出观察工单，并说明为什么先不动任何设定值。\n\n**对话：**\n- Dave: Morning handover. Anything I should watch in the liquid loops?\n- 小白: One thing, and it is not an alarm - that is exactly why it matters. B row primary return is running about three kelvin cooler than A row off the same header. No CDU is in alarm, supply is on setpoint at thirty-two degrees, flow is inside band.\n- Dave: Cooler return is a good thing, is it not?\n- 小白: On its own, yes. But the make-up pump on the B row loop has started eleven times this week against two last week, and the expansion tank level is down about fifteen millimetres over the same period. Cooler return, more make-up and a slow drop in level are not three facts - they are one story. Somewhere on B row we are moving less heat than we used to, and we are losing a little water while we do it.\n- Dave: So what do you want me to do?\n- 小白: Two things and one do-not. Log it as an observation work order with photos of the gauge board and the tank sight glass, and read the B row flow meters at the same time of day for the next three shifts so we compare like with like. The do-not: do not touch any setpoint and do not reset the leak detection history. Right now I have the evidence exactly as the plant produced it. The moment somebody changes a setpoint, we are debugging our own change instead of the loop.\n- Dave: Should I call it in as a leak?\n- 小白: Not yet. A leak is a claim, and a claim starts a clock with the vendor and with the client. What I have is a trend. Give me three shifts of clean data and I can tell you whether this is a weeping fitting, a sensor that has drifted, or nothing at all. If the level keeps moving while the plant is steady, then water is leaving the loop and we escalate it properly.\n\n**重点表达：**\n- `Morning handover.` — 早班交班\n- `Anything I should watch in the liquid loops?` — 液冷环路有什么需要盯的\n- `It is not an alarm - that is exactly why it matters.` — 它不是一个告警，这正是它要紧的地方\n- `The return is running about three kelvin cooler.` — 回液温度低约 3K\n- `Supply is on setpoint.` — 供液温度在设定值上\n- `Flow is inside band.` — 流量在合格区间内\n- `They are not three facts - they are one story.` — 这不是三个孤立事实，而是同一件事\n- `Log it as an observation work order.` — 开一张观察类工单\n- `Compare like with like.` — 在同等条件下做对比\n- `Do not touch any setpoint.` — 不要动任何设定值\n- `Do not reset the leak detection history.` — 不要复位漏液检测的历史记录\n- `We would be debugging our own change.` — 我们就会变成在排查自己做的变更\n- `A leak is a claim, and a claim starts a clock.` — 说漏液是一种主张，一旦说出就开始计时\n- `Give me three shifts of clean data.` — 给我三个班次的干净数据\n- `The level keeps moving while the plant is steady.` — 冷源稳定而液位持续下降\n- `We escalate it properly.` — 我们按流程正式升级",
+        "category": "日常工作",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "Morning handover.",
+            "zh": "早班交班"
+          },
+          {
+            "en": "Anything I should watch in the liquid loops?",
+            "zh": "液冷环路有什么需要盯的"
+          },
+          {
+            "en": "It is not an alarm - that is exactly why it matters.",
+            "zh": "它不是一个告警，这正是它要紧的地方"
+          },
+          {
+            "en": "The return is running about three kelvin cooler.",
+            "zh": "回液温度低约 3K"
+          },
+          {
+            "en": "Supply is on setpoint.",
+            "zh": "供液温度在设定值上"
+          },
+          {
+            "en": "Flow is inside band.",
+            "zh": "流量在合格区间内"
+          },
+          {
+            "en": "They are not three facts - they are one story.",
+            "zh": "这不是三个孤立事实，而是同一件事"
+          },
+          {
+            "en": "Log it as an observation work order.",
+            "zh": "开一张观察类工单"
+          },
+          {
+            "en": "Compare like with like.",
+            "zh": "在同等条件下做对比"
+          },
+          {
+            "en": "Do not touch any setpoint.",
+            "zh": "不要动任何设定值"
+          },
+          {
+            "en": "Do not reset the leak detection history.",
+            "zh": "不要复位漏液检测的历史记录"
+          },
+          {
+            "en": "We would be debugging our own change.",
+            "zh": "我们就会变成在排查自己做的变更"
+          },
+          {
+            "en": "A leak is a claim, and a claim starts a clock.",
+            "zh": "说漏液是一种主张，一旦说出就开始计时"
+          },
+          {
+            "en": "Give me three shifts of clean data.",
+            "zh": "给我三个班次的干净数据"
+          },
+          {
+            "en": "The level keeps moving while the plant is steady.",
+            "zh": "冷源稳定而液位持续下降"
+          },
+          {
+            "en": "We escalate it properly.",
+            "zh": "我们按流程正式升级"
+          }
+        ]
+      },
+      {
+        "id": "en-2",
+        "title": "故障排查 · GPU 节点间歇降频，但环路参数全在范围内",
+        "subtitle": "高级 Advanced",
+        "content": "**情境**：A 区液冷机柜的 GPU 节点在训练任务跑到约 20 分钟后开始间歇降频，机柜进液温度 32℃、流量、压差全部在设定范围内，CDU 无告警，上月 failover 演练也正常。你要把「环路参数合格」与「冷板真正拿到多少冷量」拆开，用逐支路流量测试加红外测温定位末端支路缺流量与冷板内阻偏高，并给出短期补偿控制与长期整改路径。\n\n**对话：**\n- Marcus: The GPUs throttle about twenty minutes into every training run. Your loop says thirty-two degrees inlet, flow on setpoint, no alarms. So the cooling is fine and the box is lying.\n- 小白: The loop is telling the truth about the loop. It is not telling you anything about the cold plates. Everything we trend - supply, return, manifold differential - is measured at the CDU, upstream of every branch. If a branch is starved, the CDU still sees healthy numbers, because the flow that did not go down that branch simply came back on the return. The plant is not short of cold. The far end of the rack is short of flow.\n- Marcus: How do we prove it?\n- 小白: Two measurements, taken at the same load. First, a flow reading on each branch at the rack manifold, not the group number - I want litres per minute per branch at full load. Second, an infrared sweep of the cold plate inlet and outlet on the top, middle and bottom nodes while the job is actually throttling, not after it. My prediction is the bottom two nodes run eight to ten kelvin hotter on the plate surface than the top ones, and their branch flow is roughly twenty percent down.\n- Marcus: And if that is what you find?\n- 小白: Then the RCA lands on distribution, not on capacity, and it is most likely two things stacked. One: the branch balancing valves were set at commissioning for forty kilowatt racks and nobody re-set them when we went to sixty, so the lowest branch now takes whatever is left. Two: on the hot nodes I expect either a partially seated quick disconnect or fouling inside the cold plate - both show up as a higher differential pressure across that one plate at the same flow. I will separate them by swapping the hose between a hot node and a good node. If the problem follows the hose it is the coupling; if it stays with the node it is the plate.\n- Marcus: How long until the training queue is healthy again?\n- 小白: Tonight I can give you a compensating control, not a fix. I will raise manifold differential pressure by about zero point three bar so the starved branch gets closer to its share, and drop supply one kelvin. That buys you headroom, it costs about two points of PUE at the CDU, and it does not change the fact that two plates are dirty. The fix is a chemical flush of those branches plus re-balancing the manifold, and that needs a four hour window per branch with the nodes evacuated. And let me be clear about the redundancy, because it matters here: on last month failover drill the standby CDU picked up in under ten seconds and nothing moved. That result is real - and it is exactly why this hid from us. The redundancy kept the loop alive; it did not make the flow equal.\n\n**重点表达：**\n- `The GPUs throttle about twenty minutes into every run.` — GPU 每次跑到约 20 分钟开始降频\n- `The loop is telling the truth about the loop.` — 环路只如实反映环路自身\n- `Everything we trend is measured at the CDU.` — 我们所有趋势数据都测在 CDU 上\n- `If a branch is starved, the CDU still sees healthy numbers.` — 某条支路缺流量，CDU 看到的依然是健康数值\n- `The plant is not short of cold; the far end is short of flow.` — 冷源不缺冷量，末端缺流量\n- `Litres per minute per branch.` — 每条支路的升/分钟\n- `An infrared sweep of the cold plate.` — 对冷板做红外扫测\n- `While the job is actually throttling, not after it.` — 在任务正在降频时测，而不是事后\n- `The RCA lands on distribution, not on capacity.` — 根因落在输配，不在容量\n- `It is most likely two things stacked.` — 很可能是两个因素叠加\n- `Nobody re-set them when we went to sixty.` — 升到 60kW 时没人重新设定\n- `A partially seated quick disconnect.` — 快接头未完全插合到位\n- `Fouling inside the cold plate.` — 冷板内部结垢污堵\n- `If the problem follows the hose it is the coupling.` — 问题跟着软管走，就是接头的问题\n- `A compensating control, not a fix.` — 这是补偿控制，不是根治\n- `That buys you headroom.` — 这能换来一些余量\n- `The standby CDU picked up in under ten seconds.` — 备用 CDU 十秒内接管\n- `The redundancy kept the loop alive; it did not make the flow equal.` — 冗余保住了环路，但没让流量变均匀",
+        "category": "故障排查",
+        "difficulty": "高级 Advanced",
+        "expressions": [
+          {
+            "en": "The GPUs throttle about twenty minutes into every run.",
+            "zh": "GPU 每次跑到约 20 分钟开始降频"
+          },
+          {
+            "en": "The loop is telling the truth about the loop.",
+            "zh": "环路只如实反映环路自身"
+          },
+          {
+            "en": "Everything we trend is measured at the CDU.",
+            "zh": "我们所有趋势数据都测在 CDU 上"
+          },
+          {
+            "en": "If a branch is starved, the CDU still sees healthy numbers.",
+            "zh": "某条支路缺流量，CDU 看到的依然是健康数值"
+          },
+          {
+            "en": "The plant is not short of cold; the far end is short of flow.",
+            "zh": "冷源不缺冷量，末端缺流量"
+          },
+          {
+            "en": "Litres per minute per branch.",
+            "zh": "每条支路的升/分钟"
+          },
+          {
+            "en": "An infrared sweep of the cold plate.",
+            "zh": "对冷板做红外扫测"
+          },
+          {
+            "en": "While the job is actually throttling, not after it.",
+            "zh": "在任务正在降频时测，而不是事后"
+          },
+          {
+            "en": "The RCA lands on distribution, not on capacity.",
+            "zh": "根因落在输配，不在容量"
+          },
+          {
+            "en": "It is most likely two things stacked.",
+            "zh": "很可能是两个因素叠加"
+          },
+          {
+            "en": "Nobody re-set them when we went to sixty.",
+            "zh": "升到 60kW 时没人重新设定"
+          },
+          {
+            "en": "A partially seated quick disconnect.",
+            "zh": "快接头未完全插合到位"
+          },
+          {
+            "en": "Fouling inside the cold plate.",
+            "zh": "冷板内部结垢污堵"
+          },
+          {
+            "en": "If the problem follows the hose it is the coupling.",
+            "zh": "问题跟着软管走，就是接头的问题"
+          },
+          {
+            "en": "A compensating control, not a fix.",
+            "zh": "这是补偿控制，不是根治"
+          },
+          {
+            "en": "That buys you headroom.",
+            "zh": "这能换来一些余量"
+          },
+          {
+            "en": "The standby CDU picked up in under ten seconds.",
+            "zh": "备用 CDU 十秒内接管"
+          },
+          {
+            "en": "The redundancy kept the loop alive; it did not make the flow equal.",
+            "zh": "冗余保住了环路，但没让流量变均匀"
+          }
+        ]
+      },
+      {
+        "id": "en-3",
+        "title": "供应商对接 · 冷却液补液与水质服务怎么谈",
+        "subtitle": "进阶 Intermediate",
+        "content": "**情境**：二次侧冷却液年度补液与水质检测服务续签谈判。你要把浓度、pH、缓蚀剂残留、取样点位与频次、报告解读、紧急补液响应、以及责任边界（若因冷却液导致腐蚀泄漏谁担责）谈清楚，同时压住对方「先签三年再谈价格」的节奏。\n\n**对话：**\n- Alex: If you sign a three year framework we can hold this year price.\n- 小白: I am not signing three years to buy a discount. I will sign one year with two optional extensions, and the price hold applies to the first year only. The reason is simple: we are still learning how fast this fluid degrades in our loop. In two years I will know the glycol breakdown rate, the inhibitor depletion curve and the real make-up volume. Today I would be guessing, and I do not sign guesses.\n- Alex: What is in scope?\n- 小白: Four things. One, fluid: inhibited glycol at twenty-five percent, delivered with a certificate of analysis per batch and a current safety data sheet. Two, testing: quarterly sampling at four points - the CDU outlet, the far end of the worst branch, the expansion tank and the make-up tank - reporting concentration, pH, reserve alkalinity, iron, copper and total viable count. Three, response: if we call with a level alarm and a confirmed leak, fluid on site in four hours, not next business day. Four, an annual review where you tell us what the trend means, not just a table of numbers.\n- Alex: And if corrosion happens anyway?\n- 小白: That is the part I want written down. If testing shows the inhibitor is inside your specified range and we still get corrosion, the fluid is the problem and you carry the material and the labour to flush, re-passivate and re-fill the affected loop. If the inhibitor is out of range because we diluted it or topped up with plain water, that is ours and we pay. What I will not accept is a blanket exclusion saying the fluid is supplied as-is and everything downstream is our risk - that would make the testing service decorative. Put the split on inhibitor condition. It is the one thing both of us can measure and neither of us can argue about.\n- Alex: We can do that for a two percent uplift on the fluid price.\n- 小白: Then quote it as a separate line so I can see what the cover costs. Do not bury it in the litre price, because next year I will want to keep the cover and re-tender the fluid.\n\n**重点表达：**\n- `I am not signing three years to buy a discount.` — 我不会为了拿折扣签三年\n- `One year with two optional extensions.` — 一年加两次可选续期\n- `The price hold applies to the first year only.` — 价格锁定只适用于第一年\n- `I do not sign guesses.` — 我不签基于猜测的东西\n- `What is in scope?` — 范围包含什么\n- `Inhibited glycol at twenty-five percent.` — 25% 缓蚀型乙二醇\n- `A certificate of analysis per batch.` — 每批次一份分析合格证\n- `Quarterly sampling at four points.` — 每季度四个点位取样\n- `Reserve alkalinity.` — 储备碱度\n- `Total viable count.` — 菌落总数\n- `Fluid on site in four hours, not next business day.` — 四小时到现场，而不是下一个工作日\n- `Tell us what the trend means, not just a table of numbers.` — 告诉我们趋势意味着什么，而不是只给一张数字表\n- `You carry the material and the labour.` — 材料与人工由你们承担\n- `Flush, re-passivate and re-fill.` — 冲洗、重新钝化、重新充液\n- `We diluted it or topped up with plain water.` — 是我们稀释了或直接补了清水\n- `A blanket exclusion.` — 一刀切的免责条款\n- `That would make the testing service decorative.` — 那会让检测服务变成摆设\n- `Quote it as a separate line.` — 单独列一项报价",
+        "category": "供应商对接",
+        "difficulty": "进阶 Intermediate",
+        "expressions": [
+          {
+            "en": "I am not signing three years to buy a discount.",
+            "zh": "我不会为了拿折扣签三年"
+          },
+          {
+            "en": "One year with two optional extensions.",
+            "zh": "一年加两次可选续期"
+          },
+          {
+            "en": "The price hold applies to the first year only.",
+            "zh": "价格锁定只适用于第一年"
+          },
+          {
+            "en": "I do not sign guesses.",
+            "zh": "我不签基于猜测的东西"
+          },
+          {
+            "en": "What is in scope?",
+            "zh": "范围包含什么"
+          },
+          {
+            "en": "Inhibited glycol at twenty-five percent.",
+            "zh": "25% 缓蚀型乙二醇"
+          },
+          {
+            "en": "A certificate of analysis per batch.",
+            "zh": "每批次一份分析合格证"
+          },
+          {
+            "en": "Quarterly sampling at four points.",
+            "zh": "每季度四个点位取样"
+          },
+          {
+            "en": "Reserve alkalinity.",
+            "zh": "储备碱度"
+          },
+          {
+            "en": "Total viable count.",
+            "zh": "菌落总数"
+          },
+          {
+            "en": "Fluid on site in four hours, not next business day.",
+            "zh": "四小时到现场，而不是下一个工作日"
+          },
+          {
+            "en": "Tell us what the trend means, not just a table of numbers.",
+            "zh": "告诉我们趋势意味着什么，而不是只给一张数字表"
+          },
+          {
+            "en": "You carry the material and the labour.",
+            "zh": "材料与人工由你们承担"
+          },
+          {
+            "en": "Flush, re-passivate and re-fill.",
+            "zh": "冲洗、重新钝化、重新充液"
+          },
+          {
+            "en": "We diluted it or topped up with plain water.",
+            "zh": "是我们稀释了或直接补了清水"
+          },
+          {
+            "en": "A blanket exclusion.",
+            "zh": "一刀切的免责条款"
+          },
+          {
+            "en": "That would make the testing service decorative.",
+            "zh": "那会让检测服务变成摆设"
+          },
+          {
+            "en": "Quote it as a separate line.",
+            "zh": "单独列一项报价"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-26",
     "generatedAt": "2026-10-26T23:18:05+08:00",
     "cycleDay": 2,
@@ -2160,104 +2406,6 @@
           {
             "en": "The roll-off is the part people forget.",
             "zh": "设备退场是最容易被人忘掉的一环——roll-off 指租赁设备的撤场归还，容量规划里经常被忽视的成本项"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "date": "2026-10-13",
-    "generatedAt": "2026-10-13T23:18:28+08:00",
-    "cycleDay": 1,
-    "difficulty": "基础 Basic",
-    "cards": [
-      {
-        "id": "en-1",
-        "title": "日常工作 · 早间巡检接报：冷却塔风机异响的初判与上报",
-        "subtitle": "基础 Basic",
-        "content": "**情境**：早间接班，夜班同事提到 3 号冷却塔风机传动侧有尖叫声，但还没上塔确认。小白需要先判断异响来源是皮带还是轴承，带红外测温仪上塔核对油位、皮带张力与电机外壳温度，再决定是立即停机还是开纠正性工单排队，同时说明当前冗余情况。\n\n**对话：**\n- 小白: Morning, Dave. Anything I should know before I walk the loop?\n- Dave: Tower three is squealing on the fan drive. I have not had eyes on it yet.\n- 小白: Belt or bearing?\n- Dave: Hard to tell from the floor. Gearbox oil level in the sight glass looks fine, and the basin is clean.\n- 小白: I will go up with the infrared gun and check belt tension and the motor casing temperature. If the belt is glazed or the bearing is howling, I will raise a corrective work order and flag it as P two.\n- Dave: Want me to shut it down now?\n- 小白: Not on a guess. Towers one and two are carrying the load and the loop is holding setpoint. I would rather lose ten minutes of inspection than lose redundancy I cannot get back.\n\n**重点表达：**\n- `Anything I should know before I walk the loop?` — 我巡一圈之前有什么要交代的——walk the loop 就是沿系统走一圈巡检，比 inspection 更口语、更常用\n- `Belt or bearing?` — 皮带还是轴承？——现场判断异响来源的最短问法，两个字定性，老运维一开口就这么问\n- `I will raise a corrective work order and flag it as P two.` — 我开一张纠正性工单并标为 P2 优先级——raise a work order 是开口常用搭配；corrective 与 preventive 相对，别混用\n- `Not on a guess.` — 不凭猜测动手——短促有力，用来挡住「先停机再说」的建议，比 I do not think so 更有分量\n- `I would rather lose ten minutes of inspection than lose redundancy I cannot get back.` — 我宁可多花十分钟检查，也不愿丢掉拿不回来的冗余——would rather A than B 是表达取舍的高级句型",
-        "category": "日常工作",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "Anything I should know before I walk the loop?",
-            "zh": "我巡一圈之前有什么要交代的——walk the loop 就是沿系统走一圈巡检，比 inspection 更口语、更常用"
-          },
-          {
-            "en": "Belt or bearing?",
-            "zh": "皮带还是轴承？——现场判断异响来源的最短问法，两个字定性，老运维一开口就这么问"
-          },
-          {
-            "en": "I will raise a corrective work order and flag it as P two.",
-            "zh": "我开一张纠正性工单并标为 P2 优先级——raise a work order 是开口常用搭配；corrective 与 preventive 相对，别混用"
-          },
-          {
-            "en": "Not on a guess.",
-            "zh": "不凭猜测动手——短促有力，用来挡住「先停机再说」的建议，比 I do not think so 更有分量"
-          },
-          {
-            "en": "I would rather lose ten minutes of inspection than lose redundancy I cannot get back.",
-            "zh": "我宁可多花十分钟检查，也不愿丢掉拿不回来的冗余——would rather A than B 是表达取舍的高级句型"
-          }
-        ]
-      },
-      {
-        "id": "en-2",
-        "title": "故障排查 · 水阀全开却压不住温度：压差测点位置引发的低温差综合征",
-        "subtitle": "进阶 Intermediate",
-        "content": "**情境**：高温时段 B 区多台 CRAH 水阀开到 100%，回风温度仍高于设定值 2℃，但冷冻水供回水温差只有 3.2℃（设计 6℃）。小白要从「是不是冷量不够」的质疑中跳出来，定位到二次管网压差传感器装在泵出口而非最不利环路末端、旁通阀在低负载时回流的真实根因，并给出短期调整与根治方案。\n\n**对话：**\n- Sofia: Row fourteen CRAH valves are wide open and the return air is still two degrees above setpoint. Are we out of cooling capacity?\n- 小白: Not capacity. Flow. The delta-T across the loop has collapsed to three point two degrees. Wide-open valves with a low delta-T is classic low delta-T syndrome, the water is going somewhere it is not doing any work.\n- Sofia: So where is the extra water going?\n- 小白: Through the bypass. Our differential pressure sensor sits at the pump discharge instead of the end of the index circuit, so the controller always sees comfortable pressure and never lets the bypass valve close. The remote units starve.\n- Sofia: That would explain why the far end is the hottest.\n- 小白: It does. Two fixes. Short term I trim the DP setpoint down and let the bypass ride closed through peak hours. The real fix is relocating the sensor to the furthest coil and re-baselining the setpoint against that circuit.\n- Sofia: How long before you can say that with data?\n- 小白: One hot afternoon of trending. If delta-T climbs back toward five and a half and the far-end valves come off their stops, the RCA lands on the sensor location, not the chiller plant. And if it does not move, I will come back and say the plant is undersized.\n\n**重点表达：**\n- `Not capacity. Flow.` — 不是冷量，是流量——先定性再展开，两句话把故障的排查方向锁死，避免整场会都在争论要不要加冷机\n- `Classic low delta-T syndrome.` — 典型的低温差综合征——delta-T 读作 delta tee，syndrome 表示这是行业里被命名过的典型毛病，一说对方就懂\n- `The remote units starve.` — 远端机组吃不饱——starve 指末端拿不到足够流量，比 lack of flow 生动得多，是老外爱用的拟人说法\n- `The RCA lands on the sensor location, not the chiller plant.` — 根因落在测点位置，不在冷机侧——the RCA lands on X 是根因分析汇报里的黄金句型，直接给结论\n- `If it does not move, I will come back and say the plant is undersized.` — 如果数据不动，我会回来承认是冷机能力不够——先给出可证伪的判断标准，是专业工程师的担当",
-        "category": "故障排查",
-        "difficulty": "进阶 Intermediate",
-        "expressions": [
-          {
-            "en": "Not capacity. Flow.",
-            "zh": "不是冷量，是流量——先定性再展开，两句话把故障的排查方向锁死，避免整场会都在争论要不要加冷机"
-          },
-          {
-            "en": "Classic low delta-T syndrome.",
-            "zh": "典型的低温差综合征——delta-T 读作 delta tee，syndrome 表示这是行业里被命名过的典型毛病，一说对方就懂"
-          },
-          {
-            "en": "The remote units starve.",
-            "zh": "远端机组吃不饱——starve 指末端拿不到足够流量，比 lack of flow 生动得多，是老外爱用的拟人说法"
-          },
-          {
-            "en": "The RCA lands on the sensor location, not the chiller plant.",
-            "zh": "根因落在测点位置，不在冷机侧——the RCA lands on X 是根因分析汇报里的黄金句型，直接给结论"
-          },
-          {
-            "en": "If it does not move, I will come back and say the plant is undersized.",
-            "zh": "如果数据不动，我会回来承认是冷机能力不够——先给出可证伪的判断标准，是专业工程师的担当"
-          }
-        ]
-      },
-      {
-        "id": "en-3",
-        "title": "供应商对接 · 风机电机烧毁更换：拆解报价、进场时间与质保起算",
-        "subtitle": "基础 Basic",
-        "content": "**情境**：3 号冷却塔风机电机对地绝缘为零，判定匝间短路烧毁，需要整体更换。小白向供应商询价，要求把电机本体、吊装、接线、试运行拆开逐项报价；交期三周但塔不能停太久，要拆分发货与安装；质保期坚持从试运行签字起算而非到货日，并明确试运行振动超标由供应商负责。\n\n**对话：**\n- 小白: Ryan, the fan motor on tower three is gone. Insulation to ground reads zero, so this is not something we can nurse along. I need a replacement.\n- Ryan: I can quote the same model. Motor only, or installation as well?\n- 小白: Both, quoted separately. I want the motor, the rigging, the reconnection and the run test broken out line by line. A single lump number tells me nothing.\n- Ryan: Understood. Lead time on the motor is three weeks, and the crew can mobilise five working days after it lands.\n- 小白: Three weeks out of service is longer than I can carry that tower. Can you ship the motor first and have the crew on site the day it arrives?\n- Ryan: We can do that, if you confirm the purchase order this week.\n- 小白: Then one more thing on warranty. I want the twelve months to start from the run test sign-off, not from the delivery date. And if the run test shows vibration above the limit, that is yours to fix, not ours.\n- Ryan: I will put both in writing and send the revised quote today.\n\n**重点表达：**\n- `Insulation to ground reads zero, so this is not something we can nurse along.` — 对地绝缘为零，这不是能凑合着用的——nurse along 指带病维持运行，是谈判里表明「必须换」的地道说法\n- `I want the motor, the rigging, the reconnection and the run test broken out line by line.` — 电机、吊装、接线、试运行要逐项拆开报——break out line by line 是压报价的标配句型，拆开才好砍价\n- `The crew can mobilise five working days after it lands.` — 货到后五个工作日进场——mobilise 指人员设备进场，比 come to site 专业\n- `I want the twelve months to start from the run test sign-off, not from the delivery date.` — 质保十二个月从试运行签字起算，不是到货日——质保起算点是设备采购最容易吃亏的一栏，必须开口争\n- `That is yours to fix, not ours.` — 那是你们要修的，不是我们——划责任边界的短句，语气平静但立场很硬",
-        "category": "供应商对接",
-        "difficulty": "基础 Basic",
-        "expressions": [
-          {
-            "en": "Insulation to ground reads zero, so this is not something we can nurse along.",
-            "zh": "对地绝缘为零，这不是能凑合着用的——nurse along 指带病维持运行，是谈判里表明「必须换」的地道说法"
-          },
-          {
-            "en": "I want the motor, the rigging, the reconnection and the run test broken out line by line.",
-            "zh": "电机、吊装、接线、试运行要逐项拆开报——break out line by line 是压报价的标配句型，拆开才好砍价"
-          },
-          {
-            "en": "The crew can mobilise five working days after it lands.",
-            "zh": "货到后五个工作日进场——mobilise 指人员设备进场，比 come to site 专业"
-          },
-          {
-            "en": "I want the twelve months to start from the run test sign-off, not from the delivery date.",
-            "zh": "质保十二个月从试运行签字起算，不是到货日——质保起算点是设备采购最容易吃亏的一栏，必须开口争"
-          },
-          {
-            "en": "That is yours to fix, not ours.",
-            "zh": "那是你们要修的，不是我们——划责任边界的短句，语气平静但立场很硬"
           }
         ]
       }
